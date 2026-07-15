@@ -111,7 +111,7 @@ export default function PrivacyView() {
           <section className="space-y-3">
             <h2 className="font-display font-bold text-base sm:text-lg text-white">5. Third-Party Services</h2>
             <p>
-              Our app retrieves movie information using TMDB API endpoints, and streaming details via JustWatch data feeds. Some outgoing links may redirect you to external platforms (Netflix, Prime Video, etc.). We are not responsible for the privacy practices, content, or cookie tracking implemented on these third-party websites.
+              Our app retrieves movie information and streaming-provider details through TMDB API endpoints. TMDB’s watch-provider data is powered by JustWatch; Flixie does not connect to JustWatch directly. Some outgoing links may redirect you to external platforms (Netflix, Prime Video, etc.). We are not responsible for those platforms’ privacy practices, content, or cookie tracking.
             </p>
           </section>
 

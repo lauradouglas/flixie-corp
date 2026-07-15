@@ -22,11 +22,20 @@ import {
   Film, 
   Check, 
   Plus,
-  Clapperboard
+  Home,
+  Search,
+  Bell,
+  UserRound,
+  Settings,
+  CalendarDays,
+  Play,
+  MessageCircle
 } from 'lucide-react';
 import { PageId, FeatureItem } from '../types';
 // @ts-ignore
 import cinemaGlow from '../assets/images/flixie_cinema_glow_1784148911237.jpg';
+// @ts-ignore
+import flixieLogo from '../assets/brand/flixie_text_1024.png';
 
 interface HomeViewProps {
   setCurrentPage: (page: PageId) => void;
@@ -193,7 +202,7 @@ export default function HomeView({ setCurrentPage, onDownloadClick }: HomeViewPr
               className="inline-flex items-center gap-2 px-3 py-1.5 bg-flixie-purple/15 border border-flixie-purple/30 rounded-full text-xs font-semibold text-flixie-purple tracking-wide"
             >
               <Sparkles className="h-3.5 w-3.5 text-flixie-teal animate-pulse" />
-              Introducing Flixie v2.0 • Social Movie Discovery
+              Introducing Flixie v1.0 • Social Movie Discovery
             </motion.div>
 
             <motion.h1
@@ -214,7 +223,7 @@ export default function HomeView({ setCurrentPage, onDownloadClick }: HomeViewPr
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-text-secondary text-base sm:text-lg lg:text-xl max-w-xl mx-auto lg:mx-0 leading-relaxed"
             >
-              Flixie is the premier social platform where you and your friends connect to curate watchlists, track your viewing history, exchange ratings, and sync watch requests seamlessly. No more endless scrolling.
+              Discover your next favourite movie with Flixie. Build your watchlist, track what you’ve watched, rate your favourites, and invite friends to watch together—all in one place. Spend less time scrolling and more time enjoying great films.
             </motion.p>
 
             {/* Hero CTAs */}
@@ -246,7 +255,7 @@ export default function HomeView({ setCurrentPage, onDownloadClick }: HomeViewPr
               </button>
             </motion.div>
 
-            {/* Social Stats Proof Banner */}
+            {/* Traction stats are intentionally hidden until Flixie has verified public metrics.
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -266,6 +275,7 @@ export default function HomeView({ setCurrentPage, onDownloadClick }: HomeViewPr
                 <div className="text-[11px] text-text-muted uppercase tracking-wider font-semibold">Film Circles</div>
               </div>
             </motion.div>
+            */}
           </div>
 
           {/* Hero Right - Interactive CSS Smartphone Mockup */}
@@ -282,101 +292,66 @@ export default function HomeView({ setCurrentPage, onDownloadClick }: HomeViewPr
                 <div className="w-12 h-1 bg-neutral-800 rounded-full mb-1" />
               </div>
 
-              {/* Live Preview Screen Container */}
-              <div className="relative w-full h-full rounded-[30px] overflow-hidden bg-[#0d072a] flex flex-col">
-                {/* Simulated App Header */}
-                <div className="pt-6 px-4 pb-2 bg-bg-nav/80 backdrop-blur-sm border-b border-white/5 flex items-center justify-between text-xs text-text-muted z-20">
-                  <div className="font-display font-bold text-white flex items-center gap-1">
-                    <div className="h-1.5 w-1.5 bg-flixie-teal rounded-full animate-ping" />
-                    Flixie app
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-[10px] bg-flixie-purple/20 text-flixie-purple px-1.5 py-0.5 rounded font-mono font-bold">
-                      Lists: {watchlistCount}
-                    </span>
+              {/* A compact recreation of the real Flixie home screen */}
+              <div className="relative w-full h-full rounded-[30px] overflow-hidden bg-gradient-to-b from-bg-card via-bg-main to-bg-darkest flex flex-col">
+                <div className="pt-6 px-4 pb-2 flex items-center justify-between z-20">
+                  <span className="relative block h-7 w-20 overflow-hidden">
+                    <img src={flixieLogo} alt="Flixie" className="absolute w-24 max-w-none -left-1.5 -top-[34px]" />
+                  </span>
+                  <div className="flex items-center gap-3 text-text-secondary">
+                    <Search className="h-4 w-4" />
+                    <span className="relative"><Bell className="h-4 w-4" /><span className="absolute -right-1 -top-1 h-1.5 w-1.5 rounded-full bg-flixie-peach" /></span>
                   </div>
                 </div>
 
-                {/* Simulated Movie card slider screen inside phone */}
-                <div className="flex-1 flex flex-col justify-between p-4 relative overflow-hidden">
-                  {/* Background gradient from active movie */}
-                  <div className={`absolute inset-0 bg-gradient-to-b ${activeMovie.color} opacity-40 -z-10 transition-all duration-500`} />
+                <div className="flex-1 px-4 pb-2 overflow-hidden">
+                  <p className="text-[10px] text-text-muted mt-1">Good evening</p>
+                  <h3 className="text-base font-extrabold text-white">What are we watching?</h3>
 
-                  {/* Tiny status banner */}
-                  <div className="flex justify-between items-center text-[10px] text-text-secondary">
-                    <span className="uppercase font-semibold tracking-wider text-flixie-teal flex items-center gap-1">
-                      <Film className="h-3 w-3" /> Popular Recommendation
-                    </span>
-                    <span className="flex items-center gap-1 font-mono font-bold text-status-warning">
-                      <Star className="h-3 w-3 fill-current text-status-warning" /> {activeMovie.rating}
-                    </span>
+                  <div className="grid grid-cols-4 gap-2 mt-3 text-center">
+                    {[
+                      [Search, 'Search'], [Bookmark, 'Watchlist'], [Users, 'Friends'], [MessageCircle, 'Requests']
+                    ].map(([Icon, label]) => (
+                      <div key={label as string} className="flex flex-col items-center gap-1 text-[8px] text-text-secondary">
+                        <span className="h-8 w-8 rounded-xl bg-bg-elevated border border-white/5 flex items-center justify-center text-flixie-purple"><Icon className="h-3.5 w-3.5" /></span>
+                        {label as string}
+                      </div>
+                    ))}
                   </div>
 
-                  {/* Movie Cover Card Poster Mockup */}
-                  <div className="my-2 bg-white/5 border border-white/10 rounded-2xl p-3 flex flex-col justify-end h-56 relative overflow-hidden group shadow-inner">
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10" />
-                    
-                    {/* Abstract design vector to represent a movie screen */}
-                    <div className="absolute top-2 left-2 right-2 bottom-12 rounded-xl border border-white/5 bg-gradient-to-tr from-flixie-purple/10 to-flixie-teal/10 flex items-center justify-center overflow-hidden">
-                      <Clapperboard className="h-12 w-12 text-white/15 animate-pulse" />
-                    </div>
-
-                    <div className="z-20 relative">
-                      <h3 className="font-display font-extrabold text-base text-white leading-tight">
-                        {activeMovie.title}
-                      </h3>
-                      <p className="text-[11px] text-text-secondary mt-0.5">{activeMovie.genre} • {activeMovie.duration}</p>
-                    </div>
+                  <div className="mt-3 rounded-xl bg-bg-card border border-flixie-purple/40 p-2.5 flex items-center gap-2">
+                    <span className="h-8 w-8 shrink-0 rounded-lg bg-flixie-purple/15 text-flixie-purple flex items-center justify-center"><CalendarDays className="h-4 w-4" /></span>
+                    <span className="min-w-0 flex-1"><strong className="block text-[11px] text-white">Watch plans</strong><span className="block text-[8px] text-text-secondary truncate">2 upcoming watches with friends</span></span>
+                    <ChevronRight className="h-4 w-4 text-text-secondary" />
                   </div>
 
-                  {/* Interactive Button row for app demo */}
-                  <div className="space-y-3 z-20">
-                    <p className="text-[11px] text-text-secondary line-clamp-2 leading-relaxed italic bg-black/30 p-2 rounded-xl border border-white/5">
-                      "{activeMovie.synopsis}"
-                    </p>
+                  <div className="mt-3 flex items-center justify-between">
+                    <strong className="text-[11px] text-white">Featured for you</strong>
+                    <button onClick={handleNextMovie} className="text-[8px] text-flixie-purple cursor-pointer">Next</button>
+                  </div>
 
-                    <div className="grid grid-cols-3 gap-2">
-                      <button
-                        onClick={handleToggleWatchlist}
-                        className={`py-2 px-1.5 rounded-xl border text-[10px] font-semibold flex flex-col items-center justify-center gap-1 transition-all cursor-pointer ${
-                          hasAddedToWatchlist 
-                            ? 'bg-flixie-purple/20 border-flixie-purple text-flixie-purple' 
-                            : 'bg-white/5 border-white/10 hover:bg-white/10 text-text-secondary'
-                        }`}
-                        aria-label="Add to Watchlist"
-                      >
-                        {hasAddedToWatchlist ? <Check className="h-3.5 w-3.5" /> : <Plus className="h-3.5 w-3.5" />}
-                        Watchlist
-                      </button>
-
-                      <button
-                        onClick={handleLike}
-                        className={`py-2 px-1.5 rounded-xl border text-[10px] font-semibold flex flex-col items-center justify-center gap-1 transition-all cursor-pointer ${
-                          hasLiked 
-                            ? 'bg-status-error/20 border-status-error text-status-error' 
-                            : 'bg-white/5 border-white/10 hover:bg-white/10 text-text-secondary'
-                        }`}
-                        aria-label="Favorite"
-                      >
-                        <Heart className={`h-3.5 w-3.5 ${hasLiked ? 'fill-current' : ''}`} />
-                        Favourite
-                      </button>
-
-                      <button
-                        onClick={handleNextMovie}
-                        className="py-2 px-1.5 rounded-xl bg-gradient-to-r from-flixie-teal to-teal-500 border border-transparent text-[10px] font-semibold text-bg-darkest hover:brightness-110 flex flex-col items-center justify-center gap-1 transition-all cursor-pointer"
-                        aria-label="Next movie recommendation"
-                      >
-                        <ChevronRight className="h-3.5 w-3.5" />
-                        Next Match
-                      </button>
+                  <div className="mt-2 h-[218px] rounded-2xl overflow-hidden border border-white/10 relative shadow-xl">
+                    <img src={cinemaGlow} alt="" className="absolute inset-0 w-full h-full object-cover transition-all duration-500" style={{ filter: `hue-rotate(${currentMovieIndex * 45}deg)` }} />
+                    <div className={`absolute inset-0 bg-gradient-to-t ${activeMovie.color} opacity-55`} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/20" />
+                    <span className="absolute top-3 right-3 bg-black/70 border border-status-warning/50 rounded-full px-2 py-1 text-[9px] font-bold text-status-warning flex items-center gap-1"><Star className="h-2.5 w-2.5 fill-current" />{activeMovie.rating}</span>
+                    <div className="absolute left-3 right-3 bottom-3">
+                      <h4 className="text-base font-extrabold text-white">{activeMovie.title}</h4>
+                      <p className="text-[9px] text-text-secondary">{activeMovie.genre} • {activeMovie.duration}</p>
+                      <div className="flex gap-2 mt-2">
+                        <button onClick={handleToggleWatchlist} aria-label="Toggle watchlist" className={`h-8 w-8 rounded-full flex items-center justify-center border cursor-pointer ${hasAddedToWatchlist ? 'bg-flixie-purple border-flixie-purple text-white' : 'bg-black/60 border-white/20 text-flixie-purple'}`}>{hasAddedToWatchlist ? <Check className="h-4 w-4" /> : <Bookmark className="h-4 w-4" />}</button>
+                        <button onClick={handleLike} aria-label="Toggle favourite" className={`h-8 w-8 rounded-full flex items-center justify-center border cursor-pointer ${hasLiked ? 'bg-status-error border-status-error text-white' : 'bg-black/60 border-white/20 text-white'}`}><Heart className={`h-4 w-4 ${hasLiked ? 'fill-current' : ''}`} /></button>
+                        <button onClick={handleNextMovie} className="ml-auto px-3 rounded-full bg-flixie-purple text-white text-[9px] font-bold flex items-center gap-1 cursor-pointer"><Play className="h-3 w-3 fill-current" /> Explore</button>
+                      </div>
                     </div>
                   </div>
+                  <div className="flex justify-center gap-1 mt-2">{mockMoviesForMockup.map((_, index) => <span key={index} className={`h-1 rounded-full transition-all ${index === currentMovieIndex ? 'w-4 bg-flixie-purple' : 'w-1 bg-text-muted/50'}`} />)}</div>
                 </div>
 
-                {/* Simulated Screen Instruction Overlay Indicator */}
-                <div className="bg-bg-card p-2 text-center text-[10px] text-text-muted border-t border-white/5">
-                  👆 Interactive Demo! Tap the buttons to preview.
+                <div className="h-14 px-2 bg-bg-nav/95 border-t border-white/5 grid grid-cols-5 items-center">
+                  {[[Home, 'Home'], [Bookmark, 'Watchlist'], [Users, 'Social'], [UserRound, 'Profile'], [Settings, 'Settings']].map(([Icon, label], index) => (
+                    <div key={label as string} className={`flex flex-col items-center gap-0.5 text-[7px] ${index === 0 ? 'text-flixie-purple' : 'text-text-muted'}`}><Icon className={`h-3.5 w-3.5 ${index === 0 ? 'fill-current' : ''}`} />{label as string}</div>
+                  ))}
                 </div>
               </div>
 
@@ -386,8 +361,8 @@ export default function HomeView({ setCurrentPage, onDownloadClick }: HomeViewPr
                   <Users className="h-4 w-4" />
                 </div>
                 <div>
-                  <div className="text-[10px] text-text-muted">Leo requested</div>
-                  <div className="text-xs font-bold text-white">Movie Night</div>
+                  <div className="text-[10px] text-text-muted">Watch request</div>
+                  <div className="text-xs font-bold text-white">Movie night with Leo</div>
                 </div>
               </div>
 
@@ -397,8 +372,8 @@ export default function HomeView({ setCurrentPage, onDownloadClick }: HomeViewPr
                   <Sparkles className="h-4 w-4" />
                 </div>
                 <div>
-                  <div className="text-[10px] text-text-muted">Shared Match</div>
-                  <div className="text-xs font-bold text-white">94% Compatibility</div>
+                  <div className="text-[10px] text-text-muted">Your friends are watching</div>
+                  <div className="text-xs font-bold text-white">See latest activity</div>
                 </div>
               </div>
             </motion.div>
@@ -484,7 +459,7 @@ export default function HomeView({ setCurrentPage, onDownloadClick }: HomeViewPr
               </div>
               <h3 className="font-display font-bold text-lg text-white">Add Friends & Sync</h3>
               <p className="text-text-secondary text-sm leading-relaxed">
-                Connect your contacts, Facebook, or search user IDs to follow friends. Instantly view their shared watchlist and active favourites.
+                Find people by their Flixie username, connect with friends, and see the watchlists, favourites, reviews, and activity they choose to share.
               </p>
             </div>
 

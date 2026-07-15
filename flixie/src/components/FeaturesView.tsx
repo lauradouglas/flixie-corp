@@ -49,7 +49,7 @@ export default function FeaturesView({ onDownloadClick }: FeaturesViewProps) {
       {/* Alternating Feature Sections */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 md:space-y-36">
         
-        {/* Feature 1: Discover & JustWatch Integration */}
+        {/* Feature 1: Discover & TMDB watch-provider data */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center" id="feature-detail-discover">
           <div className="lg:col-span-6 space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-flixie-teal/10 border border-flixie-teal/30 rounded-full text-xs font-semibold text-flixie-teal">
@@ -63,10 +63,10 @@ export default function FeaturesView({ onDownloadClick }: FeaturesViewProps) {
             </p>
             
             <div className="bg-bg-card border border-border-custom p-4 rounded-xl flex items-center gap-3">
-              <span className="text-flixie-teal font-bold font-mono text-xs">JUSTWATCH POWERED</span>
+              <span className="text-flixie-teal font-bold font-mono text-xs">WATCH PROVIDERS VIA TMDB</span>
               <div className="h-4 w-px bg-border-custom" />
               <p className="text-xs text-text-muted leading-relaxed">
-                Check instant streaming availability, rental prices, and subscription channels (Netflix, Prime, Disney+, etc.) directly within the app, kept current daily.
+                Check streaming, rental, and subscription availability from TMDB’s watch-provider data, which is powered by JustWatch.
               </p>
             </div>
 
@@ -81,7 +81,7 @@ export default function FeaturesView({ onDownloadClick }: FeaturesViewProps) {
               </li>
               <li className="flex items-center gap-2.5 text-text-secondary">
                 <div className="h-1.5 w-1.5 rounded-full bg-flixie-teal" />
-                JustWatch direct deeplinks to official stream sites
+                Watch-provider links supplied through TMDB
               </li>
             </ul>
           </div>
@@ -101,7 +101,7 @@ export default function FeaturesView({ onDownloadClick }: FeaturesViewProps) {
               </div>
             </div>
 
-            {/* Simulated movie lists with JustWatch tags */}
+            {/* Simulated movie lists with watch-provider tags */}
             <div className="space-y-3">
               <div className="p-3 bg-bg-elevated border border-border-custom rounded-xl flex items-center justify-between hover:border-flixie-teal/50 transition-colors">
                 <div>

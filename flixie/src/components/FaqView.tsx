@@ -35,12 +35,12 @@ export default function FaqView() {
         {
           id: 'data-source',
           question: 'Where does Flixie’s data come from?',
-          answer: 'Flixie leverages the industry-leading TMDB API for standard metadata, movie details, synopses, ratings, and cast structures. For streaming availability, we rely on JustWatch data. Note: Flixie is not directly endorsed or certified by TMDB or JustWatch.'
+          answer: 'Flixie uses the TMDB API for movie details, synopses, ratings, cast information, and streaming availability. TMDB’s watch-provider data is powered by JustWatch; Flixie does not connect to JustWatch directly and is not endorsed or certified by TMDB or JustWatch.'
         },
         {
           id: 'content-updates',
           question: 'How frequently is content updated?',
-          answer: 'Our database syncs with TMDB and JustWatch several times throughout the day, ensuring that release calendars, cast information, user metrics, and streaming availability on major channels are kept accurate and up-to-date.'
+          answer: 'Flixie refreshes movie metadata and watch-provider availability through TMDB. Availability can change, so confirm the current listing with the relevant streaming service before watching.'
         }
       ]
     },

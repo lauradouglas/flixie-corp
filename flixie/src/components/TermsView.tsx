@@ -100,7 +100,7 @@ export default function TermsView() {
               <Scale className="h-4.5 w-4.5" /> TMDB & JustWatch Data Attributions
             </h4>
             <p className="text-xs text-text-secondary leading-relaxed">
-              Flixie aggregates indices using the TMDB API and JustWatch data. All respective trademarks, movie titles, descriptions, and promotional names belong to their original licensing studios or registries. Flixie holds no proprietary stake in TMDB or JustWatch directories.
+              Flixie retrieves movie metadata and watch-provider information through the TMDB API. TMDB’s watch-provider data is powered by JustWatch; Flixie does not access JustWatch directly. All respective trademarks, movie titles, descriptions, and promotional names belong to their owners.
             </p>
           </section>
 
@@ -160,7 +160,7 @@ export default function TermsView() {
               </div>
               <div className="bg-bg-elevated p-3.5 rounded-xl border border-border-custom space-y-1">
                 <div className="text-text-muted">CONTACT ADDRESS</div>
-                <div className="text-text-secondary">support@flixie-app-placeholder.com</div>
+                <div className="text-text-secondary">flixieadmin@gmail.com</div>
               </div>
             </div>
           </section>

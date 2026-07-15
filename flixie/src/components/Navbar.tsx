@@ -5,8 +5,10 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Clapperboard, Menu, X, Download } from 'lucide-react';
+import { Menu, X, Download } from 'lucide-react';
 import { PageId } from '../types';
+// @ts-ignore
+import flixieLogo from '../assets/brand/flixie_text_1024.png';
 
 interface NavbarProps {
   currentPage: PageId;
@@ -59,15 +61,12 @@ export default function Navbar({ currentPage, setCurrentPage, onDownloadClick }:
           {/* Logo */}
           <button
             onClick={() => handleNavClick('home')}
-            className="flex items-center gap-2 group cursor-pointer focus:outline-none focus:ring-2 focus:ring-flixie-purple rounded-lg px-2 py-1"
+            className="group cursor-pointer focus:outline-none focus:ring-2 focus:ring-flixie-purple rounded-lg px-2 py-1"
             id="logo-button"
             aria-label="Flixie Home"
           >
-            <div className="p-2 bg-gradient-to-tr from-flixie-deep to-flixie-purple rounded-xl shadow-lg shadow-flixie-purple/20 group-hover:scale-105 transition-transform">
-              <Clapperboard className="h-5 w-5 text-white" />
-            </div>
-            <span className="font-display font-bold text-2xl tracking-tight bg-gradient-to-r from-white via-text-primary to-flixie-purple bg-clip-text text-transparent group-hover:opacity-90 transition-opacity">
-              Flixie
+            <span className="relative block h-10 w-28 overflow-hidden group-hover:opacity-90 transition-opacity" aria-hidden="true">
+              <img src={flixieLogo} alt="" className="absolute w-32 max-w-none -left-2 -top-[45px]" />
             </span>
           </button>
 

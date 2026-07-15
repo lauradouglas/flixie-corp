@@ -160,7 +160,7 @@ export default function Footer({ setCurrentPage }: FooterProps) {
             <div className="flex gap-3 bg-bg-card p-3 rounded-xl border border-border-custom">
               <div className="font-bold text-flixie-teal flex-shrink-0 text-sm tracking-wider">JustWatch</div>
               <p>
-                Streaming availability, rental links, and platform subscription information are powered by JustWatch data. Flixie presents these listings to simplify your viewing choices.
+                Streaming availability is retrieved through the TMDB API. TMDB’s watch-provider data is powered by JustWatch; Flixie does not integrate with JustWatch directly.
               </p>
             </div>
           </div>
