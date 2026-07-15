@@ -27,12 +27,15 @@ jobs:
           cache: 'npm'
 
       - name: Install Dependencies
+        working-directory: ./flixie
         run: npm ci
 
       - name: Run Linter (Oxlint)
+        working-directory: ./flixie
         run: npm run lint
 
       - name: Compile and Build Assets
+        working-directory: ./flixie
         run: npm run build
 
       - name: Deploy to Azure Static Web Apps
@@ -42,7 +45,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           skip_app_build: true
-          app_location: "dist"
+          app_location: "flixie/dist"
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
