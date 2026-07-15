@@ -1,0 +1,6 @@
+{
+  "name": "Flixie",
+  "description": "Discover movies, track watched titles, create watchlists, connect with friends, and share recommendations with Flixie, the ultimate social movie discovery app.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
