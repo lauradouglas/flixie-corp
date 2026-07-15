@@ -25,6 +25,9 @@ jobs:
         with:
           node-version: 24
           cache: 'npm'
+          # Highlight-start
+          cache-dependency-path: './flixie/package-lock.json'
+          # Highlight-end
 
       - name: Install Dependencies
         working-directory: ./flixie
