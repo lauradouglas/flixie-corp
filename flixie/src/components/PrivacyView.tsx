@@ -21,19 +21,8 @@ export default function PrivacyView() {
             Privacy Policy
           </h1>
           <p className="text-text-muted text-xs font-mono">
-            Last Updated: July 15, 2026 • Version 2.0
+            Last Updated: July 15, 2026 • Version 1.0
           </p>
-        </div>
-
-        {/* Warning Badge for Legal Review */}
-        <div className="bg-status-warning/10 border border-status-warning/30 p-4 rounded-xl flex items-start gap-3 mb-10">
-          <Lock className="h-5 w-5 text-status-warning mt-0.5 flex-shrink-0" />
-          <div className="space-y-1">
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono">Note for Legal Review</h4>
-            <p className="text-text-secondary text-xs leading-relaxed">
-              This document serves as an official draft policy for Flixie. Specific corporate entities, jurisdictional contacts, and address fields are marked in high-contrast <span className="text-status-warning font-bold">[BRACKET PLACEHOLDERS]</span> and must be fully audited by qualified legal counsel prior to commercial deployment.
-            </p>
-          </div>
         </div>
 
         {/* Structured Legal Content */}
@@ -94,9 +83,6 @@ export default function PrivacyView() {
               <li>Your active written reviews and public star ratings.</li>
               <li>Mutual watchlist matches which allow the app to suggest movie nights.</li>
             </ul>
-            <p className="italic text-text-muted">
-              Note: You can toggle account privacy to "Strict Private" within settings, which limits profile visibility to accepted connections only.
-            </p>
           </section>
 
           {/* Section 4 */}
@@ -153,34 +139,6 @@ export default function PrivacyView() {
             </p>
           </section>
 
-          {/* Section 10 */}
-          <section className="space-y-3 bg-bg-card border border-border-custom p-5 rounded-2xl">
-            <h2 className="font-display font-bold text-base text-white flex items-center gap-2">
-              <FileText className="h-5 w-5 text-flixie-purple" /> 10. Contact and Legal Representation
-            </h2>
-            <p className="mt-2 text-xs">
-              For privacy queries, data export requests, or to report a security vulnerability, please write to our legal team:
-            </p>
-            
-            <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono">
-              <div className="bg-bg-elevated p-3.5 rounded-xl border border-border-custom space-y-1">
-                <div className="text-text-muted">LEGAL ENTITY</div>
-                <div className="text-white font-bold">[FLIXIE_LEGAL_ENTITY_NAME_PLACEHOLDER]</div>
-              </div>
-              <div className="bg-bg-elevated p-3.5 rounded-xl border border-border-custom space-y-1">
-                <div className="text-text-muted">REPRESENTATIVE EMAIL</div>
-                <div className="text-flixie-purple font-bold">privacy@flixie-app-placeholder.com</div>
-              </div>
-              <div className="bg-bg-elevated p-3.5 rounded-xl border border-border-custom space-y-1">
-                <div className="text-text-muted">REGISTERED OFFICE</div>
-                <div className="text-text-secondary">[STREET_ADDRESS_PLACEHOLDER], [JURISDICTION_PLACEHOLDER]</div>
-              </div>
-              <div className="bg-bg-elevated p-3.5 rounded-xl border border-border-custom space-y-1">
-                <div className="text-text-muted">DATA PROTECTION OFFICER</div>
-                <div className="text-text-secondary">[DPO_NAME_AND_CREDENTIALS_PLACEHOLDER]</div>
-              </div>
-            </div>
-          </section>
         </div>
       </section>
     </div>
