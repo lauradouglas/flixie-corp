@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Mail, HelpCircle, Terminal, ArrowRight } from 'lucide-react';
+import { Mail, HelpCircle, Terminal, ArrowRight, Trash2 } from 'lucide-react';
 import { PageId } from '../types';
 
 interface ContactViewProps {
@@ -11,6 +11,10 @@ interface ContactViewProps {
 }
 
 export default function ContactView({ setCurrentPage }: ContactViewProps) {
+  const deletionRequestLink = `mailto:flixieadmin@gmail.com?subject=${encodeURIComponent('Flixie account deletion request')}&body=${encodeURIComponent(
+    'Hello Flixie Admin,\n\nI would like to request deletion of my Flixie account and associated personal data.\n\nFlixie username:\nRegistered email address:\n\nPlease contact me if you need any further information to verify my account.\n\nThank you.'
+  )}`;
+
   return (
     <div id="contact-view" className="relative overflow-hidden pt-24 pb-20">
       <div className="absolute top-24 right-1/4 w-[400px] h-[300px] bg-flixie-teal/5 rounded-full blur-[120px] pointer-events-none" />
@@ -62,6 +66,24 @@ export default function ContactView({ setCurrentPage }: ContactViewProps) {
             <Mail className="h-5 w-5" /> flixieadmin@gmail.com
           </a>
           <p className="text-xs text-text-muted">This opens your preferred email app so you can send your message directly.</p>
+        </div>
+
+        <div className="mt-6 bg-bg-card border border-status-error/30 p-6 sm:p-8 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center gap-5">
+          <div className="p-3 bg-status-error/10 text-status-error rounded-xl shrink-0">
+            <Trash2 className="h-5 w-5" />
+          </div>
+          <div className="flex-1 space-y-1.5">
+            <h2 className="font-display font-bold text-lg text-white">Request account deletion</h2>
+            <p className="text-text-secondary text-sm leading-relaxed">
+              First use Profile → Settings → Delete Account in the app. If you cannot access the app, email us from your registered address with your Flixie username. Never include your password.
+            </p>
+          </div>
+          <a
+            href={deletionRequestLink}
+            className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2 px-5 py-3 bg-status-error/15 hover:bg-status-error/25 border border-status-error/40 text-status-error font-semibold text-sm rounded-xl transition-colors"
+          >
+            <Mail className="h-4 w-4" /> Request deletion
+          </a>
         </div>
       </section>
     </div>

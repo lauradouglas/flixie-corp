@@ -5,7 +5,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { HelpCircle, ChevronDown, ChevronUp, Search, Info, MessageSquare, ShieldAlert } from 'lucide-react';
+import { HelpCircle, ChevronDown, ChevronUp, Search, Info, MessageSquare, ShieldAlert, Settings, ShieldCheck, AlertTriangle, Mail } from 'lucide-react';
 import { FaqCategory, FaqItem } from '../types';
 
 export default function FaqView() {
@@ -30,7 +30,7 @@ export default function FaqView() {
         {
           id: 'registration-required',
           question: 'Is registration required to use Flixie?',
-          answer: 'While you can browse trending movies and search titles anonymously, registration is required to save watchlists, compile a personal watched history, write reviews, add friends, and participate in social watch invitations. Registration is free and takes less than a minute.'
+          answer: 'Yes. You must register and sign in to use Flixie, including browsing and searching for titles. Registration is free and gives you access to watchlists, watch history, ratings, reviews, friends, and social watch invitations.'
         },
         {
           id: 'data-source',
@@ -72,7 +72,7 @@ export default function FaqView() {
         {
           id: 'add-friend',
           question: 'How do I add a friend?',
-          answer: 'Navigate to the social Search tab, enter your friend’s unique Flixie User ID, email, or username, and tap "Send Friend Request". Once they accept, you’ll be able to view each other’s watched histories and active watchlists.'
+          answer: 'Navigate to the social Search tab, enter your friend’s email, or username, and tap "Send Friend Request". Once they accept, you’ll be able to view each other’s watched histories and active watchlists.'
         },
         {
           id: 'invite-watch',
@@ -104,6 +104,11 @@ export default function FaqView() {
           id: 'sign-out',
           question: 'How do I sign out?',
           answer: 'To sign out of the Flixie app, go to Settings and scroll to the bottom. Tap the "Sign Out" button, and confirm your action. Your local offline cache will remain secure, but social features will suspend until you sign back in.'
+        },
+        {
+          id: 'delete-account',
+          question: 'How do I request deletion of my account?',
+          answer: 'Open Flixie, go to Profile → Settings → Delete Account, and confirm deletion. Deleting your account permanently removes your profile, email address, username, ratings, reviews, watchlists, lists, friend connections, watch history, and other associated account data. Some information may be retained for a limited period where required by law, to prevent fraud, or for legitimate security purposes. If you cannot access the app, email flixieadmin@gmail.com from your registered email address and include your Flixie username. Never include your password.'
         }
       ]
     },
@@ -114,7 +119,7 @@ export default function FaqView() {
         {
           id: 'rate-movie',
           question: 'How do I rate a movie?',
-          answer: 'On any movie details sheet, you will see a 5-star rating matrix. Simply tap the stars corresponding to your rating (supports half-star adjustments). Your updated average rating will then be calculated and saved immediately.'
+          answer: 'On any movie details page, select your rating out of 10 and save it. Your rating will be added to the movie and reflected in your Flixie activity.'
         },
         {
           id: 'see-reviews',
@@ -272,9 +277,56 @@ export default function FaqView() {
                               transition={{ duration: 0.25, ease: 'easeInOut' }}
                               className="overflow-hidden border-t border-border-custom/40 bg-bg-nav/30"
                             >
-                              <p className="px-5 py-4 text-text-secondary text-xs sm:text-sm leading-relaxed">
-                                {item.answer}
-                              </p>
+                              {item.id === 'delete-account' ? (
+                                <div className="p-5 space-y-4 text-xs sm:text-sm">
+                                  <div className="bg-bg-card border border-border-custom rounded-xl p-4">
+                                    <div className="flex items-center gap-2.5 mb-3">
+                                      <span className="p-2 bg-flixie-purple/10 text-flixie-purple rounded-lg"><Settings className="h-4 w-4" /></span>
+                                      <h4 className="font-display font-bold text-white">Delete your account in the app</h4>
+                                    </div>
+                                    <ol className="space-y-2.5">
+                                      {['Open Flixie.', 'Go to Profile → Settings → Delete Account.', 'Confirm deletion.'].map((step, stepIndex) => (
+                                        <li key={step} className="flex items-center gap-2.5 text-text-secondary">
+                                          <span className="h-6 w-6 shrink-0 rounded-full bg-flixie-purple/15 text-flixie-purple font-bold text-[10px] flex items-center justify-center">{stepIndex + 1}</span>
+                                          {step}
+                                        </li>
+                                      ))}
+                                    </ol>
+                                  </div>
+
+                                  <div className="bg-bg-card border border-status-error/25 rounded-xl p-4">
+                                    <div className="flex items-center gap-2.5 mb-3">
+                                      <span className="p-2 bg-status-error/10 text-status-error rounded-lg"><ShieldCheck className="h-4 w-4" /></span>
+                                      <h4 className="font-display font-bold text-white">Deleting your account permanently removes</h4>
+                                    </div>
+                                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-text-secondary">
+                                      {['Your profile', 'Email address', 'Username', 'Ratings', 'Reviews', 'Watchlists', 'Lists', 'Friend connections', 'Watch history', 'Other associated account data'].map((data) => (
+                                        <li key={data} className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-status-error shrink-0" />{data}</li>
+                                      ))}
+                                    </ul>
+                                  </div>
+
+                                  <div className="flex gap-2.5 bg-status-warning/10 border border-status-warning/25 p-3.5 rounded-xl text-text-secondary leading-relaxed">
+                                    <AlertTriangle className="h-4 w-4 text-status-warning shrink-0 mt-0.5" />
+                                    <p>Some information may be retained for a limited period where required by law, to prevent fraud, or for legitimate security purposes.</p>
+                                  </div>
+
+                                  <div className="bg-bg-card border border-flixie-purple/30 rounded-xl p-4 text-center space-y-2.5">
+                                    <h4 className="font-display font-bold text-white">Unable to access the app?</h4>
+                                    <p className="text-text-secondary leading-relaxed">Email us from your registered address and include your Flixie username. Never include your password.</p>
+                                    <a
+                                      href="mailto:flixieadmin@gmail.com?subject=Flixie%20account%20deletion%20request"
+                                      className="inline-flex items-center gap-2 px-4 py-2.5 bg-flixie-purple/15 hover:bg-flixie-purple/25 border border-flixie-purple/40 text-flixie-light font-semibold rounded-xl transition-colors"
+                                    >
+                                      <Mail className="h-4 w-4" /> flixieadmin@gmail.com
+                                    </a>
+                                  </div>
+                                </div>
+                              ) : (
+                                <p className="px-5 py-4 text-text-secondary text-xs sm:text-sm leading-relaxed">
+                                  {item.answer}
+                                </p>
+                              )}
                             </motion.div>
                           )}
                         </AnimatePresence>
@@ -288,7 +340,7 @@ export default function FaqView() {
         </div>
 
         {/* Bottom Support Callout Card */}
-        <div className="max-w-3xl mx-auto mt-16 bg-gradient-to-r from-bg-card to-bg-darkest border border-border-custom p-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
+        {/* <div className="max-w-3xl mx-auto mt-16 bg-gradient-to-r from-bg-card to-bg-darkest border border-border-custom p-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="flex gap-4 items-start">
             <div className="p-3 bg-flixie-teal/15 text-flixie-teal rounded-xl flex-shrink-0">
               <Info className="h-5 w-5" />
@@ -306,7 +358,7 @@ export default function FaqView() {
           >
             Contact Support
           </a>
-        </div>
+        </div> */}
       </section>
     </div>
   );

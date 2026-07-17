@@ -113,7 +113,7 @@ export default function PrivacyView() {
           <section className="space-y-3">
             <h2 className="font-display font-bold text-base sm:text-lg text-white">7. Data Retention</h2>
             <p>
-              We retain your account credentials and list history for as long as your account remains active. If you wish to delete your account or withdraw consent, you can do so directly within Settings or by submitting a request to our support email.
+              We retain your account credentials and list history for as long as your account remains active. You can delete your account in Flixie from Profile → Settings → Delete Account. If you cannot access the app, email <a href="mailto:flixieadmin@gmail.com?subject=Flixie%20account%20deletion%20request" className="text-flixie-purple hover:text-flixie-light underline underline-offset-2">flixieadmin@gmail.com</a> from your registered email address and include your Flixie username. Never send your password. We may contact you to verify account ownership before completing the request.
             </p>
           </section>
 

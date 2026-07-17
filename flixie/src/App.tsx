@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   Clapperboard, 
@@ -22,9 +22,50 @@ import TermsView from './components/TermsView';
 import ContactView from './components/ContactView';
 import CookieBanner from './components/CookieBanner';
 
+const pagePaths: Record<PageId, string> = {
+  home: '/',
+  features: '/features',
+  faq: '/faqs',
+  privacy: '/privacy',
+  terms: '/terms',
+  contact: '/contact',
+};
+
+const pageFromPath = (pathname: string): PageId => {
+  const normalizedPath = pathname.length > 1 ? pathname.replace(/\/$/, '') : pathname;
+  return (Object.entries(pagePaths).find(([, path]) => path === normalizedPath)?.[0] as PageId | undefined) ?? 'home';
+};
+
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<PageId>('home');
+  const [currentPage, setCurrentPage] = useState<PageId>(() => pageFromPath(window.location.pathname));
   const [showDownloadModal, setShowDownloadModal] = useState(false);
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPage(pageFromPath(window.location.pathname));
+      window.scrollTo({ top: 0 });
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  useEffect(() => {
+    const titles: Record<PageId, string> = {
+      home: 'Flixie — Social Movie Discovery App',
+      features: 'Features — Flixie',
+      faq: 'FAQs — Flixie',
+      privacy: 'Privacy Policy — Flixie',
+      terms: 'Terms of Service — Flixie',
+      contact: 'Contact & Support — Flixie',
+    };
+    document.title = titles[currentPage];
+  }, [currentPage]);
+
+  const navigateToPage = (page: PageId) => {
+    const nextPath = pagePaths[page];
+    if (window.location.pathname !== nextPath) window.history.pushState({}, '', nextPath);
+    setCurrentPage(page);
+  };
 
   const handleDownloadClick = () => {
     setShowDownloadModal(true);
@@ -33,7 +74,7 @@ export default function App() {
   const renderActiveView = () => {
     switch (currentPage) {
       case 'home':
-        return <HomeView setCurrentPage={setCurrentPage} onDownloadClick={handleDownloadClick} />;
+        return <HomeView setCurrentPage={navigateToPage} onDownloadClick={handleDownloadClick} />;
       case 'features':
         return <FeaturesView onDownloadClick={handleDownloadClick} />;
       case 'faq':
@@ -43,9 +84,9 @@ export default function App() {
       case 'terms':
         return <TermsView />;
       case 'contact':
-        return <ContactView setCurrentPage={setCurrentPage} />;
+        return <ContactView setCurrentPage={navigateToPage} />;
       default:
-        return <HomeView setCurrentPage={setCurrentPage} onDownloadClick={handleDownloadClick} />;
+        return <HomeView setCurrentPage={navigateToPage} onDownloadClick={handleDownloadClick} />;
     }
   };
 
@@ -54,7 +95,7 @@ export default function App() {
       {/* Navigation */}
       <Navbar 
         currentPage={currentPage} 
-        setCurrentPage={setCurrentPage} 
+        setCurrentPage={navigateToPage}
         onDownloadClick={handleDownloadClick} 
       />
 
@@ -74,7 +115,7 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <Footer setCurrentPage={setCurrentPage} />
+      <Footer setCurrentPage={navigateToPage} />
 
       {/* Cookie Consent Banner */}
       <CookieBanner />
