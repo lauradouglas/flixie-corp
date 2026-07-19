@@ -20,7 +20,6 @@ import FaqView from './components/FaqView';
 import PrivacyView from './components/PrivacyView';
 import TermsView from './components/TermsView';
 import ContactView from './components/ContactView';
-import CookieBanner from './components/CookieBanner';
 
 const pagePaths: Record<PageId, string> = {
   home: '/',
@@ -116,9 +115,6 @@ export default function App() {
 
       {/* Footer */}
       <Footer setCurrentPage={navigateToPage} />
-
-      {/* Cookie Consent Banner */}
-      <CookieBanner />
 
       {/* Download Beta Companion App Modal */}
       <AnimatePresence>
