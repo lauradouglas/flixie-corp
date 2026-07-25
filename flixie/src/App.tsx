@@ -18,7 +18,6 @@ import HomeView from './components/HomeView';
 import FeaturesView from './components/FeaturesView';
 import FaqView from './components/FaqView';
 import PrivacyView from './components/PrivacyView';
-import TermsView from './components/TermsView';
 import ContactView from './components/ContactView';
 
 const pagePaths: Record<PageId, string> = {
@@ -26,7 +25,6 @@ const pagePaths: Record<PageId, string> = {
   features: '/features',
   faq: '/faqs',
   privacy: '/privacy',
-  terms: '/terms',
   contact: '/contact',
 };
 
@@ -54,7 +52,6 @@ export default function App() {
       features: 'Features — Flixie',
       faq: 'FAQs — Flixie',
       privacy: 'Privacy Policy — Flixie',
-      terms: 'Terms of Service — Flixie',
       contact: 'Contact & Support — Flixie',
     };
     document.title = titles[currentPage];
@@ -80,8 +77,6 @@ export default function App() {
         return <FaqView />;
       case 'privacy':
         return <PrivacyView />;
-      case 'terms':
-        return <TermsView />;
       case 'contact':
         return <ContactView setCurrentPage={navigateToPage} />;
       default:

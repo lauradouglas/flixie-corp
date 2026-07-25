@@ -30,7 +30,6 @@ export default function Footer({ setCurrentPage }: FooterProps) {
     { label: 'Features', id: 'features' },
     { label: 'FAQs', id: 'faq' },
     { label: 'Privacy Policy', id: 'privacy' },
-    { label: 'Terms of Service', id: 'terms' },
     { label: 'Contact & Support', id: 'contact' },
   ];
 
@@ -172,9 +171,6 @@ export default function Footer({ setCurrentPage }: FooterProps) {
             <div className="flex items-center gap-4">
               <button onClick={() => handleLinkClick('privacy')} className="hover:text-flixie-purple transition-colors cursor-pointer">
                 Privacy Policy
-              </button>
-              <button onClick={() => handleLinkClick('terms')} className="hover:text-flixie-purple transition-colors cursor-pointer">
-                Terms of Service
               </button>
               <button onClick={() => handleLinkClick('contact')} className="hover:text-flixie-purple transition-colors cursor-pointer">
                 Support
