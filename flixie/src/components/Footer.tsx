@@ -106,9 +106,11 @@ export default function Footer({ setCurrentPage }: FooterProps) {
               Available on iOS and Android. Start your social movie discovery experience today.
             </p>
             <div className="flex flex-col sm:flex-row gap-2.5">
-              {/* App Store Placeholder Button */}
+              {/* iOS TestFlight Button */}
               <a
-                href="#download-ios"
+                href="https://testflight.apple.com/join/RRrZjJw7"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2.5 px-4 py-2.5 bg-bg-card hover:bg-bg-elevated border border-border-custom hover:border-flixie-purple/50 rounded-xl transition-all cursor-pointer text-left focus:outline-none focus:ring-1 focus:ring-flixie-purple"
                 id="ios-download-btn"
               >
@@ -118,8 +120,8 @@ export default function Footer({ setCurrentPage }: FooterProps) {
                   </svg>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] text-text-muted uppercase tracking-wider font-semibold">Download on the</span>
-                  <span className="text-sm font-bold text-white -mt-1">App Store</span>
+                  <span className="text-[10px] text-text-muted uppercase tracking-wider font-semibold">Join the beta on</span>
+                  <span className="text-sm font-bold text-white -mt-1">TestFlight</span>
                 </div>
               </a>
 

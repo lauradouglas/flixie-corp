@@ -160,7 +160,9 @@ export default function App() {
                 <div className="grid grid-cols-2 gap-3 pb-2 border-b border-border-custom">
                   {/* iOS Badge */}
                   <a
-                    href="#testflight-ios"
+                    href="https://testflight.apple.com/join/RRrZjJw7"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2.5 px-4 py-3 bg-bg-darkest hover:bg-bg-elevated border border-border-custom rounded-2xl transition-all cursor-pointer text-left focus:outline-none"
                     id="modal-ios-btn"
                   >
