@@ -19,6 +19,7 @@ import FeaturesView from './components/FeaturesView';
 import FaqView from './components/FaqView';
 import PrivacyView from './components/PrivacyView';
 import ContactView from './components/ContactView';
+import InviteView from './components/InviteView';
 
 const pagePaths: Record<PageId, string> = {
   home: '/',
@@ -26,6 +27,7 @@ const pagePaths: Record<PageId, string> = {
   faq: '/faqs',
   privacy: '/privacy',
   contact: '/contact',
+  invite: '/invite',
 };
 
 const pageFromPath = (pathname: string): PageId => {
@@ -53,6 +55,7 @@ export default function App() {
       faq: 'FAQs — Flixie',
       privacy: 'Privacy Policy — Flixie',
       contact: 'Contact & Support — Flixie',
+      invite: 'You’ve been invited to Flixie',
     };
     document.title = titles[currentPage];
   }, [currentPage]);
@@ -79,6 +82,8 @@ export default function App() {
         return <PrivacyView />;
       case 'contact':
         return <ContactView setCurrentPage={navigateToPage} />;
+      case 'invite':
+        return <InviteView />;
       default:
         return <HomeView setCurrentPage={navigateToPage} onDownloadClick={handleDownloadClick} />;
     }
