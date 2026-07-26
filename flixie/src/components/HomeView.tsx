@@ -606,7 +606,7 @@ export default function HomeView({ setCurrentPage, onDownloadClick }: HomeViewPr
             Elevate Your Cinematic Experience Today
           </h2>
           <p className="text-text-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Join thousands of active movie lovers curating watchlists, writing spoiler-free reviews, and matching films with friends on Flixie. Free to download, ad-free experience.
+            Curate watchlists, write spoiler-free reviews, and find films to watch with friends on Flixie. Free to download, with an ad-free experience.
           </p>
 
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
