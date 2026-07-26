@@ -43,7 +43,7 @@ export default function InviteView() {
   return (
     <div className="relative overflow-hidden pt-28 pb-20">
       <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[520px] h-[360px] bg-flixie-purple/10 rounded-full blur-[110px] pointer-events-none" />
-      <section className="relative max-w-xl mx-auto px-4 sm:px-6">
+      <section className="relative max-w-2xl mx-auto px-4 sm:px-6">
         <div className="bg-bg-card border border-border-custom rounded-3xl p-6 sm:p-9 text-center shadow-2xl space-y-6">
           <div className="mx-auto h-16 w-16 rounded-2xl bg-gradient-to-tr from-flixie-deep to-flixie-purple flex items-center justify-center shadow-lg shadow-flixie-purple/20">
             <Users className="h-8 w-8 text-white" />
@@ -77,24 +77,24 @@ export default function InviteView() {
                 </p>
               </div>
 
-              <div className="rounded-2xl bg-bg-darkest border border-border-custom p-4">
+              <div className="rounded-2xl bg-bg-darkest border border-border-custom px-5 py-5 sm:px-7 sm:py-6 overflow-hidden">
                 <p className="text-[10px] uppercase tracking-widest text-text-muted font-bold">
                   Keep this referral code
                 </p>
-                <div className="mt-2 flex items-center justify-center gap-3">
-                  <span className="font-mono text-xl font-bold tracking-widest text-white">
+                <div className="mt-3 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 min-w-0">
+                  <span className="min-w-0 max-w-full break-all text-center font-mono text-[clamp(0.9rem,3vw,1.25rem)] font-bold tracking-[0.12em] leading-relaxed text-white">
                     {invite.code}
                   </span>
                   <button
                     type="button"
                     onClick={copyCode}
-                    className="p-2 rounded-xl text-flixie-purple hover:bg-white/5 transition-colors"
+                    className="shrink-0 p-2 rounded-xl text-flixie-purple hover:bg-white/5 transition-colors"
                     aria-label="Copy referral code"
                   >
                     {copied ? <Check className="h-5 w-5" /> : <Copy className="h-5 w-5" />}
                   </button>
                 </div>
-                <p className="mt-2 text-[11px] text-text-muted">
+                <p className="mt-3 text-[11px] text-text-muted">
                   Enter it under “Who referred you?” when creating your account.
                 </p>
               </div>
