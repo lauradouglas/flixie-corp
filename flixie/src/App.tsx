@@ -153,7 +153,7 @@ export default function App() {
                     <h3 className="font-display font-extrabold text-xl text-white tracking-wide">
                       Download Flixie
                     </h3>
-                    <p className="text-xs text-text-muted">Companion App v1.0</p>
+                    <p className="text-xs text-text-muted">App v1.0</p>
                   </div>
                 </div>
 
@@ -180,14 +180,13 @@ export default function App() {
 
                   {/* Android Badge */}
                   <a
-                    href="#earlyaccess-android"
+                    href="https://play.google.com/store/apps/details?id=com.flixie.app&pcampaignid=web_share"
                     className="flex items-center justify-center gap-2.5 px-4 py-3 bg-bg-darkest hover:bg-bg-elevated border border-border-custom rounded-2xl transition-all cursor-pointer text-left focus:outline-none"
                     id="modal-android-btn"
                   >
                     <Smartphone className="w-5 h-5 text-flixie-teal" />
                     <div className="flex flex-col">
-                      <span className="text-[9px] text-text-muted uppercase tracking-wider font-semibold">Early Access</span>
-                      <span className="text-xs font-bold text-white -mt-0.5">Google Play</span>
+                      <span className="text-[9px] text-text-muted uppercase tracking-wider font-semibold">Google Play</span>
                     </div>
                   </a>
                 </div>

@@ -127,7 +127,7 @@ export default function Footer({ setCurrentPage }: FooterProps) {
 
               {/* Google Play Placeholder Button */}
               <a
-                href="#download-android"
+                href="https://play.google.com/store/apps/details?id=com.flixie.app&pcampaignid=web_share"
                 className="flex items-center justify-center gap-2.5 px-4 py-2.5 bg-bg-card hover:bg-bg-elevated border border-border-custom hover:border-flixie-purple/50 rounded-xl transition-all cursor-pointer text-left focus:outline-none focus:ring-1 focus:ring-flixie-purple"
                 id="android-download-btn"
               >
