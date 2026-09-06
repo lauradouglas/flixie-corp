@@ -7,8 +7,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Download } from 'lucide-react';
 import { PageId } from '../types';
-// @ts-ignore
-import flixieLogo from '../assets/brand/flixie_text_1024.png';
+import BrandLogo from './BrandLogo';
 
 interface NavbarProps {
   currentPage: PageId;
@@ -66,7 +65,7 @@ export default function Navbar({ currentPage, setCurrentPage, onDownloadClick }:
             aria-label="Flixie Home"
           >
             <span className="relative block h-10 w-28 overflow-hidden group-hover:opacity-90 transition-opacity" aria-hidden="true">
-              <img src={flixieLogo} alt="" className="absolute w-32 max-w-none -left-2 -top-[45px]" />
+              <BrandLogo className="absolute w-32 max-w-none -left-2 -top-[45px]" />
             </span>
           </button>
 

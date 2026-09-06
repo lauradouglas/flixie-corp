@@ -34,8 +34,7 @@ import {
 import { PageId, FeatureItem } from '../types';
 // @ts-ignore
 import cinemaGlow from '../assets/images/flixie_cinema_glow_1784148911237.jpg';
-// @ts-ignore
-import flixieLogo from '../assets/brand/flixie_text_1024.png';
+import BrandLogo from './BrandLogo';
 
 interface HomeViewProps {
   setCurrentPage: (page: PageId) => void;
@@ -296,7 +295,7 @@ export default function HomeView({ setCurrentPage, onDownloadClick }: HomeViewPr
               <div className="relative w-full h-full rounded-[30px] overflow-hidden bg-gradient-to-b from-bg-card via-bg-main to-bg-darkest flex flex-col">
                 <div className="pt-6 px-4 pb-2 flex items-center justify-between z-20">
                   <span className="relative block h-7 w-20 overflow-hidden">
-                    <img src={flixieLogo} alt="Flixie" className="absolute w-24 max-w-none -left-1.5 -top-[34px]" />
+                    <BrandLogo alt="Flixie" className="absolute w-24 max-w-none -left-1.5 -top-[34px]" />
                   </span>
                   <div className="flex items-center gap-3 text-text-secondary">
                     <Search className="h-4 w-4" />
