@@ -222,7 +222,7 @@ export default function HomeView({ setCurrentPage, onDownloadClick }: HomeViewPr
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-text-secondary text-base sm:text-lg lg:text-xl max-w-xl mx-auto lg:mx-0 leading-relaxed"
             >
-              Discover your next favourite movie with Flixie. Build your watchlist, track what you’ve watched, rate your favourites, and invite friends to watch together—all in one place. Spend less time scrolling and more time enjoying great films.
+              Discover your next favourite movie with Flixie. Build your watchlist, track what you’ve watched, rate your favourites, and invite friends to watch together-all in one place. Spend less time scrolling and more time enjoying great films.
             </motion.p>
 
             {/* Hero CTAs */}

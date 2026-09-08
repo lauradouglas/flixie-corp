@@ -50,11 +50,11 @@ export default function App() {
 
   useEffect(() => {
     const titles: Record<PageId, string> = {
-      home: 'Flixie — Social Movie Discovery App',
-      features: 'Features — Flixie',
-      faq: 'FAQs — Flixie',
-      privacy: 'Privacy Policy — Flixie',
-      contact: 'Contact & Support — Flixie',
+      home: 'Flixie - Social Movie Discovery App',
+      features: 'Features - Flixie',
+      faq: 'FAQs - Flixie',
+      privacy: 'Privacy Policy - Flixie',
+      contact: 'Contact & Support - Flixie',
       invite: 'You’ve been invited to Flixie',
     };
     document.title = titles[currentPage];
