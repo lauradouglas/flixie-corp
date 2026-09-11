@@ -1,5 +1,11 @@
 # SEO changelog
 
+## 2026-09-11 — Azure 404 validation fix
+
+- Azure rejected the `/404` route because it combined `rewrite` and `statusCode`. The route now sets only status 404 and noindex; the existing `responseOverrides` supplies `/404.html`.
+- Updated the local preview to apply this response override, and added checks forbidding rewrite/status and rewrite/redirect combinations in route rules.
+- TypeScript, production build, SEO/HTTP checks and diff whitespace validation passed. Azure deployment remains to be verified with the new commit.
+
 ## 2026-09-11 — Azure deployment fix
 
 - Removed separately declared trailing-slash routes from `flixie/scripts/prerender.mjs`: Azure rejected `/features/` and `/features` as duplicate rules.

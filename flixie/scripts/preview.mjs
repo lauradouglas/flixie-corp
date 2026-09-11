@@ -21,6 +21,11 @@ export async function createPreviewServer() {
         response.writeHead(route.statusCode || 301, { Location: route.redirect + url.search });
         return response.end();
       }
+      if (route?.statusCode === 404) {
+        response.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8', ...config.globalHeaders, ...route.headers });
+        const body = await readFile(resolve(root, '.' + config.responseOverrides['404'].rewrite));
+        return response.end(request.method === 'HEAD' ? undefined : body);
+      }
       const resource = route?.rewrite || (pathname === '/' ? '/index.html' : pathname);
       const file = resolve(root, '.' + resource);
       if (!file.startsWith(root + sep)) throw new Error('Invalid path');

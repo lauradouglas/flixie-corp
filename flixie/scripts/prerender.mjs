@@ -13,7 +13,7 @@ for (const [key, page] of Object.entries(pages)) {
   if (key === 'home') continue;
   // Azure treats trailing-slash variants as the same route; trailingSlash handles redirects.
   if (key !== 'notFound') routes.push({ route: `/${file}`, redirect: page.path, statusCode: 301 });
-  routes.push({ route: page.path, rewrite: `/${file}`, ...(isIndexable(key) ? {} : { headers: { 'X-Robots-Tag': 'noindex' } }), ...(key === 'notFound' ? { statusCode: 404 } : {}) });
+  routes.push({ route: page.path, ...(key === 'notFound' ? { statusCode: 404 } : { rewrite: `/${file}` }), ...(isIndexable(key) ? {} : { headers: { 'X-Robots-Tag': 'noindex' } }) });
 }
 await writeFile('dist/staticwebapp.config.json', JSON.stringify({ ...config, routes }, null, 2) + '\n');
 const urls = Object.keys(pages).filter(isIndexable).map(key => `  <url><loc>${site.origin}${pages[key].path}</loc></url>`);
