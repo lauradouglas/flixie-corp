@@ -22,8 +22,8 @@ export function renderHead(page: PageId) {
   ];
   // Private invitations and error responses have no public canonical/entity graph.
   if (isIndexable(page)) tags.push(`<link rel="canonical" href="${url}">`);
-  for (const [property, value] of Object.entries({ 'og:type': 'website', 'og:site_name': site.name, 'og:locale': 'en_GB', 'og:title': metadata.title, 'og:description': metadata.description, 'og:url': url, 'og:image': image, 'og:image:width': '1200', 'og:image:height': '630', 'og:image:alt': 'Flixie — find your next film with friends' })) tags.push(`<meta property="${property}" content="${escapeHtml(value)}">`);
-  for (const [name, value] of Object.entries({ 'twitter:card': 'summary_large_image', 'twitter:title': metadata.title, 'twitter:description': metadata.description, 'twitter:image': image, 'twitter:image:alt': 'Flixie — find your next film with friends' })) tags.push(`<meta name="${name}" content="${escapeHtml(value)}">`);
+  for (const [property, value] of Object.entries({ 'og:type': 'website', 'og:site_name': site.name, 'og:locale': 'en_GB', 'og:title': metadata.title, 'og:description': metadata.description, 'og:url': url, 'og:image': image, 'og:image:width': '1200', 'og:image:height': '630', 'og:image:alt': 'Flixie - find your next film with friends' })) tags.push(`<meta property="${property}" content="${escapeHtml(value)}">`);
+  for (const [name, value] of Object.entries({ 'twitter:card': 'summary_large_image', 'twitter:title': metadata.title, 'twitter:description': metadata.description, 'twitter:image': image, 'twitter:image:alt': 'Flixie - find your next film with friends' })) tags.push(`<meta name="${name}" content="${escapeHtml(value)}">`);
   if (isIndexable(page)) tags.push(`<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c')}</script>`);
   return tags.join('\n    ');
 }

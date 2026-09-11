@@ -79,16 +79,16 @@ The URLs below are proposals, not published routes. Prioritise from observed que
 
 | Task / proposed URL | Target intent and why | Required work | Expected benefit |
 | --- | --- | --- | --- |
-| Movie Tracker — `/movie-tracker` | movie tracker app; keeping a watched history | Demonstrate logging, ratings and history with authentic screens; differentiate from homepage | Captures users actively seeking a tracking tool |
-| Movies With Friends — `/movies-with-friends` | movie app with friends; social discovery | Show following, friend activity and a concrete recommendation-to-plan journey | Explains the main product differentiator |
-| Watchlist — `/watchlist-app` | movie watchlist app | Document saving, finding and organising titles; confirm whether any shared-list functionality actually exists | Addresses a specific practical need |
-| Movie Recommendations — `/movie-recommendations` | personalised recommendations and discovery | Explain available inputs and friend suggestions accurately without inventing algorithm details | Converts discovery intent into a product trial |
-| Recommendations From Friends — possible `/movie-recommendations-from-friends` | trust in friends' film choices | Initially cover on the friends/discovery pages; split only after distinct search intent and substantial examples are demonstrated | Avoids competing near-duplicate pages |
-| Watch Plans — `/watch-plans` | movie night app; planning films with friends | Show a real plan, invitations, responses and supported timing/location options | Connects social discovery to a concrete group activity |
-| Movie Lists — `/movie-lists` | movie lists; organising films | Verify distinction from watchlists, permissions and sharing; provide original list examples | Captures organisation intent without duplicating watchlists |
-| TV Tracking — `/tv-show-tracker` | supporting TV tracker intent | Verify episode/progress behaviour and capture screenshots; keep movie-first navigation and branding | Adds a secondary audience without diluting positioning |
-| Where to Watch — possible `/where-to-watch` | finding title availability | Confirm regions, provider coverage, update freshness and attribution/licensing | Publish only if users can get reliable actionable availability |
-| Fair comparison — `/letterboxd-alternative` | Letterboxd alternative; apps like Letterboxd; Flixie vs Letterboxd | Research current first-party features/pricing; date claims, cite sources, disclose Flixie authorship and acknowledge competitors' strengths | Helps high-intent evaluators make an informed choice |
+| Movie Tracker - `/movie-tracker` | movie tracker app; keeping a watched history | Demonstrate logging, ratings and history with authentic screens; differentiate from homepage | Captures users actively seeking a tracking tool |
+| Movies With Friends - `/movies-with-friends` | movie app with friends; social discovery | Show following, friend activity and a concrete recommendation-to-plan journey | Explains the main product differentiator |
+| Watchlist - `/watchlist-app` | movie watchlist app | Document saving, finding and organising titles; confirm whether any shared-list functionality actually exists | Addresses a specific practical need |
+| Movie Recommendations - `/movie-recommendations` | personalised recommendations and discovery | Explain available inputs and friend suggestions accurately without inventing algorithm details | Converts discovery intent into a product trial |
+| Recommendations From Friends - possible `/movie-recommendations-from-friends` | trust in friends' film choices | Initially cover on the friends/discovery pages; split only after distinct search intent and substantial examples are demonstrated | Avoids competing near-duplicate pages |
+| Watch Plans - `/watch-plans` | movie night app; planning films with friends | Show a real plan, invitations, responses and supported timing/location options | Connects social discovery to a concrete group activity |
+| Movie Lists - `/movie-lists` | movie lists; organising films | Verify distinction from watchlists, permissions and sharing; provide original list examples | Captures organisation intent without duplicating watchlists |
+| TV Tracking - `/tv-show-tracker` | supporting TV tracker intent | Verify episode/progress behaviour and capture screenshots; keep movie-first navigation and branding | Adds a secondary audience without diluting positioning |
+| Where to Watch - possible `/where-to-watch` | finding title availability | Confirm regions, provider coverage, update freshness and attribution/licensing | Publish only if users can get reliable actionable availability |
+| Fair comparison - `/letterboxd-alternative` | Letterboxd alternative; apps like Letterboxd; Flixie vs Letterboxd | Research current first-party features/pricing; date claims, cite sources, disclose Flixie authorship and acknowledge competitors' strengths | Helps high-intent evaluators make an informed choice |
 
 Start with one comparison page. Create a separate versus page only when it serves a distinct need. Never imply an endorsement or fabricate superiority.
 

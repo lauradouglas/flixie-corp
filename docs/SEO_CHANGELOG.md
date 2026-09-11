@@ -1,6 +1,6 @@
 # SEO changelog
 
-## 2026-09-11 — Follow-up
+## 2026-09-11 - Follow-up
 
 - Updated homepage title and description to explicitly explain movie tracking and social discovery (`flixie/src/site.ts`).
 - Added minimal Flixie Organization JSON-LD using its confirmed brand name, URL and existing logo; connected WebSite publisher (`flixie/src/seo.ts`).
@@ -10,7 +10,7 @@
 - Deferred deployment/edge DNS changes, account-based measurement, public iOS Smart App Banner, research-dependent landing pages and programmatic content. No new dependencies or visual layout changes.
 - Validation passed: TypeScript (`npm run lint`), production build, eight-page/six-URL SEO checks, local HTTP checks and `git diff --check`. HTTP checks required permission to bind a localhost port; they passed on rerun. No Lighthouse or physical-device results claimed.
 
-## 2026-09-11 — Earlier implementation in this worktree
+## 2026-09-11 - Earlier implementation in this worktree
 
 - Added build-time HTML rendering, central metadata, canonical routes, sitemap/robots generation, JSON-LD and social cards (`flixie/src/site.ts`, `src/seo.ts`, `src/entry-server.tsx`, `scripts/prerender.mjs`, `public/og/`).
 - Improved navigation, download clarity, semantics, accessibility and product copy; added About/404 pages (`flixie/src/components/`, `src/index.css`).

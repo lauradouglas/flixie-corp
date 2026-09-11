@@ -159,7 +159,7 @@ Priority P1; Impact High; Effort Medium. Title and metadata foundation can ship 
 
 **H1:** The social movie app for finding your next film together
 
-**Intro:** Flixie helps you discover films through the people you know. See what friends recommend, keep a watchlist, rate what you’ve watched and make plans for your next movie night—all in one app.
+**Intro:** Flixie helps you discover films through the people you know. See what friends recommend, keep a watchlist, rate what you’ve watched and make plans for your next movie night-all in one app.
 
 **Primary CTA while beta wording remains accurate:** Join the iOS beta
 
@@ -214,7 +214,7 @@ Broad “best movies,” individual blockbuster titles, actors and “watch movi
 
 Publish only pages with distinct workflows and real proof. All should have a self-canonical, BreadcrumbList, original screenshots, platform status, relevant FAQs and direct app links. Link from `/features` and appropriate homepage sections; do not create an isolated SEO directory. CTA labels below describe the section heading; the actionable buttons must identify the real platform/beta status.
 
-### A. `/movie-night-planner` — P1; Impact High; Effort Medium
+### A. `/movie-night-planner` - P1; Impact High; Effort Medium
 
 - Primary: movie night planner app.
 - Secondary: movie night app, plan a movie night with friends, app to choose a movie together.
@@ -227,7 +227,7 @@ Publish only pages with distinct workflows and real proof. All should have a sel
 - Links: `/social-movie-app`, `/movie-watchlist-app`, `/guides/choose-a-movie-with-friends`, `/faqs`.
 - CTA: Start your next movie night with Flixie.
 
-### B. `/social-movie-app` — P1; Impact High; Effort Medium
+### B. `/social-movie-app` - P1; Impact High; Effort Medium
 
 - Primary: social movie app.
 - Secondary: movie app for friends, social movie discovery, discover movies with friends.
@@ -240,7 +240,7 @@ Publish only pages with distinct workflows and real proof. All should have a sel
 - Links: `/movie-night-planner`, `/features#ratings`, `/privacy`, `/guides/share-movie-recommendations`.
 - CTA: Find your next film with friends.
 
-### C. `/movie-watchlist-app` — P1; Impact High; Effort Medium
+### C. `/movie-watchlist-app` - P1; Impact High; Effort Medium
 
 - Primary: movie watchlist app.
 - Secondary: organise movie watchlist, save movies to watch, track movies to watch.
@@ -253,7 +253,7 @@ Publish only pages with distinct workflows and real proof. All should have a sel
 - Links: `/features#tracking`, `/movie-night-planner`, `/guides/organise-movie-watchlist`, `/guides/watchlist-vs-watched-list`.
 - CTA: Start your Flixie watchlist.
 
-### D. `/movie-recommendation-app` — P2; Impact High; Effort Medium
+### D. `/movie-recommendation-app` - P2; Impact High; Effort Medium
 
 - Primary: movie recommendation app.
 - Secondary: film recommendation app, personalised movie recommendations, recommendations from friends.
@@ -291,36 +291,36 @@ P2 backlog unless marked first wave. Impact is expected traffic-to-product value
 
 | # | Target keyword | Intent | Suggested title / URL | Why it could attract useful traffic | Feature link | Impact / Effort |
 |---|---|---|---|---|---|---|
-| 1 ★ | how to choose a movie with friends | Informational | How to Choose a Movie with Friends in 10 Minutes — `/guides/choose-a-movie-with-friends` | A timed, tested decision method solves a specific frustration | Movie night planner | High / Medium |
-| 2 ★ | choose a film different tastes | Informational | Different Film Tastes? Build a Shortlist Everyone Can Accept — `/guides/choose-a-film-different-tastes` | Concrete compromise rules and worked examples | Recommendations | High / Medium |
-| 3 ★ | organise movie watchlist | Informational | How to Organise a Movie Watchlist You Actually Use — `/guides/organise-movie-watchlist` | Reusable tags/shortlist routine, tested with real lists | Watchlist | High / Medium |
-| 4 ★ | plan movie night group chat | Informational | From Group Chat to Movie Night: A Practical Planning Guide — `/guides/group-chat-movie-night` | Ready-to-copy planning messages and decisions | Chats/plans | High / Medium |
-| 5 ★ | movie night checklist | Informational | A Movie Night Checklist for Hosts and Guests — `/guides/movie-night-checklist` | Printable checklist earns saves and relevant links | Watch plans | High / Low |
-| 6 ★ | movie apps for couples | Comparison | Movie Apps for Couples: Tested Ways to Choose Together — `/guides/movie-apps-for-couples` | Original paired tests support purchase/install intent | Social discovery | High / High |
-| 7 | best movie recommendation apps | Comparison | Movie Recommendation Apps Tested with the Same Film Tastes — `/guides/best-movie-recommendation-apps` | Reproducible tests beat unsubstantiated rankings | Recommendations | High / High |
-| 8 | best movie tracking apps | Comparison | Movie Tracking Apps Compared: Diaries, Ratings and Sharing — `/guides/best-movie-tracking-apps` | Clear feature/price comparison serves tool selection | Tracking | High / High |
-| 9 | Letterboxd alternatives for friends | Comparison | Letterboxd Alternatives for Different Kinds of Film Fans — `/guides/letterboxd-alternatives` | Match alternative to need instead of declaring a universal winner | Social discovery | High / High |
-| 10 | IMDb alternatives recommendations | Comparison | IMDb Alternatives for Finding Your Next Film — `/guides/imdb-alternatives` | Distinguish discovery needs from cast lookup | Recommendations | Medium / High |
-| 11 | watchlist vs watched list | Informational | Watchlist vs Watched List: What Belongs Where? — `/guides/watchlist-vs-watched-list` | Simple terminology question tied to onboarding | Watchlist/tracking | Medium / Low |
-| 12 | how to track movies watched | Informational | How to Keep a Useful Record of Films You’ve Watched — `/guides/track-movies-watched` | A practical diary method with example records | Tracking | Medium / Medium |
-| 13 | movie rating system | Informational | Build a Movie Rating System You Can Use Consistently — `/guides/movie-rating-system` | Original rubric and personal examples | Ratings | Medium / Medium |
-| 14 | write spoiler free movie review | Informational | How to Write a Helpful Movie Review Without Spoilers — `/guides/spoiler-free-movie-review` | Before/after reviews offer real instructional value | Reviews | Medium / Medium |
-| 15 | share movie recommendations | Informational | How to Share a Movie Recommendation a Friend Will Remember — `/guides/share-movie-recommendations` | Message templates and relevant context | Recommendations/chat | High / Low |
-| 16 | start film club friends | Informational | How to Start a Film Club with Friends — `/guides/start-film-club` | Repeatable schedule and discussion templates | Groups/plans | High / Medium |
-| 17 | film club discussion questions | Informational | Film Club Discussion Questions That Work Beyond the Plot — `/guides/film-club-discussion-questions` | Reusable facilitator resource can earn club links | Groups/reviews | Medium / Medium |
-| 18 | movie night themes adults | Informational | Movie Night Themes with a Clear Way to Pick the Films — `/guides/movie-night-themes` | Curated examples plus selection rules, not an endless list | Watchlist/plans | Medium / Medium |
-| 19 | low effort movie night ideas | Informational | Low-Effort Movie Nights for Busy Friends — `/guides/low-effort-movie-night` | Specific time/budget constraints | Watch plans | Medium / Medium |
-| 20 | long distance movie night planning | Informational | How to Plan a Long-Distance Movie Night — `/guides/long-distance-movie-night` | Time zones, access checks and chat; separate streaming tools | Watch plans | High / Medium |
-| 21 | movie choice paralysis | Informational | Stuck Choosing a Film? Try These Decision Rules — `/guides/movie-choice-paralysis` | Tested rules answer a recurring frustration without medical claims | Recommendations | Medium / Medium |
-| 22 | how movie recommendation algorithms work | Informational | How Movie Recommendations Work: A Plain-English Guide — `/guides/how-movie-recommendations-work` | Diagrams and original examples; disclose Flixie's actual approach | Recommendations | Medium / High |
-| 23 | improve movie recommendations | Informational | How to Get More Useful Movie Recommendations — `/guides/improve-movie-recommendations` | Compare clear inputs and results without promising accuracy | Ratings/recommendations | High / Medium |
-| 24 | friends vs algorithm movie recommendations | Informational | Friends or Algorithms: Where Should Your Next Film Come From? — `/guides/friends-vs-algorithms` | An honestly reported small experiment can earn citations | Social discovery | High / High |
-| 25 | spoiler free movie recommendations | Informational | Find Film Recommendations Without Reading Spoilers — `/guides/spoiler-free-recommendations` | Resource selection and safe reading workflow | Recommendations/reviews | Medium / Medium |
-| 26 | family movie night different ages | Informational | Planning a Family Movie Night Across Different Ages — `/guides/family-movie-night` | Practical suitability/runtime checklist; verify classification sources | Watch plans | Medium / Medium |
-| 27 | movie watchlist spreadsheet template | Tool | A Simple Movie Watchlist Template, with an Example — `/guides/movie-watchlist-template` | Free usable template meets standalone demand | Watchlist | Medium / Medium |
-| 28 | clean up movie watchlist | Informational | How to Clear Out a Watchlist You’ll Never Finish — `/guides/clean-up-movie-watchlist` | Worked pruning exercise and realistic rules | Watchlist | Medium / Low |
-| 29 | find films outside comfort zone | Informational | How to Find Films Outside Your Usual Genres — `/guides/discover-different-films` | Human-curated stepping stones with reasons | Recommendations | Medium / High |
-| 30 | what to watch with friends under 100 minutes | Informational | Films Under 100 Minutes for a Movie Night with Friends — `/guides/short-films-for-movie-night` | Runtime constraint plus group-fit reasoning; state these are features, not short films | Watchlist/plans | Medium / High |
+| 1 ★ | how to choose a movie with friends | Informational | How to Choose a Movie with Friends in 10 Minutes - `/guides/choose-a-movie-with-friends` | A timed, tested decision method solves a specific frustration | Movie night planner | High / Medium |
+| 2 ★ | choose a film different tastes | Informational | Different Film Tastes? Build a Shortlist Everyone Can Accept - `/guides/choose-a-film-different-tastes` | Concrete compromise rules and worked examples | Recommendations | High / Medium |
+| 3 ★ | organise movie watchlist | Informational | How to Organise a Movie Watchlist You Actually Use - `/guides/organise-movie-watchlist` | Reusable tags/shortlist routine, tested with real lists | Watchlist | High / Medium |
+| 4 ★ | plan movie night group chat | Informational | From Group Chat to Movie Night: A Practical Planning Guide - `/guides/group-chat-movie-night` | Ready-to-copy planning messages and decisions | Chats/plans | High / Medium |
+| 5 ★ | movie night checklist | Informational | A Movie Night Checklist for Hosts and Guests - `/guides/movie-night-checklist` | Printable checklist earns saves and relevant links | Watch plans | High / Low |
+| 6 ★ | movie apps for couples | Comparison | Movie Apps for Couples: Tested Ways to Choose Together - `/guides/movie-apps-for-couples` | Original paired tests support purchase/install intent | Social discovery | High / High |
+| 7 | best movie recommendation apps | Comparison | Movie Recommendation Apps Tested with the Same Film Tastes - `/guides/best-movie-recommendation-apps` | Reproducible tests beat unsubstantiated rankings | Recommendations | High / High |
+| 8 | best movie tracking apps | Comparison | Movie Tracking Apps Compared: Diaries, Ratings and Sharing - `/guides/best-movie-tracking-apps` | Clear feature/price comparison serves tool selection | Tracking | High / High |
+| 9 | Letterboxd alternatives for friends | Comparison | Letterboxd Alternatives for Different Kinds of Film Fans - `/guides/letterboxd-alternatives` | Match alternative to need instead of declaring a universal winner | Social discovery | High / High |
+| 10 | IMDb alternatives recommendations | Comparison | IMDb Alternatives for Finding Your Next Film - `/guides/imdb-alternatives` | Distinguish discovery needs from cast lookup | Recommendations | Medium / High |
+| 11 | watchlist vs watched list | Informational | Watchlist vs Watched List: What Belongs Where? - `/guides/watchlist-vs-watched-list` | Simple terminology question tied to onboarding | Watchlist/tracking | Medium / Low |
+| 12 | how to track movies watched | Informational | How to Keep a Useful Record of Films You’ve Watched - `/guides/track-movies-watched` | A practical diary method with example records | Tracking | Medium / Medium |
+| 13 | movie rating system | Informational | Build a Movie Rating System You Can Use Consistently - `/guides/movie-rating-system` | Original rubric and personal examples | Ratings | Medium / Medium |
+| 14 | write spoiler free movie review | Informational | How to Write a Helpful Movie Review Without Spoilers - `/guides/spoiler-free-movie-review` | Before/after reviews offer real instructional value | Reviews | Medium / Medium |
+| 15 | share movie recommendations | Informational | How to Share a Movie Recommendation a Friend Will Remember - `/guides/share-movie-recommendations` | Message templates and relevant context | Recommendations/chat | High / Low |
+| 16 | start film club friends | Informational | How to Start a Film Club with Friends - `/guides/start-film-club` | Repeatable schedule and discussion templates | Groups/plans | High / Medium |
+| 17 | film club discussion questions | Informational | Film Club Discussion Questions That Work Beyond the Plot - `/guides/film-club-discussion-questions` | Reusable facilitator resource can earn club links | Groups/reviews | Medium / Medium |
+| 18 | movie night themes adults | Informational | Movie Night Themes with a Clear Way to Pick the Films - `/guides/movie-night-themes` | Curated examples plus selection rules, not an endless list | Watchlist/plans | Medium / Medium |
+| 19 | low effort movie night ideas | Informational | Low-Effort Movie Nights for Busy Friends - `/guides/low-effort-movie-night` | Specific time/budget constraints | Watch plans | Medium / Medium |
+| 20 | long distance movie night planning | Informational | How to Plan a Long-Distance Movie Night - `/guides/long-distance-movie-night` | Time zones, access checks and chat; separate streaming tools | Watch plans | High / Medium |
+| 21 | movie choice paralysis | Informational | Stuck Choosing a Film? Try These Decision Rules - `/guides/movie-choice-paralysis` | Tested rules answer a recurring frustration without medical claims | Recommendations | Medium / Medium |
+| 22 | how movie recommendation algorithms work | Informational | How Movie Recommendations Work: A Plain-English Guide - `/guides/how-movie-recommendations-work` | Diagrams and original examples; disclose Flixie's actual approach | Recommendations | Medium / High |
+| 23 | improve movie recommendations | Informational | How to Get More Useful Movie Recommendations - `/guides/improve-movie-recommendations` | Compare clear inputs and results without promising accuracy | Ratings/recommendations | High / Medium |
+| 24 | friends vs algorithm movie recommendations | Informational | Friends or Algorithms: Where Should Your Next Film Come From? - `/guides/friends-vs-algorithms` | An honestly reported small experiment can earn citations | Social discovery | High / High |
+| 25 | spoiler free movie recommendations | Informational | Find Film Recommendations Without Reading Spoilers - `/guides/spoiler-free-recommendations` | Resource selection and safe reading workflow | Recommendations/reviews | Medium / Medium |
+| 26 | family movie night different ages | Informational | Planning a Family Movie Night Across Different Ages - `/guides/family-movie-night` | Practical suitability/runtime checklist; verify classification sources | Watch plans | Medium / Medium |
+| 27 | movie watchlist spreadsheet template | Tool | A Simple Movie Watchlist Template, with an Example - `/guides/movie-watchlist-template` | Free usable template meets standalone demand | Watchlist | Medium / Medium |
+| 28 | clean up movie watchlist | Informational | How to Clear Out a Watchlist You’ll Never Finish - `/guides/clean-up-movie-watchlist` | Worked pruning exercise and realistic rules | Watchlist | Medium / Low |
+| 29 | find films outside comfort zone | Informational | How to Find Films Outside Your Usual Genres - `/guides/discover-different-films` | Human-curated stepping stones with reasons | Recommendations | Medium / High |
+| 30 | what to watch with friends under 100 minutes | Informational | Films Under 100 Minutes for a Movie Night with Friends - `/guides/short-films-for-movie-night` | Runtime constraint plus group-fit reasoning; state these are features, not short films | Watchlist/plans | Medium / High |
 
 ★ First wave: publish two per month over three months after crawl fixes. The other 24 are P2/P3 options, not commitments. Review Search Console overlap before publishing #21 alongside #1, or #28 alongside #3; merge when the same intent is already served. Film lists require watched/researched selections, verified runtimes, spoiler boundaries and rights-cleared imagery. Comparisons need periodic availability/pricing checks even though the underlying topic is evergreen. Refresh when facts change rather than changing the year in a title.
 
@@ -361,12 +361,12 @@ Homepage head example (create the named social image before using its URL):
 <meta property="og:image" content="https://www.flixie.co.uk/og/flixie-social.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Flixie — discover films and plan movie nights with friends">
+<meta property="og:image:alt" content="Flixie - discover films and plan movie nights with friends">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Flixie: Find Your Next Film with Friends">
 <meta name="twitter:description" content="Discover films through friends, save your watchlist and plan your next movie night.">
 <meta name="twitter:image" content="https://www.flixie.co.uk/og/flixie-social.jpg">
-<meta name="twitter:image:alt" content="Flixie — discover films and plan movie nights with friends">
+<meta name="twitter:image:alt" content="Flixie - discover films and plan movie nights with friends">
 ```
 
 Use one head entry per property, with page-specific title/description/canonical/OG URL. Do not include an invented X handle. The proposed social image should use owned brand assets and actual app screens; metadata must be available without JavaScript for reliable unfurling. Open Graph/X tags support sharing and conversion rather than directly establishing rankings.
@@ -605,27 +605,27 @@ This consolidates the recommendations above. Dependencies matter more than mecha
 
 | Priority / timing | Work package | Impact | Effort | Completion evidence |
 |---|---|---|---|---|
-| P0 — immediately | T1–T2: real robots and XML sitemap | High | Low | 200, correct body/MIME, XML parses; sitemap fetch succeeds |
-| P0 — immediately | T4: bare domain → HTTPS www at host/edge | High | Medium | Single intended redirect preserving path/query; no `/lander` journey |
-| P0 — immediately | T3: explicit real 404s and not-found route, coordinated with rendering | High | Medium | Invented route returns 404; valid routes still 200 |
-| P0 — immediately | T5/T7: anchor navigation, canonical/title/description registry | High | Medium | Public URLs discoverable through anchors; no home canonical on other pages |
-| P1 — this month | T6/T13: statically rendered public pages and visible initial content | High | High | View source contains useful H1/copy/links/head; no hydration regression |
-| P1 — this month | T11: truthful platform availability, direct download links and beta labels | High | Low | UK device/account tests reach correct install/access flow |
-| P1 — this month | Homepage copy and real screenshot evidence | High | Medium | All claims traced to shipped behaviour; clear friends-to-plan journey |
-| P1 — this month | T8: social metadata and entity graph | Medium | Low | Image URLs resolve; schema validates; previews show correct page |
-| P1 — this month | T9: noindex invite and eliminate fallback on verification files | Medium | Medium | Invite excluded from sitemap and noindex served; missing files are 404 |
-| P1 — this month | T10/T15: About, Contact, Terms, consistent operator/social/store identity | Medium | Medium | Verified profile links, contact works, visible truthful operator information |
-| P1 — this month | Performance, semantics, modal and responsive source findings | Medium | Medium | Mobile/keyboard checks and before/after lab report; no fabricated CWV score |
-| P1 — this month | Search Console and consent-aware website click measurement | High | Medium | Verified property, accepted sitemap, debugged events and baseline |
-| P1 — this month | Planner, social and watchlist landing pages, in that order | High | High combined | Each unique, linked, indexable and supported by real product evidence |
-| P2 — next 3 months | First six evergreen guides; investigate query overlap before further articles | High | High | Original resources, named review, contextual feature links and performance review |
-| P2 — next 3 months | Recommendation page and carefully tested comparisons | High | High | Clear evidence for recommendation behaviour and fair comparison methodology |
-| P2 — next 3 months | Press resources and targeted film/tech/community outreach | Medium | High | Useful published resource, relevant pitches and resulting referrals/mentions tracked |
-| P2 — next 3 months | App Links/Universal Links and store attribution | High | High | Verified domains, device fallback tests, attributed/unknown outcomes separated |
-| P2 — next 3 months | Real screenshots, share image and controlled font/image delivery | Medium | Medium | Correct dimensions/formats; measured transfer and rendering improvement |
-| P3 — longer term | Remaining content backlog based on actual demand | Medium | High ongoing | New work answers unmet intent instead of expanding duplicates |
-| P3 — longer term | Licensed, moderated original-data programmatic pilot | High potential | High | Rights/privacy gates met; 10–20 useful public pages; demand validated before scale |
-| P3 — longer term | Optional FAQ semantics; actor/director pages only with distinct value | Low | Medium–High | No expectation of FAQ rich results; no thin catalogue expansion |
+| P0 - immediately | T1–T2: real robots and XML sitemap | High | Low | 200, correct body/MIME, XML parses; sitemap fetch succeeds |
+| P0 - immediately | T4: bare domain → HTTPS www at host/edge | High | Medium | Single intended redirect preserving path/query; no `/lander` journey |
+| P0 - immediately | T3: explicit real 404s and not-found route, coordinated with rendering | High | Medium | Invented route returns 404; valid routes still 200 |
+| P0 - immediately | T5/T7: anchor navigation, canonical/title/description registry | High | Medium | Public URLs discoverable through anchors; no home canonical on other pages |
+| P1 - this month | T6/T13: statically rendered public pages and visible initial content | High | High | View source contains useful H1/copy/links/head; no hydration regression |
+| P1 - this month | T11: truthful platform availability, direct download links and beta labels | High | Low | UK device/account tests reach correct install/access flow |
+| P1 - this month | Homepage copy and real screenshot evidence | High | Medium | All claims traced to shipped behaviour; clear friends-to-plan journey |
+| P1 - this month | T8: social metadata and entity graph | Medium | Low | Image URLs resolve; schema validates; previews show correct page |
+| P1 - this month | T9: noindex invite and eliminate fallback on verification files | Medium | Medium | Invite excluded from sitemap and noindex served; missing files are 404 |
+| P1 - this month | T10/T15: About, Contact, Terms, consistent operator/social/store identity | Medium | Medium | Verified profile links, contact works, visible truthful operator information |
+| P1 - this month | Performance, semantics, modal and responsive source findings | Medium | Medium | Mobile/keyboard checks and before/after lab report; no fabricated CWV score |
+| P1 - this month | Search Console and consent-aware website click measurement | High | Medium | Verified property, accepted sitemap, debugged events and baseline |
+| P1 - this month | Planner, social and watchlist landing pages, in that order | High | High combined | Each unique, linked, indexable and supported by real product evidence |
+| P2 - next 3 months | First six evergreen guides; investigate query overlap before further articles | High | High | Original resources, named review, contextual feature links and performance review |
+| P2 - next 3 months | Recommendation page and carefully tested comparisons | High | High | Clear evidence for recommendation behaviour and fair comparison methodology |
+| P2 - next 3 months | Press resources and targeted film/tech/community outreach | Medium | High | Useful published resource, relevant pitches and resulting referrals/mentions tracked |
+| P2 - next 3 months | App Links/Universal Links and store attribution | High | High | Verified domains, device fallback tests, attributed/unknown outcomes separated |
+| P2 - next 3 months | Real screenshots, share image and controlled font/image delivery | Medium | Medium | Correct dimensions/formats; measured transfer and rendering improvement |
+| P3 - longer term | Remaining content backlog based on actual demand | Medium | High ongoing | New work answers unmet intent instead of expanding duplicates |
+| P3 - longer term | Licensed, moderated original-data programmatic pilot | High potential | High | Rights/privacy gates met; 10–20 useful public pages; demand validated before scale |
+| P3 - longer term | Optional FAQ semantics; actor/director pages only with distinct value | Low | Medium–High | No expectation of FAQ rich results; no thin catalogue expansion |
 
 ### Release verification checklist
 

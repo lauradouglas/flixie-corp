@@ -215,7 +215,7 @@ export default function HomeView() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-text-secondary text-base sm:text-lg lg:text-xl max-w-xl mx-auto lg:mx-0 leading-relaxed"
             >
-              Flixie helps you discover films through the people you know. See what friends recommend, keep a watchlist, rate what you’ve watched and make plans for your next movie night—all in one app.
+              Flixie helps you discover films through the people you know. See what friends recommend, keep a watchlist, rate what you’ve watched and make plans for your next movie night-all in one app.
             </motion.p>
 
             {/* Hero CTAs */}
