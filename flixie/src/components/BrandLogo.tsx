@@ -1,5 +1,5 @@
 // @ts-ignore
-import flixieLogo from '../assets/brand/flixie_text_1024.png';
+import flixieLogo from '../assets/brand/flixie-wordmark.png';
 
 interface BrandLogoProps {
   className: string;
@@ -9,10 +9,10 @@ interface BrandLogoProps {
 export default function BrandLogo({ className, alt = '' }: BrandLogoProps) {
   return (
     <>
-      <img src={flixieLogo} alt={alt} className={className} />
+      <img src={flixieLogo} width={256} height={256} alt={alt} className={className} />
       {/* Recolour only the x, preserving the original wordmark and transparency. */}
       <img
-        src={flixieLogo}
+        src={flixieLogo} width={256} height={256}
         alt=""
         aria-hidden="true"
         className={className}

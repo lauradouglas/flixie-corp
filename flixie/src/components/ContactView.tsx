@@ -6,11 +6,8 @@
 import { Mail, HelpCircle, Terminal, ArrowRight, Trash2 } from 'lucide-react';
 import { PageId } from '../types';
 
-interface ContactViewProps {
-  setCurrentPage: (page: PageId) => void;
-}
 
-export default function ContactView({ setCurrentPage }: ContactViewProps) {
+export default function ContactView() {
   const deletionRequestLink = `mailto:flixieadmin@gmail.com?subject=${encodeURIComponent('Flixie account deletion request')}&body=${encodeURIComponent(
     'Hello Flixie Admin,\n\nI would like to request deletion of my Flixie account and associated personal data.\n\nFlixie username:\nRegistered email address:\n\nPlease contact me if you need any further information to verify my account.\n\nThank you.'
   )}`;
@@ -37,15 +34,12 @@ export default function ContactView({ setCurrentPage }: ContactViewProps) {
             <p className="text-text-secondary text-sm leading-relaxed">
               Common questions about watchlists, ratings, friends, and account features may already be answered.
             </p>
-            <button
-              onClick={() => {
-                setCurrentPage('faq');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
+            <a
+              href="/faqs"
               className="inline-flex items-center gap-1.5 text-xs text-flixie-purple font-semibold hover:text-flixie-light transition-colors group cursor-pointer focus:outline-none"
             >
               Go to FAQs <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
-            </button>
+            </a>
           </div>
 
           <div className="bg-bg-card border border-border-custom p-6 rounded-2xl space-y-4">

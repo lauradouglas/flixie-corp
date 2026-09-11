@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { site } from '../site';
 import { Check, Clapperboard, Copy, Smartphone, Users } from 'lucide-react';
 
 type InviteDetails = {
@@ -11,15 +12,13 @@ const apiBase =
   'https://flixie-api-fmcehvaecwdheccm.northeurope-01.azurewebsites.net';
 
 export default function InviteView() {
-  const code = useMemo(
-    () => new URLSearchParams(window.location.search).get('code')?.trim() ?? '',
-    [],
-  );
+
   const [invite, setInvite] = useState<InviteDetails | null>(null);
   const [invalid, setInvalid] = useState(false);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
+    const code = new URLSearchParams(window.location.search).get('code')?.trim() ?? '';
     if (!code) {
       setInvalid(true);
       return;
@@ -31,7 +30,7 @@ export default function InviteView() {
       })
       .then(setInvite)
       .catch(() => setInvalid(true));
-  }, [code]);
+  }, []);
 
   const copyCode = async () => {
     if (!invite) return;
@@ -59,7 +58,7 @@ export default function InviteView() {
               </p>
             </>
           ) : !invite ? (
-            <p className="text-text-secondary">Loading your invite…</p>
+            <div className="space-y-3"><h1 className="font-display text-2xl font-bold">Your Flixie invitation</h1><p className="text-text-secondary" role="status">Loading your invite…</p><noscript>Enable JavaScript to check your invitation, or ask your friend for the referral code.</noscript></div>
           ) : (
             <>
               <div className="space-y-3">
@@ -100,7 +99,7 @@ export default function InviteView() {
               </div>
 
               <a
-                href="https://testflight.apple.com/join/RRrZjJw7"
+                href={site.iosUrl}
                 className="w-full inline-flex items-center justify-center gap-3 rounded-2xl bg-flixie-purple hover:bg-flixie-light px-5 py-4 text-white font-bold transition-colors"
               >
                 <Smartphone className="h-5 w-5" />

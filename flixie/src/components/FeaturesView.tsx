@@ -22,11 +22,8 @@ import {
   Lock 
 } from 'lucide-react';
 
-interface FeaturesViewProps {
-  onDownloadClick: () => void;
-}
 
-export default function FeaturesView({ onDownloadClick }: FeaturesViewProps) {
+export default function FeaturesView() {
   return (
     <div id="features-view" className="relative overflow-hidden pt-24 pb-16">
       {/* Decorative Blur Backgrounds */}
@@ -36,13 +33,13 @@ export default function FeaturesView({ onDownloadClick }: FeaturesViewProps) {
       {/* Header Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16 text-center">
         <h1 className="font-display font-extrabold text-4xl sm:text-5xl text-white tracking-tight">
-          Crafted to Elevate <br />
-          <span className="bg-gradient-to-r from-flixie-purple via-flixie-light to-flixie-teal bg-clip-text text-transparent">
-            Your Cinema Discovery
+          Find, save and plan <br />
+          <span className="text-flixie-light">
+            films with Flixie
           </span>
         </h1>
         <p className="text-text-secondary text-base sm:text-lg max-w-2xl mx-auto mt-4 leading-relaxed">
-          Flixie replaces chaotic notebooks, infinite bookmarks, and messy group chats with a single cohesive, high-performance visual dashboard designed specifically for film enthusiasts.
+          Explore movie recommendations, watchlists, ratings and plans for your next film with friends. The examples below illustrate the app using fictional films and sample activity.
         </p>
       </section>
 
@@ -105,7 +102,7 @@ export default function FeaturesView({ onDownloadClick }: FeaturesViewProps) {
             <div className="space-y-3">
               <div className="p-3 bg-bg-elevated border border-border-custom rounded-xl flex items-center justify-between hover:border-flixie-teal/50 transition-colors">
                 <div>
-                  <h4 className="text-sm font-bold text-white">Echoes of Orion</h4>
+                  <p className="text-sm font-bold text-white">Echoes of Orion</p>
                   <p className="text-xs text-text-muted">Sci-Fi • 2024 • 8.7 ★</p>
                 </div>
                 <span className="text-xs text-flixie-teal font-bold bg-flixie-teal/10 px-2 py-1 rounded-lg">Stream Now</span>
@@ -113,7 +110,7 @@ export default function FeaturesView({ onDownloadClick }: FeaturesViewProps) {
 
               <div className="p-3 bg-bg-elevated border border-border-custom rounded-xl flex items-center justify-between hover:border-flixie-teal/50 transition-colors">
                 <div>
-                  <h4 className="text-sm font-bold text-white">The Nebula Horizon</h4>
+                  <p className="text-sm font-bold text-white">The Nebula Horizon</p>
                   <p className="text-xs text-text-muted">Sci-Fi • 2023 • 7.5 ★</p>
                 </div>
                 <span className="text-xs text-text-secondary bg-white/5 px-2 py-1 rounded-lg">Rent / Buy</span>
@@ -121,7 +118,7 @@ export default function FeaturesView({ onDownloadClick }: FeaturesViewProps) {
 
               <div className="p-3 bg-bg-elevated border border-border-custom rounded-xl flex items-center justify-between hover:border-flixie-teal/50 transition-colors">
                 <div>
-                  <h4 className="text-sm font-bold text-white">Sub-Zero Drift</h4>
+                  <p className="text-sm font-bold text-white">Sub-Zero Drift</p>
                   <p className="text-xs text-text-muted">Thriller • 2025 • 8.1 ★</p>
                 </div>
                 <span className="text-xs text-flixie-teal font-bold bg-flixie-teal/10 px-2 py-1 rounded-lg">Stream Now</span>
@@ -138,7 +135,7 @@ export default function FeaturesView({ onDownloadClick }: FeaturesViewProps) {
             <div className="flex items-center justify-between border-b border-border-custom pb-4 mb-6">
               <div className="flex items-center gap-2">
                 <Bookmark className="h-4.5 w-4.5 text-flixie-purple" />
-                <h4 className="text-sm font-bold text-white">My Watchlist (14)</h4>
+                <p className="text-sm font-bold text-white">My Watchlist (14)</p>
               </div>
               <div className="flex items-center gap-1.5 text-xs text-text-muted">
                 <Filter className="h-3.5 w-3.5" /> Sort: Added Date
@@ -152,7 +149,7 @@ export default function FeaturesView({ onDownloadClick }: FeaturesViewProps) {
                   {/* Empty check for watchlist item */}
                 </div>
                 <div className="flex-1">
-                  <h5 className="text-xs font-bold text-white">Midnight Café</h5>
+                  <p className="text-xs font-bold text-white">Midnight Café</p>
                   <p className="text-[10px] text-text-muted">Drama • 1h 48m • Added 2d ago</p>
                 </div>
                 <span className="text-[10px] bg-flixie-peach/10 text-flixie-peach font-semibold px-2 py-0.5 rounded-full">High Priority</span>
@@ -163,7 +160,7 @@ export default function FeaturesView({ onDownloadClick }: FeaturesViewProps) {
                   <CheckCircle className="h-4 w-4" />
                 </div>
                 <div className="flex-1">
-                  <h5 className="text-xs font-bold text-text-secondary line-through">Echoes of Orion</h5>
+                  <p className="text-xs font-bold text-text-secondary line-through">Echoes of Orion</p>
                   <p className="text-[10px] text-text-muted">Marked as Watched • Yesterday</p>
                 </div>
                 <span className="text-[10px] bg-status-success/10 text-status-success font-semibold px-2 py-0.5 rounded-full">Watched</span>
@@ -174,7 +171,7 @@ export default function FeaturesView({ onDownloadClick }: FeaturesViewProps) {
                   {/* Empty */}
                 </div>
                 <div className="flex-1">
-                  <h5 className="text-xs font-bold text-white">Velocity</h5>
+                  <p className="text-xs font-bold text-white">Velocity</p>
                   <p className="text-[10px] text-text-muted">Action • 2h 10m • Added 1w ago</p>
                 </div>
               </div>
@@ -255,7 +252,7 @@ export default function FeaturesView({ onDownloadClick }: FeaturesViewProps) {
             <div className="flex items-center justify-between border-b border-border-custom pb-4 mb-4">
               <div className="flex items-center gap-2">
                 <Heart className="h-4.5 w-4.5 text-flixie-peach fill-current" />
-                <h4 className="text-sm font-bold text-white">Your Showcase Favourite</h4>
+                <p className="text-sm font-bold text-white">Your Showcase Favourite</p>
               </div>
               <span className="text-xs text-status-warning flex items-center gap-1 font-bold">
                 <Star className="h-3 w-3 fill-current" /> 5.0 Rated
@@ -270,7 +267,7 @@ export default function FeaturesView({ onDownloadClick }: FeaturesViewProps) {
                     LA
                   </div>
                   <div>
-                    <h5 className="text-xs font-bold text-white">Laura Douglas</h5>
+                    <p className="text-xs font-bold text-white">Laura Douglas</p>
                     <p className="text-[9px] text-text-muted">Reviewed yesterday</p>
                   </div>
                 </div>
@@ -308,7 +305,7 @@ export default function FeaturesView({ onDownloadClick }: FeaturesViewProps) {
             <div className="flex items-center justify-between border-b border-border-custom pb-4 mb-4">
               <div className="flex items-center gap-2">
                 <Users className="h-4.5 w-4.5 text-flixie-purple" />
-                <h4 className="text-sm font-bold text-white">Active Social Requests</h4>
+                <p className="text-sm font-bold text-white">Active Social Requests</p>
               </div>
               <span className="text-[10px] bg-flixie-purple/20 text-flixie-purple px-2 py-0.5 rounded font-bold font-mono">
                 3 Pending
@@ -323,17 +320,17 @@ export default function FeaturesView({ onDownloadClick }: FeaturesViewProps) {
                     AM
                   </div>
                   <div>
-                    <h5 className="text-xs font-bold text-white">Austin Miller</h5>
+                    <p className="text-xs font-bold text-white">Austin Miller</p>
                     <p className="text-[10px] text-text-muted">Wants to connect as Friends</p>
                   </div>
                 </div>
                 <div className="flex gap-1.5">
-                  <button className="px-2.5 py-1 bg-flixie-purple hover:bg-flixie-deep text-white font-bold text-[10px] rounded-md transition-all cursor-pointer">
+                  <span className="px-2.5 py-1 bg-flixie-purple hover:bg-flixie-deep text-white font-bold text-[10px] rounded-md transition-all cursor-pointer">
                     Accept
-                  </button>
-                  <button className="px-2.5 py-1 bg-white/5 border border-border-custom hover:bg-white/10 text-text-secondary text-[10px] rounded-md transition-all cursor-pointer">
+                  </span>
+                  <span className="px-2.5 py-1 bg-white/5 border border-border-custom hover:bg-white/10 text-text-secondary text-[10px] rounded-md transition-all cursor-pointer">
                     Ignore
-                  </button>
+                  </span>
                 </div>
               </div>
 
@@ -343,14 +340,14 @@ export default function FeaturesView({ onDownloadClick }: FeaturesViewProps) {
                     SO
                   </div>
                   <div>
-                    <h5 className="text-xs font-bold text-white">Sophia Owens</h5>
+                    <p className="text-xs font-bold text-white">Sophia Owens</p>
                     <p className="text-[10px] text-text-muted">Sent you a Watch Invitation</p>
                   </div>
                 </div>
                 <div className="flex gap-1.5">
-                  <button className="px-2.5 py-1 bg-flixie-teal text-bg-darkest font-bold text-[10px] rounded-md hover:brightness-110 transition-all cursor-pointer">
+                  <span className="px-2.5 py-1 bg-flixie-teal text-bg-darkest font-bold text-[10px] rounded-md hover:brightness-110 transition-all cursor-pointer">
                     Review
-                  </button>
+                  </span>
                 </div>
               </div>
             </div>
@@ -440,13 +437,13 @@ export default function FeaturesView({ onDownloadClick }: FeaturesViewProps) {
             Get the Flixie companion application today and experience collaborative movie watching with friends. Discover movies together.
           </p>
           <div className="pt-2 flex justify-center">
-            <button
-              onClick={onDownloadClick}
+            <a
+              href="#download"
               className="px-8 py-4 bg-gradient-to-r from-flixie-purple to-flixie-deep text-white font-bold rounded-xl hover:brightness-110 shadow-xl shadow-flixie-purple/20 transition-all flex items-center gap-2 cursor-pointer"
             >
               <Download className="h-5 w-5" />
               Download Free Companion App
-            </button>
+            </a>
           </div>
         </div>
       </section>

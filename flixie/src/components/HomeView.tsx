@@ -33,15 +33,12 @@ import {
 } from 'lucide-react';
 import { PageId, FeatureItem } from '../types';
 // @ts-ignore
-import cinemaGlow from '../assets/images/flixie_cinema_glow_1784148911237.jpg';
+import cinemaGlow from '../assets/images/cinema-glow.jpg';
+import cinemaGlowSmall from '../assets/images/cinema-glow-small.jpg';
 import BrandLogo from './BrandLogo';
 
-interface HomeViewProps {
-  setCurrentPage: (page: PageId) => void;
-  onDownloadClick: () => void;
-}
 
-export default function HomeView({ setCurrentPage, onDownloadClick }: HomeViewProps) {
+export default function HomeView() {
   // Mock Swipe state for the interactive CSS smartphone mockup
   const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
   const [watchlistCount, setWatchlistCount] = useState(3);
@@ -111,7 +108,7 @@ export default function HomeView({ setCurrentPage, onDownloadClick }: HomeViewPr
     {
       id: 'watchlist',
       title: 'Build a Personal Watchlist',
-      description: 'Save films you intend to watch. Organise and filter them dynamically based on platform, duration, or genre.',
+      description: 'Save films you intend to watch. Keep your next film choices in one place.',
       iconName: 'Bookmark',
       colorClass: 'text-flixie-purple bg-flixie-purple/10'
     },
@@ -153,7 +150,7 @@ export default function HomeView({ setCurrentPage, onDownloadClick }: HomeViewPr
     {
       id: 'recommend',
       title: 'Personalised Recommendations',
-      description: 'Receive custom recommendations powered by our shared preference matching engine with your friends.',
+      description: 'Explore personalised recommendations alongside suggestions from friends.',
       iconName: 'Sparkles',
       colorClass: 'text-flixie-teal bg-flixie-teal/15'
     }
@@ -181,7 +178,12 @@ export default function HomeView({ setCurrentPage, onDownloadClick }: HomeViewPr
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-bg-main/80 to-bg-main" />
         <img
           src={cinemaGlow}
-          alt="Cinematic Background Glow"
+          srcSet={`${cinemaGlowSmall} 768w, ${cinemaGlow} 1376w`}
+          sizes="100vw"
+          alt=""
+          width={1376}
+          height={768}
+          fetchPriority="high"
           referrerPolicy="no-referrer"
           className="w-full h-full object-cover opacity-35 scale-105 filter blur-xs"
         />
@@ -194,69 +196,57 @@ export default function HomeView({ setCurrentPage, onDownloadClick }: HomeViewPr
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Hero Left Text */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 bg-flixie-purple/15 border border-flixie-purple/30 rounded-full text-xs font-semibold text-flixie-purple tracking-wide"
-            >
-              <Sparkles className="h-3.5 w-3.5 text-flixie-teal animate-pulse" />
-              Introducing Flixie v1.0 • Social Movie Discovery
-            </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 15 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight text-white"
             >
-              Discover movies. <br />
-              <span className="bg-gradient-to-r from-flixie-purple via-flixie-light to-flixie-teal bg-clip-text text-transparent">
-                Share the experience.
+              The social movie app for <br />
+              <span className="text-flixie-light">
+                finding your next film together.
               </span>
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 15 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-text-secondary text-base sm:text-lg lg:text-xl max-w-xl mx-auto lg:mx-0 leading-relaxed"
             >
-              Discover your next favourite movie with Flixie. Build your watchlist, track what you’ve watched, rate your favourites, and invite friends to watch together-all in one place. Spend less time scrolling and more time enjoying great films.
+              Flixie helps you discover films through the people you know. See what friends recommend, keep a watchlist, rate what you’ve watched and make plans for your next movie night—all in one app.
             </motion.p>
 
             {/* Hero CTAs */}
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4"
             >
-              <button
-                onClick={onDownloadClick}
+              <a
+                href="#download"
                 className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-flixie-purple to-flixie-deep text-white font-bold rounded-xl hover:brightness-110 active:scale-98 transition-all shadow-xl shadow-flixie-purple/30 hover:shadow-flixie-purple/40 flex items-center justify-center gap-2 cursor-pointer"
                 id="hero-download-btn"
               >
                 <Download className="h-5 w-5" />
-                Download App Free
-              </button>
+                Get Flixie
+              </a>
               
-              <button
-                onClick={() => {
-                  setCurrentPage('features');
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
+              <a
+                href="/features"
                 className="w-full sm:w-auto px-6 py-4 bg-bg-card hover:bg-bg-elevated border border-border-custom hover:border-flixie-purple/50 text-white font-semibold rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer"
                 id="hero-features-btn"
               >
                 Explore Features
                 <ArrowRight className="h-4 w-4 text-text-muted group-hover:translate-x-1 transition-transform" />
-              </button>
+              </a>
             </motion.div>
 
             {/* Traction stats are intentionally hidden until Flixie has verified public metrics.
             <motion.div
-              initial={{ opacity: 0 }}
+              initial={false}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.8 }}
               className="grid grid-cols-3 gap-4 pt-8 border-t border-border-custom max-w-md mx-auto lg:mx-0"
@@ -278,9 +268,10 @@ export default function HomeView({ setCurrentPage, onDownloadClick }: HomeViewPr
           </div>
 
           {/* Hero Right - Interactive CSS Smartphone Mockup */}
-          <div className="lg:col-span-5 flex justify-center">
+          <div className="lg:col-span-5 flex flex-col items-center gap-4">
+            <p className="text-sm text-text-secondary text-center">Illustrative app demo with fictional films and ratings</p>
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 30 }}
+              initial={false}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.8, ease: 'easeOut' }}
               className="relative w-72 sm:w-80 h-[580px] bg-bg-darkest rounded-[40px] p-3 shadow-[0_0_50px_rgba(155,107,255,0.15)] border-4 border-border-custom"
@@ -326,20 +317,20 @@ export default function HomeView({ setCurrentPage, onDownloadClick }: HomeViewPr
 
                   <div className="mt-3 flex items-center justify-between">
                     <strong className="text-[11px] text-white">Featured for you</strong>
-                    <button onClick={handleNextMovie} className="text-[8px] text-flixie-purple cursor-pointer">Next</button>
+                    <button onClick={handleNextMovie} className="text-xs min-h-11 px-2 text-flixie-purple cursor-pointer">Next</button>
                   </div>
 
                   <div className="mt-2 h-[218px] rounded-2xl overflow-hidden border border-white/10 relative shadow-xl">
-                    <img src={cinemaGlow} alt="" className="absolute inset-0 w-full h-full object-cover transition-all duration-500" style={{ filter: `hue-rotate(${currentMovieIndex * 45}deg)` }} />
+                    <img src={cinemaGlowSmall} width={768} height={429} alt="" className="absolute inset-0 w-full h-full object-cover transition-all duration-500" style={{ filter: `hue-rotate(${currentMovieIndex * 45}deg)` }} />
                     <div className={`absolute inset-0 bg-gradient-to-t ${activeMovie.color} opacity-55`} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/20" />
                     <span className="absolute top-3 right-3 bg-black/70 border border-status-warning/50 rounded-full px-2 py-1 text-[9px] font-bold text-status-warning flex items-center gap-1"><Star className="h-2.5 w-2.5 fill-current" />{activeMovie.rating}</span>
                     <div className="absolute left-3 right-3 bottom-3">
-                      <h4 className="text-base font-extrabold text-white">{activeMovie.title}</h4>
+                      <p className="text-base font-extrabold text-white">{activeMovie.title}</p>
                       <p className="text-[9px] text-text-secondary">{activeMovie.genre} • {activeMovie.duration}</p>
                       <div className="flex gap-2 mt-2">
-                        <button onClick={handleToggleWatchlist} aria-label="Toggle watchlist" className={`h-8 w-8 rounded-full flex items-center justify-center border cursor-pointer ${hasAddedToWatchlist ? 'bg-flixie-purple border-flixie-purple text-white' : 'bg-black/60 border-white/20 text-flixie-purple'}`}>{hasAddedToWatchlist ? <Check className="h-4 w-4" /> : <Bookmark className="h-4 w-4" />}</button>
-                        <button onClick={handleLike} aria-label="Toggle favourite" className={`h-8 w-8 rounded-full flex items-center justify-center border cursor-pointer ${hasLiked ? 'bg-status-error border-status-error text-white' : 'bg-black/60 border-white/20 text-white'}`}><Heart className={`h-4 w-4 ${hasLiked ? 'fill-current' : ''}`} /></button>
+                        <button onClick={handleToggleWatchlist} aria-label="Toggle watchlist" className={`h-11 w-11 rounded-full flex items-center justify-center border cursor-pointer ${hasAddedToWatchlist ? 'bg-flixie-purple border-flixie-purple text-white' : 'bg-black/60 border-white/20 text-flixie-purple'}`}>{hasAddedToWatchlist ? <Check className="h-4 w-4" /> : <Bookmark className="h-4 w-4" />}</button>
+                        <button onClick={handleLike} aria-label="Toggle favourite" className={`h-11 w-11 rounded-full flex items-center justify-center border cursor-pointer ${hasLiked ? 'bg-status-error border-status-error text-white' : 'bg-black/60 border-white/20 text-white'}`}><Heart className={`h-4 w-4 ${hasLiked ? 'fill-current' : ''}`} /></button>
                         <button onClick={handleNextMovie} className="ml-auto px-3 rounded-full bg-flixie-purple text-white text-[9px] font-bold flex items-center gap-1 cursor-pointer"><Play className="h-3 w-3 fill-current" /> Explore</button>
                       </div>
                     </div>
@@ -385,10 +376,10 @@ export default function HomeView({ setCurrentPage, onDownloadClick }: HomeViewPr
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
-              A Complete Social Movie Ecosystem
+              Find, save and plan films with friends
             </h2>
             <p className="text-text-secondary text-base sm:text-lg">
-              Flixie transforms cinema watching from a passive solo routine into a vibrant, communal playground. Discover why thousands of film buffs love Flixie.
+              Discover films through friends, keep track of the titles you want to see and turn a recommendation into a plan.
             </p>
           </div>
 
@@ -410,14 +401,11 @@ export default function HomeView({ setCurrentPage, onDownloadClick }: HomeViewPr
                     {feat.description}
                   </p>
                 </div>
-                <div className="pt-4 flex items-center text-xs text-flixie-purple font-semibold hover:text-flixie-light transition-colors cursor-pointer group-hover:gap-1.5 gap-1"
-                  onClick={() => {
-                    setCurrentPage('features');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
+                <a className="pt-4 flex items-center text-xs text-flixie-purple font-semibold hover:text-flixie-light transition-colors cursor-pointer group-hover:gap-1.5 gap-1"
+                  href="/features"
                 >
                   Learn details <ChevronRight className="h-3 w-3" />
-                </div>
+                </a>
               </div>
             ))}
           </div>
@@ -489,7 +477,7 @@ export default function HomeView({ setCurrentPage, onDownloadClick }: HomeViewPr
                     <Users className="h-5 w-5" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-white">Watch Invitation Party</h4>
+                    <p className="text-sm font-bold text-white">Watch Invitation Party</p>
                     <p className="text-[10px] text-flixie-teal font-mono">Sync Room #4010</p>
                   </div>
                 </div>
@@ -508,7 +496,7 @@ export default function HomeView({ setCurrentPage, onDownloadClick }: HomeViewPr
                   {/* Simulated App matching block */}
                   <div className="ml-9 p-3 bg-flixie-purple/10 border border-flixie-purple/30 rounded-xl space-y-2">
                     <div className="flex items-center gap-1.5 text-flixie-purple text-[10px] font-bold uppercase tracking-wider">
-                      <Sparkles className="h-3 w-3 text-flixie-teal" /> 97% Social Match
+                      <Sparkles className="h-3 w-3 text-flixie-teal" /> Illustrative match
                     </div>
                     <p className="text-white font-bold font-display">Chronicles of Neon</p>
                     <p className="text-text-muted text-[10px] line-clamp-1">Both you and Leo have this in your Watchlist!</p>
@@ -542,12 +530,12 @@ export default function HomeView({ setCurrentPage, onDownloadClick }: HomeViewPr
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <button className="flex-1 py-1.5 bg-flixie-purple hover:bg-flixie-deep text-white font-semibold rounded-lg text-[10px] text-center transition-all">
+                      <span className="flex-1 py-1.5 bg-flixie-purple hover:bg-flixie-deep text-white font-semibold rounded-lg text-[10px] text-center transition-all">
                         Accept Request
-                      </button>
-                      <button className="px-3 py-1.5 bg-bg-card hover:bg-white/5 border border-border-custom text-text-secondary rounded-lg text-[10px] text-center transition-all">
+                      </span>
+                      <span className="px-3 py-1.5 bg-bg-card hover:bg-white/5 border border-border-custom text-text-secondary rounded-lg text-[10px] text-center transition-all">
                         Decline
-                      </button>
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -557,10 +545,10 @@ export default function HomeView({ setCurrentPage, onDownloadClick }: HomeViewPr
             {/* Explanatory text on Right */}
             <div className="lg:col-span-7 order-1 lg:order-2 space-y-6">
               <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight leading-tight">
-                Collaborative Movie Coordination. No Spoilers, All Fun.
+                Plan a movie night with friends
               </h2>
               <p className="text-text-secondary text-base leading-relaxed">
-                Tired of the constant back-and-forth deciding what to watch? Flixie features an automated <strong>compatibility match engine</strong>. By scanning what movies overlap on your social circles' watchlists, we instantly surface titles with high compatibility ratings.
+                Tired of the back-and-forth deciding what to watch? Share recommendations in a group chat, save the films that interest you and make a watch plan with friends.
               </p>
               
               <ul className="space-y-3.5 text-sm">
@@ -602,33 +590,30 @@ export default function HomeView({ setCurrentPage, onDownloadClick }: HomeViewPr
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
           <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight">
-            Elevate Your Cinematic Experience Today
+            Find your next film together
           </h2>
           <p className="text-text-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Curate watchlists, write spoiler-free reviews, and find films to watch with friends on Flixie. Free to download, with an ad-free experience.
+            Curate watchlists, write spoiler-free reviews, and find films to watch with friends on Flixie. Check the available iOS and Android access options below.
           </p>
 
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              onClick={onDownloadClick}
+            <a
+              href="#download"
               className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-flixie-purple to-flixie-deep text-white font-bold rounded-xl hover:brightness-110 shadow-xl shadow-flixie-purple/30 hover:shadow-flixie-purple/45 transition-all flex items-center justify-center gap-2.5 cursor-pointer"
             >
               <Download className="h-5 w-5" />
-              Download Flixie App
-            </button>
-            <button
-              onClick={() => {
-                setCurrentPage('contact');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
+              Get Flixie
+            </a>
+            <a
+              href="/contact"
               className="w-full sm:w-auto px-6 py-4 bg-transparent hover:bg-white/5 border border-border-custom hover:border-flixie-purple text-text-secondary hover:text-white font-semibold rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
               Contact Support
-            </button>
+            </a>
           </div>
 
           <div className="text-xs text-text-muted pt-4 font-mono">
-            Requires iOS 15.0+ or Android 10+ • Regular updates monthly
+            See the download section for current platform access.
           </div>
         </div>
       </section>

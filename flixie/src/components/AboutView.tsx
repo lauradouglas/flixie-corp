@@ -1,0 +1,9 @@
+export default function AboutView() {
+  return <article className="max-w-3xl mx-auto px-6 pt-36 pb-24 space-y-8">
+    <h1 className="font-display text-4xl sm:text-5xl font-bold text-white">Find your next film with friends</h1>
+    <p className="text-lg text-text-secondary leading-relaxed">Flixie is a social movie discovery app. It brings recommendations, ratings, reviews and watchlists together with group chats and watch plans, so a suggestion from a friend can become your next movie night.</p>
+    <section className="space-y-3"><h2 className="font-display text-2xl font-bold">From a recommendation to a plan</h2><p className="text-text-secondary leading-relaxed">Save films you want to try, keep track of what you’ve watched and share your thoughts with friends. When you find something to watch together, use Flixie to talk about your choices and make a plan.</p><a href="/features" className="inline-block py-2 text-flixie-light underline">Explore Flixie’s features</a></section>
+    <section className="space-y-3"><h2 className="font-display text-2xl font-bold">Your account and your choices</h2><p className="text-text-secondary leading-relaxed">Read about how Flixie handles account information, social sharing and optional analytics, or get help managing your account.</p><div className="flex flex-wrap gap-6"><a href="/privacy" className="text-flixie-light underline">Privacy policy</a><a href="/faqs" className="text-flixie-light underline">Account FAQs</a></div></section>
+    <section className="space-y-3"><h2 className="font-display text-2xl font-bold">Talk to Flixie</h2><p className="text-text-secondary leading-relaxed">Questions, feedback and bug reports help us understand what people need from the app.</p><a href="/contact" className="inline-block py-2 text-flixie-light underline">Contact Flixie</a></section>
+  </article>;
+}

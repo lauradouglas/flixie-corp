@@ -4,7 +4,6 @@
  */
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
 import { HelpCircle, ChevronDown, ChevronUp, Search, Info, MessageSquare, ShieldAlert, Settings, ShieldCheck, AlertTriangle, Mail } from 'lucide-react';
 import { FaqCategory, FaqItem } from '../types';
 
@@ -12,10 +11,6 @@ export default function FaqView() {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<string>('all');
   
-  // Track open state of accordions by 'category-index' or 'question-id'
-  const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({
-    'get-started-0': true, // Keep first open by default
-  });
 
   const faqData: FaqCategory[] = [
     {
@@ -130,12 +125,6 @@ export default function FaqView() {
     }
   ];
 
-  const toggleItem = (itemId: string) => {
-    setExpandedItems((prev) => ({
-      ...prev,
-      [itemId]: !prev[itemId],
-    }));
-  };
 
   // Filter FAQs based on search query and category tab
   const getFilteredFaqs = () => {
@@ -186,8 +175,9 @@ export default function FaqView() {
               placeholder="Search questions or keywords (e.g. watchlist, TMDB)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 bg-bg-card border border-border-custom hover:border-flixie-purple/40 focus:border-flixie-purple text-text-primary rounded-2xl outline-none transition-all placeholder:text-text-muted text-sm shadow-inner"
+              className="w-full pl-12 pr-4 py-4 bg-bg-card border border-border-custom hover:border-flixie-purple/40 focus:border-flixie-purple text-text-primary rounded-2xl outline-none transition-all placeholder:text-text-muted text-base shadow-inner"
               id="faq-search-input"
+              aria-label="Search frequently asked questions"
             />
             <Search className="h-5 w-5 text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
           </div>
@@ -241,48 +231,28 @@ export default function FaqView() {
           ) : (
             filteredFaqs.map((category) => (
               <div key={category.id} className="space-y-3" id={`faq-group-${category.id}`}>
-                <h3 className="text-xs font-bold uppercase tracking-wider text-flixie-teal font-mono border-b border-border-custom pb-2">
+                <h2 className="text-xs font-bold uppercase tracking-wider text-flixie-teal font-mono border-b border-border-custom pb-2">
                   {category.name}
-                </h3>
+                </h2>
                 
                 <div className="space-y-3">
                   {category.items.map((item, index) => {
-                    const uniqueId = `${category.id}-${index}`;
-                    const isOpen = !!expandedItems[uniqueId];
                     return (
-                      <div
+                      <details
                         key={item.id}
                         className="bg-bg-card border border-border-custom hover:border-flixie-purple/30 rounded-xl overflow-hidden transition-colors"
                         id={`faq-item-${item.id}`}
                       >
-                        <button
-                          onClick={() => toggleItem(uniqueId)}
-                          className="w-full text-left px-5 py-4 flex items-center justify-between gap-4 text-white font-semibold text-sm hover:bg-white/5 cursor-pointer focus:outline-none focus:bg-white/5"
-                          aria-expanded={isOpen}
-                        >
-                          <span className="font-display tracking-wide">{item.question}</span>
-                          {isOpen ? (
-                            <ChevronUp className="h-4 w-4 text-flixie-purple flex-shrink-0" />
-                          ) : (
-                            <ChevronDown className="h-4 w-4 text-text-muted flex-shrink-0" />
-                          )}
-                        </button>
-                        
-                        <AnimatePresence initial={false}>
-                          {isOpen && (
-                            <motion.div
-                              initial={{ height: 0, opacity: 0 }}
-                              animate={{ height: 'auto', opacity: 1 }}
-                              exit={{ height: 0, opacity: 0 }}
-                              transition={{ duration: 0.25, ease: 'easeInOut' }}
-                              className="overflow-hidden border-t border-border-custom/40 bg-bg-nav/30"
-                            >
+                        <summary className="px-5 py-4 text-white font-semibold text-base hover:bg-white/5">
+                          {item.question}
+                        </summary>
+                        <div className="border-t border-border-custom/40 bg-bg-nav/30">
                               {item.id === 'delete-account' ? (
                                 <div className="p-5 space-y-4 text-xs sm:text-sm">
                                   <div className="bg-bg-card border border-border-custom rounded-xl p-4">
                                     <div className="flex items-center gap-2.5 mb-3">
                                       <span className="p-2 bg-flixie-purple/10 text-flixie-purple rounded-lg"><Settings className="h-4 w-4" /></span>
-                                      <h4 className="font-display font-bold text-white">Delete your account in the app</h4>
+                                      <h3 className="font-display font-bold text-white">Delete your account in the app</h3>
                                     </div>
                                     <ol className="space-y-2.5">
                                       {['Open Flixie.', 'Go to Profile → Settings → Delete Account.', 'Confirm deletion.'].map((step, stepIndex) => (
@@ -297,7 +267,7 @@ export default function FaqView() {
                                   <div className="bg-bg-card border border-status-error/25 rounded-xl p-4">
                                     <div className="flex items-center gap-2.5 mb-3">
                                       <span className="p-2 bg-status-error/10 text-status-error rounded-lg"><ShieldCheck className="h-4 w-4" /></span>
-                                      <h4 className="font-display font-bold text-white">Deleting your account permanently removes</h4>
+                                      <h3 className="font-display font-bold text-white">Deleting your account permanently removes</h3>
                                     </div>
                                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-text-secondary">
                                       {['Your profile', 'Email address', 'Username', 'Ratings', 'Reviews', 'Watchlists', 'Lists', 'Friend connections', 'Watch history', 'Other associated account data'].map((data) => (
@@ -312,7 +282,7 @@ export default function FaqView() {
                                   </div>
 
                                   <div className="bg-bg-card border border-flixie-purple/30 rounded-xl p-4 text-center space-y-2.5">
-                                    <h4 className="font-display font-bold text-white">Unable to access the app?</h4>
+                                    <h3 className="font-display font-bold text-white">Unable to access the app?</h3>
                                     <p className="text-text-secondary leading-relaxed">Email us from your registered address and include your Flixie username. Never include your password.</p>
                                     <a
                                       href="mailto:flixieadmin@gmail.com?subject=Flixie%20account%20deletion%20request"
@@ -327,10 +297,8 @@ export default function FaqView() {
                                   {item.answer}
                                 </p>
                               )}
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </div>
+                        </div>
+                      </details>
                     );
                   })}
                 </div>
@@ -346,7 +314,7 @@ export default function FaqView() {
               <Info className="h-5 w-5" />
             </div>
             <div className="space-y-1">
-              <h4 className="text-white font-bold text-sm">Still have questions?</h4>
+              <h3 className="text-white font-bold text-sm">Still have questions?</h3>
               <p className="text-text-secondary text-xs leading-relaxed max-w-md">
                 Our support desk is operational 24/7. Reach out to report technical bugs, recommend features, or seek account deletion.
               </p>

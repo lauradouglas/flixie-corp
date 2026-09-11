@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.flixie.app",
+      "sha256_cert_fingerprints": [
+        "71:D8:A2:A5:A0:ED:E1:E5:44:94:F0:EE:91:7C:DB:2A:23:ED:43:DF:4A:E8:3F:68:CF:EA:23:7A:B6:5A:97:D5"
+      ]
+    }
+  }
+]

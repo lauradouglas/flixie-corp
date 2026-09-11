@@ -36,7 +36,7 @@ export default function PrivacyView() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
               <div className="bg-bg-card border border-border-custom p-4 rounded-xl space-y-2">
-                <h4 className="font-bold text-white text-xs uppercase tracking-wider">Account and profile information</h4>
+                <h3 className="font-bold text-white text-xs uppercase tracking-wider">Account and profile information</h3>
                 <ul className="list-disc pl-4 space-y-1 text-xs text-text-secondary">
                   <li><strong>Account details:</strong> Your name, email address, username, selected country, account identifiers, and authentication status.</li>
                   <li><strong>Profile details:</strong> Your avatar, biography, profile badges, favourite movies, shows, people, genres, and watch providers.</li>
@@ -45,7 +45,7 @@ export default function PrivacyView() {
               </div>
 
               <div className="bg-bg-card border border-border-custom p-4 rounded-xl space-y-2">
-                <h4 className="font-bold text-white text-xs uppercase tracking-wider">Activity and content</h4>
+                <h3 className="font-bold text-white text-xs uppercase tracking-wider">Activity and content</h3>
                 <ul className="list-disc pl-4 space-y-1 text-xs text-text-secondary">
                   <li><strong>Movie and TV activity:</strong> Watchlists, viewing history and progress, ratings, reviews, recommendations, favourites, custom lists, and list contributions.</li>
                   <li><strong>Social activity:</strong> Friends, groups, collaborative lists, watch requests, responses, group activity, chat messages, and watch-request messages.</li>
