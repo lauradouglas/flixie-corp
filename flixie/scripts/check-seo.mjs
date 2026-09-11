@@ -5,6 +5,9 @@ import { pages, site, isIndexable } from '../.ssr/entry-server.js';
 const config = JSON.parse(await readFile('dist/staticwebapp.config.json', 'utf8'));
 assert.equal(config.navigationFallback, undefined, 'Unknown paths must not become the homepage');
 assert.equal(config.responseOverrides['404'].rewrite, '/404.html');
+assert.equal(config.trailingSlash, 'never');
+const normalizedRoutes = config.routes.map(rule => rule.route.replace(/\/+$/, '') || '/');
+assert.equal(new Set(normalizedRoutes).size, normalizedRoutes.length, 'Azure route rules must be unique after trailing-slash normalization');
 const sitemap = await readFile('dist/sitemap.xml', 'utf8');
 const listed = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(match => match[1]);
 assert.deepEqual(listed, Object.keys(pages).filter(isIndexable).map(key => site.origin + pages[key].path));
@@ -51,7 +54,7 @@ for (const [key, page] of Object.entries(pages)) {
   if (key !== 'home') {
     const rule = config.routes.find(route => route.route === page.path);
     assert.equal(rule.rewrite, `/${file}`);
-    assert.equal(config.routes.find(route => route.route === page.path + '/').statusCode, 301);
+    assert.ok(!config.routes.some(route => route.route === page.path + '/'), 'Use trailingSlash instead of duplicate route aliases');
   }
   for (const match of html.matchAll(/(?:src|href)="(\/assets\/[^"?#]+)"/g)) await access(`dist${match[1]}`);
   const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(match => match[1]);

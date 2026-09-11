@@ -11,7 +11,7 @@ for (const [key, page] of Object.entries(pages)) {
   if (html.includes('<!--page-head-->') || !html.includes('data-prerendered')) throw new Error(`Rendering failed for ${key}`);
   await writeFile(`dist/${file}`, html);
   if (key === 'home') continue;
-  routes.push({ route: `${page.path}/`, redirect: page.path, statusCode: 301 });
+  // Azure treats trailing-slash variants as the same route; trailingSlash handles redirects.
   if (key !== 'notFound') routes.push({ route: `/${file}`, redirect: page.path, statusCode: 301 });
   routes.push({ route: page.path, rewrite: `/${file}`, ...(isIndexable(key) ? {} : { headers: { 'X-Robots-Tag': 'noindex' } }), ...(key === 'notFound' ? { statusCode: 404 } : {}) });
 }

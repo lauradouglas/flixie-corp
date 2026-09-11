@@ -1,5 +1,12 @@
 # SEO changelog
 
+## 2026-09-11 — Azure deployment fix
+
+- Removed separately declared trailing-slash routes from `flixie/scripts/prerender.mjs`: Azure rejected `/features/` and `/features` as duplicate rules.
+- Set `trailingSlash: "never"` in `flixie/public/staticwebapp.config.json`, using Azure’s native redirect setting.
+- Updated preview handling and regression checks for normalized route uniqueness, public-page slash redirects and synthetic invitation query preservation.
+- TypeScript, production build, SEO and local HTTP checks passed. Azure deployment must be retried with this new commit; local preview is not Azure validation.
+
 ## 2026-09-11 - Follow-up
 
 - Updated homepage title and description to explicitly explain movie tracking and social discovery (`flixie/src/site.ts`).

@@ -12,6 +12,10 @@ export async function createPreviewServer() {
     try {
       const url = new URL(request.url, 'http://localhost');
       const pathname = decodeURIComponent(url.pathname);
+      if (config.trailingSlash === 'never' && pathname.length > 1 && pathname.endsWith('/')) {
+        response.writeHead(301, { Location: url.pathname.replace(/\/+$/, '') + url.search });
+        return response.end();
+      }
       const route = config.routes.find(rule => rule.route === pathname);
       if (route?.redirect) {
         response.writeHead(route.statusCode || 301, { Location: route.redirect + url.search });

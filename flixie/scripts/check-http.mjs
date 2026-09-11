@@ -9,6 +9,11 @@ try {
     assert.equal(response.status, 200, path);
     assert.match(await response.text(), /<h1\b/);
   }
+  for (const path of ['/features', '/faqs', '/about', '/privacy', '/contact']) {
+    const response = await fetch(base + path + '/', { redirect: 'manual' });
+    assert.equal(response.status, 301);
+    assert.equal(response.headers.get('location'), path);
+  }
   for (const path of ['/not-a-real-page', '/missing.js', '/404']) {
     const response = await fetch(base + path);
     assert.equal(response.status, 404, path);
