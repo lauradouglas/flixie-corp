@@ -21,7 +21,7 @@ export default function PrivacyView() {
             Privacy Policy
           </h1>
           <p className="text-text-muted text-xs font-mono">
-            Last Updated: July 26, 2026
+            Last Updated: September 17, 2026
           </p>
         </div>
 
@@ -68,13 +68,13 @@ export default function PrivacyView() {
           <section className="space-y-3">
             <h2 className="font-display font-bold text-base sm:text-lg text-white">3. Analytics</h2>
             <p>
-              If you choose to allow analytics, Flixie uses Google Analytics for Firebase to understand how the app is used and improve its features and reliability. This may collect app interactions, session information, device and operating-system information, an anonymous app-instance identifier, and approximate location derived from a masked IP address.
+              If you choose to allow analytics, Flixie uses Google Analytics for Firebase to understand how the app is used and improve its features and reliability. This may collect app interactions, session information, device and operating-system information, an app-instance identifier, and approximate location derived from a masked IP address. The app-instance identifier lets Firebase associate events from this app installation.
             </p>
             <p>
               Flixie does not send Firebase Analytics your name, email address, username, reviews, messages, watch history, or the titles of movies and television programmes you interact with. We do not use Firebase Analytics for advertising or cross-app tracking, and we do not link analytics data to your Flixie account.
             </p>
             <p>
-              Analytics is disabled unless you choose to allow it. You can change your choice at any time under Settings → Share anonymous analytics. Data already processed may remain in aggregated reports in accordance with Google’s retention and deletion practices.
+              Analytics is disabled unless you choose to allow it. You can change your choice at any time under Settings → Share usage analytics. Data already processed may remain in aggregated reports in accordance with Google’s retention and deletion practices.
             </p>
           </section>
 
