@@ -20,6 +20,9 @@ export default function PrivacyView() {
           <h1 className="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
             Privacy Policy
           </h1>
+          {/* Release reminder: publish the community policy additions alongside the
+              corresponding deployed features and set Last Updated to the publication
+              date. Review Apple App Privacy answers separately in App Store Connect. */}
           <p className="text-text-muted text-xs font-mono">
             Last Updated: September 17, 2026
           </p>
@@ -49,6 +52,7 @@ export default function PrivacyView() {
                 <ul className="list-disc pl-4 space-y-1 text-xs text-text-secondary">
                   <li><strong>Movie and TV activity:</strong> Watchlists, viewing history and progress, ratings, reviews, recommendations, favourites, custom lists, and list contributions.</li>
                   <li><strong>Social activity:</strong> Friends, groups, collaborative lists, watch requests, responses, group activity, chat messages, and watch-request messages.</li>
+                  <li><strong>Community information:</strong> We store your community memberships, discussions, replies, mentions, reactions, follows, saved posts, and community sharing and notification preferences to provide Flixie’s community features. Saved posts and hidden or muted content preferences are personal controls and are not published as posts.</li>
                   <li><strong>Safety and support:</strong> Reports, blocked-user records, moderation decisions, and information you include in support communications.</li>
                 </ul>
               </div>
@@ -59,6 +63,9 @@ export default function PrivacyView() {
             <h2 className="font-display font-bold text-base sm:text-lg text-white">2. Notifications and Technical Information</h2>
             <p>
               If you enable notifications, Flixie stores a Firebase Cloud Messaging push token associated with your account so it can deliver friend, group, list, and watch-request notifications. This token is not used for advertising or cross-app tracking.
+            </p>
+            <p>
+              Community activity, including replies, reactions and mentions, may generate in-app or push notifications according to your preferences. Removing content cannot recall notifications already delivered to another person’s device.
             </p>
             <p>
               Our hosting and authentication providers may process limited technical information, such as request timestamps, IP addresses, and security or error logs, as necessary to operate, secure, and troubleshoot their services. Flixie does not use advertising trackers or sell personal information.
@@ -85,6 +92,7 @@ export default function PrivacyView() {
               <li>Save your movie and television activity, preferences, lists, and viewing progress.</li>
               <li>Provide recommendations and show relevant activity from friends and groups.</li>
               <li>Enable friends, groups, collaborative lists, chat, and watch requests.</li>
+              <li>Provide community discussions and public sharing, personalise community discovery, and suggest people with similar interests using information you have chosen to make available through community profile settings.</li>
               <li>Deliver notifications you have allowed.</li>
               <li>Investigate reports, enforce safety rules, prevent abuse, and respond to support requests.</li>
             </ul>
@@ -97,6 +105,21 @@ export default function PrivacyView() {
             </p>
             <p>
               Lists can be private, friends-only, or public. Private lists are visible only to their members, friends-only lists are visible to eligible friends, and public lists may be visible to anyone viewing a profile. Messages and group content are visible to the relevant conversation or group participants. Reviews may be visible to other users, with spoiler content hidden until they choose to reveal it.
+            </p>
+            <p>
+              <strong>Around Flixie sharing:</strong> If you enable “Share on Around Flixie”, your existing and future movie and television reviews, including their ratings, and eligible public personal lists can appear to other Flixie users beyond your friends. Shared reviews may also appear in relevant communities you join. Your watch history, watchlists and watch plans are not included in these public feeds.
+            </p>
+            <p>
+              You can change this setting at any time. Turning it off stops your reviews and eligible lists appearing through Around Flixie. It does not change their visibility elsewhere under existing profile, list or Friends sharing rules.
+            </p>
+            <p>
+              <strong>Discussions and public replies:</strong> Discussions and replies you publish in communities or on public posts can be seen by eligible Flixie users outside your friends. These are separate from the Around Flixie review-sharing setting. Turning that setting off does not delete discussions or public replies; you can delete them individually using their content menu.
+            </p>
+            <p>
+              Leaving a community does not permanently delete your contributions. Content whose visibility depends on your membership may become visible again if you rejoin.
+            </p>
+            <p>
+              <strong>Community identity:</strong> Public contributions display your username, avatar and badges. Separate community profile settings control additional information, such as your biography, favourites and favourite genres. Favourites you make available may be used to suggest people with similar taste.
             </p>
           </section>
 
@@ -133,6 +156,12 @@ export default function PrivacyView() {
               Account deletion removes your profile, login, email address, username, avatars, favourites, ratings, reviews, lists, watch activity, friendships, group memberships, messages, watch requests, notifications, and other associated account data from Flixie’s active systems. Limited redacted safety-report information may be retained where necessary to investigate abuse, prevent repeated misuse, comply with legal obligations, or establish or defend legal claims. Temporary provider backups and operational logs may remain until they expire under the relevant provider’s normal retention cycle.
             </p>
             <p>
+              Account deletion also removes community memberships, discussions, replies and other account-linked community records from Flixie’s active systems, subject to the limited safety-related retention described in this policy.
+            </p>
+            <p>
+              Authorised moderators may review reported content and relevant report information, remove content that breaches our rules, and restrict accounts. We retain limited moderation records, including the action taken, its reason and relevant identifiers, where necessary to investigate abuse, prevent repeated misuse and maintain accountability.
+            </p>
+            <p>
               If you cannot access the app, email <a href="mailto:flixieadmin@gmail.com?subject=Flixie%20account%20deletion%20request" className="text-flixie-purple hover:text-flixie-light underline underline-offset-2">flixieadmin@gmail.com</a> from your registered email address and include your Flixie username. Never send your password. We may ask you to verify account ownership.
             </p>
           </section>
@@ -150,6 +179,9 @@ export default function PrivacyView() {
             </ul>
             <p>
               You can edit profile information in the app, control list visibility, manage blocked users, disable notifications in your device settings, or contact us about another privacy request.
+            </p>
+            <p>
+              You can manage Around Flixie sharing, community profile visibility and community notification preferences in the app. You can also delete your discussions and replies, leave communities, and report or block other users. Disabling sharing, leaving a community and deleting content are separate actions with the effects described above.
             </p>
           </section>
 
