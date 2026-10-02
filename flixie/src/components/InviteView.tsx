@@ -103,7 +103,7 @@ export default function InviteView() {
                 className="w-full inline-flex items-center justify-center gap-3 rounded-2xl bg-flixie-purple hover:bg-flixie-light px-5 py-4 text-white font-bold transition-colors"
               >
                 <Smartphone className="h-5 w-5" />
-                Install the iOS beta with TestFlight
+                {site.iosLabel}
               </a>
 
               <div className="flex items-start gap-3 text-left rounded-2xl border border-border-custom p-4">

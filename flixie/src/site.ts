@@ -2,11 +2,11 @@ export const site = {
   origin: 'https://www.flixie.co.uk',
   name: 'Flixie',
   supportEmail: 'flixieadmin@gmail.com',
-  iosUrl: 'https://testflight.apple.com/join/RRrZjJw7',
+  iosUrl: 'https://apps.apple.com/app/id6779375028',
   androidUrl: 'https://play.google.com/store/apps/details?id=com.flixie.app',
-  iosLabel: 'Join the iOS beta',
+  iosLabel: 'Download on the App Store',
   androidLabel: 'View on Google Play',
-  availability: 'iOS is available through TestFlight. Android access may require an approved test account. Contact us if you need help getting access.',
+  availability: 'iOS is available on the App Store. Android access may require an approved test account. Contact us if you need help getting access.',
 };
 
 export const pages = {
