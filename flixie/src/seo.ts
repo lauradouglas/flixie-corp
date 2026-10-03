@@ -8,7 +8,7 @@ export function renderHead(page: PageId) {
   const graph: Record<string, unknown>[] = [
     { '@type': 'Organization', '@id': site.origin + '/#organization', name: site.name, url: site.origin + '/', logo: site.origin + '/flixie-icon.png' },
     { '@type': 'WebSite', '@id': site.origin + '/#website', name: site.name, url: site.origin + '/', inLanguage: 'en-GB', publisher: { '@id': site.origin + '/#organization' } },
-    { '@type': 'SoftwareApplication', '@id': site.origin + '/#app', name: site.name, url: site.origin + '/', applicationCategory: 'EntertainmentApplication', operatingSystem: 'iOS, Android', description: 'Discover films through friends, save a watchlist, rate movies and make watch plans.', installUrl: [site.iosUrl, site.androidUrl] },
+    { '@type': 'SoftwareApplication', '@id': site.origin + '/#app', name: site.name, url: site.origin + '/', applicationCategory: 'EntertainmentApplication', operatingSystem: 'iOS, Android', description: 'Discover films through friends and genre communities, save a watchlist, rate movies and make watch plans.', installUrl: [site.iosUrl, site.androidUrl] },
     { '@type': 'WebPage', '@id': url + '#webpage', url, name: metadata.title, description: metadata.description, isPartOf: { '@id': site.origin + '/#website' }, about: { '@id': site.origin + '/#app' } },
   ];
   if (page !== 'home') graph.push({ '@type': 'BreadcrumbList', itemListElement: [

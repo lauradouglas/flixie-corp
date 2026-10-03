@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { site } from '../site';
-import { Check, Clapperboard, Copy, Smartphone, Users } from 'lucide-react';
+import { Check, Copy, Smartphone, Users } from 'lucide-react';
 
 type InviteDetails = {
   code: string;
@@ -106,13 +106,13 @@ export default function InviteView() {
                 {site.iosLabel}
               </a>
 
-              <div className="flex items-start gap-3 text-left rounded-2xl border border-border-custom p-4">
-                <Clapperboard className="h-5 w-5 text-flixie-teal shrink-0 mt-0.5" />
-                <p className="text-xs leading-relaxed text-text-muted">
-                  Android is currently a closed test and requires an approved
-                  Google account. Ask your inviter if you need Android access.
-                </p>
-              </div>
+              <a
+                href={site.androidUrl}
+                className="w-full inline-flex items-center justify-center gap-3 rounded-2xl border border-border-custom hover:bg-bg-elevated px-5 py-4 text-white font-bold transition-colors"
+              >
+                <Smartphone className="h-5 w-5" />
+                {site.androidLabel}
+              </a>
             </>
           )}
         </div>

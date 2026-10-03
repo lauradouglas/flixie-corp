@@ -148,6 +148,13 @@ export default function HomeView() {
       colorClass: 'text-flixie-purple bg-flixie-purple/15'
     },
     {
+      id: 'communities',
+      title: 'Find Your Film Community',
+      description: 'Join communities for the genres you love. Discover shared reviews, start discussions and swap recommendations with other film and TV fans.',
+      iconName: 'MessageCircle',
+      colorClass: 'text-flixie-teal bg-flixie-teal/10'
+    },
+    {
       id: 'recommend',
       title: 'Personalised Recommendations',
       description: 'Explore personalised recommendations alongside suggestions from friends.',
@@ -159,6 +166,7 @@ export default function HomeView() {
   // Helper to render lucide icon dynamically
   const renderIcon = (name: string) => {
     switch (name) {
+      case 'MessageCircle': return <MessageCircle className="h-6 w-6" />;
       case 'Tv': return <Tv className="h-6 w-6" />;
       case 'Bookmark': return <Bookmark className="h-6 w-6" />;
       case 'CheckCircle': return <CheckCircle className="h-6 w-6" />;
@@ -215,7 +223,7 @@ export default function HomeView() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-text-secondary text-base sm:text-lg lg:text-xl max-w-xl mx-auto lg:mx-0 leading-relaxed"
             >
-              Flixie helps you discover films through the people you know. See what friends recommend, keep a watchlist, rate what you’ve watched and make plans for your next movie night-all in one app.
+              Discover films with friends and communities who share your taste. Swap recommendations, keep a watchlist, rate what you’ve watched and plan your next movie night, all in Flixie.
             </motion.p>
 
             {/* Hero CTAs */}

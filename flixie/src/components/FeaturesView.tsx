@@ -39,7 +39,7 @@ export default function FeaturesView() {
           </span>
         </h1>
         <p className="text-text-secondary text-base sm:text-lg max-w-2xl mx-auto mt-4 leading-relaxed">
-          Explore movie recommendations, watchlists, ratings and plans for your next film with friends. The examples below illustrate the app using fictional films and sample activity.
+          Explore genre communities, movie recommendations, watchlists, ratings and plans for your next film with friends. The examples below illustrate the app using fictional films and sample activity.
         </p>
       </section>
 
@@ -420,6 +420,20 @@ export default function FeaturesView() {
                 Our recommendation algorithms run strictly on client devices or encrypted secure servers. We never sell your data or movie preferences.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="communities" aria-labelledby="communities-heading" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 md:pt-36">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 border-t border-border-custom pt-12">
+          <div className="space-y-5">
+            <h2 id="communities-heading" className="font-display font-extrabold text-2xl sm:text-3xl text-white tracking-tight">Find your people in Communities</h2>
+            <p className="text-text-secondary text-base leading-relaxed">From horror to romance, join communities for the film and TV genres you love. Discover shared reviews, swap recommendations and keep the conversation going beyond the credits.</p>
+            <a href="/faqs#faq-group-communities" className="inline-block py-2 text-flixie-light underline">Learn how communities work</a>
+          </div>
+          <div className="space-y-7">
+            <div className="space-y-2"><h3 className="font-display text-lg font-bold text-white">Start a conversation</h3><p className="text-text-secondary leading-relaxed">Post a discussion, reply to other fans and react to their contributions. Save posts you want to revisit.</p></div>
+            <div className="space-y-2"><h3 className="font-display text-lg font-bold text-white">Choose what you share</h3><p className="text-text-secondary leading-relaxed">Joining a community does not switch on public review sharing. Around Flixie sharing and community profile settings let you choose what to make visible. Your watch history, watchlists and watch plans stay out of public feeds.</p></div>
           </div>
         </div>
       </section>

@@ -40,6 +40,27 @@ export default function FaqView() {
       ]
     },
     {
+      id: 'communities',
+      name: 'Communities',
+      items: [
+        {
+          id: 'join-communities',
+          question: 'How do I find and join communities?',
+          answer: 'Open Social and choose Communities to browse communities for your favourite film and TV genres. Join the ones that interest you to discover shared reviews and take part in discussions. You can also choose communities during account setup, or skip that step and join later.'
+        },
+        {
+          id: 'community-sharing',
+          question: 'Does joining a community make my activity public?',
+          answer: 'Joining does not enable public review sharing. If you turn on Share on Around Flixie, your reviews and eligible public lists can appear beyond your friends, and shared reviews may appear in relevant communities you join. Discussions and replies you publish are visible to eligible users outside your friends. Your watch history, watchlists and watch plans are not included in public feeds.'
+        },
+        {
+          id: 'community-controls',
+          question: 'How can I manage my community experience?',
+          answer: 'Manage community notifications and profile visibility in the app, save posts for later, and report or block users when needed. You can delete your discussions and replies individually. Leaving a community does not permanently delete your contributions, and turning off Around Flixie sharing does not delete discussions or public replies.'
+        }
+      ]
+    },
+    {
       id: 'lists',
       name: 'Watchlist, Watched & Favourites',
       items: [
@@ -163,7 +184,7 @@ export default function FaqView() {
             Frequently Asked Questions
           </h1>
           <p className="text-text-secondary text-base">
-            Find quick, comprehensive answers regarding watchlists, social requests, account setup, and data sources below.
+            Find quick, comprehensive answers about communities, watchlists, social requests, account setup, and data sources below.
           </p>
         </div>
 
