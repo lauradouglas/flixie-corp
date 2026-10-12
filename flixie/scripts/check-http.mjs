@@ -54,6 +54,8 @@ try {
     assert.equal(shared.headers.get('x-robots-tag'), 'noindex');
     const body = await shared.text();
     assert.match(body, /Need the app/);
+    assert.match(body, /apple-itunes-app/);
+    assert.doesNotMatch(body, /Opening the App Store|Stay on this page/);
     assert.match(body, /apps.apple.com/);
     assert.match(body, /play.google.com/);
   }

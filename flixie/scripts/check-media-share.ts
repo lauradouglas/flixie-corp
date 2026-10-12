@@ -1,5 +1,6 @@
+import { readFile, readdir } from 'node:fs/promises';
 import assert from 'node:assert/strict';
-import { sharedMediaAppLink, sharedMediaStore } from '../src/mediaShare';
+import { sharedMediaAppLink, sharedMediaStore, sharedMediaOpenLink } from '../src/mediaShare';
 import { pageFromPath } from '../src/site';
 for (const [path, expected] of [['/movies/348', 'flixie:///movies/348?source=shared_link'], ['/shows/1399', 'flixie:///shows/1399?source=shared_link']]) {
   assert.equal(sharedMediaAppLink(path), expected);
@@ -17,4 +18,18 @@ assert.equal(sharedMediaStore('Mozilla Macintosh', 'MacIntel', 5), 'ios');
 assert.equal(sharedMediaStore('Mozilla Android', 'Linux', 5), 'android');
 assert.equal(sharedMediaStore('Mozilla Macintosh', 'MacIntel', 0), null);
 assert.equal(sharedMediaStore('Mozilla Windows', 'Win32', 0), null);
-console.log('Device-aware automatic store targets pass, including iPad desktop mode.');
+console.log('Device selection checks pass, including iPad desktop mode.');
+
+assert.equal(sharedMediaOpenLink('/movies/348', 'ios'), 'flixie:///movies/348?source=shared_link');
+assert.equal(sharedMediaOpenLink('/shows/1399', 'ios'), 'flixie:///shows/1399?source=shared_link');
+const android = sharedMediaOpenLink('/shows/1399', 'android')!;
+assert.ok(android.startsWith('intent:///shows/1399?source=shared_link#Intent;scheme=flixie;package=com.flixie.app;'));
+assert.ok(android.includes('S.browser_fallback_url=' + encodeURIComponent('https://play.google.com/store/apps/details?id=com.flixie.app')));
+assert.equal(sharedMediaOpenLink('/shows/invalid', 'android'), null);
+console.log('App-first iOS links and Android browser-handled store fallback pass.');
+
+const chunk = (await readdir('dist/assets')).find(name => /^MediaShareView-.*\.js$/.test(name));
+assert.ok(chunk, 'Built shared-title browser code exists');
+const browserCode = await readFile(`dist/assets/${chunk}`, 'utf8');
+assert.doesNotMatch(browserCode, /setTimeout|location\.replace/, 'Landing page must not infer an absent app from a visible browser and force a store redirect');
+console.log('Published browser bundle has no timed store redirect.');

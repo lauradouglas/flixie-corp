@@ -20,6 +20,7 @@ export function renderHead(page: PageId) {
     `<meta name="description" content="${escapeHtml(metadata.description)}">`,
     `<meta name="robots" content="${isIndexable(page) ? 'index, follow' : 'noindex'}">`,
   ];
+  if (page === 'mediaShare') tags.push('<meta name="apple-itunes-app" content="app-id=6779375028">');
   // Private invitations and error responses have no public canonical/entity graph.
   if (isIndexable(page)) tags.push(`<link rel="canonical" href="${url}">`);
   for (const [property, value] of Object.entries({ 'og:type': 'website', 'og:site_name': site.name, 'og:locale': 'en_GB', 'og:title': metadata.title, 'og:description': metadata.description, 'og:url': url, 'og:image': image, 'og:image:width': '1200', 'og:image:height': '630', 'og:image:alt': 'Flixie - find your next film with friends' })) tags.push(`<meta property="${property}" content="${escapeHtml(value)}">`);

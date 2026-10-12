@@ -4,6 +4,8 @@ import { render, renderHead, pages, isIndexable, site } from '../.ssr/entry-serv
 const template = await readFile('dist/index.html', 'utf8');
 const year = new Date().getFullYear();
 const config = JSON.parse(await readFile('public/staticwebapp.config.json', 'utf8'));
+// Keep the public extensionless Apple URL, serving JSON through its typed target.
+await writeFile('dist/.well-known/apple-app-site-association.json', await readFile('public/.well-known/apple-app-site-association'));
 const routes = [...(config.routes || []), { route: '/index.html', redirect: '/', statusCode: 301 }];
 for (const [key, page] of Object.entries(pages)) {
   const file = key === 'home' ? 'index.html' : `${page.path.slice(1)}.html`;

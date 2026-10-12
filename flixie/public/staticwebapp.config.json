@@ -19,7 +19,8 @@
       "route": "/.well-known/apple-app-site-association",
       "headers": {
         "Content-Type": "application/json"
-      }
+      },
+      "rewrite": "/.well-known/apple-app-site-association.json"
     },
     {
       "route": "/movies/*",

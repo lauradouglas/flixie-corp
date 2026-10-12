@@ -13,3 +13,14 @@ export function sharedMediaStore(userAgent: string, platform: string, maxTouchPo
   if (/iPhone|iPad|iPod/i.test(userAgent) || (platform === 'MacIntel' && maxTouchPoints > 1)) return 'ios';
   return null;
 }
+
+// Android Chrome resolves the installed app; its fallback is handled by the browser.
+// iOS receives an explicit app-opening action, never a guessed store timeout.
+export function sharedMediaOpenLink(pathname: string, device: 'ios' | 'android' | null): string | null {
+  const appLink = sharedMediaAppLink(pathname);
+  if (!appLink) return null;
+  if (device !== 'android') return appLink;
+  return appLink.replace('flixie:', 'intent:') +
+    '#Intent;scheme=flixie;package=com.flixie.app;S.browser_fallback_url=' +
+    encodeURIComponent('https://play.google.com/store/apps/details?id=com.flixie.app') + ';end';
+}
