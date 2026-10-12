@@ -20,6 +20,20 @@
       "headers": {
         "Content-Type": "application/json"
       }
+    },
+    {
+      "route": "/movies/*",
+      "rewrite": "/media-share.html",
+      "headers": {
+        "X-Robots-Tag": "noindex"
+      }
+    },
+    {
+      "route": "/shows/*",
+      "rewrite": "/media-share.html",
+      "headers": {
+        "X-Robots-Tag": "noindex"
+      }
     }
   ]
 }

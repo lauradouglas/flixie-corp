@@ -2,11 +2,21 @@
   "applinks": {
     "details": [
       {
-        "appIDs": ["4T69VPQXW6.com.flixie.flixieApp"],
+        "appIDs": [
+          "4T69VPQXW6.com.flixie.flixieApp"
+        ],
         "components": [
           {
             "/": "/invite",
             "comment": "Open Flixie invitations in the installed app."
+          },
+          {
+            "/": "/movies/*",
+            "comment": "Open shared movies in Flixie."
+          },
+          {
+            "/": "/shows/*",
+            "comment": "Open shared shows in Flixie."
           }
         ]
       }

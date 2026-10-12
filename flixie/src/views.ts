@@ -5,6 +5,7 @@ const views = {
   faq: () => import('./components/FaqView'),
   privacy: () => import('./components/PrivacyView'),
   contact: () => import('./components/ContactView'),
+  mediaShare: () => import('./components/MediaShareView'),
   invite: () => import('./components/InviteView'),
   about: () => import('./components/AboutView'),
   notFound: () => import('./components/NotFoundView'),

@@ -3,7 +3,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Clapperboard } from 'lucide-react';
 import { PageId } from '../types';
 
 import { pages } from '../site';
@@ -30,11 +29,8 @@ export default function Footer({ year }: { year: number }) {
               className="flex items-center gap-2 group cursor-pointer focus:outline-none focus:ring-2 focus:ring-flixie-purple rounded-lg px-2 py-1"
               id="footer-logo-button"
             >
-              <div className="p-2 bg-gradient-to-tr from-flixie-deep to-flixie-purple rounded-xl shadow-lg shadow-flixie-purple/20">
-                <Clapperboard className="h-5 w-5 text-white" />
-              </div>
-              <span className="font-display font-bold text-2xl tracking-tight text-white group-hover:text-flixie-purple transition-colors">
-                Flixie
+              <span className="font-display font-bold text-2xl tracking-tight" aria-label="Flixie">
+                <span className="text-white">flix</span><span className="text-flixie-purple">ie</span>
               </span>
             </a>
 

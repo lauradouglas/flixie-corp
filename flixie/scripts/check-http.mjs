@@ -32,7 +32,9 @@ try {
   const appleData = await apple.json();
   assert.deepEqual(appleData.applinks.details, [{
     appIDs: ['4T69VPQXW6.com.flixie.flixieApp'],
-    components: [{ '/': '/invite', comment: 'Open Flixie invitations in the installed app.' }],
+    components: [{ '/': '/invite', comment: 'Open Flixie invitations in the installed app.' },
+      { '/': '/movies/*', comment: 'Open shared movies in Flixie.' },
+      { '/': '/shows/*', comment: 'Open shared shows in Flixie.' }],
   }]);
   const association = await fetch(base + '/.well-known/assetlinks.json', { redirect: 'manual' });
   assert.equal(association.status, 200);
@@ -46,6 +48,15 @@ try {
       sha256_cert_fingerprints: ['71:D8:A2:A5:A0:ED:E1:E5:44:94:F0:EE:91:7C:DB:2A:23:ED:43:DF:4A:E8:3F:68:CF:EA:23:7A:B6:5A:97:D5'],
     },
   }]);
+  for (const path of ['/movies/348', '/shows/1399']) {
+    const shared = await fetch(base + path);
+    assert.equal(shared.status, 200);
+    assert.equal(shared.headers.get('x-robots-tag'), 'noindex');
+    const body = await shared.text();
+    assert.match(body, /Need the app/);
+    assert.match(body, /apps.apple.com/);
+    assert.match(body, /play.google.com/);
+  }
   const invite = await fetch(base + '/invite?code=TEST_ONLY');
   assert.equal(invite.status, 200);
   assert.equal(invite.headers.get('x-robots-tag'), 'noindex');

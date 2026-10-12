@@ -16,7 +16,7 @@ export async function createPreviewServer() {
         response.writeHead(301, { Location: url.pathname.replace(/\/+$/, '') + url.search });
         return response.end();
       }
-      const route = config.routes.find(rule => rule.route === pathname);
+      const route = config.routes.find(rule => rule.route === pathname || (rule.route.endsWith('/*') && pathname.startsWith(rule.route.slice(0, -1))));
       if (route?.redirect) {
         response.writeHead(route.statusCode || 301, { Location: route.redirect + url.search });
         return response.end();
