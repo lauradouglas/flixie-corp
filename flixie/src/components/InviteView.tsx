@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 import { site } from '../site';
+import DownloadLinks from './DownloadLinks';
+import { watchInviteOpenLink } from '../watchInvite';
+import { sharedMediaStore } from '../mediaShare';
 import { Check, Copy, Smartphone, Users } from 'lucide-react';
 
 type InviteDetails = {
@@ -14,11 +17,20 @@ const apiBase =
 export default function InviteView() {
 
   const [invite, setInvite] = useState<InviteDetails | null>(null);
+  const [watchLink, setWatchLink] = useState<string | null>(null);
   const [invalid, setInvalid] = useState(false);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    const code = new URLSearchParams(window.location.search).get('code')?.trim() ?? '';
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('watch')) {
+      const device = sharedMediaStore(navigator.userAgent, navigator.platform, navigator.maxTouchPoints);
+      const link = watchInviteOpenLink(window.location.search, device);
+      setWatchLink(link);
+      setInvalid(link === null);
+      return;
+    }
+    const code = params.get('code')?.trim() ?? '';
     if (!code) {
       setInvalid(true);
       return;
@@ -55,6 +67,27 @@ export default function InviteView() {
               </h1>
               <p className="text-text-secondary text-sm leading-relaxed">
                 Ask your friend to share a fresh invite from Flixie.
+              </p>
+            </>
+          ) : watchLink ? (
+            <>
+              <h1 className="font-display font-extrabold text-2xl sm:text-3xl text-white">
+                Log your shared watch
+              </h1>
+              <p className="text-text-secondary leading-relaxed">
+                Someone you watched with has invited you to log your own watch on Flixie.
+                Choose your own date, rating and review in the app.
+              </p>
+              <a href={watchLink} className="w-full inline-flex min-h-12 items-center justify-center gap-3 rounded-2xl bg-flixie-purple hover:bg-flixie-light px-5 py-4 text-white font-bold transition-colors">
+                <Smartphone className="h-5 w-5" aria-hidden="true" />
+                Open in Flixie
+              </a>
+              <h2 className="font-display text-xl font-bold">Need the app?</h2>
+              <DownloadLinks />
+              <p className="text-text-secondary leading-relaxed">
+                After installing Flixie, reopen this invite. If you already have the app,
+                tap Open in Flixie above. The app checks whether the invite is still available
+                before you choose to log your watch.
               </p>
             </>
           ) : !invite ? (
