@@ -24,7 +24,7 @@ export default function PrivacyView() {
               corresponding deployed features and set Last Updated to the publication
               date. Review Apple App Privacy answers separately in App Store Connect. */}
           <p className="text-text-muted text-xs font-mono">
-            Last Updated: September 17, 2026
+            Last Updated: October 19, 2026
           </p>
         </div>
 
@@ -75,13 +75,16 @@ export default function PrivacyView() {
           <section className="space-y-3">
             <h2 className="font-display font-bold text-base sm:text-lg text-white">3. Analytics</h2>
             <p>
-              If you choose to allow analytics, Flixie uses Google Analytics for Firebase to understand how the app is used and improve its features and reliability. This may collect app interactions, session information, device and operating-system information, an app-instance identifier, and approximate location derived from a masked IP address. The app-instance identifier lets Firebase associate events from this app installation.
+              If you choose to allow analytics, Flixie uses Google Analytics for Firebase and PostHog to understand how the app is used and improve its features and reliability. This may collect app interactions, session information, device and operating-system information, an app-instance identifier, and approximate location derived from a masked IP address. Installation identifiers let the analytics providers associate events from this app installation.
             </p>
             <p>
-              Flixie does not send Firebase Analytics your name, email address, username, reviews, messages, watch history, or the titles of movies and television programmes you interact with. We do not use Firebase Analytics for advertising or cross-app tracking, and we do not link analytics data to your Flixie account.
+              Flixie does not send analytics providers your name, email address, username, reviews, messages, watch history, or the titles of movies and television programmes you interact with. We do not use analytics for advertising or cross-app tracking, and we do not link analytics data to your Flixie account.
             </p>
             <p>
-              Analytics is disabled unless you choose to allow it. You can change your choice at any time under Settings → Share usage analytics. Data already processed may remain in aggregated reports in accordance with Google’s retention and deletion practices.
+              Analytics is disabled unless you choose to allow it. You can change your choice at any time under Settings → Share usage analytics. Data already processed may remain in aggregated reports in accordance with the providers’ retention and deletion practices.
+            </p>
+            <p>
+              PostHog receives limited event types and screen names after consent. Session replay is disabled, and Flixie does not send PostHog your account identifier or create an identified person profile. Internal aggregate reports and event-type notifications are delivered to our private Slack analytics channel. These reports and notifications do not include your account identifiers, movie or programme titles, reviews, messages, or search text.
             </p>
           </section>
 
@@ -126,7 +129,7 @@ export default function PrivacyView() {
           <section className="space-y-3">
             <h2 className="font-display font-bold text-base sm:text-lg text-white">6. Third-Party Services</h2>
             <p>
-              Flixie uses Firebase Authentication, Firebase Cloud Messaging, Firebase Firestore and Storage, and cloud hosting providers to provide authentication, notifications, chat, image storage, and application services. These providers process only the information needed to perform those functions.
+              Flixie uses Firebase Authentication, Firebase Cloud Messaging, Firebase Firestore and Storage, and cloud hosting providers to provide authentication, notifications, chat, image storage, and application services. These providers process only the information needed to perform those functions. Google Analytics for Firebase and PostHog provide optional usage analytics, and Slack receives the internal analytics reports and notifications described above.
             </p>
             <p>
               Movie, television, cast, artwork, and watch-provider information is retrieved from The Movie Database (TMDB). TMDB’s watch-provider data is powered by JustWatch; Flixie does not integrate with JustWatch directly. Flixie may submit ratings to TMDB using anonymous guest sessions. External links open third-party services under their own privacy practices.
