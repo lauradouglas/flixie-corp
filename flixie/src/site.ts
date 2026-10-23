@@ -5,7 +5,7 @@ export const site = {
   iosUrl: 'https://apps.apple.com/app/id6779375028',
   androidUrl: 'https://play.google.com/store/apps/details?id=com.flixie.app',
   iosLabel: 'Download on the App Store',
-  androidLabel: 'View on Google Play',
+  androidLabel: 'Download on Play Store',
   availability: 'Download Flixie for iOS on the App Store or for Android on Google Play.',
 };
 
