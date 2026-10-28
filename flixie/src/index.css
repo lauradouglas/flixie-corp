@@ -213,3 +213,43 @@
 .feature-visual-detail img { display:block;width:100%;height:auto;border-radius:14px; }
 .feature-visual-detail .feature-detail-wide { width:100%;max-width:440px;background:#1d1c21;padding:22px;border-radius:18px; }
 @media(max-width:760px) { .feature-visual-detail { grid-template-columns:1fr;gap:28px;padding:40px 0; } .feature-app-shot { width:min(100%,300px); } .feature-app-shot-diary img { height:560px; } .feature-visual-detail .feature-detail-wide { padding:16px; } }
+
+/* A film diary and its people settle into one composition. Motion is finite;
+   content is visible without JavaScript and reduced-motion keeps colour feedback. */
+@keyframes flixie-phone-main {
+ from { opacity:.55; transform:translate(18px,26px) rotate(2deg); }
+ to { opacity:1; transform:translate(0,0) rotate(0); }
+}
+@keyframes flixie-phone-diary {
+ from { opacity:.55; transform:translate(-12px,34px) rotate(-3deg); }
+ to { opacity:1; transform:translate(0,0) rotate(0); }
+}
+@keyframes flixie-headline {
+ from { clip-path:inset(0 0 100% 0); }
+ to { clip-path:inset(0 0 0 0); }
+}
+.marketing-stores a,.feature-primary {
+ transition:background-color 180ms ease-out, transform 180ms ease-out;
+}
+.marketing-link svg,.marketing-hero-links svg,.marketing-explore a>svg,.feature-related a svg {
+ transition:transform 200ms cubic-bezier(.16,1,.3,1);
+}
+.marketing-explore a {
+ transition:border-color 200ms ease-out, background-color 200ms ease-out;
+}
+.marketing-explore a:is(:hover,:focus-visible) { border-color:var(--color-flixie-light); }
+.marketing-explore a:is(:hover,:focus-visible) strong { color:var(--color-flixie-light); }
+@media (prefers-reduced-motion: no-preference) {
+ html { scroll-behavior:smooth; }
+ .marketing-main-phone { animation:flixie-phone-main 760ms cubic-bezier(.16,1,.3,1) both; }
+ .marketing-secondary-phone { animation:flixie-phone-diary 760ms 100ms cubic-bezier(.16,1,.3,1) both; }
+ .marketing-hero h1 span { display:inline-block;animation:flixie-headline 650ms cubic-bezier(.16,1,.3,1) both; }
+ .feature-app-shot { animation:flixie-phone-main 650ms cubic-bezier(.16,1,.3,1) both; }
+ .marketing-stores a:active,.feature-primary:active { transform:scale(.98); }
+ .marketing-link:is(:hover,:focus-visible) svg,.marketing-hero-links a:is(:hover,:focus-visible) svg,
+ .feature-related a:is(:hover,:focus-visible) svg { transform:translateX(4px); }
+ .marketing-explore a:is(:hover,:focus-visible)>svg { transform:translate(3px,-3px); }
+ @media (hover:hover) and (pointer:fine) {
+  .marketing-stores a:hover,.feature-primary:hover { transform:translateY(-2px); }
+ }
+}
