@@ -38,8 +38,13 @@ export default function Footer({ year }: { year: number }) {
             <p className="text-text-secondary text-sm max-w-sm leading-relaxed">
               Keep a film diary, track TV episodes and find your next watch. Bring friends into the story when you want to.
             </p>
-
-
+            <a
+              href="https://www.instagram.com/flixie_co/"
+              className="inline-flex min-h-11 items-center gap-2 text-sm text-flixie-light hover:underline focus:outline-none focus:underline"
+            >
+              Follow us on Instagram <span aria-hidden="true">↗</span>
+            </a>
+            <p className="text-xs text-text-muted">@flixie_co · Films, TV and what we’re watching.</p>
           </div>
 
           <nav aria-label="Explore Flixie features" className="col-span-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-3 pb-6 border-b border-border-custom">
