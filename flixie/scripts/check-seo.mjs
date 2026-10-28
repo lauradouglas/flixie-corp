@@ -65,7 +65,7 @@ for (const [key, page] of Object.entries(pages)) {
     }
     assert.ok(!config.routes.some(route => route.route === page.path + '/'), 'Use trailingSlash instead of duplicate route aliases');
   }
-  for (const match of html.matchAll(/(?:src|href)="(\/assets\/[^"?#]+)"/g)) await access(`dist${match[1]}`);
+  for (const match of html.matchAll(/(?:src|href)="(\/(?:assets|images)\/[^"?#]+)"/g)) await access(`dist${match[1]}`);
   const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(match => match[1]);
   assert.equal(new Set(ids).size, ids.length, `${key}: duplicate element IDs`);
 }
@@ -73,6 +73,7 @@ for (const [path, html] of documents) {
   for (const [, href] of html.matchAll(/<a\b[^>]*href="([^"?]+)"/g)) {
     if (!href.startsWith('/') && !href.startsWith('#')) continue;
     const [targetPath, fragment] = href.split('#');
+    if (/^\/(?:images|assets)\//.test(targetPath)) { await access(`dist${targetPath}`); continue; }
     const target = documents.get(targetPath || path);
     assert.ok(target, `${path}: broken internal link ${href}`);
     if (fragment) assert.ok(target.includes(`id="${fragment}"`), `${path}: missing anchor ${href}`);

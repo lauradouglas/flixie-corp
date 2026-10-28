@@ -9,7 +9,7 @@
     "preview": "node scripts/preview.mjs",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit",
-    "check:seo": "node scripts/check-seo.mjs && node scripts/check-http.mjs && tsx scripts/check-media-share.ts && tsx scripts/check-watch-invite.ts"
+    "check:seo": "node scripts/check-seo.mjs && node scripts/check-http.mjs && tsx scripts/check-media-share.ts && tsx scripts/check-watch-invite.ts && node scripts/check-feature-pages.mjs"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

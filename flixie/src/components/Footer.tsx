@@ -7,6 +7,7 @@ import { PageId } from '../types';
 
 import { pages } from '../site';
 import DownloadLinks from './DownloadLinks';
+import { featureContent, featurePageIds } from '../featureContent';
 
 export default function Footer({ year }: { year: number }) {
   const quickLinks: { label: string; id: PageId }[] = [
@@ -35,12 +36,15 @@ export default function Footer({ year }: { year: number }) {
             </a>
 
             <p className="text-text-secondary text-sm max-w-sm leading-relaxed">
-              Discover films through friends, keep your watchlist and turn recommendations into plans for your next movie night.
+              Keep a film diary, track TV episodes and find your next watch. Bring friends into the story when you want to.
             </p>
 
 
           </div>
 
+          <nav aria-label="Explore Flixie features" className="col-span-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-3 pb-6 border-b border-border-custom">
+            {featurePageIds.map(key => <a className="text-sm text-text-secondary hover:text-flixie-light py-2" key={key} href={featureContent[key].path}>{featureContent[key].label}</a>)}
+          </nav>
           {/* Quick Links Column */}
           <div className="col-span-6 md:col-span-3">
             <h2 className="text-white font-display font-bold text-base mb-4 tracking-wide">Sitemap</h2>

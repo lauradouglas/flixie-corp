@@ -13,6 +13,12 @@ export default function FaqView() {
   
 
   const faqData: FaqCategory[] = [
+    { id: 'tracking', name: 'Film Diary & TV Tracking', items: [
+      { id: 'solo-diary', question: 'Can I use Flixie without friends?', answer: 'Yes. Keep your own film diary, track TV episodes, save a watchlist and explore recommendations before adding friends.' },
+      { id: 'movie-diary', question: 'What can I record in my film diary?', answer: 'Log a movie viewing with its date, rating out of 10 and diary note. You can mark cinema visits, record who you watched with and log separate rewatches.' },
+      { id: 'tv-progress', question: 'Can I track TV episodes and seasons?', answer: 'Yes. Track watched episodes and season progress for the TV shows you follow, so you can keep your place across different series.' },
+      { id: 'streaming', question: 'Can I watch films and TV episodes in Flixie?', answer: 'No. Flixie helps you discover, track and plan what to watch. Films and episodes are watched through external services or at the cinema. Separate subscriptions or purchases may be required.' }
+    ] },
     {
       id: 'get-started',
       name: 'Getting Started',
@@ -25,7 +31,7 @@ export default function FaqView() {
         {
           id: 'registration-required',
           question: 'Is registration required to use Flixie?',
-          answer: 'Yes. You must register and sign in to use Flixie, including browsing and searching for titles. Registration is free and gives you access to watchlists, watch history, ratings, reviews, friends, and social watch invitations.'
+          answer: 'You can explore Flixie before signing up. Create an account to save your watchlist, film diary, TV progress and ratings, or connect with friends and make Watch Plans.'
         },
         {
           id: 'data-source',
@@ -83,8 +89,9 @@ export default function FaqView() {
     },
     {
       id: 'friends',
-      name: 'Friends & Requests',
+      name: 'Friends & Watch Plans',
       items: [
+        { id: 'friends-movie', question: 'Can I see what my friends think of a movie?', answer: 'Yes. Movie pages show eligible friend activity, including ratings, whether they recommend the film and watchlist status. Friends keep their own scores and opinions; visibility depends on the app’s settings.' },
         {
           id: 'add-friend',
           question: 'How do I add a friend?',
@@ -93,12 +100,12 @@ export default function FaqView() {
         {
           id: 'invite-watch',
           question: 'How do I invite someone to watch a movie?',
-          answer: 'From any movie details page, tap the "Send Invitation" button, choose which friend or Film Circle you want to invite, specify a proposed date, time, and whether it’s virtual or in-person, and hit send. They will receive a pending request notification instantly.'
+          answer: 'Create a Watch Plan with a friend or group. Suggest films, vote on options and agree a date, time and location for a cinema trip or a night in. You can start with a date and add more details later.'
         },
         {
           id: 'see-requests',
           question: 'Where can I see my sent and received watch requests?',
-          answer: 'All your social activity is centralized in the "Invitations Center" tab under your Social menu. Here, you will see separate columns for received requests awaiting your confirmation, sent requests, and accepted/upcoming movie schedules.'
+          answer: 'Use Watch Plans in Flixie to find your invitations, responses and upcoming arrangements.'
         }
       ]
     },

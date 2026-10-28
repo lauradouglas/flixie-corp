@@ -31,3 +31,13 @@
 - Added Apple and Android website associations (`flixie/public/.well-known/`, `public/staticwebapp.config.json`).
 - Added production-preview/SEO/HTTP checks and wired verification into the existing deployment workflow (`flixie/scripts/`, `package.json`, `.github/workflows/build.yml`).
 - Recorded the audit and implementation details (`docs/seo/`). These changes remain local; no production deployment or field performance results are implied.
+
+
+## 28 October 2026 — Feature discovery and tracking
+
+Added seven prerendered feature pages, homepage diary/TV screenshots, linked feature overview, accurate FAQ copy and feature/schema/HTTP regressions. 16 documents / 13 sitemap URLs; local checks pass. See [implementation notes](seo/feature-pages-2026-10-28.md). Not deployed.
+
+
+## 28 October 2026 — Approved mockup applied
+
+Applied the approved social-first design/content, refined charcoal/lilac palette, Odyssey friend activity, hoodie Pip and screenshots across all nine feature pages. Added dedicated friends and community search pages; 18 prerendered documents / 15 sitemap URLs. Not deployed.

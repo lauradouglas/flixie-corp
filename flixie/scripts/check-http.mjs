@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { pages, isIndexable } from '../.ssr/entry-server.js';
 import { createPreviewServer } from './preview.mjs';
 const server = await createPreviewServer();
 await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
@@ -23,12 +24,12 @@ try {
     if (query) assert.equal(destination.searchParams.get('utm_source'), 'instagram');
   }
 
-  for (const path of ['/', '/features', '/faqs', '/about', '/privacy', '/contact']) {
+  for (const path of Object.keys(pages).filter(isIndexable).map(key => pages[key].path)) {
     const response = await fetch(base + path);
     assert.equal(response.status, 200, path);
     assert.match(await response.text(), /<h1\b/);
   }
-  for (const path of ['/features', '/faqs', '/about', '/privacy', '/contact']) {
+  for (const path of Object.keys(pages).filter(key => key !== 'home' && isIndexable(key)).map(key => pages[key].path)) {
     const response = await fetch(base + path + '/', { redirect: 'manual' });
     assert.equal(response.status, 301);
     assert.equal(response.headers.get('location'), path);

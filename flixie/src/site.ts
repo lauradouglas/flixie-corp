@@ -1,3 +1,4 @@
+import { featureContent } from './featureContent';
 export const site = {
   origin: 'https://www.flixie.co.uk',
   name: 'Flixie',
@@ -10,8 +11,17 @@ export const site = {
 };
 
 export const pages = {
-  home: { path: '/', title: 'Flixie: Movie Tracker & Social Movie App for Friends', description: 'Track movies, build your watchlist and discover what to watch with friends and genre communities. Share reviews and plan your next movie night.', label: 'Home' },
-  features: { path: '/features', title: 'Flixie Features: Communities, Watchlists & Movie Plans', description: 'Explore Flixie’s movie discovery features, from genre communities and friends’ recommendations to watchlists, ratings and watch plans.', label: 'Features' },
+  home: { path: '/', title: 'Flixie: Social Movie App, Film Diary & TV Tracker', description: 'Find films through friends, share recommendations and plan movie nights. Keep your own film diary, TV episode progress and watchlist in Flixie.', label: 'Home' },
+  features: { path: '/features', title: 'Flixie Features: Friends, Film Diary & TV Tracking', description: 'Explore Flixie’s film diary, episode and season tracking, watchlists, ratings, recommendations, watch-provider information and movie-night planning.', label: 'Features' },
+  diary: { path: featureContent.diary.path, title: featureContent.diary.title, description: featureContent.diary.description, label: featureContent.diary.label },
+  watchlist: { path: featureContent.watchlist.path, title: featureContent.watchlist.title, description: featureContent.watchlist.description, label: featureContent.watchlist.label },
+  tvTracker: { path: featureContent.tvTracker.path, title: featureContent.tvTracker.title, description: featureContent.tvTracker.description, label: featureContent.tvTracker.label },
+  planner: { path: featureContent.planner.path, title: featureContent.planner.title, description: featureContent.planner.description, label: featureContent.planner.label },
+  recommendations: { path: featureContent.recommendations.path, title: featureContent.recommendations.title, description: featureContent.recommendations.description, label: featureContent.recommendations.label },
+  reviews: { path: featureContent.reviews.path, title: featureContent.reviews.title, description: featureContent.reviews.description, label: featureContent.reviews.label },
+  whereToWatch: { path: featureContent.whereToWatch.path, title: featureContent.whereToWatch.title, description: featureContent.whereToWatch.description, label: featureContent.whereToWatch.label },
+  friends: { path: featureContent.friends.path, title: featureContent.friends.title, description: featureContent.friends.description, label: featureContent.friends.label },
+  communities: { path: featureContent.communities.path, title: featureContent.communities.title, description: featureContent.communities.description, label: featureContent.communities.label },
   faq: { path: '/faqs', title: 'Flixie FAQs: Movie Discovery, Accounts & Support', description: 'Find answers about Flixie watchlists, movie ratings, communities, friends, account settings, privacy and deleting your account.', label: 'FAQs' },
   about: { path: '/about', title: 'About Flixie: Discover Films with Friends', description: 'Meet Flixie, a social movie discovery app that brings friends, genre communities, watchlists and watch plans together.', label: 'About Flixie' },
   privacy: { path: '/privacy', title: 'Privacy Policy | Flixie', description: 'Read how Flixie handles account information, optional analytics, social sharing and your choices about privacy and account deletion.', label: 'Privacy Policy' },

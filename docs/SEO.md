@@ -1,12 +1,12 @@
 # Flixie SEO strategy
 
-Updated: 11 September 2026. Changes described here are implemented locally, not deployed. This is the maintenance guide and prioritised roadmap; the [original audit](seo/flixie-seo-audit-2026-09-11.md) contains deeper analysis and the [implementation notes](seo/implementation-notes.md) include hosting and app-link instructions.
+Updated: 28 October 2026. See [feature-page implementation and verification](seo/feature-pages-2026-10-28.md) for the current diary/TV tracking expansion; older implementation details below are retained for history. Changes described here are implemented locally, not deployed. This is the maintenance guide and prioritised roadmap; the [original audit](seo/flixie-seo-audit-2026-09-11.md) contains deeper analysis and the [implementation notes](seo/implementation-notes.md) include hosting and app-link instructions.
 
 ## Positioning and search intent
 
-Flixie is a movie-first social discovery and tracking app: discover what to watch through friends, track watched movies, save watchlists, share ratings and reviews, and make Watch Plans. TV tracking is a supporting feature. Organic acquisition should bring people with these needs to an accurate product explanation and a clearly labelled platform download or beta link.
+Flixie is a movie-first social discovery and tracking app: discover what to watch through friends, track watched movies, save watchlists, share ratings and reviews, and make Watch Plans. Film diary and TV episode/season tracking both have dedicated product pages alongside social discovery. Organic acquisition should bring people with these needs to an accurate product explanation and a clearly labelled platform download or beta link.
 
-The homepage owns the broad combination of movie tracking and social discovery. `/features` explains the product in depth; `/faqs` addresses practical questions; `/about` explains the product's purpose; `/contact` and `/privacy` support trust and account help. `/invite` is a private referral entry point and is deliberately noindex. Error pages are noindex and return 404. There are six canonical indexable routes, not a separate page for every keyword variation.
+The homepage owns the broad combination of movie tracking and social discovery. `/features` explains the product in depth; `/faqs` addresses practical questions; `/about` explains the product's purpose; `/contact` and `/privacy` support trust and account help. `/invite` is a private referral entry point and is deliberately noindex. Error pages are noindex and return 404. There are now fifteen canonical indexable routes, including nine distinct feature search intents documented in the feature-page notes. Avoid creating near-duplicate pages for keyword variations.
 
 ## Implemented changes
 
