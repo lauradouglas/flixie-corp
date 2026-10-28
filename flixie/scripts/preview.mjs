@@ -18,7 +18,7 @@ export async function createPreviewServer() {
       }
       const route = config.routes.find(rule => rule.route === pathname || (rule.route.endsWith('/*') && pathname.startsWith(rule.route.slice(0, -1))));
       if (route?.redirect) {
-        response.writeHead(route.statusCode || 301, { Location: route.redirect + url.search });
+        response.writeHead(route.statusCode || 301, { Location: route.redirect + (url.search ? (route.redirect.includes('?') ? '&' + url.search.slice(1) : url.search) : '') });
         return response.end();
       }
       if (route?.statusCode === 404) {

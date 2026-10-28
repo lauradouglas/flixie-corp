@@ -16,6 +16,11 @@
   },
   "routes": [
     {
+      "route": "/android",
+      "redirect": "https://play.google.com/store/apps/details?id=com.flixie.app",
+      "statusCode": 302
+    },
+    {
       "route": "/.well-known/apple-app-site-association",
       "headers": {
         "Content-Type": "application/json"
