@@ -14,6 +14,15 @@ try {
     if (query) assert.equal(destination.searchParams.get('utm_source'), 'instagram');
   }
 
+  for (const query of ['', '?utm_source=instagram']) {
+    const response = await fetch(base + '/iphone' + query, { redirect: 'manual' });
+    assert.equal(response.status, 302, 'iPhone download uses a temporary redirect');
+    const destination = new URL(response.headers.get('location'));
+    assert.equal(destination.origin, 'https://apps.apple.com');
+    assert.equal(destination.pathname, '/gb/app/flixie/id6779375028');
+    if (query) assert.equal(destination.searchParams.get('utm_source'), 'instagram');
+  }
+
   for (const path of ['/', '/features', '/faqs', '/about', '/privacy', '/contact']) {
     const response = await fetch(base + path);
     assert.equal(response.status, 200, path);

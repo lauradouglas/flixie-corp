@@ -21,6 +21,11 @@
       "statusCode": 302
     },
     {
+      "route": "/iphone",
+      "redirect": "https://apps.apple.com/gb/app/flixie/id6779375028",
+      "statusCode": 302
+    },
+    {
       "route": "/.well-known/apple-app-site-association",
       "headers": {
         "Content-Type": "application/json"
