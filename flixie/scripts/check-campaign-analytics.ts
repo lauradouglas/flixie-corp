@@ -60,3 +60,5 @@ assert.equal(offline.choice, 'accepted');
 const local = new WebsiteAnalytics(storage, { search, pathname: '/download' }, load, false);
 const loadCount = loaded; await local.start('download'); assert.equal(loaded, loadCount);
 console.log('Campaign privacy, consent, SDK failure, expiry, source/creative, store clicks, restart and redirect-policy checks passed.');
+
+assert.equal(campaignFromSearch('?utm_source=instagram&utm_medium=paid_social&utm_campaign=diary_first_boost')?.utm_campaign, 'diary_first_boost');

@@ -23,9 +23,11 @@ View your app in AI Studio: https://ai.studio/apps/6614dab1-b5be-4af9-842c-71963
 ## Campaign analytics
 
 Instagram ads use `/download` with approved `utm_source`, `utm_medium`,
-`utm_campaign` and `utm_content` labels (see `src/campaign.ts`). Tagged visits
-show the store choices; untagged mobile visits keep automatic store routing.
-Downloads work with analytics declined. `/android` and `/iphone` are HTTP
+`utm_campaign` and `utm_content` labels (see `src/campaign.ts`). Tagged and untagged mobile visits automatically open the appropriate store;
+desktop and unrecognised devices retain store choices.
+Downloads work immediately with analytics declined or not yet chosen. Automatic
+redirects do not wait for tracking, so first-time ad visits without consent may
+not produce website attribution events. `/android` and `/iphone` are HTTP
 redirects and do not produce page events.
 
 Website analytics is separate from the app consent choice. The official

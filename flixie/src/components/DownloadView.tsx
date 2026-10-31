@@ -6,8 +6,8 @@ import { websiteAnalytics } from '../websiteAnalytics';
 export default function DownloadView() {
   const [opening, setOpening] = useState(false);
   useEffect(() => {
-    // Tagged ad visits stay on the landing page: consent is optional and store
-    // buttons remain usable immediately, including when analytics is declined.
+    // Route every recognised phone, including tagged ad visits. Store routing
+    // never waits for analytics consent; buttons remain a fallback.
     const destination = downloadDestination(navigator.userAgent, navigator.platform, navigator.maxTouchPoints, window.location.search);
     if (!destination) return;
     setOpening(true);
