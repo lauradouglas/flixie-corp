@@ -37,6 +37,10 @@ jobs:
         working-directory: ./flixie
         run: npm run lint
 
+      - name: Check campaign analytics
+        working-directory: ./flixie
+        run: npm run check:analytics
+
       - name: Compile and Build Assets
         working-directory: ./flixie
         run: npm run build

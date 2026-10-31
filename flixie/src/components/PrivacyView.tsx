@@ -78,10 +78,13 @@ export default function PrivacyView() {
               If you choose to allow analytics, Flixie uses Google Analytics for Firebase and PostHog to understand how the app is used and improve its features and reliability. This may collect app interactions, session information, device and operating-system information, an app-instance identifier, and approximate location derived from a masked IP address. Installation identifiers let the analytics providers associate events from this app installation.
             </p>
             <p>
-              Flixie does not send analytics providers your name, email address, username, reviews, messages, watch history, or the titles of movies and television programmes you interact with. We do not use analytics for advertising or cross-app tracking, and we do not link analytics data to your Flixie account.
+              Flixie does not send analytics providers your name, email address, username, reviews, messages, watch history, or the titles of movies and television programmes you interact with. We use controlled campaign labels to understand which Flixie links lead to visits and signups. We do not use advertising pixels, track activity across other apps, or link analytics data to your Flixie account.
             </p>
             <p>
               Analytics is disabled unless you choose to allow it. You can change your choice at any time under Settings → Share usage analytics. Data already processed may remain in aggregated reports in accordance with the providers’ retention and deletion practices.
+            </p>
+            <p>
+              On this website, optional PostHog analytics measures page categories, campaign labels and clicks to the App Store or Google Play. Website analytics does not send full URLs, referral codes, film titles or contact-form text. You can change your website choice using Analytics choices at the bottom of any page. Website campaign labels may be stored locally for up to 30 days after you allow analytics. Website visits and later app installations are not linked into an identified account journey.
             </p>
             <p>
               PostHog receives limited event types and screen names after consent. Session replay is disabled, and Flixie does not send PostHog your account identifier or create an identified person profile. Internal aggregate reports and event-type notifications are delivered to our private Slack analytics channel. These reports and notifications do not include your account identifiers, movie or programme titles, reviews, messages, or search text.

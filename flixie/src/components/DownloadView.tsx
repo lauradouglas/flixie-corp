@@ -1,13 +1,17 @@
 import { useEffect, useState } from 'react';
 import DownloadLinks from './DownloadLinks';
 import { downloadDestination } from '../download';
+import { websiteAnalytics } from '../websiteAnalytics';
 
 export default function DownloadView() {
   const [opening, setOpening] = useState(false);
   useEffect(() => {
-    const destination = downloadDestination(navigator.userAgent, navigator.platform, navigator.maxTouchPoints);
+    // Tagged ad visits stay on the landing page: consent is optional and store
+    // buttons remain usable immediately, including when analytics is declined.
+    const destination = downloadDestination(navigator.userAgent, navigator.platform, navigator.maxTouchPoints, window.location.search);
     if (!destination) return;
     setOpening(true);
+    websiteAnalytics().storeClicked(destination);
     window.location.replace(destination);
   }, []);
 

@@ -4,6 +4,7 @@ import { MotionConfig } from 'motion/react';
 import { type PageId } from './site';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import WebsiteAnalyticsChoice from './components/WebsiteAnalyticsChoice';
 
 export default function App({ page, year, View }: { page: PageId; year: number; View: ComponentType }) {
   useSectionMotion(page);
@@ -14,6 +15,7 @@ export default function App({ page, year, View }: { page: PageId; year: number; 
       <Navbar currentPage={page} />
       <main id="main-content" tabIndex={-1} className="flex-1"><View /></main>
       <Footer year={year} />
+      <WebsiteAnalyticsChoice page={page} />
     </div>
   </MotionConfig>;
 }
