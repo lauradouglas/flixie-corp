@@ -26,6 +26,7 @@ export const pages = {
   about: { path: '/about', title: 'About Flixie: Discover Films with Friends', description: 'Meet Flixie, a social movie discovery app that brings friends, genre communities, watchlists and watch plans together.', label: 'About Flixie' },
   privacy: { path: '/privacy', title: 'Privacy Policy | Flixie', description: 'Read how Flixie handles account information, optional analytics, social sharing and your choices about privacy and account deletion.', label: 'Privacy Policy' },
   contact: { path: '/contact', title: 'Contact Flixie: App Support & Account Help', description: 'Contact Flixie for app support, feedback, bug reports or help deleting your account and associated data.', label: 'Contact & Support' },
+  download: { path: '/download', title: 'Download Flixie for iPhone or Android', description: 'Get Flixie from the App Store or Google Play.', label: 'Download Flixie', noindex: true },
   invite: { path: '/invite', title: 'You’ve Been Invited to Flixie', description: 'Open your Flixie invitation to discover films with friends.', label: 'Invitation', noindex: true },
   mediaShare: { path: '/media-share', title: 'Open a Shared Title in Flixie', description: 'Open the shared movie or show in Flixie, or download the app for iPhone or Android.', label: 'Shared title', noindex: true },
   notFound: { path: '/404', title: 'Page Not Found | Flixie', description: 'This page could not be found. Discover Flixie or contact support for help.', label: 'Page not found', noindex: true },

@@ -2,6 +2,7 @@ import { createElement } from 'react';
 import { isFeaturePage } from './featureContent';
 import type { PageId } from './site';
 const views = {
+  download: () => import('./components/DownloadView'),
   home: () => import('./components/HomeView'),
   features: () => import('./components/FeaturesView'),
   faq: () => import('./components/FaqView'),

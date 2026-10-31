@@ -5,6 +5,14 @@ const server = await createPreviewServer();
 await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
 const base = `http://127.0.0.1:${server.address().port}`;
 try {
+  const download = await fetch(base + '/download?utm_source=instagram');
+  assert.equal(download.status, 200);
+  assert.equal(download.headers.get('x-robots-tag'), 'noindex');
+  const downloadHtml = await download.text();
+  assert.match(downloadHtml, /Get Flixie/);
+  assert.match(downloadHtml, /https:\/\/apps.apple.com\/app\/id6779375028/);
+  assert.match(downloadHtml, /https:\/\/play.google.com\/store\/apps\/details/);
+
   for (const query of ['', '?utm_source=instagram']) {
     const response = await fetch(base + '/android' + query, { redirect: 'manual' });
     assert.equal(response.status, 302, 'Android download uses a temporary redirect');
