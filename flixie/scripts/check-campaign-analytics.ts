@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import { campaignFromSearch, hasCampaignTags } from '../src/campaign';
 import { WebsiteAnalytics, storeFromLink, websiteAnalyticsConfig } from '../src/websiteAnalytics';
-const search = '?utm_source=instagram&utm_medium=paid_social&utm_campaign=launch&utm_content=diary_video&code=SECRET&fbclid=SECRET';
-assert.deepEqual(campaignFromSearch(search), { utm_source: 'instagram', utm_medium: 'paid_social', utm_campaign: 'launch', utm_content: 'diary_video' });
+const search = '?utm_source=instagram&utm_medium=paid_social&utm_campaign=launch&utm_content=diary_carousel&code=SECRET&fbclid=SECRET';
+assert.deepEqual(campaignFromSearch(search), { utm_source: 'instagram', utm_medium: 'paid_social', utm_campaign: 'launch', utm_content: 'diary_carousel' });
 assert.equal(campaignFromSearch('?utm_source=private@email.test'), null);
 assert.equal(campaignFromSearch('?utm_source=Instagram&utm_content=private@email.test')?.utm_content, 'unknown');
 assert.equal(hasCampaignTags('?utm_campaign=unrecognised'), true);
@@ -22,7 +22,7 @@ await analytics.start('download'); // StrictMode/remount does not duplicate visi
 analytics.storeClicked('https://play.google.com/store/apps/details?id=com.flixie.app');
 assert.deepEqual(emitted.map(event => event.name), ['website_page_viewed', 'website_campaign_landed', 'website_store_clicked']);
 assert.equal(loaded, 1); assert.equal(optedIn, 1);
-assert.deepEqual(emitted[2].properties, { page: 'download', utm_source: 'instagram', utm_medium: 'paid_social', utm_campaign: 'launch', utm_content: 'diary_video', store: 'android' });
+assert.deepEqual(emitted[2].properties, { page: 'download', utm_source: 'instagram', utm_medium: 'paid_social', utm_campaign: 'launch', utm_content: 'diary_carousel', store: 'android' });
 assert.ok(!JSON.stringify(emitted).includes('SECRET'));
 const restored = new WebsiteAnalytics(storage, { search: '', pathname: '/film-diary' }, load, true);
 await restored.start('diary');
@@ -62,3 +62,5 @@ const loadCount = loaded; await local.start('download'); assert.equal(loaded, lo
 console.log('Campaign privacy, consent, SDK failure, expiry, source/creative, store clicks, restart and redirect-policy checks passed.');
 
 assert.equal(campaignFromSearch('?utm_source=instagram&utm_medium=paid_social&utm_campaign=diary_first_boost')?.utm_campaign, 'diary_first_boost');
+
+assert.equal(campaignFromSearch('?utm_source=instagram&utm_content=diary_video')?.utm_content, 'diary_video', 'Existing video links remain recognised');

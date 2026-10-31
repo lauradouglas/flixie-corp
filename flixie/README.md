@@ -39,7 +39,7 @@ The app and website do not share analytics identity, and store clicks are not
 installs or signups. No deferred install attribution is implemented.
 
 Example ad URL:
-`https://www.flixie.co.uk/download?utm_source=instagram&utm_medium=paid_social&utm_campaign=launch&utm_content=diary_video`
+`https://www.flixie.co.uk/download?utm_source=instagram&utm_medium=paid_social&utm_campaign=launch&utm_content=diary_carousel`
 
 Run `npm run check:analytics`, `npm run lint`, `npm run build`, and
 `npm run check:seo`. For browser SDK validation, intercept all PostHog requests
