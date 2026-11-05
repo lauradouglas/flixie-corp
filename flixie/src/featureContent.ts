@@ -186,10 +186,10 @@ export const featureContent = {
   "recommendations": {
     "path": "/movie-recommendations",
     "label": "Movie recommendations",
-    "title": "Movie Recommendations from Friends & Communities | Flixie",
+    "title": "Personal Film Picks for Your Night | Flixie",
     "description": "Find movie recommendations in Flixie. Explore films for your taste, see friends’ ratings and recommendations, and join film and TV communities.",
-    "heading": "Find your next film through people who share your taste.",
-    "intro": "An average score can only tell you so much. See what your friends thought, explore recommendations and join film and TV conversations around the genres you enjoy.",
+    "heading": "Find a film that fits your night.",
+    "intro": "Choose a mood, time and viewing options with Pick for Us. Find film suggestions for yourself, a friend or a group, with reasons to help you decide. Your ratings, recommendations and favourites help shape more personal picks.",
     "action": "Find your next watch",
     "sections": [
       [
@@ -206,8 +206,8 @@ export const featureContent = {
       ]
     ],
     "steps": [
-      "Explore titles and recommendations.",
-      "See what friends think or join a genre community.",
+      "Choose a mood, who’s watching and how much time you have.",
+      "See why a film fits, where to watch and friends’ recommendations when available.",
       "Save a title or turn the suggestion into a Watch Plan."
     ],
     "faqs": [
@@ -416,5 +416,5 @@ export const featureContent = {
   }
 } as const;
 export type FeaturePageId = keyof typeof featureContent;
-export const featurePageIds: FeaturePageId[] = ['friends', 'communities', 'recommendations', 'planner', 'diary', 'tvTracker', 'watchlist', 'reviews', 'whereToWatch'];
+export const featurePageIds: FeaturePageId[] = ['recommendations', 'tvTracker', 'diary', 'watchlist', 'planner', 'whereToWatch', 'friends', 'reviews', 'communities'];
 export function isFeaturePage(page: string): page is FeaturePageId { return Object.prototype.hasOwnProperty.call(featureContent, page); }

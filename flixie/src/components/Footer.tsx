@@ -22,9 +22,9 @@ export default function Footer({ year }: { year: number }) {
   return (
     <footer className="bg-bg-darkest border-t border-border-custom text-text-secondary pt-16 pb-8" id="main-footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-12 gap-8 mb-12">
           {/* Brand Column */}
-          <div className="col-span-12 md:col-span-5 space-y-4">
+          <div className="col-span-2 md:col-span-5 space-y-4">
             <a
               href={pages['home'].path}
               className="flex items-center gap-2 group cursor-pointer focus:outline-none focus:ring-2 focus:ring-flixie-purple rounded-lg px-2 py-1"
@@ -36,7 +36,7 @@ export default function Footer({ year }: { year: number }) {
             </a>
 
             <p className="text-text-secondary text-sm max-w-sm leading-relaxed">
-              Keep a film diary, track TV episodes and find your next watch. Bring friends into the story when you want to.
+              Your movie & TV companion. Find tonight’s film, keep up with your shows and make plans with friends.
             </p>
             <a
               href="https://www.instagram.com/flixie_co/"
@@ -47,11 +47,11 @@ export default function Footer({ year }: { year: number }) {
             <p className="text-xs text-text-muted">@flixie_co · Films, TV and what we’re watching.</p>
           </div>
 
-          <nav aria-label="Explore Flixie features" className="col-span-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-3 pb-6 border-b border-border-custom">
+          <nav aria-label="Explore Flixie features" className="col-span-2 md:col-span-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-3 pb-6 border-b border-border-custom">
             {featurePageIds.map(key => <a className="text-sm text-text-secondary hover:text-flixie-light py-2" key={key} href={featureContent[key].path}>{featureContent[key].label}</a>)}
           </nav>
           {/* Quick Links Column */}
-          <div className="col-span-6 md:col-span-3">
+          <div className="col-span-1 md:col-span-3">
             <h2 className="text-white font-display font-bold text-base mb-4 tracking-wide">Sitemap</h2>
             <ul className="space-y-2.5 text-sm">
               {quickLinks.slice(0, 3).map((link) => (
@@ -77,7 +77,7 @@ export default function Footer({ year }: { year: number }) {
             </ul>
           </div>
 
-          <section id="download" aria-labelledby="download-heading" className="col-span-12 md:col-span-4 space-y-4">
+          <section id="download" aria-labelledby="download-heading" className="col-span-2 md:col-span-4 space-y-4">
             <h2 id="download-heading" className="text-white font-display font-bold text-xl">Get Flixie for your next movie night</h2>
             <DownloadLinks />
           </section>

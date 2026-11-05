@@ -1,3 +1,11 @@
+## 2026-11-05 — Movie and TV companion positioning
+
+- Lead with choosing tonight’s film and keeping up with shows. Show the actual picker beside TV tracking, with labelled fictional activity and illustrative availability.
+- Align the feature directory, recommendations page, About page, footer, descriptions and structured data. Preserve external playback clarity and solo value.
+- Add a matching share image at a new URL so social caches can fetch it. Preserve existing brand colours, wordmark and poster proportions.
+- Fix the footer grid’s implicit columns at 320px. Downloads, deep links, consent and campaign attribution retain their behavior.
+- Manual deployment notifications default off; no Slack notification is authorized for this update.
+
 # SEO changelog
 
 ## 2026-09-11 — Azure 404 validation fix

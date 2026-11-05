@@ -85,7 +85,7 @@ assert.match(documents.get('/faqs'), /select your rating out of 10/);
 assert.match(documents.get('/'), /Illustrative app demo/);
 assert.match(documents.get('/404'), /This page could not be found/);
 assert.doesNotMatch(documents.get('/invite'), /Invited by @/);
-const og = await readFile('dist/og/flixie-social.png');
+const og = await readFile('dist/og/flixie-companion.png');
 assert.equal(og.readUInt32BE(16), 1200);
 assert.equal(og.readUInt32BE(20), 630);
 const assets = await readdir('dist/assets');
