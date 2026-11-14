@@ -1,0 +1,1393 @@
+[
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 24,
+    "snippet": "Undocumented color #3b2e13 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#3b2e13",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 25,
+    "snippet": "Undocumented color #ffe3a2 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#ffe3a2",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 56,
+    "snippet": "Undocumented color #b7c2d0 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#b7c2d0",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 63,
+    "snippet": "Undocumented color #b9a0ff is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#b9a0ff",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 67,
+    "snippet": "Undocumented color #e8ddff is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#e8ddff",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 67,
+    "snippet": "Undocumented color #302743 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#302743",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 93,
+    "snippet": "font-size: 11px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "11px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 106,
+    "snippet": "Undocumented color #ffb45e is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#ffb45e",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 106,
+    "snippet": "Undocumented color #ffd979 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#ffd979",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 139,
+    "snippet": "Undocumented color #b7c2d0 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#b7c2d0",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 181,
+    "snippet": "font-size: 11px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "11px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 223,
+    "snippet": "Undocumented color #0005 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#0005",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 228,
+    "snippet": "Undocumented color #090914b8 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#090914b8",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 240,
+    "snippet": "border-radius: 8px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "8px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 252,
+    "snippet": "font-size: 13px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "13px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 305,
+    "snippet": "font-size: 23px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "23px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 338,
+    "snippet": "border-radius: 10px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "10px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 362,
+    "snippet": "Undocumented color #151522 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#151522",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 363,
+    "snippet": "Undocumented color #f5f7fa is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#f5f7fa",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 376,
+    "snippet": "border-radius: 8px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "8px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 390,
+    "snippet": "Undocumented color #b9a0ff is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#b9a0ff",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 402,
+    "snippet": "font-size: 13px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "13px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 403,
+    "snippet": "Undocumented color #b7c2d0 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#b7c2d0",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 428,
+    "snippet": "font-size: 16px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "16px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 480,
+    "snippet": "border-radius: 10px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "10px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 506,
+    "snippet": "border-radius: 10px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "10px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 558,
+    "snippet": "font-size: 17px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "17px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 574,
+    "snippet": "Undocumented color #0004 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#0004",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/production.css",
+    "line": 600,
+    "snippet": "font-size: 13px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "13px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "overused-font",
+    "name": "Overused font",
+    "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 143,
+    "snippet": "font-family: Arial",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "layout-transition",
+    "name": "Layout property animation",
+    "description": "Animating width, height, padding, or margin causes layout thrash and janky performance. Use transform and opacity instead, or grid-template-rows for height animations.",
+    "severity": "warning",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 575,
+    "snippet": "transition: width",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 54,
+    "snippet": "Undocumented color #fff is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#fff",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 79,
+    "snippet": "font-size: 15px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "15px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 109,
+    "snippet": "border-radius: 10px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "10px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 134,
+    "snippet": "Undocumented color #f5f7fa is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#f5f7fa",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 140,
+    "snippet": "Undocumented color #303143 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#303143",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 144,
+    "snippet": "font-size: 32px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "32px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 165,
+    "snippet": "Undocumented color #1e1f30 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#1e1f30",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 166,
+    "snippet": "Undocumented color #3e4058 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#3e4058",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 173,
+    "snippet": "Undocumented color #b7c2d0 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#b7c2d0",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 178,
+    "snippet": "Undocumented color #f5f7fa is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#f5f7fa",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 182,
+    "snippet": "font-size: 13px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "13px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 186,
+    "snippet": "Undocumented color #b7c2d0 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#b7c2d0",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 190,
+    "snippet": "Undocumented color #b9a0ff is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#b9a0ff",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 208,
+    "snippet": "border-radius: 8px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "8px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 212,
+    "snippet": "Undocumented color #c7d1e2 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#c7d1e2",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 222,
+    "snippet": "Undocumented color #c7d1e2 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#c7d1e2",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 233,
+    "snippet": "Undocumented color #f9f6fe is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#f9f6fe",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 233,
+    "snippet": "Undocumented color #181925 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#181925",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 255,
+    "snippet": "font-size: 13px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "13px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 259,
+    "snippet": "Undocumented color #e8ddff is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#e8ddff",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 259,
+    "snippet": "Undocumented color #302743 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#302743",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 342,
+    "snippet": "font-size: 13px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "13px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 349,
+    "snippet": "Undocumented color #fff is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#fff",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 396,
+    "snippet": "font-size: 25px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "25px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 412,
+    "snippet": "border-radius: 5px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "5px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 449,
+    "snippet": "Undocumented color #28273b is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#28273b",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 508,
+    "snippet": "Undocumented color #151522 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#151522",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 509,
+    "snippet": "Undocumented color #f5f7fa is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#f5f7fa",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 513,
+    "snippet": "Undocumented color #fff is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#fff",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 520,
+    "snippet": "Undocumented color #e8ddff is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#e8ddff",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 520,
+    "snippet": "Undocumented color #292239 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#292239",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 538,
+    "snippet": "font-size: 13px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "13px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 567,
+    "snippet": "border-radius: 3px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "3px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 618,
+    "snippet": "font-size: 22px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "22px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 633,
+    "snippet": "font-size: 15px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "15px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 707,
+    "snippet": "font-size: 13px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "13px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 716,
+    "snippet": "font-size: 16px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "16px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 740,
+    "snippet": "font-size: 28px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "28px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 782,
+    "snippet": "font-size: 13px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "13px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 793,
+    "snippet": "font-size: 17px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "17px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 847,
+    "snippet": "font-size: 20px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "20px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 850,
+    "snippet": "border-radius: 6px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "6px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 856,
+    "snippet": "Undocumented color #090914b8 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#090914b8",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 874,
+    "snippet": "Undocumented color #0005 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#0005",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 894,
+    "snippet": "font-size: 13px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "13px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 906,
+    "snippet": "border-radius: 8px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "8px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 922,
+    "snippet": "font-size: 13px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "13px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 934,
+    "snippet": "font-size: 13px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "13px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 960,
+    "snippet": "font-size: 13px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "13px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 963,
+    "snippet": "Undocumented color #0003 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#0003",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 979,
+    "snippet": "font-size: 13px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "13px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 1003,
+    "snippet": "font-size: 23px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "23px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 1048,
+    "snippet": "font-size: 39px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "39px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 1061,
+    "snippet": "font-size: 30px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "30px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 1070,
+    "snippet": "font-size: 16px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "16px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 1108,
+    "snippet": "font-size: 25px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "25px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 1144,
+    "snippet": "font-size: 33px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "33px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 1216,
+    "snippet": "font-size: 23px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "23px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 1233,
+    "snippet": "font-size: 13px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "13px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 1258,
+    "snippet": "font-size: 30px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "30px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 1265,
+    "snippet": "font-size: 13px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "13px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/private/tmp/flixie-web-app-20261114/flixie/src/web/web.css",
+    "line": 1281,
+    "snippet": "border-radius: 8px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "8px",
+    "importedBy": [
+      "WebApp.tsx"
+    ]
+  }
+]

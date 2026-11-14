@@ -1,0 +1,878 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-14T13:06:08.931831+00:00",
+  "title": "Design System: Flixie connected browser experience",
+  "extensions": {
+    "colorMeta": {
+      "fx-bg": {
+        "role": "neutral",
+        "displayName": "Page Ground",
+        "canonical": "light-dark(#f3edfc, #151522)",
+        "tonalRamp": [
+          "oklch(15.00% 0.02091 304.03)",
+          "oklch(26.43% 0.02091 304.03)",
+          "oklch(37.86% 0.02091 304.03)",
+          "oklch(49.29% 0.02091 304.03)",
+          "oklch(60.71% 0.02091 304.03)",
+          "oklch(72.14% 0.02091 304.03)",
+          "oklch(83.57% 0.02091 304.03)",
+          "oklch(95.00% 0.02091 304.03)"
+        ],
+        "themeValues": {
+          "light": "#f3edfc",
+          "dark": "#151522"
+        },
+        "darkTonalRamp": [
+          "oklch(15.00% 0.02581 283.86)",
+          "oklch(26.43% 0.02581 283.86)",
+          "oklch(37.86% 0.02581 283.86)",
+          "oklch(49.29% 0.02581 283.86)",
+          "oklch(60.71% 0.02581 283.86)",
+          "oklch(72.14% 0.02581 283.86)",
+          "oklch(83.57% 0.02581 283.86)",
+          "oklch(95.00% 0.02581 283.86)"
+        ]
+      },
+      "fx-surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "canonical": "light-dark(#fff, #1e1f30)",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 0.00)",
+          "oklch(26.43% 0.00000 0.00)",
+          "oklch(37.86% 0.00000 0.00)",
+          "oklch(49.29% 0.00000 0.00)",
+          "oklch(60.71% 0.00000 0.00)",
+          "oklch(72.14% 0.00000 0.00)",
+          "oklch(83.57% 0.00000 0.00)",
+          "oklch(95.00% 0.00000 0.00)"
+        ],
+        "themeValues": {
+          "light": "#fff",
+          "dark": "#1e1f30"
+        },
+        "darkTonalRamp": [
+          "oklch(15.00% 0.03225 281.15)",
+          "oklch(26.43% 0.03225 281.15)",
+          "oklch(37.86% 0.03225 281.15)",
+          "oklch(49.29% 0.03225 281.15)",
+          "oklch(60.71% 0.03225 281.15)",
+          "oklch(72.14% 0.03225 281.15)",
+          "oklch(83.57% 0.03225 281.15)",
+          "oklch(95.00% 0.03225 281.15)"
+        ]
+      },
+      "fx-lift": {
+        "role": "neutral",
+        "displayName": "Lifted Surface",
+        "canonical": "light-dark(#eee7f6, #292b3e)",
+        "tonalRamp": [
+          "oklch(15.00% 0.02134 306.83)",
+          "oklch(26.43% 0.02134 306.83)",
+          "oklch(37.86% 0.02134 306.83)",
+          "oklch(49.29% 0.02134 306.83)",
+          "oklch(60.71% 0.02134 306.83)",
+          "oklch(72.14% 0.02134 306.83)",
+          "oklch(83.57% 0.02134 306.83)",
+          "oklch(95.00% 0.02134 306.83)"
+        ],
+        "themeValues": {
+          "light": "#eee7f6",
+          "dark": "#292b3e"
+        },
+        "darkTonalRamp": [
+          "oklch(15.00% 0.03460 279.40)",
+          "oklch(26.43% 0.03460 279.40)",
+          "oklch(37.86% 0.03460 279.40)",
+          "oklch(49.29% 0.03460 279.40)",
+          "oklch(60.71% 0.03460 279.40)",
+          "oklch(72.14% 0.03460 279.40)",
+          "oklch(83.57% 0.03460 279.40)",
+          "oklch(95.00% 0.03460 279.40)"
+        ]
+      },
+      "fx-ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "light-dark(#261735, #f5f7fa)",
+        "tonalRamp": [
+          "oklch(15.00% 0.05821 305.54)",
+          "oklch(26.43% 0.05821 305.54)",
+          "oklch(37.86% 0.05821 305.54)",
+          "oklch(49.29% 0.05821 305.54)",
+          "oklch(60.71% 0.05821 305.54)",
+          "oklch(72.14% 0.05821 305.54)",
+          "oklch(83.57% 0.05821 305.54)",
+          "oklch(95.00% 0.05821 305.54)"
+        ],
+        "themeValues": {
+          "light": "#261735",
+          "dark": "#f5f7fa"
+        },
+        "darkTonalRamp": [
+          "oklch(15.00% 0.00453 258.32)",
+          "oklch(26.43% 0.00453 258.32)",
+          "oklch(37.86% 0.00453 258.32)",
+          "oklch(49.29% 0.00453 258.32)",
+          "oklch(60.71% 0.00453 258.32)",
+          "oklch(72.14% 0.00453 258.32)",
+          "oklch(83.57% 0.00453 258.32)",
+          "oklch(95.00% 0.00453 258.32)"
+        ]
+      },
+      "fx-muted": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "canonical": "light-dark(#62566f, #b7c2d0)",
+        "tonalRamp": [
+          "oklch(15.00% 0.04219 306.60)",
+          "oklch(26.43% 0.04219 306.60)",
+          "oklch(37.86% 0.04219 306.60)",
+          "oklch(49.29% 0.04219 306.60)",
+          "oklch(60.71% 0.04219 306.60)",
+          "oklch(72.14% 0.04219 306.60)",
+          "oklch(83.57% 0.04219 306.60)",
+          "oklch(95.00% 0.04219 306.60)"
+        ],
+        "themeValues": {
+          "light": "#62566f",
+          "dark": "#b7c2d0"
+        },
+        "darkTonalRamp": [
+          "oklch(15.00% 0.02318 254.42)",
+          "oklch(26.43% 0.02318 254.42)",
+          "oklch(37.86% 0.02318 254.42)",
+          "oklch(49.29% 0.02318 254.42)",
+          "oklch(60.71% 0.02318 254.42)",
+          "oklch(72.14% 0.02318 254.42)",
+          "oklch(83.57% 0.02318 254.42)",
+          "oklch(95.00% 0.02318 254.42)"
+        ]
+      },
+      "fx-line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "canonical": "light-dark(#dbd1e7, #3e4058)",
+        "tonalRamp": [
+          "oklch(15.00% 0.03175 306.16)",
+          "oklch(26.43% 0.03175 306.16)",
+          "oklch(37.86% 0.03175 306.16)",
+          "oklch(49.29% 0.03175 306.16)",
+          "oklch(60.71% 0.03175 306.16)",
+          "oklch(72.14% 0.03175 306.16)",
+          "oklch(83.57% 0.03175 306.16)",
+          "oklch(95.00% 0.03175 306.16)"
+        ],
+        "themeValues": {
+          "light": "#dbd1e7",
+          "dark": "#3e4058"
+        },
+        "darkTonalRamp": [
+          "oklch(15.00% 0.04096 280.55)",
+          "oklch(26.43% 0.04096 280.55)",
+          "oklch(37.86% 0.04096 280.55)",
+          "oklch(49.29% 0.04096 280.55)",
+          "oklch(60.71% 0.04096 280.55)",
+          "oklch(72.14% 0.04096 280.55)",
+          "oklch(83.57% 0.04096 280.55)",
+          "oklch(95.00% 0.04096 280.55)"
+        ]
+      },
+      "fx-purple": {
+        "role": "primary",
+        "displayName": "Readable Purple",
+        "canonical": "light-dark(#6534b8, #b9a0ff)",
+        "tonalRamp": [
+          "oklch(15.00% 0.19440 294.58)",
+          "oklch(26.43% 0.19440 294.58)",
+          "oklch(37.86% 0.19440 294.58)",
+          "oklch(49.29% 0.19440 294.58)",
+          "oklch(60.71% 0.19440 294.58)",
+          "oklch(72.14% 0.19440 294.58)",
+          "oklch(83.57% 0.19440 294.58)",
+          "oklch(95.00% 0.19440 294.58)"
+        ],
+        "themeValues": {
+          "light": "#6534b8",
+          "dark": "#b9a0ff"
+        },
+        "darkTonalRamp": [
+          "oklch(15.00% 0.13526 295.11)",
+          "oklch(26.43% 0.13526 295.11)",
+          "oklch(37.86% 0.13526 295.11)",
+          "oklch(49.29% 0.13526 295.11)",
+          "oklch(60.71% 0.13526 295.11)",
+          "oklch(72.14% 0.13526 295.11)",
+          "oklch(83.57% 0.13526 295.11)",
+          "oklch(95.00% 0.13526 295.11)"
+        ]
+      },
+      "fx-brand": {
+        "role": "primary",
+        "displayName": "Flixie Brand Purple",
+        "canonical": "#7c4dff",
+        "tonalRamp": [
+          "oklch(15.00% 0.24685 288.24)",
+          "oklch(26.43% 0.24685 288.24)",
+          "oklch(37.86% 0.24685 288.24)",
+          "oklch(49.29% 0.24685 288.24)",
+          "oklch(60.71% 0.24685 288.24)",
+          "oklch(72.14% 0.24685 288.24)",
+          "oklch(83.57% 0.24685 288.24)",
+          "oklch(95.00% 0.24685 288.24)"
+        ]
+      },
+      "fx-gold": {
+        "role": "secondary",
+        "displayName": "Warm Rating Gold",
+        "canonical": "light-dark(#8c630e, #ffcf70)",
+        "tonalRamp": [
+          "oklch(15.00% 0.10542 78.85)",
+          "oklch(26.43% 0.10542 78.85)",
+          "oklch(37.86% 0.10542 78.85)",
+          "oklch(49.29% 0.10542 78.85)",
+          "oklch(60.71% 0.10542 78.85)",
+          "oklch(72.14% 0.10542 78.85)",
+          "oklch(83.57% 0.10542 78.85)",
+          "oklch(95.00% 0.10542 78.85)"
+        ],
+        "themeValues": {
+          "light": "#8c630e",
+          "dark": "#ffcf70"
+        },
+        "darkTonalRamp": [
+          "oklch(15.00% 0.12549 82.88)",
+          "oklch(26.43% 0.12549 82.88)",
+          "oklch(37.86% 0.12549 82.88)",
+          "oklch(49.29% 0.12549 82.88)",
+          "oklch(60.71% 0.12549 82.88)",
+          "oklch(72.14% 0.12549 82.88)",
+          "oklch(83.57% 0.12549 82.88)",
+          "oklch(95.00% 0.12549 82.88)"
+        ]
+      },
+      "sidebar-ground": {
+        "role": "neutral",
+        "displayName": "Sidebar Ground",
+        "canonical": "light-dark(#f9f6fe, #181925)",
+        "tonalRamp": [
+          "oklch(15.00% 0.01102 303.12)",
+          "oklch(26.43% 0.01102 303.12)",
+          "oklch(37.86% 0.01102 303.12)",
+          "oklch(49.29% 0.01102 303.12)",
+          "oklch(60.71% 0.01102 303.12)",
+          "oklch(72.14% 0.01102 303.12)",
+          "oklch(83.57% 0.01102 303.12)",
+          "oklch(95.00% 0.01102 303.12)"
+        ],
+        "themeValues": {
+          "light": "#f9f6fe",
+          "dark": "#181925"
+        },
+        "darkTonalRamp": [
+          "oklch(15.00% 0.02353 280.55)",
+          "oklch(26.43% 0.02353 280.55)",
+          "oklch(37.86% 0.02353 280.55)",
+          "oklch(49.29% 0.02353 280.55)",
+          "oklch(60.71% 0.02353 280.55)",
+          "oklch(72.14% 0.02353 280.55)",
+          "oklch(83.57% 0.02353 280.55)",
+          "oklch(95.00% 0.02353 280.55)"
+        ]
+      },
+      "navigation-active": {
+        "role": "neutral",
+        "displayName": "Active Navigation",
+        "canonical": "light-dark(#e8ddff, #302743)",
+        "tonalRamp": [
+          "oklch(15.00% 0.04721 300.22)",
+          "oklch(26.43% 0.04721 300.22)",
+          "oklch(37.86% 0.04721 300.22)",
+          "oklch(49.29% 0.04721 300.22)",
+          "oklch(60.71% 0.04721 300.22)",
+          "oklch(72.14% 0.04721 300.22)",
+          "oklch(83.57% 0.04721 300.22)",
+          "oklch(95.00% 0.04721 300.22)"
+        ],
+        "themeValues": {
+          "light": "#e8ddff",
+          "dark": "#302743"
+        },
+        "darkTonalRamp": [
+          "oklch(15.00% 0.05091 298.02)",
+          "oklch(26.43% 0.05091 298.02)",
+          "oklch(37.86% 0.05091 298.02)",
+          "oklch(49.29% 0.05091 298.02)",
+          "oklch(60.71% 0.05091 298.02)",
+          "oklch(72.14% 0.05091 298.02)",
+          "oklch(83.57% 0.05091 298.02)",
+          "oklch(95.00% 0.05091 298.02)"
+        ]
+      },
+      "picker-ground": {
+        "role": "neutral",
+        "displayName": "Picker Ground",
+        "canonical": "light-dark(#e8ddff, #292239)",
+        "tonalRamp": [
+          "oklch(15.00% 0.04721 300.22)",
+          "oklch(26.43% 0.04721 300.22)",
+          "oklch(37.86% 0.04721 300.22)",
+          "oklch(49.29% 0.04721 300.22)",
+          "oklch(60.71% 0.04721 300.22)",
+          "oklch(72.14% 0.04721 300.22)",
+          "oklch(83.57% 0.04721 300.22)",
+          "oklch(95.00% 0.04721 300.22)"
+        ],
+        "themeValues": {
+          "light": "#e8ddff",
+          "dark": "#292239"
+        },
+        "darkTonalRamp": [
+          "oklch(15.00% 0.04278 297.47)",
+          "oklch(26.43% 0.04278 297.47)",
+          "oklch(37.86% 0.04278 297.47)",
+          "oklch(49.29% 0.04278 297.47)",
+          "oklch(60.71% 0.04278 297.47)",
+          "oklch(72.14% 0.04278 297.47)",
+          "oklch(83.57% 0.04278 297.47)",
+          "oklch(95.00% 0.04278 297.47)"
+        ]
+      },
+      "chrome-bg": {
+        "role": "neutral",
+        "displayName": "Dark Chrome",
+        "canonical": "#10111b",
+        "tonalRamp": [
+          "oklch(15.00% 0.02056 279.71)",
+          "oklch(26.43% 0.02056 279.71)",
+          "oklch(37.86% 0.02056 279.71)",
+          "oklch(49.29% 0.02056 279.71)",
+          "oklch(60.71% 0.02056 279.71)",
+          "oklch(72.14% 0.02056 279.71)",
+          "oklch(83.57% 0.02056 279.71)",
+          "oklch(95.00% 0.02056 279.71)"
+        ]
+      },
+      "chrome-surface": {
+        "role": "neutral",
+        "displayName": "Chrome Search Surface",
+        "canonical": "#1e1f30",
+        "tonalRamp": [
+          "oklch(15.00% 0.03225 281.15)",
+          "oklch(26.43% 0.03225 281.15)",
+          "oklch(37.86% 0.03225 281.15)",
+          "oklch(49.29% 0.03225 281.15)",
+          "oklch(60.71% 0.03225 281.15)",
+          "oklch(72.14% 0.03225 281.15)",
+          "oklch(83.57% 0.03225 281.15)",
+          "oklch(95.00% 0.03225 281.15)"
+        ]
+      },
+      "chrome-ink": {
+        "role": "neutral",
+        "displayName": "Chrome Ink",
+        "canonical": "#f5f7fa",
+        "tonalRamp": [
+          "oklch(15.00% 0.00453 258.32)",
+          "oklch(26.43% 0.00453 258.32)",
+          "oklch(37.86% 0.00453 258.32)",
+          "oklch(49.29% 0.00453 258.32)",
+          "oklch(60.71% 0.00453 258.32)",
+          "oklch(72.14% 0.00453 258.32)",
+          "oklch(83.57% 0.00453 258.32)",
+          "oklch(95.00% 0.00453 258.32)"
+        ]
+      },
+      "chrome-muted": {
+        "role": "neutral",
+        "displayName": "Chrome Muted Ink",
+        "canonical": "#b7c2d0",
+        "tonalRamp": [
+          "oklch(15.00% 0.02318 254.42)",
+          "oklch(26.43% 0.02318 254.42)",
+          "oklch(37.86% 0.02318 254.42)",
+          "oklch(49.29% 0.02318 254.42)",
+          "oklch(60.71% 0.02318 254.42)",
+          "oklch(72.14% 0.02318 254.42)",
+          "oklch(83.57% 0.02318 254.42)",
+          "oklch(95.00% 0.02318 254.42)"
+        ]
+      },
+      "chrome-line": {
+        "role": "neutral",
+        "displayName": "Chrome Line",
+        "canonical": "#3e4058",
+        "tonalRamp": [
+          "oklch(15.00% 0.04096 280.55)",
+          "oklch(26.43% 0.04096 280.55)",
+          "oklch(37.86% 0.04096 280.55)",
+          "oklch(49.29% 0.04096 280.55)",
+          "oklch(60.71% 0.04096 280.55)",
+          "oklch(72.14% 0.04096 280.55)",
+          "oklch(83.57% 0.04096 280.55)",
+          "oklch(95.00% 0.04096 280.55)"
+        ]
+      },
+      "chrome-focus": {
+        "role": "primary",
+        "displayName": "Chrome Lavender",
+        "canonical": "#b9a0ff",
+        "tonalRamp": [
+          "oklch(15.00% 0.13526 295.11)",
+          "oklch(26.43% 0.13526 295.11)",
+          "oklch(37.86% 0.13526 295.11)",
+          "oklch(49.29% 0.13526 295.11)",
+          "oklch(60.71% 0.13526 295.11)",
+          "oklch(72.14% 0.13526 295.11)",
+          "oklch(83.57% 0.13526 295.11)",
+          "oklch(95.00% 0.13526 295.11)"
+        ]
+      }
+    },
+    "tonalRampProvenance": "Synthesized OKLCH swatch-panel metadata only, stepped dark to light from the canonical light or dark branch; these ramps are not shipped component tokens.",
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Wide public-title heading; narrows at the recorded container queries."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Main page headline."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Section heading."
+      },
+      "item-title": {
+        "displayName": "Item Title",
+        "purpose": "General item heading; smaller row titles retain their component role."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "General 14px paragraphs."
+      },
+      "reading-body": {
+        "displayName": "Reading Body",
+        "purpose": "Public synopsis and review paragraphs."
+      },
+      "control": {
+        "displayName": "Control",
+        "purpose": "Standard action labels."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Compact metadata and labels."
+      },
+      "wordmark": {
+        "displayName": "Wordmark",
+        "purpose": "Approved Arial wordmark construction only; never the body or heading family."
+      }
+    },
+    "shadows": [
+      {
+        "name": "sheet",
+        "value": "0 18px 55px #0005",
+        "purpose": "Modal bottom sheet only."
+      },
+      {
+        "name": "toast",
+        "value": "0 8px 30px #0003",
+        "purpose": "Transient fixed status feedback."
+      },
+      {
+        "name": "mobile-app-prompt",
+        "value": "0 5px 25px #0004",
+        "purpose": "Compact fixed app prompt."
+      }
+    ],
+    "motion": [
+      {
+        "name": "button-hover",
+        "value": "filter: brightness(1.09)",
+        "purpose": "Enabled button response; no duration or animation is inferred."
+      },
+      {
+        "name": "button-active",
+        "value": "transform: translateY(1px)",
+        "purpose": "Pressed-button response."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "transition: none !important; scroll-behavior: auto !important",
+        "purpose": "Connected-surface reduced-motion treatment. No width animation is recorded."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "home-tight",
+        "value": "1060px",
+        "query": "container max-width"
+      },
+      {
+        "name": "rail-below",
+        "value": "900px",
+        "query": "container max-width"
+      },
+      {
+        "name": "phone-navigation",
+        "value": "680px",
+        "query": "container max-width"
+      },
+      {
+        "name": "small-phone",
+        "value": "425px",
+        "query": "container max-width"
+      },
+      {
+        "name": "mobile-app-prompt",
+        "value": "820px",
+        "query": "viewport maximum; also device and browser gated"
+      }
+    ],
+    "focus": {
+      "content": "3px solid var(--fx-purple); outline-offset: 3px",
+      "darkChrome": "3px solid #b9a0ff; outline-offset: 3px",
+      "search": "focus-within on the dark search wrapper"
+    },
+    "controlSizing": [
+      {
+        "refersTo": "button-primary",
+        "minimumHeight": "42px"
+      },
+      {
+        "refersTo": "button-secondary",
+        "minimumHeight": "42px"
+      },
+      {
+        "refersTo": "button-soft",
+        "minimumHeight": "42px"
+      },
+      {
+        "refersTo": "choice",
+        "minimumHeight": "42px"
+      },
+      {
+        "refersTo": "text-field",
+        "minimumHeight": "44px"
+      },
+      {
+        "context": "Public title actions and phone navigation",
+        "minimumHeight": "44px"
+      },
+      {
+        "context": "Coarse-pointer poster-save, icon and text controls",
+        "minimumHeight": "44px"
+      }
+    ],
+    "layout": {
+      "scope": "Browser surfaces only; not native Flutter tokens or a replacement for the marketing system.",
+      "appMaximumWidth": "1600px",
+      "sidebarWidth": "168px",
+      "homeRailWidth": "218px",
+      "publicMaximumWidth": "1160px",
+      "catalogMaximumWidth": "1200px",
+      "posterAspectRatio": "2/3",
+      "posterFit": "contain",
+      "sheet": {
+        "element": "dialog",
+        "position": "fixed",
+        "inset": "auto 12px 12px",
+        "width": "min(560px, calc(100% - 24px))",
+        "maximumHeight": "min(85dvh, 850px)",
+        "overflow": "auto",
+        "backdrop": "#090914b8",
+        "focusLifecycle": "Native modal focus, Escape handling, labeled close, page-scroll lock, restore previous focus."
+      },
+      "mobilePrompt": {
+        "inset": "auto 12px max(12px,env(safe-area-inset-bottom))",
+        "scrollThreshold": "160px",
+        "dismissal": "Tab session",
+        "nativeSafari": "apple-itunes-app metadata; native presentation unverified"
+      }
+    },
+    "primitiveSources": {
+      "colors": "DESIGN.md frontmatter colors; paired themeValues above preserve the canonical CSS branches.",
+      "rounded": {
+        "label": {
+          "tokenRef": "{rounded.label}",
+          "source": "web.css .fx-label"
+        },
+        "poster": {
+          "tokenRef": "{rounded.poster}",
+          "source": "web.css .fx-poster, .fx-choice-row button"
+        },
+        "field": {
+          "tokenRef": "{rounded.field}",
+          "source": "production.css auth/sheet input; web.css sheet select"
+        },
+        "control": {
+          "tokenRef": "{rounded.control}",
+          "source": "web.css .fx-button, .fx-nav-button"
+        },
+        "notice": {
+          "tokenRef": "{rounded.notice}",
+          "source": "production.css .fx-error, .fx-terms-notice"
+        },
+        "container": {
+          "tokenRef": "{rounded.container}",
+          "source": "web.css .fx-picker, .fx-guest-friends; mobile-app-prompt.css"
+        },
+        "watch-soon": {
+          "tokenRef": "{rounded.watch-soon}",
+          "source": "web.css .fx-soon"
+        },
+        "sheet": {
+          "tokenRef": "{rounded.sheet}",
+          "source": "production.css .fx-sheet"
+        },
+        "avatar": {
+          "tokenRef": "{rounded.avatar}",
+          "source": "web.css .fx-avatar"
+        }
+      },
+      "spacing": {
+        "tight": {
+          "tokenRef": "{spacing.tight}",
+          "source": "web.css .fx-sidebar nav gap"
+        },
+        "compact": {
+          "tokenRef": "{spacing.compact}",
+          "source": "web.css .fx-choice-row gap"
+        },
+        "icon-gap": {
+          "tokenRef": "{spacing.icon-gap}",
+          "source": "web.css .fx-button gap"
+        },
+        "action-gap": {
+          "tokenRef": "{spacing.action-gap}",
+          "source": "web.css .fx-button-row gap"
+        },
+        "small": {
+          "tokenRef": "{spacing.small}",
+          "source": "web.css .fx-film-shelf gap"
+        },
+        "row": {
+          "tokenRef": "{spacing.row}",
+          "source": "web.css .fx-activity vertical padding"
+        },
+        "inset": {
+          "tokenRef": "{spacing.inset}",
+          "source": "web.css .fx-option vertical padding"
+        },
+        "medium": {
+          "tokenRef": "{spacing.medium}",
+          "source": "web.css .fx-soon padding; .fx-rail-section inset"
+        },
+        "section": {
+          "tokenRef": "{spacing.section}",
+          "source": "production.css .fx-plans-list gap"
+        },
+        "sheet-inset": {
+          "tokenRef": "{spacing.sheet-inset}",
+          "source": "production.css .fx-sheet padding"
+        },
+        "large": {
+          "tokenRef": "{spacing.large}",
+          "source": "web.css .fx-home-columns gap"
+        },
+        "main-inset": {
+          "tokenRef": "{spacing.main-inset}",
+          "source": "web.css .fx-main horizontal padding"
+        },
+        "section-break": {
+          "tokenRef": "{spacing.section-break}",
+          "source": "production.css .fx-download-prompt vertical margin"
+        }
+      },
+      "components": "DESIGN.md frontmatter components; specimens below carry states, minimum sizing and border treatment beyond the eight-property frontmatter schema."
+    },
+    "avatarPolicy": {
+      "source": "src/web/models.ts avatarBorder; src/web/components.tsx Avatar",
+      "selectedPreference": "Must be supported and included among awarded badges.",
+      "none": "FRAME:NONE renders no border.",
+      "fallback": "Existing awarded-badge priority; initials when avatar image is absent or fails.",
+      "christmas": "Official SVG frame, 112%, no extra generic ring."
+    },
+    "publicDataPresentation": {
+      "source": "src/web/api.ts title/publicReviews; src/web/pages.tsx TitlePage/ReviewCard",
+      "reviews": "Separate deliberately public projection; visibility and spoiler labels; reveal before showing spoiler bodies.",
+      "privateContent": "Owner diary notes, friend activity and plans do not belong on public title or discovery pages.",
+      "scores": "Only show actual score with its actual Flixie or TMDB source.",
+      "missingData": "Explicit loading, retry, empty, no-rating or missing-artwork treatment."
+    },
+    "evidence": {
+      "implementation": [
+        "src/web/web.css",
+        "src/web/production.css",
+        "src/web/mobile-app-prompt.css",
+        "src/web/components.tsx",
+        "src/web/models.ts",
+        "src/web/pages.tsx",
+        "src/web/WebApp.tsx",
+        "src/web/MobileAppPrompt.tsx",
+        "src/web/appPrompt.ts",
+        "src/web/DownloadPrompt.tsx",
+        "src/web/PublicTitleShell.tsx",
+        "src/components/CatalogView.tsx"
+      ],
+      "review": ".impeccable/review/finish-review.md",
+      "disposition": "ship at supplied local light-theme capture scope",
+      "captures": [
+        "desktop-home.jpg",
+        "mobile-home.jpg",
+        "small-home.jpg",
+        "tablet-home.jpg",
+        "user-home.jpg",
+        "desktop-public.jpg",
+        "mobile-public.jpg",
+        "small-public.jpg",
+        "desktop-catalog.jpg",
+        "mobile-catalog.jpg"
+      ],
+      "notVerified": [
+        "Dark rendering",
+        "Physical iPhone/Android and native app-banner presentation",
+        "Production responses"
+      ],
+      "documentationPass": "Source extraction and review reconciliation only; no new runtime QA or release approval."
+    },
+    "notCanonized": [
+      "Unused prototype preview/frame selectors and frame-height toggle: not used by connected markup.",
+      "Unused mint palette declaration: no current component role.",
+      "Former width animation: absent from current CSS.",
+      "Existing marketing token/type system: outside this connected-surface extraction."
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Connected action hierarchy; minimum height permits wrapping and growth.",
+      "html": "<button class=\"ds-button-primary\" type=\"button\">Save to watchlist</button>",
+      "css": ".ds-button-primary{font-family:FlixieManrope,Arial,sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:10px 14px;border:1px solid var(--fx-line,light-dark(#dbd1e7,#3e4058));border-radius:9px;font-size:13px;font-weight:750;line-height:1.5;text-decoration:none;cursor:pointer;background:var(--fx-brand,#7c4dff);color:#fff;border-color:transparent}.ds-button-primary:not(:disabled):hover{filter:brightness(1.09)}.ds-button-primary:focus-visible{outline:3px solid var(--fx-purple,light-dark(#6534b8,#b9a0ff));outline-offset:3px}.ds-button-primary:active{transform:translateY(1px)}.ds-button-primary:disabled{opacity:.5;cursor:wait}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Connected action hierarchy; minimum height permits wrapping and growth.",
+      "html": "<button class=\"ds-button-secondary\" type=\"button\">Watch options</button>",
+      "css": ".ds-button-secondary{font-family:FlixieManrope,Arial,sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:10px 14px;border:1px solid var(--fx-line,light-dark(#dbd1e7,#3e4058));border-radius:9px;font-size:13px;font-weight:750;line-height:1.5;text-decoration:none;cursor:pointer;background:var(--fx-surface,light-dark(#fff,#1e1f30));color:var(--fx-ink,light-dark(#261735,#f5f7fa));border-color:var(--fx-line,light-dark(#dbd1e7,#3e4058))}.ds-button-secondary:not(:disabled):hover{filter:brightness(1.09)}.ds-button-secondary:focus-visible{outline:3px solid var(--fx-purple,light-dark(#6534b8,#b9a0ff));outline-offset:3px}.ds-button-secondary:active{transform:translateY(1px)}.ds-button-secondary:disabled{opacity:.5;cursor:wait}"
+    },
+    {
+      "name": "Soft Button",
+      "kind": "button",
+      "refersTo": "button-soft",
+      "description": "Connected action hierarchy; minimum height permits wrapping and growth.",
+      "html": "<button class=\"ds-button-soft\" type=\"button\">Pick for me</button>",
+      "css": ".ds-button-soft{font-family:FlixieManrope,Arial,sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:10px 14px;border:1px solid var(--fx-line,light-dark(#dbd1e7,#3e4058));border-radius:9px;font-size:13px;font-weight:750;line-height:1.5;text-decoration:none;cursor:pointer;background:var(--fx-lift,light-dark(#eee7f6,#292b3e));color:var(--fx-purple,light-dark(#6534b8,#b9a0ff));border-color:transparent}.ds-button-soft:not(:disabled):hover{filter:brightness(1.09)}.ds-button-soft:focus-visible{outline:3px solid var(--fx-purple,light-dark(#6534b8,#b9a0ff));outline-offset:3px}.ds-button-soft:active{transform:translateY(1px)}.ds-button-soft:disabled{opacity:.5;cursor:wait}"
+    },
+    {
+      "name": "Labeled Text Field",
+      "kind": "input",
+      "refersTo": "text-field",
+      "description": "Auth and sheet input treatment; phone fields increase to 16px.",
+      "html": "<label class=\"ds-field-label\">Email or username<input class=\"ds-field\" autocomplete=\"username\" /></label>",
+      "css": ".ds-field-label{font-family:FlixieManrope,Arial,sans-serif;display:block;font-size:13px;font-weight:650;color:var(--fx-ink,light-dark(#261735,#f5f7fa))}.ds-field{font-family:FlixieManrope,Arial,sans-serif;display:block;box-sizing:border-box;width:100%;min-height:44px;margin-top:7px;padding:11px;border:1px solid var(--fx-line,light-dark(#dbd1e7,#3e4058));border-radius:8px;background:var(--fx-lift,light-dark(#eee7f6,#292b3e));color:var(--fx-ink,light-dark(#261735,#f5f7fa));font-size:14px;line-height:1.5;caret-color:var(--fx-purple,light-dark(#6534b8,#b9a0ff))}.ds-field:focus-visible{outline:3px solid var(--fx-purple,light-dark(#6534b8,#b9a0ff));outline-offset:3px}@media(max-width:680px){.ds-field{font-size:16px}}"
+    },
+    {
+      "name": "Current Navigation Item",
+      "kind": "nav",
+      "refersTo": "navigation-item",
+      "description": "Signed-in navigation is vertical on wide containers and wraps horizontally on phones.",
+      "html": "<nav aria-label=\"Main navigation\"><a class=\"ds-navigation ds-current\" href=\"/app\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m3 10 9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z\"/><path d=\"M9 21v-9h6v9\"/></svg>Home</a></nav>",
+      "css": ".ds-navigation{font-family:FlixieManrope,Arial,sans-serif;display:flex;align-items:center;gap:11px;width:100%;box-sizing:border-box;padding:11px 12px;border-radius:9px;color:var(--fx-muted,light-dark(#62566f,#b7c2d0));font-size:13px;font-weight:650;line-height:1.5;text-decoration:none}.ds-navigation.ds-current{background:light-dark(#e8ddff,#302743);color:var(--fx-purple,light-dark(#6534b8,#b9a0ff))}.ds-navigation:hover{color:var(--fx-purple,light-dark(#6534b8,#b9a0ff))}.ds-navigation:focus-visible{outline:3px solid var(--fx-purple,light-dark(#6534b8,#b9a0ff));outline-offset:3px}"
+    },
+    {
+      "name": "Selected Choice",
+      "kind": "chip",
+      "refersTo": "choice",
+      "description": "Wrapping mood/time choices select through the border and text color.",
+      "html": "<button class=\"ds-choice\" type=\"button\" aria-pressed=\"true\">Under 2 hours</button>",
+      "css": ".ds-choice{font-family:FlixieManrope,Arial,sans-serif;min-height:42px;padding:9px 12px;border:1px solid var(--fx-line,light-dark(#dbd1e7,#3e4058));border-radius:7px;background:var(--fx-lift,light-dark(#eee7f6,#292b3e));color:var(--fx-ink,light-dark(#261735,#f5f7fa));font-size:13px;line-height:1.5;cursor:pointer}.ds-choice[aria-pressed=\"true\"]{color:var(--fx-purple,light-dark(#6534b8,#b9a0ff));border-color:var(--fx-purple,light-dark(#6534b8,#b9a0ff))}.ds-choice:not(:disabled):hover{filter:brightness(1.09)}.ds-choice:focus-visible{outline:3px solid var(--fx-purple,light-dark(#6534b8,#b9a0ff));outline-offset:3px}.ds-choice:active{transform:translateY(1px)}.ds-choice:disabled{opacity:.5;cursor:wait}"
+    },
+    {
+      "name": "Watch-soon Card",
+      "kind": "card",
+      "refersTo": "watch-soon",
+      "description": "Full 2:3 artwork beside flexible copy. This specimen deliberately demonstrates the implemented missing-poster fallback, with no invented score.",
+      "html": "<article class=\"ds-watch-soon\"><div class=\"ds-art-fallback\" role=\"img\" aria-label=\"Poster unavailable for Alien\"><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"2\" y=\"2\" width=\"20\" height=\"20\" rx=\"2.18\" ry=\"2.18\"/><path d=\"M7 2v20M17 2v20M2 7h5M2 17h5M17 17h5M17 7h5\"/></svg><span>Alien</span></div><div><h3 class=\"ds-soon-title\">Alien</h3><p class=\"ds-soon-meta\">1979 · Film</p><button class=\"ds-soon-button\" type=\"button\">Watch options</button></div></article>",
+      "css": ".ds-watch-soon{font-family:FlixieManrope,Arial,sans-serif;display:grid;grid-template-columns:112px minmax(0,1fr);gap:19px;align-items:center;padding:17px;border:1px solid var(--fx-line,light-dark(#dbd1e7,#3e4058));border-radius:13px;background:var(--fx-surface,light-dark(#fff,#1e1f30));color:var(--fx-ink,light-dark(#261735,#f5f7fa))}.ds-art-fallback{aspect-ratio:2/3;border-radius:7px;background:#10111b;color:#b7c2d0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;font-size:12px}.ds-soon-title{margin:0;font-size:25px;font-weight:800;line-height:1.35;letter-spacing:-.02em;overflow-wrap:anywhere}.ds-soon-meta{margin:6px 0;color:var(--fx-muted,light-dark(#62566f,#b7c2d0));font-size:12px}.ds-soon-button{font-family:FlixieManrope,Arial,sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:10px 14px;border:1px solid var(--fx-line,light-dark(#dbd1e7,#3e4058));border-radius:9px;font-size:13px;font-weight:750;line-height:1.5;text-decoration:none;cursor:pointer;background:var(--fx-brand,#7c4dff);color:white;border-color:transparent;font-size:12px;padding:9px 11px}.ds-soon-button:not(:disabled):hover{filter:brightness(1.09)}.ds-soon-button:focus-visible{outline:3px solid var(--fx-purple,light-dark(#6534b8,#b9a0ff));outline-offset:3px}.ds-soon-button:active{transform:translateY(1px)}.ds-soon-button:disabled{opacity:.5;cursor:wait}@media(max-width:425px){.ds-watch-soon{grid-template-columns:88px minmax(0,1fr);gap:13px;padding:13px}.ds-soon-title{font-size:23px}}"
+    },
+    {
+      "name": "Bottom Sheet",
+      "kind": "custom",
+      "refersTo": "sheet",
+      "description": "Static inline specimen of sheet contents. The actual native dialog is fixed to the viewport and owns modal focus, scroll locking, Escape and focus restoration.",
+      "html": "<section class=\"ds-sheet\" aria-label=\"Your Watch Plan\"><div class=\"ds-sheet-top\"><h2>Your Watch Plan</h2><button class=\"ds-sheet-close\" aria-label=\"Close\" type=\"button\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"m18 6-12 12M6 6l12 12\"/></svg></button></div><p>Keep the plan going in Flixie.</p></section>",
+      "css": ".ds-sheet{font-family:FlixieManrope,Arial,sans-serif;box-sizing:border-box;width:min(560px,100%);max-height:min(85dvh,850px);overflow:auto;overscroll-behavior:contain;padding:24px;border:0;border-radius:16px;background:var(--fx-surface,light-dark(#fff,#1e1f30));color:var(--fx-ink,light-dark(#261735,#f5f7fa));box-shadow:0 18px 55px #0005}.ds-sheet-top{display:flex;align-items:flex-start;justify-content:space-between;gap:15px;margin-bottom:13px}.ds-sheet h2{font-size:18px;font-weight:750;line-height:1.3;letter-spacing:-.02em;margin:0}.ds-sheet p{font-size:14px;line-height:1.6;color:var(--fx-muted,light-dark(#62566f,#b7c2d0));margin:10px 0 18px}.ds-sheet-close{display:inline-grid;place-items:center;min-width:40px;min-height:40px;padding:7px;border:0;border-radius:8px;background:transparent;color:inherit;cursor:pointer}.ds-sheet-close:not(:disabled):hover{filter:brightness(1.09)}.ds-sheet-close:focus-visible{outline:3px solid var(--fx-purple,light-dark(#6534b8,#b9a0ff));outline-offset:3px}.ds-sheet-close:active{transform:translateY(1px)}.ds-sheet-close:disabled{opacity:.5;cursor:wait}@media(pointer:coarse){.ds-sheet-close{min-width:44px;min-height:44px}}"
+    },
+    {
+      "name": "Personal Badge Avatar",
+      "kind": "custom",
+      "description": "A valid selected OG border with the actual initial fallback. No universal ring is inferred; FRAME:NONE and unsupported/unawarded selections follow avatarBorder.",
+      "html": "<span class=\"ds-avatar\" role=\"img\" aria-label=\"Alex, og user border\"><span class=\"ds-avatar-initial\" aria-hidden=\"true\">A</span></span>",
+      "css": ".ds-avatar{font-family:FlixieManrope,Arial,sans-serif;display:inline-grid;place-items:center;box-sizing:border-box;width:34px;height:34px;padding:3px;border-radius:50%;background:conic-gradient(#ff8a66,#d561a8,#ff8a66);vertical-align:middle}.ds-avatar-initial{display:grid;place-items:center;width:100%;height:100%;border-radius:50%;background:var(--fx-lift,light-dark(#eee7f6,#292b3e));color:var(--fx-ink,light-dark(#261735,#f5f7fa));font-size:14px;font-weight:750}"
+    },
+    {
+      "name": "Compact App Prompt",
+      "kind": "custom",
+      "refersTo": "mobile-app-prompt",
+      "description": "Inline style specimen; runtime positions the shared prompt with safe-area clearance after 160px scrolling on qualifying devices. Official F artwork is rendered by MobileAppPrompt; it is not replaced by a generic icon here.",
+      "html": "<aside class=\"ds-app-prompt\" aria-label=\"Get the Flixie app\"><div><strong>Flixie on your phone</strong><p>Keep your next watch close.</p></div><a class=\"ds-app-link\" href=\"/download\">Get the app</a><button class=\"ds-app-dismiss\" type=\"button\" aria-label=\"Dismiss app download prompt\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"m18 6-12 12M6 6l12 12\"/></svg></button></aside>",
+      "css": ".ds-app-prompt{font-family:FlixieManrope,Arial,sans-serif;display:flex;align-items:center;gap:10px;box-sizing:border-box;padding:12px;border:1px solid var(--fx-line,light-dark(#dbd1e7,#3e4058));border-radius:12px;background:var(--fx-surface,light-dark(#fff,#1e1f30));color:var(--fx-ink,light-dark(#261735,#f5f7fa));box-shadow:0 5px 25px #0004;font-size:14px;line-height:1.5}.ds-app-prompt>div{flex:1;min-width:0}.ds-app-prompt strong{font-size:13px}.ds-app-prompt p{font-size:12px;color:var(--fx-muted,light-dark(#62566f,#b7c2d0));margin:0}.ds-app-link{display:flex;align-items:center;justify-content:center;min-height:44px;padding:9px;border-radius:9px;background:#7c4dff;color:white;font-size:12px;line-height:1.5;font-weight:750;white-space:nowrap;text-decoration:none}.ds-app-dismiss{display:grid;place-items:center;min-width:32px;min-height:44px;padding:4px;border:0;background:transparent;color:inherit;cursor:pointer}.ds-app-prompt :is(a,button):focus-visible{outline:3px solid #b9a0ff;outline-offset:3px}.ds-app-dismiss:not(:disabled):hover{filter:brightness(1.09)}.ds-app-dismiss:focus-visible{outline:3px solid var(--fx-purple,light-dark(#6534b8,#b9a0ff));outline-offset:3px}.ds-app-dismiss:active{transform:translateY(1px)}.ds-app-dismiss:disabled{opacity:.5;cursor:wait}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Flixie's existing app identity",
+    "overview": "This document records the connected browser implementation in `src/web/`, the public catalogue in `src/components/CatalogView.tsx`, and the shared mobile app prompt. It extends the approved Flixie concept with the existing account and backend. The white/purple wordmark, bundled Manrope, official Pip and F assets, full portrait film artwork and each person's own badge border remain the visual authority.\n\nCompact navigation and tonal lavender or navy surfaces keep personal films and actions easy to scan. Film artwork carries the visual interest; purple marks actions and selected states. Desktop can show personal film, television, friend and plan information in parallel; smaller containers reflow the same content. Public pages distinguish title information, rating sources and deliberately public reviews from personal account content.\n\nThis is a scoped browser system. The pre-existing marketing shell and its Inter/Space Grotesk styles remain separate, including the header/footer surrounding the catalogue. Browser dimensions here do not replace native Flutter tokens. Product scope and release dependencies live in `PRODUCT.md` and `docs/web-app.md`; surface composition stays in `.impeccable/web-app-brief.md`.",
+    "keyCharacteristics": [
+      "White flix / purple ie wordmark on dark chrome, with the approved Arial lettering exception.",
+      "Bundled Manrope, strong title weights and readable body copy.",
+      "Complete portrait artwork, personal badge borders and restrained official Pip/F accents.",
+      "Tonal depth, thin separators and rounded controls.",
+      "Connected account actions, explicit data states and scrollable bottom sheets."
+    ],
+    "rules": [
+      {
+        "name": "The Brand Continuity Rule",
+        "body": "Extend the existing Flixie identity; this connected browser system does not authorize rebranding the marketing site or native app.",
+        "section": "colors"
+      },
+      {
+        "name": "The Readable Copy Rule",
+        "body": "Preserve the paragraph base, text scaling and wrapping; compact metadata does not authorize shrinking general copy or hiding meaningful text with ellipses.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tonal Depth Rule",
+        "body": "Use the existing surface hierarchy and lines for content structure; reserve the recorded shadows for overlays and transient feedback.",
+        "section": "elevation & depth"
+      },
+      {
+        "name": "The Complete Artwork Rule",
+        "body": "Show the full portrait poster and preserve its proportions in shelves, public detail, diary rows and picker results.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "**Do** extend the approved Flixie identity and keep this system scoped to the connected browser surfaces.",
+      "**Do** show complete portrait artwork with contain fitting and truthful missing-artwork fallbacks.",
+      "**Do** preserve each person's awarded and selected badge preference, including an explicit choice of no border.",
+      "**Do** keep general body copy readable and reflow meaningful titles, metadata and actions.",
+      "**Do** use bounded, scrollable bottom sheets for choices and account actions, preserving keyboard focus.",
+      "**Do** label rating sources, public reviews and spoilers, and render real loading, empty and retry states.",
+      "**Do** keep both desktop store destinations discoverable and mobile download prompts compact and dismissible."
+    ],
+    "donts": [
+      "**Don't** promote browser sidebar widths, catalogue header clearance or unused prototype frame rules into the native app system.",
+      "**Don't** replace the pre-existing marketing design system as a side effect of extending the connected app.",
+      "**Don't** crop film posters into landscape imagery or stretch their proportions.",
+      "**Don't** replace individual border preferences with one universal ring or grant an unawarded frame.",
+      "**Don't** expose personal diary notes, friend activity, plans or private reviews on public title or search-discovery pages.",
+      "**Don't** invent films, availability, reviews, scores or achieved search rankings to fill absent state.",
+      "**Don't** turn app download guidance into a redirect or screen-covering install interstitial."
+    ]
+  }
+}

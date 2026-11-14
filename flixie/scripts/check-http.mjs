@@ -79,9 +79,11 @@ try {
   for (const path of ['/movies/348', '/shows/1399']) {
     const shared = await fetch(base + path);
     assert.equal(shared.status, 200);
-    assert.equal(shared.headers.get('x-robots-tag'), 'noindex');
+    assert.equal(shared.headers.get('x-robots-tag'), path==='/movies/348'?null:'noindex');
     const body = await shared.text();
-    assert.match(body, /Need the app/);
+    assert.match(body, /Get Flixie|Download Flixie/);
+    if(path==='/movies/348'){assert.match(body, /<h1>Alien<\/h1>/);assert.match(body, /https:\/\/www\.flixie\.co\.uk\/movies\/348/);assert.match(body, /\"@type\":\"Movie\"/);}
+    assert.doesNotMatch(body, /dev_web_|PRIVATE WEB FIXTURE|LOCAL WEB CHECK|Bearer /);
     assert.match(body, /apple-itunes-app/);
     assert.doesNotMatch(body, /Opening the App Store|Stay on this page/);
     assert.match(body, /apps.apple.com/);

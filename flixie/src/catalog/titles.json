@@ -1,0 +1,93 @@
+{
+  "updatedAt": "2026-11-14",
+  "titles": [
+    {
+      "id": 348,
+      "kind": "movie",
+      "title": "Alien",
+      "posterPath": "/vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg",
+      "releaseDate": "1979-05-25",
+      "runtime": 117,
+      "overview": "During its return to the earth, commercial spaceship Nostromo intercepts a distress signal from a distant planet. When a three-member team of the crew discovers a chamber containing thousands of eggs on the planet, a creature inside one of the eggs attacks an explorer. The entire crew is unaware of the impending nightmare set to descend upon them when the alien parasite planted inside its unfortunate host is birthed.",
+      "tagline": "In space, no one can hear you scream.",
+      "genres": ["Horror", "Science Fiction"]
+    },
+    {
+      "id": 1368337,
+      "kind": "movie",
+      "title": "The Odyssey",
+      "posterPath": "/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg",
+      "releaseDate": "2026-07-15",
+      "runtime": 173,
+      "overview": "Odysseus, the legendary King of Ithaca, embarks on a long and perilous journey home following the Trojan War. Throughout his voyage, he is forced to confront the whims of gods, mythological monsters, and trials that stretch both his cunning and his humanity to the breaking point.",
+      "tagline": "Defy the gods.",
+      "genres": ["Action", "Adventure", "Fantasy"]
+    },
+    {
+      "id": 634649,
+      "kind": "movie",
+      "title": "Spider-Man: No Way Home",
+      "posterPath": "/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
+      "releaseDate": "2021-12-15",
+      "runtime": 148,
+      "overview": "Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man.",
+      "tagline": "Enter the Multiverse.",
+      "genres": ["Action", "Adventure", "Science Fiction"]
+    },
+    {
+      "id": 157336,
+      "kind": "movie",
+      "title": "Interstellar",
+      "posterPath": "/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+      "releaseDate": "2014-11-05",
+      "runtime": 169,
+      "overview": "The adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.",
+      "tagline": "Mankind was born on Earth. It was never meant to die here.",
+      "genres": ["Adventure", "Drama", "Science Fiction"]
+    },
+    {
+      "id": 666277,
+      "kind": "movie",
+      "title": "Past Lives",
+      "posterPath": "/k3waqVXSnvCZWfJYNtdamTgTtTA.jpg",
+      "releaseDate": "2023-06-02",
+      "runtime": 106,
+      "overview": "Nora and Hae Sung, two childhood friends, are reunited in New York for one fateful week as they confront notions of destiny, love, and the choices that make a life.",
+      "tagline": "",
+      "genres": ["Drama", "Romance"]
+    },
+    {
+      "id": 1339713,
+      "kind": "movie",
+      "title": "Obsession",
+      "posterPath": "/bRwnj8WEKBCvmfeUNOukJPwB43K.jpg",
+      "releaseDate": "2026-05-13",
+      "runtime": 109,
+      "overview": "After breaking the mysterious \"One Wish Willow\" to win his crush's heart, a hopeless romantic finds himself getting exactly what he asked for but soon discovers that some desires come at a dark, sinister price.",
+      "tagline": "Be careful who you wish for…",
+      "genres": ["Horror", "Thriller"]
+    },
+    {
+      "id": 15621,
+      "kind": "show",
+      "title": "The Newsroom",
+      "posterPath": "/pOC3DmU47X98Sv5vaPnmgjG30eY.jpg",
+      "releaseDate": "2012-06-24",
+      "runtime": null,
+      "overview": "A behind-the-scenes look at the people who make a nightly cable-news program. Focusing on a network anchor, his new executive producer, the newsroom staff and their boss, the series tracks their quixotic mission to do the news well in the face of corporate and commercial obstacles-not to mention their own personal entanglements.",
+      "tagline": "More as the story develops.",
+      "genres": ["Drama"]
+    },
+    {
+      "id": 76331,
+      "kind": "show",
+      "title": "Succession",
+      "posterPath": "/7HW47XbkNQ5fiwQFYGWdw9gs144.jpg",
+      "releaseDate": "2018-06-03",
+      "runtime": null,
+      "overview": "Follow the lives of the Roy family as they contemplate their future once their aging father begins to step back from the media and entertainment conglomerate they control.",
+      "tagline": "Make your move.",
+      "genres": ["Comedy", "Drama"]
+    }
+  ]
+}

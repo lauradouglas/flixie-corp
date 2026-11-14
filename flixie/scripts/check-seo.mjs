@@ -74,6 +74,8 @@ for (const [path, html] of documents) {
     if (!href.startsWith('/') && !href.startsWith('#')) continue;
     const [targetPath, fragment] = href.split('#');
     if (/^\/(?:images|assets)\//.test(targetPath)) { await access(`dist${targetPath}`); continue; }
+    if(targetPath.startsWith('/web/')){await access(`dist${targetPath}`);continue;}
+    if(targetPath.startsWith('/app/')){assert.ok(config.routes.some(rule=>rule.route==='/app/*'&&rule.rewrite==='/app.html'));continue;}
     const target = documents.get(targetPath || path);
     assert.ok(target, `${path}: broken internal link ${href}`);
     if (fragment) assert.ok(target.includes(`id="${fragment}"`), `${path}: missing anchor ${href}`);

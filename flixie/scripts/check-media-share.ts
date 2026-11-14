@@ -4,7 +4,7 @@ import { sharedMediaAppLink, sharedMediaStore, sharedMediaOpenLink } from '../sr
 import { pageFromPath } from '../src/site';
 for (const [path, expected] of [['/movies/348', 'flixie:///movies/348?source=shared_link'], ['/shows/1399', 'flixie:///shows/1399?source=shared_link']]) {
   assert.equal(sharedMediaAppLink(path), expected);
-  assert.equal(pageFromPath(path), 'mediaShare');
+  assert.ok(pageFromPath(path)==='mediaShare'||pageFromPath(path).startsWith('title-'));
 }
 for (const path of ['/movies/0', '/movies/-1', '/movies/1/script', '/movies/2147483648', '//evil.com/movies/348', '/shows/not-a-show']) {
   assert.equal(sharedMediaAppLink(path), null);

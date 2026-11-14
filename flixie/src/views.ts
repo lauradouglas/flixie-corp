@@ -2,6 +2,8 @@ import { createElement } from 'react';
 import { isFeaturePage } from './featureContent';
 import type { PageId } from './site';
 const views = {
+  catalog: () => import('./components/CatalogView'),
+  webApp: () => import('./web/WebApp'),
   download: () => import('./components/DownloadView'),
   home: () => import('./components/HomeView'),
   features: () => import('./components/FeaturesView'),
@@ -15,5 +17,6 @@ const views = {
 };
 export async function loadView(page: PageId) {
   if (isFeaturePage(page)) { const { default: FeatureLandingView } = await import('./components/FeatureLandingView'); return () => createElement(FeatureLandingView, { page }); }
-  return (await views[page]()).default;
+  if(page.startsWith('title-'))return (await import('./components/MediaShareView')).default;
+  return (await views[page as keyof typeof views]()).default;
 }

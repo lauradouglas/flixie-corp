@@ -3,7 +3,7 @@ import { pages, type PageId } from '../site';
 import BrandLogo from './BrandLogo';
 import { isFeaturePage } from '../featureContent';
 
-const links: PageId[] = ['home', 'features', 'faq', 'about', 'contact'];
+const links: PageId[] = ['home', 'features', 'catalog', 'webApp', 'faq', 'about', 'contact'];
 export default function Navbar({ currentPage }: { currentPage: PageId }) {
   const activePage = isFeaturePage(currentPage) ? 'features' : currentPage;
   return <header className="fixed top-0 left-0 right-0 z-40 bg-bg-nav border-b border-border-custom py-3" id="main-navbar">
