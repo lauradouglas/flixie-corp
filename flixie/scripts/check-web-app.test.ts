@@ -222,9 +222,184 @@ test("download prompt chooses the correct mobile store and defers to Safari’s 
   );
 });
 
-test('a Firebase account without a Flixie profile can complete registration, while service failures remain errors',async()=>{
- const missing=new FlixieApi(local,()=>identity,async()=>reply({error:'User not found'},404));
- assert.equal(await missing.profile(identity.uid),null);
- const unavailable=new FlixieApi(local,()=>identity,async()=>reply({},503));
- await assert.rejects(unavailable.profile(identity.uid),ApiError);
+test("a Firebase account without a Flixie profile can complete registration, while service failures remain errors", async () => {
+  const missing = new FlixieApi(
+    local,
+    () => identity,
+    async () => reply({ error: "User not found" }, 404),
+  );
+  assert.equal(await missing.profile(identity.uid), null);
+  const unavailable = new FlixieApi(
+    local,
+    () => identity,
+    async () => reply({}, 503),
+  );
+  await assert.rejects(unavailable.profile(identity.uid), ApiError);
+});
+
+test("cast portraits preserve actual roles, ordering and unique people", async () => {
+  const { castMembers } = await import("../src/web/titleDetails");
+  const cast = castMembers({
+    castMembers: [
+      {
+        id: 2,
+        name: "Second actor",
+        character: "Ian",
+        profileImage: "/ian.jpg",
+        order: 2,
+      },
+      {
+        id: 1,
+        name: "First actor",
+        character: "Bear",
+        profileImage: "https://image.tmdb.org/t/p/w185/bear.jpg",
+        order: 0,
+      },
+      { id: 1, name: "Duplicate" },
+      { id: 0, name: "Invalid" },
+    ],
+  });
+  assert.deepEqual(
+    cast.map((person) => person.name),
+    ["First actor", "Second actor"],
+  );
+  assert.equal(cast[0].character, "Bear");
+  assert.equal(cast[0].portrait, "https://image.tmdb.org/t/p/w185/bear.jpg");
+});
+test("photo gallery distinguishes full poster artwork from real movie stills", async () => {
+  const { titlePhotos } = await import("../src/web/titleDetails");
+  const photos = titlePhotos({
+    backdrops: [
+      { imageUrl: "/scene.jpg", width: 1920, height: 1080 },
+      { imageUrl: "/scene.jpg" },
+      { imageUrl: "javascript:alert(1)" },
+    ],
+    posters: [{ file_path: "/poster.jpg", width: 1000, height: 1500 }],
+    logos: [{ imageUrl: "/logo.png" }],
+  });
+  assert.deepEqual(
+    photos.map((photo) => photo.kind),
+    ["still", "poster"],
+  );
+  assert.equal(photos[1].width, 1000);
+  assert.equal(photos[1].height, 1500);
+});
+test("friend opinions retain their own badge borders and never carry unmarked snippets or infer recommendations", async () => {
+  const { friendOpinions } = await import("../src/web/titleDetails");
+  const opinions = friendOpinions({
+    friends: [
+      {
+        userId: "jamie",
+        username: "Jamie",
+        rating: 9,
+        watched: true,
+        recommends: false,
+        profileBadges: ["OG_USER", "FRAME:OG_USER"],
+        reviewSnippet: "PRIVATE SPOILER",
+      },
+      {
+        userId: "robin",
+        username: "Robin",
+        rating: null,
+        watched: true,
+        recommends: true,
+        profileBadges: ["VERIFIED"],
+      },
+      {
+        userId: "inactive",
+        username: "No activity",
+        rating: null,
+        recommends: false,
+      },
+    ],
+  });
+  assert.equal(opinions.friends.length, 2);
+  assert.equal(opinions.average, 9);
+  assert.equal(opinions.ratedCount, 1);
+  assert.equal(opinions.watchedCount, 2);
+  assert.equal(opinions.recommendedCount, 1);
+  assert.equal(opinions.friends[0].recommends, false);
+  assert.deepEqual(opinions.friends[0].person.profileBadges, [
+    "OG_USER",
+    "FRAME:OG_USER",
+  ]);
+  assert.doesNotMatch(
+    JSON.stringify(opinions),
+    /PRIVATE SPOILER|reviewSnippet/,
+  );
+});
+test("public movie credits and gallery requests do not send account credentials", async () => {
+  const calls: RequestInit[] = [];
+  const api = new FlixieApi(
+    local,
+    () => identity,
+    async (url, init) => {
+      calls.push(init ?? {});
+      return String(url).endsWith("/credits")
+        ? reply({
+            castMembers: [{ id: 1, name: "Actor", profileImage: "/actor.jpg" }],
+            crewMembers: [{ job: "Director", name: "Director" }],
+          })
+        : reply({ backdrops: [{ imageUrl: "/scene.jpg" }] });
+    },
+  );
+  assert.equal((await api.credits(1339713, "movie")).cast[0].name, "Actor");
+  assert.equal((await api.images(1339713, "movie"))[0].kind, "still");
+  for (const call of calls)
+    assert.equal(
+      (call.headers as Record<string, string>).Authorization,
+      undefined,
+    );
+});
+test("a signed-out visitor cannot request private title friends", async () => {
+  let calls = 0;
+  const api = new FlixieApi(
+    local,
+    () => null,
+    async () => {
+      calls++;
+      return reply({});
+    },
+  );
+  await assert.rejects(api.titleFriends(1339713, "movie"), ApiError);
+  assert.equal(calls, 0);
+});
+test("movie and show friends use their authenticated title scope and reject a different title", async () => {
+  const calls: { url: string; init?: RequestInit }[] = [];
+  const api = new FlixieApi(
+    local,
+    () => identity,
+    async (url, init) => {
+      calls.push({ url: String(url), init });
+      return String(url).endsWith("/shows/friend-recommendations")
+        ? reply({
+            items: [
+              {
+                showId: 15621,
+                friends: [
+                  {
+                    userId: "watched-only",
+                    username: "Friend",
+                    watched: true,
+                    profileBadges: ["FOUNDER"],
+                  },
+                ],
+              },
+            ],
+          })
+        : reply({ movieId: "1339713", friends: [] });
+    },
+  );
+  await api.titleFriends(1339713, "movie");
+  assert.ok(calls[0].url.endsWith("/movies/1339713/friend-recommendation"));
+  assert.equal(
+    (calls[0].init?.headers as Record<string, string>).Authorization,
+    "Bearer current",
+  );
+  const show = await api.titleFriends(15621, "show");
+  assert.equal(show.friends[0].watched, true);
+  assert.deepEqual(JSON.parse(String(calls[1].init?.body)), {
+    showIds: [15621],
+  });
+  await assert.rejects(api.titleFriends(348, "movie"), ApiError);
 });

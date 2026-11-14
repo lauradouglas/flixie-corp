@@ -3,6 +3,7 @@ import {
   useRef,
   useState,
   type ReactNode,
+  type KeyboardEventHandler,
   type MouseEvent,
 } from "react";
 import {
@@ -239,10 +240,14 @@ export function Sheet({
   title,
   children,
   onClose,
+  wide = false,
+  onKeyDown,
 }: {
   title: string;
   children: ReactNode;
   onClose: () => void;
+  wide?: boolean;
+  onKeyDown?: KeyboardEventHandler<HTMLDialogElement>;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => {
@@ -260,7 +265,8 @@ export function Sheet({
   return (
     <dialog
       ref={ref}
-      className="fx-sheet"
+      className={`fx-sheet ${wide ? "fx-sheet-wide" : ""}`}
+      onKeyDown={onKeyDown}
       onCancel={(event) => {
         event.preventDefault();
         onClose();

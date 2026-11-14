@@ -1,3 +1,4 @@
+import { castMembers, friendOpinions, titlePhotos } from "./titleDetails";
 import {
   account,
   activity,
@@ -122,10 +123,12 @@ export class FlixieApi {
   }
   async profile(uid: string): Promise<Account | null> {
     try {
-      const raw=await this.request(`/users/external-id/${encodeURIComponent(uid)}?profileOnly=true`);
-      return raw===null?null:account(raw,uid);
-    } catch(error) {
-      if(error instanceof ApiError && error.status===404)return null;
+      const raw = await this.request(
+        `/users/external-id/${encodeURIComponent(uid)}?profileOnly=true`,
+      );
+      return raw === null ? null : account(raw, uid);
+    } catch (error) {
+      if (error instanceof ApiError && error.status === 404) return null;
       throw error;
     }
   }
@@ -143,6 +146,53 @@ export class FlixieApi {
       ),
       kind,
     );
+  }
+  async credits(id: number, kind: MediaKind, signal?: AbortSignal) {
+    const raw = await this.request(
+      `/${kind === "movie" ? "movies" : "shows"}/${id}/credits`,
+      { public: true, signal },
+    );
+    return {
+      cast: castMembers(raw),
+      directors: list(object(raw).crewMembers ?? object(raw).crew)
+        .map(object)
+        .filter((row) => text(row.job) === "Director")
+        .map((row) => text(row.name))
+        .filter(Boolean),
+    };
+  }
+  async images(id: number, kind: MediaKind, signal?: AbortSignal) {
+    return titlePhotos(
+      await this.request(
+        `/${kind === "movie" ? "movies" : "shows"}/${id}/images`,
+        { public: true, signal },
+      ),
+    );
+  }
+  async titleFriends(id: number, kind: MediaKind, signal?: AbortSignal) {
+    const raw =
+      kind === "movie"
+        ? object(
+            await this.request(`/movies/${id}/friend-recommendation`, {
+              signal,
+            }),
+          )
+        : object(
+            list(
+              object(
+                await this.request("/shows/friend-recommendations", {
+                  method: "POST",
+                  body: { showIds: [id] },
+                  signal,
+                }),
+              ).items,
+            )[0],
+          );
+    if (String(raw.showId ?? raw.movieId) !== String(id))
+      throw new ApiError(
+        "Friends’ opinions could not be loaded. Please try again.",
+      );
+    return friendOpinions(raw);
   }
   async publicReviews(id: number, kind: MediaKind, signal?: AbortSignal) {
     return list(

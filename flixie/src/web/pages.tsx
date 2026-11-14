@@ -1,3 +1,4 @@
+import { CastSection, FriendsSection, PhotosSection } from "./TitleSections";
 import { useEffect, useState } from "react";
 import {
   ArrowRight,
@@ -721,10 +722,7 @@ export function TitlePage({
     (signal) => api.publicReviews(id, kind, signal),
   );
   const credits = useLoad(`credits:${kind}:${id}`, (signal) =>
-    api.request(`/${kind === "movie" ? "movies" : "shows"}/${id}/credits`, {
-      public: true,
-      signal,
-    }),
+    api.credits(id, kind, signal),
   );
   const [appLink, setAppLink] = useState<string | null>(null);
   useEffect(
@@ -750,14 +748,8 @@ export function TitlePage({
       />
     );
   const f = result.data,
-    rawCredits = object(credits.data);
-  const directors = list(rawCredits.crewMembers)
-    .map(object)
-    .filter((c) => text(c.job) === "Director")
-    .map((c) => text(c.name));
-  const cast = list(rawCredits.castMembers)
-    .slice(0, 3)
-    .map((c) => text(object(c).name));
+    directors = credits.data?.directors ?? [],
+    cast = (credits.data?.cast ?? []).slice(0, 3).map((member) => member.name);
   return (
     <>
       <div className="fx-breadcrumb">
@@ -871,8 +863,27 @@ export function TitlePage({
           </div>
         </div>
       </div>
-      <DownloadPrompt />
-      <div className="fx-detail-bottom">
+      <nav className="fx-title-section-links" aria-label="On this title">
+        <a href="#title-friends">Friends</a>
+        <a href="#title-cast">Cast</a>
+        <a href="#title-photos">Photos</a>
+        <a href="#title-reviews">Reviews</a>
+      </nav>
+      <FriendsSection
+        key={`friends:${user?.id ?? "guest"}:${kind}:${id}`}
+        film={f}
+        revision={revision}
+        onSignIn={() => actions.open({ type: "login" })}
+      />
+      <CastSection
+        key={`cast:${kind}:${id}`}
+        members={credits.data?.cast ?? []}
+        loading={credits.loading}
+        error={credits.error}
+        retry={credits.retry}
+      />
+      <PhotosSection key={`photos:${kind}:${id}`} film={f} />
+      <div className="fx-detail-bottom" id="title-reviews">
         <section>
           <h2>Around Flixie</h2>
           {reviews.loading ? (
@@ -906,6 +917,7 @@ export function TitlePage({
           </aside>
         )}
       </div>
+      <DownloadPrompt />
       <section className="fx-related">
         <div className="fx-section-head">
           <h2>Keep exploring</h2>
