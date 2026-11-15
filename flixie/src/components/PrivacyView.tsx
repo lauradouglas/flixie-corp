@@ -17,7 +17,7 @@ export default function PrivacyView() {
           <div className="flex items-center gap-2.5 text-flixie-purple text-xs font-bold uppercase tracking-wider font-mono">
             <Shield className="h-4 w-4" /> Legal Documents
           </div>
-          <h1 className="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
+          <h1 className="font-display font-extrabold text-3xl sm:text-4xl text-text-primary tracking-tight">
             Privacy Policy
           </h1>
           {/* Release reminder: publish the community policy additions alongside the
@@ -32,7 +32,7 @@ export default function PrivacyView() {
         <div className="space-y-8 text-text-secondary text-xs sm:text-sm leading-relaxed" id="privacy-policy-document">
           
           <section className="space-y-3">
-            <h2 className="font-display font-bold text-base sm:text-lg text-white">1. Information Flixie Collects</h2>
+            <h2 className="font-display font-bold text-base sm:text-lg text-text-primary">1. Information Flixie Collects</h2>
             <p>
               We collect information needed to create your account, provide Flixie’s movie and social features, keep the service safe, and respond to support requests.
             </p>
@@ -42,7 +42,7 @@ export default function PrivacyView() {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
               <div className="bg-bg-card border border-border-custom p-4 rounded-xl space-y-2">
-                <h3 className="font-bold text-white text-xs uppercase tracking-wider">Account and profile information</h3>
+                <h3 className="font-bold text-text-primary text-xs uppercase tracking-wider">Account and profile information</h3>
                 <ul className="list-disc pl-4 space-y-1 text-xs text-text-secondary">
                   <li><strong>Account details:</strong> Your name, email address, username, selected country, account identifiers, and authentication status.</li>
                   <li><strong>Profile details:</strong> Your avatar, biography, profile badges, favourite movies, shows, people, genres, and watch providers.</li>
@@ -51,7 +51,7 @@ export default function PrivacyView() {
               </div>
 
               <div className="bg-bg-card border border-border-custom p-4 rounded-xl space-y-2">
-                <h3 className="font-bold text-white text-xs uppercase tracking-wider">Activity and content</h3>
+                <h3 className="font-bold text-text-primary text-xs uppercase tracking-wider">Activity and content</h3>
                 <ul className="list-disc pl-4 space-y-1 text-xs text-text-secondary">
                   <li><strong>Movie and TV activity:</strong> Watchlists, viewing history and progress, ratings, reviews, recommendations, favourites, custom lists, and list contributions.</li>
                   <li><strong>Social activity:</strong> Friends, groups, collaborative lists, watch requests, responses, group activity, chat messages, and watch-request messages.</li>
@@ -63,7 +63,7 @@ export default function PrivacyView() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="font-display font-bold text-base sm:text-lg text-white">2. Notifications and Technical Information</h2>
+            <h2 className="font-display font-bold text-base sm:text-lg text-text-primary">2. Notifications and Technical Information</h2>
             <p>
               If you enable notifications, Flixie stores a Firebase Cloud Messaging push token associated with your account so it can deliver friend, group, list, and watch-request notifications. This token is not used for advertising or cross-app tracking.
             </p>
@@ -76,7 +76,7 @@ export default function PrivacyView() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="font-display font-bold text-base sm:text-lg text-white">3. Analytics</h2>
+            <h2 className="font-display font-bold text-base sm:text-lg text-text-primary">3. Analytics</h2>
             <p>
               If you choose to allow analytics, Flixie uses Google Analytics for Firebase and PostHog to understand how the app is used and improve its features and reliability. This may collect app interactions, session information, device and operating-system information, an app-instance identifier, and approximate location derived from a masked IP address. Installation identifiers let the analytics providers associate events from this app installation.
             </p>
@@ -95,7 +95,7 @@ export default function PrivacyView() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="font-display font-bold text-base sm:text-lg text-white">4. How Information is Used</h2>
+            <h2 className="font-display font-bold text-base sm:text-lg text-text-primary">4. How Information is Used</h2>
             <ul className="list-disc pl-5 space-y-1.5">
               <li>Create, authenticate, and manage your account and profile.</li>
               <li>Save your movie and television activity, preferences, lists, and viewing progress.</li>
@@ -108,7 +108,7 @@ export default function PrivacyView() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="font-display font-bold text-base sm:text-lg text-white">5. Profile Visibility and Social Sharing</h2>
+            <h2 className="font-display font-bold text-base sm:text-lg text-text-primary">5. Profile Visibility and Social Sharing</h2>
             <p>
               Flixie is a social service. Your username, avatar, badges, and information you make public may be visible to other Flixie users. Friends may see additional profile and activity information, including your first name, according to the app’s visibility rules.
             </p>
@@ -133,7 +133,7 @@ export default function PrivacyView() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="font-display font-bold text-base sm:text-lg text-white">6. Third-Party Services</h2>
+            <h2 className="font-display font-bold text-base sm:text-lg text-text-primary">6. Third-Party Services</h2>
             <p>
               Flixie uses Firebase Authentication, Firebase Cloud Messaging, Firebase Firestore and Storage, and cloud hosting providers to provide authentication, notifications, chat, image storage, and application services. These providers process only the information needed to perform those functions. Google Analytics for Firebase and PostHog provide optional usage analytics, and Slack receives the internal analytics reports and notifications described above.
             </p>
@@ -143,21 +143,21 @@ export default function PrivacyView() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="font-display font-bold text-base sm:text-lg text-white">7. Sharing and Sale of Information</h2>
+            <h2 className="font-display font-bold text-base sm:text-lg text-text-primary">7. Sharing and Sale of Information</h2>
             <p>
               Flixie does not sell your personal information. Information is shared with service providers only where needed to operate Flixie, with other users according to the social and visibility choices described above, or where disclosure is required by law.
             </p>
           </section>
 
           <section className="space-y-3">
-            <h2 className="font-display font-bold text-base sm:text-lg text-white">8. Storage and Security</h2>
+            <h2 className="font-display font-bold text-base sm:text-lg text-text-primary">8. Storage and Security</h2>
             <p>
               Information is stored using Flixie’s database and cloud service providers. Flixie uses reasonable technical and organisational safeguards, including encrypted network connections and access controls. No online service can guarantee absolute security.
             </p>
           </section>
 
           <section id="account-deletion" className="space-y-3 scroll-mt-28">
-            <h2 className="font-display font-bold text-base sm:text-lg text-white">9. Data Retention and Account Deletion</h2>
+            <h2 className="font-display font-bold text-base sm:text-lg text-text-primary">9. Data Retention and Account Deletion</h2>
             <p>
               Flixie retains your account and associated information while your account is active or as needed to provide the service. You can permanently delete your account in the app from Profile → Settings → Delete Account.
             </p>
@@ -176,7 +176,7 @@ export default function PrivacyView() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="font-display font-bold text-base sm:text-lg text-white">10. Your Rights and Choices</h2>
+            <h2 className="font-display font-bold text-base sm:text-lg text-text-primary">10. Your Rights and Choices</h2>
             <p>
               Depending on where you live, you may have rights to:
             </p>
@@ -195,21 +195,21 @@ export default function PrivacyView() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="font-display font-bold text-base sm:text-lg text-white">11. Children’s Privacy</h2>
+            <h2 className="font-display font-bold text-base sm:text-lg text-text-primary">11. Children’s Privacy</h2>
             <p>
               Flixie is not intended for children under 13. We do not knowingly collect personal information from children under 13. If you believe a child under 13 has created an account, contact us so that we can investigate and delete the information.
             </p>
           </section>
 
           <section className="space-y-3">
-            <h2 className="font-display font-bold text-base sm:text-lg text-white">12. Changes to this Policy</h2>
+            <h2 className="font-display font-bold text-base sm:text-lg text-text-primary">12. Changes to this Policy</h2>
             <p>
               We may update this Privacy Policy when Flixie’s features or legal obligations change. We will update the date shown above and provide additional notice where required.
             </p>
           </section>
 
           <section className="space-y-3">
-            <h2 className="font-display font-bold text-base sm:text-lg text-white">13. Contact Us</h2>
+            <h2 className="font-display font-bold text-base sm:text-lg text-text-primary">13. Contact Us</h2>
             <p>
               For privacy questions, safety concerns, or data requests, email <a href="mailto:flixieadmin@gmail.com" className="text-flixie-purple hover:text-flixie-light underline underline-offset-2">flixieadmin@gmail.com</a>.
             </p>

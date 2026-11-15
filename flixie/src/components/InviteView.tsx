@@ -62,7 +62,7 @@ export default function InviteView() {
 
           {invalid ? (
             <>
-              <h1 className="font-display font-extrabold text-2xl sm:text-3xl text-white">
+              <h1 className="font-display font-extrabold text-2xl sm:text-3xl text-text-primary">
                 This invite link isn’t valid
               </h1>
               <p className="text-text-secondary text-sm leading-relaxed">
@@ -71,14 +71,14 @@ export default function InviteView() {
             </>
           ) : watchLink ? (
             <>
-              <h1 className="font-display font-extrabold text-2xl sm:text-3xl text-white">
+              <h1 className="font-display font-extrabold text-2xl sm:text-3xl text-text-primary">
                 Log your shared watch
               </h1>
               <p className="text-text-secondary leading-relaxed">
                 Someone you watched with has invited you to log your own watch on Flixie.
                 Choose your own date, rating and review in the app.
               </p>
-              <a href={watchLink} className="w-full inline-flex min-h-12 items-center justify-center gap-3 rounded-2xl bg-flixie-purple hover:bg-flixie-light px-5 py-4 text-white font-bold transition-colors">
+              <a href={watchLink} className="w-full inline-flex min-h-12 items-center justify-center gap-3 rounded-2xl bg-flixie-brand hover:bg-flixie-brand-hover px-5 py-4 text-white font-bold transition-colors">
                 <Smartphone className="h-5 w-5" aria-hidden="true" />
                 Open in Flixie
               </a>
@@ -98,7 +98,7 @@ export default function InviteView() {
                 <p className="text-flixie-purple text-xs font-bold uppercase tracking-widest">
                   Invited by @{invite.username}
                 </p>
-                <h1 className="font-display font-extrabold text-2xl sm:text-3xl text-white">
+                <h1 className="font-display font-extrabold text-2xl sm:text-3xl text-text-primary">
                   Find your Movie Match
                 </h1>
                 <p className="text-text-secondary text-sm leading-relaxed">
@@ -114,13 +114,13 @@ export default function InviteView() {
                   Keep this referral code
                 </p>
                 <div className="mt-3 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 min-w-0">
-                  <span className="min-w-0 max-w-full break-all text-center font-mono text-[clamp(0.9rem,3vw,1.25rem)] font-bold tracking-[0.12em] leading-relaxed text-white">
+                  <span className="min-w-0 max-w-full break-all text-center font-mono text-[clamp(0.9rem,3vw,1.25rem)] font-bold tracking-[0.12em] leading-relaxed text-text-primary">
                     {invite.code}
                   </span>
                   <button
                     type="button"
                     onClick={copyCode}
-                    className="shrink-0 p-2 rounded-xl text-flixie-purple hover:bg-white/5 transition-colors"
+                    className="shrink-0 p-2 rounded-xl text-flixie-purple hover:bg-bg-elevated transition-colors"
                     aria-label="Copy referral code"
                   >
                     {copied ? <Check className="h-5 w-5" /> : <Copy className="h-5 w-5" />}
@@ -133,7 +133,7 @@ export default function InviteView() {
 
               <a
                 href={site.iosUrl}
-                className="w-full inline-flex items-center justify-center gap-3 rounded-2xl bg-flixie-purple hover:bg-flixie-light px-5 py-4 text-white font-bold transition-colors"
+                className="w-full inline-flex items-center justify-center gap-3 rounded-2xl bg-flixie-brand hover:bg-flixie-brand-hover px-5 py-4 text-white font-bold transition-colors"
               >
                 <Smartphone className="h-5 w-5" />
                 {site.iosLabel}
@@ -141,7 +141,7 @@ export default function InviteView() {
 
               <a
                 href={site.androidUrl}
-                className="w-full inline-flex items-center justify-center gap-3 rounded-2xl border border-border-custom hover:bg-bg-elevated px-5 py-4 text-white font-bold transition-colors"
+                className="w-full inline-flex items-center justify-center gap-3 rounded-2xl border border-border-custom hover:bg-bg-elevated px-5 py-4 text-text-primary font-bold transition-colors"
               >
                 <Smartphone className="h-5 w-5" />
                 {site.androidLabel}

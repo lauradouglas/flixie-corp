@@ -154,7 +154,7 @@ test('opened reader protects both spoiler title and body, keeps private notes se
 
 
 test('native button palette keeps readable text in both website themes', () => {
-  const css=readFileSync(new URL('../src/web/web.css',import.meta.url),'utf8');
+  const css=readFileSync(new URL('../src/theme.css',import.meta.url),'utf8')+readFileSync(new URL('../src/web/web.css',import.meta.url),'utf8');
   assert(css.includes('--fx-brand: #7c4dff;'));
   assert(css.includes('--fx-gold: light-dark(#8c630e, #ffc857);'));
   assert(css.includes('--fx-danger: light-dark(#ad3c50, #e57373);'));

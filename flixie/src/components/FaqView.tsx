@@ -187,7 +187,7 @@ export default function FaqView() {
           <div className="p-2 bg-flixie-purple/10 border border-flixie-purple/20 text-flixie-purple w-fit rounded-xl mx-auto mb-2">
             <HelpCircle className="h-6 w-6" />
           </div>
-          <h1 className="font-display font-extrabold text-4xl sm:text-5xl text-white tracking-tight">
+          <h1 className="font-display font-extrabold text-4xl sm:text-5xl text-text-primary tracking-tight">
             Frequently Asked Questions
           </h1>
           <p className="text-text-secondary text-base">
@@ -212,7 +212,7 @@ export default function FaqView() {
           {searchQuery && (
             <button
               onClick={() => setSearchQuery('')}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-flixie-purple hover:text-white"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-flixie-purple hover:text-text-primary"
             >
               Clear
             </button>
@@ -225,8 +225,8 @@ export default function FaqView() {
             onClick={() => setActiveCategory('all')}
             className={`px-4 py-2 rounded-xl text-xs font-semibold tracking-wide border cursor-pointer transition-all ${
               activeCategory === 'all'
-                ? 'bg-flixie-purple border-flixie-purple text-white shadow-lg shadow-flixie-purple/20'
-                : 'bg-bg-card border-border-custom text-text-secondary hover:text-white hover:border-flixie-purple/50'
+                ? 'bg-flixie-brand border-flixie-brand text-white shadow-lg shadow-flixie-purple/20'
+                : 'bg-bg-card border-border-custom text-text-secondary hover:text-text-primary hover:border-flixie-purple/50'
             }`}
           >
             All Questions
@@ -237,8 +237,8 @@ export default function FaqView() {
               onClick={() => setActiveCategory(cat.id)}
               className={`px-4 py-2 rounded-xl text-xs font-semibold tracking-wide border cursor-pointer transition-all ${
                 activeCategory === cat.id
-                  ? 'bg-flixie-purple border-flixie-purple text-white shadow-lg shadow-flixie-purple/20'
-                  : 'bg-bg-card border-border-custom text-text-secondary hover:text-white hover:border-flixie-purple/50'
+                  ? 'bg-flixie-brand border-flixie-brand text-white shadow-lg shadow-flixie-purple/20'
+                  : 'bg-bg-card border-border-custom text-text-secondary hover:text-text-primary hover:border-flixie-purple/50'
               }`}
             >
               {cat.name}
@@ -251,7 +251,7 @@ export default function FaqView() {
           {filteredFaqs.length === 0 ? (
             <div className="text-center py-12 bg-bg-card border border-border-custom rounded-2xl space-y-3">
               <ShieldAlert className="h-10 w-10 text-flixie-peach mx-auto" />
-              <h3 className="text-white font-bold">No Matching FAQs Found</h3>
+              <h3 className="text-text-primary font-bold">No Matching FAQs Found</h3>
               <p className="text-text-secondary text-xs max-w-xs mx-auto leading-relaxed">
                 We couldn't find any questions matching "{searchQuery}". Try typing generic terms like "password" or "watchlist".
               </p>
@@ -271,7 +271,7 @@ export default function FaqView() {
                         className="bg-bg-card border border-border-custom hover:border-flixie-purple/30 rounded-xl overflow-hidden transition-colors"
                         id={`faq-item-${item.id}`}
                       >
-                        <summary className="px-5 py-4 text-white font-semibold text-base hover:bg-white/5">
+                        <summary className="px-5 py-4 text-text-primary font-semibold text-base hover:bg-bg-elevated">
                           {item.question}
                         </summary>
                         <div className="border-t border-border-custom/40 bg-bg-nav/30">
@@ -280,7 +280,7 @@ export default function FaqView() {
                                   <div className="bg-bg-card border border-border-custom rounded-xl p-4">
                                     <div className="flex items-center gap-2.5 mb-3">
                                       <span className="p-2 bg-flixie-purple/10 text-flixie-purple rounded-lg"><Settings className="h-4 w-4" /></span>
-                                      <h3 className="font-display font-bold text-white">Delete your account in the app</h3>
+                                      <h3 className="font-display font-bold text-text-primary">Delete your account in the app</h3>
                                     </div>
                                     <ol className="space-y-2.5">
                                       {['Open Flixie.', 'Go to Profile → Settings → Delete Account.', 'Confirm deletion.'].map((step, stepIndex) => (
@@ -295,7 +295,7 @@ export default function FaqView() {
                                   <div className="bg-bg-card border border-status-error/25 rounded-xl p-4">
                                     <div className="flex items-center gap-2.5 mb-3">
                                       <span className="p-2 bg-status-error/10 text-status-error rounded-lg"><ShieldCheck className="h-4 w-4" /></span>
-                                      <h3 className="font-display font-bold text-white">Deleting your account permanently removes</h3>
+                                      <h3 className="font-display font-bold text-text-primary">Deleting your account permanently removes</h3>
                                     </div>
                                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-text-secondary">
                                       {['Your profile', 'Email address', 'Username', 'Ratings', 'Reviews', 'Watchlists', 'Lists', 'Friend connections', 'Watch history', 'Other associated account data'].map((data) => (
@@ -310,7 +310,7 @@ export default function FaqView() {
                                   </div>
 
                                   <div className="bg-bg-card border border-flixie-purple/30 rounded-xl p-4 text-center space-y-2.5">
-                                    <h3 className="font-display font-bold text-white">Unable to access the app?</h3>
+                                    <h3 className="font-display font-bold text-text-primary">Unable to access the app?</h3>
                                     <p className="text-text-secondary leading-relaxed">Email us from your registered address and include your Flixie username. Never include your password.</p>
                                     <a
                                       href="mailto:flixieadmin@gmail.com?subject=Flixie%20account%20deletion%20request"
@@ -342,7 +342,7 @@ export default function FaqView() {
               <Info className="h-5 w-5" />
             </div>
             <div className="space-y-1">
-              <h3 className="text-white font-bold text-sm">Still have questions?</h3>
+              <h3 className="text-text-primary font-bold text-sm">Still have questions?</h3>
               <p className="text-text-secondary text-xs leading-relaxed max-w-md">
                 Our support desk is operational 24/7. Reach out to report technical bugs, recommend features, or seek account deletion.
               </p>
@@ -350,7 +350,7 @@ export default function FaqView() {
           </div>
           <a
             href="#contact"
-            className="px-5 py-2.5 bg-flixie-purple/15 hover:bg-flixie-purple/25 border border-flixie-purple/40 hover:border-flixie-purple text-flixie-light hover:text-white font-bold text-xs rounded-xl transition-all flex items-center gap-1.5 flex-shrink-0"
+            className="px-5 py-2.5 bg-flixie-purple/15 hover:bg-flixie-purple/25 border border-flixie-purple/40 hover:border-flixie-purple text-flixie-light hover:text-text-primary font-bold text-xs rounded-xl transition-all flex items-center gap-1.5 flex-shrink-0"
           >
             Contact Support
           </a>

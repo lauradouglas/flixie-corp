@@ -21,7 +21,7 @@ export default function ContactView() {
           <div className="p-2 bg-flixie-teal/10 border border-flixie-teal/20 text-flixie-teal w-fit rounded-xl mx-auto mb-2">
             <Mail className="h-6 w-6" />
           </div>
-          <h1 className="font-display font-extrabold text-4xl sm:text-5xl text-white tracking-tight">Contact & Support</h1>
+          <h1 className="font-display font-extrabold text-4xl sm:text-5xl text-text-primary tracking-tight">Contact & Support</h1>
           <p className="text-text-secondary text-base">
             Have a question, suggestion, or technical issue? You can contact Flixie directly by email.
           </p>
@@ -30,7 +30,7 @@ export default function ContactView() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-bg-card border border-border-custom p-6 rounded-2xl space-y-4">
             <div className="p-2 bg-flixie-purple/10 text-flixie-purple w-fit rounded-xl"><HelpCircle className="h-5 w-5" /></div>
-            <h2 className="font-display font-bold text-lg text-white">Check the FAQs</h2>
+            <h2 className="font-display font-bold text-lg text-text-primary">Check the FAQs</h2>
             <p className="text-text-secondary text-sm leading-relaxed">
               Common questions about watchlists, ratings, friends, and account features may already be answered.
             </p>
@@ -44,7 +44,7 @@ export default function ContactView() {
 
           <div className="bg-bg-card border border-border-custom p-6 rounded-2xl space-y-4">
             <div className="p-2 bg-flixie-teal/10 text-flixie-teal w-fit rounded-xl"><Terminal className="h-5 w-5" /></div>
-            <h2 className="font-display font-bold text-lg text-white">Reporting a bug?</h2>
+            <h2 className="font-display font-bold text-lg text-text-primary">Reporting a bug?</h2>
             <p className="text-text-secondary text-sm leading-relaxed">
               Include your device and operating system, your Flixie username, what you were doing, and any error message you saw.
             </p>
@@ -55,7 +55,7 @@ export default function ContactView() {
           <span className="text-[10px] text-text-muted font-mono uppercase tracking-wider block">Email Flixie</span>
           <a
             href="mailto:flixieadmin@gmail.com"
-            className="inline-flex items-center gap-2 text-white hover:text-flixie-teal font-display font-bold text-lg sm:text-xl transition-colors outline-none focus:underline"
+            className="inline-flex items-center gap-2 text-text-primary hover:text-flixie-teal font-display font-bold text-lg sm:text-xl transition-colors outline-none focus:underline"
           >
             <Mail className="h-5 w-5" /> flixieadmin@gmail.com
           </a>
@@ -67,7 +67,7 @@ export default function ContactView() {
             <Trash2 className="h-5 w-5" />
           </div>
           <div className="flex-1 space-y-1.5">
-            <h2 className="font-display font-bold text-lg text-white">Request account deletion</h2>
+            <h2 className="font-display font-bold text-lg text-text-primary">Request account deletion</h2>
             <p className="text-text-secondary text-sm leading-relaxed">
               First use Profile → Settings → Delete Account in the app. If you cannot access the app, email us from your registered address with your Flixie username. Never include your password.
             </p>

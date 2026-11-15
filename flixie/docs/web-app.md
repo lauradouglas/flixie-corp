@@ -542,3 +542,33 @@ the release owner records readiness/live behavior and the new website SHA
 separately. No schema/migration, production data job, main branch change, native
 release, real-account update or release notification is asserted by this record.
 Receipts: `.impeccable/review/country-discovery/`.
+
+
+## Country-aware discovery released —15 November2026
+
+Supersedes the pending-release status above. API5e4985524b43481763f14b9f18e88cab2bf1f56b
+is live through workflow43743118572; its actual country response returns only
+country/source, with private no-store/noindex. Website184deb7cd7940fab0782b31e726cae5dafd1f68b
+is live through workflow43744358464.120 web and993 backend checks, types/build
+and35-page/29-sitemap SEO/HTTP checks pass. Exact website marker,37 checked URLs,
+two store redirects, member Explore noindex and the factual privacy paragraph
+were verified. Actual guest browser automatically selectedGB and showed the same
+United Kingdom labels on popular films/cinema, with6/3 cards and all cinema art.
+Reviewer scored both named fixes resolved: ship. Receipts, immutable source ZIPs
+and live capture: flixie-country-release-20261115.json in the task artifact folder.
+No account settings/activity, native app, database schema/data job or release
+notification changed. Real-member transitions remain covered by fictional
+React/transport tests; no new real-account login or physical-device claim.
+
+
+## Corporate colour consistency —15 November 2026
+
+The user authorises matching the corporate side to the app palette. One shared
+`src/theme.css` now owns native-derived light/dark ground, surfaces, text, border
+and accent values. Corporate utility colours alias it; old warm charcoal
+hardcodes in the marketing homepage are replaced with these roles. The header
+keeps app dark chrome, primary CTAs use app purple/white, and every footer has
+the same themed ground and single-image wordmark. Existing corporate type,
+layout, imagery, copy, routes, legal text and store destinations stay intact.
+This supersedes earlier statements that corporate colours/footer stay separate.
+Source complete locally; final checks and publication recorded below.

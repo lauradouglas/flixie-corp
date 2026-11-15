@@ -687,155 +687,272 @@
       "color-bg-darkest": {
         "role": "neutral",
         "displayName": "Shared Footer Ground",
-        "canonical": "#101012",
+        "canonical": "light-dark(#f3edfc, #151522)",
         "tonalRamp": [
-          "oklch(15.00% 0.00409 285.97)",
-          "oklch(26.43% 0.00409 285.97)",
-          "oklch(37.86% 0.00409 285.97)",
-          "oklch(49.29% 0.00409 285.97)",
-          "oklch(60.71% 0.00409 285.97)",
-          "oklch(72.14% 0.00409 285.97)",
-          "oklch(83.57% 0.00409 285.97)",
-          "oklch(95.00% 0.00409 285.97)"
+          "oklch(15.00% 0.02091 304.03)",
+          "oklch(26.43% 0.02091 304.03)",
+          "oklch(37.86% 0.02091 304.03)",
+          "oklch(49.29% 0.02091 304.03)",
+          "oklch(60.71% 0.02091 304.03)",
+          "oklch(72.14% 0.02091 304.03)",
+          "oklch(83.57% 0.02091 304.03)",
+          "oklch(95.00% 0.02091 304.03)"
         ],
-        "source": "src/index.css; reused by src/components/site-footer.css",
-        "scope": "Approved shared footer only; no wider marketing palette extraction."
+        "themeValues": {
+          "light": "#f3edfc",
+          "dark": "#151522"
+        },
+        "darkTonalRamp": [
+          "oklch(15.00% 0.02581 283.86)",
+          "oklch(26.43% 0.02581 283.86)",
+          "oklch(37.86% 0.02581 283.86)",
+          "oklch(49.29% 0.02581 283.86)",
+          "oklch(60.71% 0.02581 283.86)",
+          "oklch(72.14% 0.02581 283.86)",
+          "oklch(83.57% 0.02581 283.86)",
+          "oklch(95.00% 0.02581 283.86)"
+        ],
+        "aliasOf": "{colors.fx-bg}"
       },
       "color-bg-card": {
         "role": "neutral",
         "displayName": "Shared Footer Store Card",
-        "canonical": "#1D1C21",
+        "canonical": "light-dark(#fff, #1e1f30)",
         "tonalRamp": [
-          "oklch(15.00% 0.00965 294.80)",
-          "oklch(26.43% 0.00965 294.80)",
-          "oklch(37.86% 0.00965 294.80)",
-          "oklch(49.29% 0.00965 294.80)",
-          "oklch(60.71% 0.00965 294.80)",
-          "oklch(72.14% 0.00965 294.80)",
-          "oklch(83.57% 0.00965 294.80)",
-          "oklch(95.00% 0.00965 294.80)"
+          "oklch(15.00% 0.00000 0.00)",
+          "oklch(26.43% 0.00000 0.00)",
+          "oklch(37.86% 0.00000 0.00)",
+          "oklch(49.29% 0.00000 0.00)",
+          "oklch(60.71% 0.00000 0.00)",
+          "oklch(72.14% 0.00000 0.00)",
+          "oklch(83.57% 0.00000 0.00)",
+          "oklch(95.00% 0.00000 0.00)"
         ],
-        "source": "src/index.css; reused by src/components/site-footer.css",
-        "scope": "Approved shared footer only; no wider marketing palette extraction."
+        "themeValues": {
+          "light": "#fff",
+          "dark": "#1e1f30"
+        },
+        "darkTonalRamp": [
+          "oklch(15.00% 0.03225 281.15)",
+          "oklch(26.43% 0.03225 281.15)",
+          "oklch(37.86% 0.03225 281.15)",
+          "oklch(49.29% 0.03225 281.15)",
+          "oklch(60.71% 0.03225 281.15)",
+          "oklch(72.14% 0.03225 281.15)",
+          "oklch(83.57% 0.03225 281.15)",
+          "oklch(95.00% 0.03225 281.15)"
+        ],
+        "aliasOf": "{colors.fx-surface}"
       },
       "color-bg-elevated": {
         "role": "neutral",
         "displayName": "Shared Footer Store Hover",
-        "canonical": "#29272E",
+        "canonical": "light-dark(#eee7f6, #292b3e)",
         "tonalRamp": [
-          "oklch(15.00% 0.01302 298.60)",
-          "oklch(26.43% 0.01302 298.60)",
-          "oklch(37.86% 0.01302 298.60)",
-          "oklch(49.29% 0.01302 298.60)",
-          "oklch(60.71% 0.01302 298.60)",
-          "oklch(72.14% 0.01302 298.60)",
-          "oklch(83.57% 0.01302 298.60)",
-          "oklch(95.00% 0.01302 298.60)"
+          "oklch(15.00% 0.02134 306.83)",
+          "oklch(26.43% 0.02134 306.83)",
+          "oklch(37.86% 0.02134 306.83)",
+          "oklch(49.29% 0.02134 306.83)",
+          "oklch(60.71% 0.02134 306.83)",
+          "oklch(72.14% 0.02134 306.83)",
+          "oklch(83.57% 0.02134 306.83)",
+          "oklch(95.00% 0.02134 306.83)"
         ],
-        "source": "src/index.css; reused by src/components/site-footer.css",
-        "scope": "Approved shared footer only; no wider marketing palette extraction."
+        "themeValues": {
+          "light": "#eee7f6",
+          "dark": "#292b3e"
+        },
+        "darkTonalRamp": [
+          "oklch(15.00% 0.03460 279.40)",
+          "oklch(26.43% 0.03460 279.40)",
+          "oklch(37.86% 0.03460 279.40)",
+          "oklch(49.29% 0.03460 279.40)",
+          "oklch(60.71% 0.03460 279.40)",
+          "oklch(72.14% 0.03460 279.40)",
+          "oklch(83.57% 0.03460 279.40)",
+          "oklch(95.00% 0.03460 279.40)"
+        ],
+        "aliasOf": "{colors.fx-lift}"
       },
       "color-border-custom": {
         "role": "neutral",
         "displayName": "Shared Footer Line",
-        "canonical": "#3A363F",
+        "canonical": "light-dark(#dbd1e7, #3e4058)",
         "tonalRamp": [
-          "oklch(15.00% 0.01640 305.58)",
-          "oklch(26.43% 0.01640 305.58)",
-          "oklch(37.86% 0.01640 305.58)",
-          "oklch(49.29% 0.01640 305.58)",
-          "oklch(60.71% 0.01640 305.58)",
-          "oklch(72.14% 0.01640 305.58)",
-          "oklch(83.57% 0.01640 305.58)",
-          "oklch(95.00% 0.01640 305.58)"
+          "oklch(15.00% 0.03175 306.16)",
+          "oklch(26.43% 0.03175 306.16)",
+          "oklch(37.86% 0.03175 306.16)",
+          "oklch(49.29% 0.03175 306.16)",
+          "oklch(60.71% 0.03175 306.16)",
+          "oklch(72.14% 0.03175 306.16)",
+          "oklch(83.57% 0.03175 306.16)",
+          "oklch(95.00% 0.03175 306.16)"
         ],
-        "source": "src/index.css; reused by src/components/site-footer.css",
-        "scope": "Approved shared footer only; no wider marketing palette extraction."
+        "themeValues": {
+          "light": "#dbd1e7",
+          "dark": "#3e4058"
+        },
+        "darkTonalRamp": [
+          "oklch(15.00% 0.04096 280.55)",
+          "oklch(26.43% 0.04096 280.55)",
+          "oklch(37.86% 0.04096 280.55)",
+          "oklch(49.29% 0.04096 280.55)",
+          "oklch(60.71% 0.04096 280.55)",
+          "oklch(72.14% 0.04096 280.55)",
+          "oklch(83.57% 0.04096 280.55)",
+          "oklch(95.00% 0.04096 280.55)"
+        ],
+        "aliasOf": "{colors.fx-line}"
       },
       "color-text-primary": {
         "role": "neutral",
         "displayName": "Shared Footer Ink",
-        "canonical": "#F5F1E9",
+        "canonical": "light-dark(#261735, #f5f7fa)",
         "tonalRamp": [
-          "oklch(15.00% 0.01147 84.58)",
-          "oklch(26.43% 0.01147 84.58)",
-          "oklch(37.86% 0.01147 84.58)",
-          "oklch(49.29% 0.01147 84.58)",
-          "oklch(60.71% 0.01147 84.58)",
-          "oklch(72.14% 0.01147 84.58)",
-          "oklch(83.57% 0.01147 84.58)",
-          "oklch(95.00% 0.01147 84.58)"
+          "oklch(15.00% 0.05821 305.54)",
+          "oklch(26.43% 0.05821 305.54)",
+          "oklch(37.86% 0.05821 305.54)",
+          "oklch(49.29% 0.05821 305.54)",
+          "oklch(60.71% 0.05821 305.54)",
+          "oklch(72.14% 0.05821 305.54)",
+          "oklch(83.57% 0.05821 305.54)",
+          "oklch(95.00% 0.05821 305.54)"
         ],
-        "source": "src/index.css; reused by src/components/site-footer.css",
-        "scope": "Approved shared footer only; no wider marketing palette extraction."
+        "themeValues": {
+          "light": "#261735",
+          "dark": "#f5f7fa"
+        },
+        "darkTonalRamp": [
+          "oklch(15.00% 0.00453 258.32)",
+          "oklch(26.43% 0.00453 258.32)",
+          "oklch(37.86% 0.00453 258.32)",
+          "oklch(49.29% 0.00453 258.32)",
+          "oklch(60.71% 0.00453 258.32)",
+          "oklch(72.14% 0.00453 258.32)",
+          "oklch(83.57% 0.00453 258.32)",
+          "oklch(95.00% 0.00453 258.32)"
+        ],
+        "aliasOf": "{colors.fx-ink}"
       },
       "color-text-secondary": {
         "role": "neutral",
         "displayName": "Shared Footer Secondary Ink",
-        "canonical": "#C3BEC8",
+        "canonical": "light-dark(#62566f, #b7c2d0)",
         "tonalRamp": [
-          "oklch(15.00% 0.01489 308.26)",
-          "oklch(26.43% 0.01489 308.26)",
-          "oklch(37.86% 0.01489 308.26)",
-          "oklch(49.29% 0.01489 308.26)",
-          "oklch(60.71% 0.01489 308.26)",
-          "oklch(72.14% 0.01489 308.26)",
-          "oklch(83.57% 0.01489 308.26)",
-          "oklch(95.00% 0.01489 308.26)"
+          "oklch(15.00% 0.04219 306.60)",
+          "oklch(26.43% 0.04219 306.60)",
+          "oklch(37.86% 0.04219 306.60)",
+          "oklch(49.29% 0.04219 306.60)",
+          "oklch(60.71% 0.04219 306.60)",
+          "oklch(72.14% 0.04219 306.60)",
+          "oklch(83.57% 0.04219 306.60)",
+          "oklch(95.00% 0.04219 306.60)"
         ],
-        "source": "src/index.css; reused by src/components/site-footer.css",
-        "scope": "Approved shared footer only; no wider marketing palette extraction."
+        "themeValues": {
+          "light": "#62566f",
+          "dark": "#b7c2d0"
+        },
+        "darkTonalRamp": [
+          "oklch(15.00% 0.02318 254.42)",
+          "oklch(26.43% 0.02318 254.42)",
+          "oklch(37.86% 0.02318 254.42)",
+          "oklch(49.29% 0.02318 254.42)",
+          "oklch(60.71% 0.02318 254.42)",
+          "oklch(72.14% 0.02318 254.42)",
+          "oklch(83.57% 0.02318 254.42)",
+          "oklch(95.00% 0.02318 254.42)"
+        ],
+        "aliasOf": "{colors.fx-muted}"
       },
       "color-text-muted": {
         "role": "neutral",
         "displayName": "Shared Footer Attribution",
-        "canonical": "#ABA3B3",
+        "canonical": "light-dark(#62566f, #b7c2d0)",
         "tonalRamp": [
-          "oklch(15.00% 0.02447 308.09)",
-          "oklch(26.43% 0.02447 308.09)",
-          "oklch(37.86% 0.02447 308.09)",
-          "oklch(49.29% 0.02447 308.09)",
-          "oklch(60.71% 0.02447 308.09)",
-          "oklch(72.14% 0.02447 308.09)",
-          "oklch(83.57% 0.02447 308.09)",
-          "oklch(95.00% 0.02447 308.09)"
+          "oklch(15.00% 0.04219 306.60)",
+          "oklch(26.43% 0.04219 306.60)",
+          "oklch(37.86% 0.04219 306.60)",
+          "oklch(49.29% 0.04219 306.60)",
+          "oklch(60.71% 0.04219 306.60)",
+          "oklch(72.14% 0.04219 306.60)",
+          "oklch(83.57% 0.04219 306.60)",
+          "oklch(95.00% 0.04219 306.60)"
         ],
-        "source": "src/index.css; reused by src/components/site-footer.css",
-        "scope": "Approved shared footer only; no wider marketing palette extraction."
+        "themeValues": {
+          "light": "#62566f",
+          "dark": "#b7c2d0"
+        },
+        "darkTonalRamp": [
+          "oklch(15.00% 0.02318 254.42)",
+          "oklch(26.43% 0.02318 254.42)",
+          "oklch(37.86% 0.02318 254.42)",
+          "oklch(49.29% 0.02318 254.42)",
+          "oklch(60.71% 0.02318 254.42)",
+          "oklch(72.14% 0.02318 254.42)",
+          "oklch(83.57% 0.02318 254.42)",
+          "oklch(95.00% 0.02318 254.42)"
+        ],
+        "aliasOf": "{colors.fx-muted}"
       },
       "color-flixie-purple": {
         "role": "primary",
         "displayName": "Shared Footer Border Purple",
-        "canonical": "#B494EF",
+        "canonical": "light-dark(#6534b8, #b9a0ff)",
         "tonalRamp": [
-          "oklch(15.00% 0.13233 299.31)",
-          "oklch(26.43% 0.13233 299.31)",
-          "oklch(37.86% 0.13233 299.31)",
-          "oklch(49.29% 0.13233 299.31)",
-          "oklch(60.71% 0.13233 299.31)",
-          "oklch(72.14% 0.13233 299.31)",
-          "oklch(83.57% 0.13233 299.31)",
-          "oklch(95.00% 0.13233 299.31)"
+          "oklch(15.00% 0.19440 294.58)",
+          "oklch(26.43% 0.19440 294.58)",
+          "oklch(37.86% 0.19440 294.58)",
+          "oklch(49.29% 0.19440 294.58)",
+          "oklch(60.71% 0.19440 294.58)",
+          "oklch(72.14% 0.19440 294.58)",
+          "oklch(83.57% 0.19440 294.58)",
+          "oklch(95.00% 0.19440 294.58)"
         ],
-        "source": "src/index.css; reused by src/components/site-footer.css",
-        "scope": "Approved shared footer only; no wider marketing palette extraction."
+        "themeValues": {
+          "light": "#6534b8",
+          "dark": "#b9a0ff"
+        },
+        "darkTonalRamp": [
+          "oklch(15.00% 0.13526 295.11)",
+          "oklch(26.43% 0.13526 295.11)",
+          "oklch(37.86% 0.13526 295.11)",
+          "oklch(49.29% 0.13526 295.11)",
+          "oklch(60.71% 0.13526 295.11)",
+          "oklch(72.14% 0.13526 295.11)",
+          "oklch(83.57% 0.13526 295.11)",
+          "oklch(95.00% 0.13526 295.11)"
+        ],
+        "aliasOf": "{colors.fx-purple}"
       },
       "color-flixie-light": {
         "role": "primary",
         "displayName": "Shared Footer Focus Lavender",
-        "canonical": "#C5A8F2",
+        "canonical": "light-dark(#6534b8, #b9a0ff)",
         "tonalRamp": [
-          "oklch(15.00% 0.10739 301.96)",
-          "oklch(26.43% 0.10739 301.96)",
-          "oklch(37.86% 0.10739 301.96)",
-          "oklch(49.29% 0.10739 301.96)",
-          "oklch(60.71% 0.10739 301.96)",
-          "oklch(72.14% 0.10739 301.96)",
-          "oklch(83.57% 0.10739 301.96)",
-          "oklch(95.00% 0.10739 301.96)"
+          "oklch(15.00% 0.19440 294.58)",
+          "oklch(26.43% 0.19440 294.58)",
+          "oklch(37.86% 0.19440 294.58)",
+          "oklch(49.29% 0.19440 294.58)",
+          "oklch(60.71% 0.19440 294.58)",
+          "oklch(72.14% 0.19440 294.58)",
+          "oklch(83.57% 0.19440 294.58)",
+          "oklch(95.00% 0.19440 294.58)"
         ],
-        "source": "src/index.css; reused by src/components/site-footer.css",
-        "scope": "Approved shared footer only; no wider marketing palette extraction."
+        "themeValues": {
+          "light": "#6534b8",
+          "dark": "#b9a0ff"
+        },
+        "darkTonalRamp": [
+          "oklch(15.00% 0.13526 295.11)",
+          "oklch(26.43% 0.13526 295.11)",
+          "oklch(37.86% 0.13526 295.11)",
+          "oklch(49.29% 0.13526 295.11)",
+          "oklch(60.71% 0.13526 295.11)",
+          "oklch(72.14% 0.13526 295.11)",
+          "oklch(83.57% 0.13526 295.11)",
+          "oklch(95.00% 0.13526 295.11)"
+        ],
+        "aliasOf": "{colors.fx-purple}"
       },
       "fx-danger": {
         "role": "secondary",
@@ -936,7 +1053,7 @@
       },
       "item-title": {
         "displayName": "Item Title",
-        "purpose": "Ordinary item, profile-film and credit titles; preserves each component’s weight and leading.",
+        "purpose": "Ordinary item, profile-film and credit titles; preserves each component\u2019s weight and leading.",
         "cssVariable": "--fx-type-control"
       },
       "body": {
@@ -1156,7 +1273,7 @@
       },
       {
         "name": "phone-navigation-landscape",
-        "value": "960px × 500px",
+        "value": "960px \u00d7 500px",
         "query": "viewport max-width960px AND max-height500px; alternative to max-width680px"
       },
       {
@@ -1349,7 +1466,7 @@
         "scrollThreshold": "160px",
         "dismissal": "Tab session",
         "nativeSafari": "apple-itunes-app metadata; native presentation unverified",
-        "signedInClearance": "src/web/mobile-navigation.css:5–7 overrides bottom placement using measured navigation height; does not assume a fixed tab height.",
+        "signedInClearance": "src/web/mobile-navigation.css:5\u20137 overrides bottom placement using measured navigation height; does not assume a fixed tab height.",
         "publicPolicySuppression": {
           "source": "src/App.tsx:38",
           "pages": [
@@ -1485,12 +1602,12 @@
         "source": "src/web/UserProfilePage.tsx; ProfileEditors.tsx; user-profile.css; shared Avatar/Sheet components",
         "maximumWidth": "1100px",
         "hierarchy": "Member identity/avatar/earned badges/bio, real library totals, Favourites/Activity/Reviews; other-member details follow the authenticated sharing projection.",
-        "identityAvatar": "96px artwork with 4px frame padding; choices use 72px artwork and the owner’s validated border.",
+        "identityAvatar": "96px artwork with 4px frame padding; choices use 72px artwork and the owner\u2019s validated border.",
         "artwork": "Complete 2:3 contain-fitted posters/people; favourites auto-fill at 130px/120px minimum.",
-        "phone": "Through 680px container width: two favourite columns, one friend-directory column; activity artwork 68px → 52px.",
+        "phone": "Through 680px container width: two favourite columns, one friend-directory column; activity artwork 68px \u2192 52px.",
         "editing": "Owner username/bio, catalogue avatar/initials and earned border only, in the shared bounded responsive choice dialog: centered on desktop/tablet, phone sheet permitted. Selected choices expose pressed/check state; identity-bound saves retain failed edits.",
         "avatarOptions": "repeat(auto-fit,minmax(min(100%,6rem),1fr)); Save/Cancel sticky inside the scrollable sheet.",
-        "visibility": "Private/no-store and noindex. Shared components and read-only member projections preserve each person’s badges, spoiler disclosure, privacy and account isolation."
+        "visibility": "Private/no-store and noindex. Shared components and read-only member projections preserve each person\u2019s badges, spoiler disclosure, privacy and account isolation."
       },
       "watchPlans": {
         "source": "src/web/WatchPlans.tsx; watch-plans.css; watchPlanPresentation.ts; models.ts Plan; components.tsx Sheet className/presentation variant",
@@ -1600,7 +1717,7 @@
         "states": "Loading/empty/retry, Saving, pressed watched state and polite status; guest progress action opens sign-in."
       },
       "pickForUs": {
-        "source": "src/web/PickForUsDialog.tsx:15–87; src/web/PickerServices.tsx:5–16; src/web/pickDeck.ts:2–16; src/web/pickLanguages.ts; src/web/pick-for-us.css:1–66; existing api.ts",
+        "source": "src/web/PickForUsDialog.tsx:15\u201387; src/web/PickerServices.tsx:5\u201316; src/web/pickDeck.ts:2\u201316; src/web/pickLanguages.ts; src/web/pick-for-us.css:1\u201366; existing api.ts",
         "placement": "Leading signed-in Home action and existing Pip panel.",
         "modal": {
           "element": "dialog",
@@ -1614,16 +1731,16 @@
           "body": "min-height:0; overflow:auto; overscroll-behavior:contain; padding24px26px, then20px18px through640px.",
           "persistentRegions": "Official F/heading/close above; wrapping action footer below, max-height40dvh and overflow:auto. At viewport max-height560px the whole modal scrolls; body/footer overflow becomes visible.",
           "fields": "Mood grid repeat(auto-fit,minmax(min(100%,9.5rem),1fr)),10px gaps,50px minimum choice;48px fields/checks; inline wrapping disclosures.",
-          "results": "One full124px×186px contain-fitted poster with flexible wrapping copy; first three reasons visible, remainder under disclosure.",
+          "results": "One full124px\u00d7186px contain-fitted poster with flexible wrapping copy; first three reasons visible, remainder under disclosure.",
           "focusLifecycle": "Shared native modal focus/Escape/close/scroll lock/focus restoration; busy blocks submission/dismissal. View film dismisses before actual title navigation."
         },
-        "viewers": "Solo, existing friend, eligible group with 2–12 accepted participants including owner; each member retains their own profileBadges/avatar border. Existing groups are selected, not created or edited here.",
+        "viewers": "Solo, existing friend, eligible group with 2\u201312 accepted participants including owner; each member retains their own profileBadges/avatar border. Existing groups are selected, not created or edited here.",
         "preferences": "Two steps: mood plus optional up-to-three genres with any/all matching; then solo/friend/group, time, home/cinema, together/separately, owner service editing, all supported original languages, request, rewatch, rentals and exclusions. Original language is not dubbing/subtitles. Saved regions/services and existing native filters remain.",
-        "results": "src/web/PickForUsDialog.tsx:34–59,83–86 and pickDeck.ts:4–16: one sourced film at a time; Not tonight advances/refills excluding shown IDs, Undo restores a passed film; failed/empty refill retains previous pick;60-film exploration bound. Solo primary View film, secondary Create a Watch Plan; shared primary Make a Watch Plan, secondary View film. Composer receives chosen film and submitted audience/viewing context; explicit confirmation owns invitations.",
+        "results": "src/web/PickForUsDialog.tsx:34\u201359,83\u201386 and pickDeck.ts:4\u201316: one sourced film at a time; Not tonight advances/refills excluding shown IDs, Undo restores a passed film; failed/empty refill retains previous pick;60-film exploration bound. Solo primary View film, secondary Create a Watch Plan; shared primary Make a Watch Plan, secondary View film. Composer receives chosen film and submitted audience/viewing context; explicit confirmation owns invitations.",
         "groupEvidenceLimit": "No eligible local groups during live check; extraction and scope covered by source/regressions only, not a fabricated group result.",
         "typography": "Existing responsive body/section/control/label roles; intentional paired mood-icon accents are recorded in frontmatter, without an algorithm change.",
         "ownerLifecycle": "WebApp.tsx mounts only with the current user and keys the picker by user.id; account changes reset local picker state. Source guard only: cross-tab logout propagation could not be induced in local IAB, so closure for that case is unverified.",
-        "services": "src/web/PickerServices.tsx:7–15: inline saved provider/country display, searchable owner-only Change, Save services/Cancel changes, identity-bound locked save and retry. Open draft blocks finding; busy blocks dismissal."
+        "services": "src/web/PickerServices.tsx:7\u201315: inline saved provider/country display, searchable owner-only Change, Save services/Cancel changes, identity-bound locked save and retry. Open draft blocks finding; busy blocks dismissal."
       },
       "watchPlanCreation": {
         "source": "src/web/WatchPlanComposer.tsx; watchPlanCreation.ts; watch-plan-composer.css; PickForUsDialog.tsx; WatchPlans.tsx; watchPlanPresentation.ts; api.ts createWatchPlan; WebApp.tsx account-keyed mount",
@@ -1664,14 +1781,14 @@
         "focus": "Existing shared 3px readable-purple outline and native details semantics."
       },
       "appShellAlignment": {
-        "source": "src/web/production.css:30–34",
+        "source": "src/web/production.css:30\u201334",
         "margin": "0 auto",
         "behavior": "Fills ordinary desktop widths through1920px; centered beyond1920px. Supersedes1600px cap and the abandoned unlimited-width intermediate draft.",
-        "observations": "Verified supplied capture/provenance: normal1720px desktop sidebar flush-left; CSS2560×900 viewport has layout left320/right2240/width1920. Complete full-page raster2560×1790 includes both gutters/header actions; prior cropped capture superseded. See public-review-links/capture-provenance.json.",
+        "observations": "Verified supplied capture/provenance: normal1720px desktop sidebar flush-left; CSS2560\u00d7900 viewport has layout left320/right2240/width1920. Complete full-page raster2560\u00d71790 includes both gutters/header actions; prior cropped capture superseded. See public-review-links/capture-provenance.json.",
         "captureProvenance": ".impeccable/review/public-review-links/capture-provenance.json"
       },
       "mobileNavigation": {
-        "source": "src/web/MobileNavigation.tsx:6–36; src/web/mobile-navigation.css:3–27; src/web/WebApp.tsx:267–299",
+        "source": "src/web/MobileNavigation.tsx:6\u201336; src/web/mobile-navigation.css:3\u201327; src/web/WebApp.tsx:267\u2013299",
         "selector": "@media (max-width:680px), (max-width:960px) and (max-height:500px)",
         "destinations": [
           "Home",
@@ -1688,32 +1805,32 @@
         "history": "User selected bottom tabs on14November2026. Earlier menu and scrolling-row mockups remain historical and unselected."
       },
       "friends": {
-        "source": "src/web/FriendManager.tsx:10–33; src/web/api.ts:167–203; src/web/social.ts:4–17",
+        "source": "src/web/FriendManager.tsx:10\u201333; src/web/api.ts:167\u2013203; src/web/social.ts:4\u201317",
         "behavior": "Bounded username lookup, explicit send/accept/decline/cancel and protected remove confirmation. Incoming/Sent sections, loading/error/refresh recovery, one write lock and server-confirmed outcome.",
         "identity": "Owner-keyed lifecycle; every displayed person retains own Avatar/profileBadges; separators between rows only.",
         "backendDependency": "Additive private search/request projections must accompany future deployment; no schema/native UI change or real outreach."
       },
       "inbox": {
-        "source": "src/web/Notifications.tsx:9–30; src/web/social.ts:19–36; src/web/api.ts:205–214; src/web/social.css:21–23",
+        "source": "src/web/Notifications.tsx:9\u201330; src/web/social.ts:19\u201336; src/web/api.ts:205\u2013214; src/web/social.css:21\u201323",
         "controls": "Bell with full-count accessible name; unread text, All/Unread filters, explicit read/unread, Mark all read, refresh and cursor pagination.",
         "badgeRef": "{typography.notification-count}",
         "destinations": "Owner-validated records and fixed internal allowlist; Watch Plan selection uses existing access-checked endpoint. Unknown/app-only types use /download; no arbitrary supplied URL navigation.",
         "identity": "Owner-keyed lifecycle and locked actions; each sender uses own border; system items use official F. Spoiler messages use protected replacement copy."
       },
       "publicPolicyAccess": {
-        "source": "src/components/TermsView.tsx:1–8; src/legal/terms.ts:1–43; src/App.tsx:16–27,38; src/components/PrivacyView.tsx:156–173; src/components/ContactView.tsx:10–13,65–81",
+        "source": "src/components/TermsView.tsx:1\u20138; src/legal/terms.ts:1\u201343; src/App.tsx:16\u201327,38; src/components/PrivacyView.tsx:156\u2013173; src/components/ContactView.tsx:10\u201313,65\u201381",
         "scope": "Public Terms/Privacy/Contact within existing dark marketing shell; connected visual primitives unchanged.",
         "terms": "First-class /terms route and prerender; six retained native/web sections, version2026-09-16/effective16September2026; bounded article and70ch wrapping paragraphs.",
-        "typographyBoundary": "Terms font-display/body utility classes inherit Space Grotesk/Inter from src/index.css:25–26; connected Manrope tokens remain unchanged, with no new marketing system extracted.",
+        "typographyBoundary": "Terms font-display/body utility classes inherit Space Grotesk/Inter from src/index.css:25\u201326; connected Manrope tokens remain unchanged, with no new marketing system extracted.",
         "navigation": "Signup opens /terms and /privacy in safe separate tabs; both website footers expose /terms and /contact#account-deletion.",
         "deletion": "Privacy section9 and Contact have account-deletion anchors with header clearance. Initial and hashchange handling after CSR mount is scoped to those pages. Contact opens an unsent mailto request and links to retention information; no password requested and no deletion sent automatically.",
-        "legacyRedirect": "public/staticwebapp.config.json:18–22 prepares /web/terms.html → /terms with301; production publication not performed.",
+        "legacyRedirect": "public/staticwebapp.config.json:18\u201322 prepares /web/terms.html \u2192 /terms with301; production publication not performed.",
         "routeLimit": "Historical public-policy extension changed no root or signup/onboarding route. Later user-approved PublicHome implementation supersedes the discussion-only product-entrance status; existing policy destinations remain public."
       },
       "localAuthState": {
         "source": "src/web/AccountGate.tsx; AuthForm.tsx; WebApp.tsx route/login-dialog ownership; auth.tsx existing session join/profile flow",
         "state": "Google/Apple buttons disabled for busy || session.local, with visible demo-email/password note. Existing auth.tsx local guard unchanged.",
-        "captureLimit": "signup-local-auth.jpg:433×938 CSS viewport;481×1284 full-page native export includes right host strip. Terms unchecked; no account created. Not exact390px evidence.",
+        "captureLimit": "signup-local-auth.jpg:433\u00d7938 CSS viewport;481\u00d71284 full-page native export includes right host strip. Terms unchecked; no account created. Not exact390px evidence.",
         "productionReadiness": "The earlier key-free local-policy audit recorded pre-connection domain/build/provider gaps. That historical audit does not supersede subsequent existing-account Google and Apple user confirmations. See PRODUCT.md and docs/web-app.md for current identity-connection receipts; signup stability does not establish successful real-account registration or authorize publication.",
         "profileCompletion": "After settled profile lookup, an authenticated identity without profile shows first name/username/sharing/explicit initially unchecked Terms with immutable identity email. Existing-account sign-in shows no registration-field flash. Preserve the mounted registration draft through identity/loading/profile transitions; do not treat pending lookup as missing profile.",
         "signupDraft": "During submitted registration keep the same input and two checkbox nodes mounted, preserve names and explicit choices, disable edits and reject rapid repeated submits with a synchronous lock. Retain the busy draft password field until identity use finishes, then clear password; existing-identity completion otherwise has no password field. Failure retains draft for deliberate retry; success reaches member content.",
@@ -1746,17 +1863,17 @@
         }
       },
       "sharedFooter": {
-        "source": "src/components/Footer.tsx; site-footer.css; src/index.css; src/web/app-footer.css",
-        "scope": "Every website shell, including marketing/catalogue, app, public title/person and sign-in. Corporate footer retains the marketing palette; .flixie-web aliases local footer variables to existing app light/dark ground, surface, lift, ink, muted, line and readable-purple roles with inherited color scheme. Existing marketing page typography remains separate.",
+        "source": "src/theme.css; src/components/Footer.tsx; site-footer.css; src/index.css; src/web/app-footer.css",
+        "scope": "Every website shell follows the app light/dark palette, including corporate, FAQ/support, legal, discovery, app, public title/person and sign-in. Corporate typography remains separate. The previous fixed-charcoal corporate variant is superseded by the explicit15November2026 consistency request.",
         "refersTo": "shared-footer",
         "maximumWidth": "1760px",
         "wide": "Four columns; gap32px48px; padding48px clamp(20px,3vw,48px)24px.",
         "intermediate": "Through1100px viewport: two columns, brand/download span both, stores two columns max540px; attribution below copyright.",
         "phone": "Through560px: padding32px20px24px, gap26px20px; through360px stores stack. Connected public-home stylesheet permits footer navigation groups to wrap from8.5rem basis at narrow enlarged text.",
         "variants": "Compact omits only feature-index row; corporate, FAQ/support, legal/deletion and both stores persist.",
-        "linkStates": "44px minimum navigation targets; shell-accent underline on hover/focus-visible,5px underline offset; 3px shell-accent focus outline/4px offset. Corporate uses existing lavender; connected uses readable fx-purple.",
+        "linkStates": "44px minimum navigation targets; readable fx-purple underline on hover/focus-visible,5px underline offset;3px accent focus outline/4px offset in both themes.",
         "store": "64px minimum height;10px16px padding,12px corners; hover uses existing elevated fill/purple border; through560px padding10px12px.",
-        "branding": "Corporate retains shared BrandLogo/WordmarkArtwork. Connected uses the exact approved PNG alpha mask at96px32px with two flat app-ink/brand-purple colors meeting in the measured64.33% gap; geometry and aligned bottoms unchanged. Companion span hidden outside .flixie-web; no independent ie transform.",
+        "branding": "Every footer uses the approved PNG alpha mask at96px32px with two flat app-ink/brand-purple colours meeting in the measured64.33% gap; geometry and aligned bottoms unchanged. Original image hidden; no independent ie transform.",
         "destinations": [
           "/films",
           "/app",
@@ -1778,10 +1895,20 @@
         "reason": "Parent-observed Dark Reader styles rewrote correctly-tokened Log a watch primary to rgb(42,0,158) and text to rgb(232,230,227).",
         "behavior": "Website retains its own OS-following palette; no global browser-extension setting changed.",
         "reviewBoundary": "Postdates thirteen-capture Home/diary finish review; follow-up browser/build confirmation remains with parent."
+      },
+      "corporateTheme": {
+        "scope": "User-authorised15November2026 consistency refinement; existing corporate type/layout/content retained.",
+        "source": "src/theme.css; src/index.css; Navbar.tsx; site-footer.css",
+        "pageGround": "{colors.fx-bg}",
+        "surface": "{colors.fx-surface}",
+        "raisedSurface": "{colors.fx-lift}",
+        "chrome": "#10111b permanent dark header with chrome-specific text/border tokens",
+        "primaryAction": "#7c4dff / white; hover#6534e8",
+        "scheme": "OS-following light dark; same page/footer palette as consumer app"
       }
     },
     "primitiveSources": {
-      "colors": "DESIGN.md frontmatter colors; paired themeValues above preserve the canonical CSS branches.",
+      "colors": "src/theme.css is the shared native-derived colour source; index.css aliases corporate utility roles. DESIGN.md frontmatter and paired themeValues record its branches.",
       "rounded": {
         "label": {
           "tokenRef": "{rounded.label}",
@@ -1879,10 +2006,10 @@
         "runtimeAsset": "public/web/flixie-wordmark-matched.png",
         "runtimeURL": "/web/flixie-wordmark-matched.png?v=header-1",
         "authoringSource": "public/web/flixie-wordmark.svg",
-        "generator": "scripts/build-wordmark.swift:9–65",
-        "outlines": "One bundled Manrope font at weight800/size100; canvas240×80, shared visible-bottom baseline75; PNG576×192 RGBA from the same authored paths.",
-        "sizing": "96px×32px exact header and Navbar/Footer display; single WordmarkArtwork reused by connected Wordmark and BrandLogo.",
-        "source": "src/components/WordmarkArtwork.tsx:1–3; src/components/BrandLogo.tsx:1–3; src/components/Navbar.tsx:12; src/components/Footer.tsx:34; src/web/web.css:164–168",
+        "generator": "scripts/build-wordmark.swift:9\u201365",
+        "outlines": "One bundled Manrope font at weight800/size100; canvas240\u00d780, shared visible-bottom baseline75; PNG576\u00d7192 RGBA from the same authored paths.",
+        "sizing": "96px\u00d732px exact header and Navbar/Footer display; single WordmarkArtwork reused by connected Wordmark and BrandLogo.",
+        "source": "src/components/WordmarkArtwork.tsx:1\u20133; src/components/BrandLogo.tsx:1\u20133; src/components/Navbar.tsx:12; src/components/Footer.tsx:34; src/web/web.css:164\u2013168",
         "supersession": "Latest 14 November website instruction aligns visible bottoms and consistent i/e sizing; supersedes historical lowered-ie/native-PNG guidance for this website.",
         "acceptanceLimit": "Enlarged authored lettering accepted; current in-page correction not explicitly accepted. Fractional-coordinate root cause unproven. Narrow wordmark review applies only to captured output."
       },
@@ -1894,13 +2021,13 @@
       "none": "FRAME:NONE renders no border.",
       "fallback": "Existing awarded-badge priority; initials when avatar image is absent or fails.",
       "christmas": "Official SVG frame, 112%, no extra generic ring.",
-      "memberProfiles": "Own/friend/community views, directory, activity/reviews and plan participants share Avatar and preserve the displayed member’s profileBadges; editor previews retain the owner’s earned badges."
+      "memberProfiles": "Own/friend/community views, directory, activity/reviews and plan participants share Avatar and preserve the displayed member\u2019s profileBadges; editor previews retain the owner\u2019s earned badges."
     },
     "publicDataPresentation": {
       "source": "src/web/api.ts title/publicReviews; src/web/pages.tsx TitlePage/ReviewCard",
       "reviews": "Separate deliberately public projection; visibility and spoiler labels; reveal before showing spoiler bodies.",
       "privateContent": "Owner diary notes, friend activity and plans do not belong on public title or discovery pages.",
-      "scores": "Primary title label Community rating for either actual selected source, with that source’s real count; compact FilmCard caption community. Native optional About this rating explains provenance. Keep the existing valid-score/twenty-Flixie-rater selection; never blend the two averages.",
+      "scores": "Primary title label Community rating for either actual selected source, with that source\u2019s real count; compact FilmCard caption community. Native optional About this rating explains provenance. Keep the existing valid-score/twenty-Flixie-rater selection; never blend the two averages.",
       "missingData": "Explicit loading, retry, empty, no-rating or missing-artwork treatment.",
       "homeDiscovery": {
         "source": "PublicHome.tsx; browseCountry.ts; publicDiscovery.ts; catalog/countries.json; catalog/discovery.json; scripts/sync-home-discovery.ts; API.discovery/detectedCountry/cinemaDiscovery",
@@ -1912,7 +2039,7 @@
         "history": "Initial root published as13fcdd1. Mockup-only,manual-GB/ten-country and default-US movie behavior remain historical; latest country source is locally verified awaiting its new release receipt."
       },
       "reviewComposer": {
-        "watchEntry": "Date, optional 1–10 rating and explicit Yes/No recommendation, cinema and private diary note precede optional review title/body.",
+        "watchEntry": "Date, optional 1\u201310 rating and explicit Yes/No recommendation, cinema and private diary note precede optional review title/body.",
         "reviewSharing": "Uses the existing profile privacy setting; Include this review and Contains spoilers remain distinct choices.",
         "privateNotes": "Only on the watch; never copied into a review. The owner diary opens its matching linked review in the centered reader, keeping notes outside.",
         "failure": "Validate before writes; retain confirmed watch receipt for review retry; ambiguous watch results direct to Check diary."
@@ -1949,12 +2076,12 @@
         "selection": "Only matching explicit selectedMovieId selects a film; a null singleton remains Choosing a film with its shortlist. Candidate overview artwork does not imply selection.",
         "status": "Cancelled; then Awaiting replies for an unconfirmed selected film with pending participants; then Changes proposed, Confirmed, otherwise Planning. Confirmed uses existing mint; pending uses readable purple.",
         "schedule": "dateOnly preserves UTC calendar day and says Time to be decided. Actual timestamps retain real clock time; absent/invalid dates stay undecided.",
-        "people": "Named profile destinations with each member’s own profileBadges. Source replies read Joining/Included/Invited/Declined or Reply not available; no inferred attendance.",
+        "people": "Named profile destinations with each member\u2019s own profileBadges. Source replies read Joining/Included/Invited/Declined or Reply not available; no inferred attendance.",
         "place": "Actual location, then named participating host for at-home plans, then source home/cinema/separately category, otherwise Place to be decided.",
         "transport": "Existing authenticated GET /watch-plans projection plus token-owned POST /watch-plans from the explicit picker-result composer. Private/noindex and account isolation retained; no whole-plan editor, chat, website replies, backend/schema/native source edit or deployment.",
         "fixture": "Earlier preview-only evidence preserved the Alex/Jamie Alien plan without seed writes. The 14 November creation extension also retains one locally created Raya plan for fictional Alex/Jamie/Robin: owner joined, two recipients pending, two PLAN_INVITED inbox records. No real-account or production invitation.",
         "creation": {
-          "draft": "Chosen film/audience/viewing mode carry from picker. Solo, 1–20 current friends or eligible accepted existing group; no group creation/editor. Optional schedule/place and participating home host.",
+          "draft": "Chosen film/audience/viewing mode carry from picker. Solo, 1\u201320 current friends or eligible accepted existing group; no group creation/editor. Optional schedule/place and participating home host.",
           "schedule": "Native date/time inputs. Date-only payload preserves UTC calendar day; local timed date becomes UTC. Time requires a day and past/invalid dates or unavailable local times fail explicitly.",
           "confirmation": "Explicit Create my plan or Create plan & invite with actual recipient count. Result selection alone sends nothing. Successful save refreshes Home/Plans and uses the actual saved preview; invitees stay pending until real replies in Flixie.",
           "transport": "One stable crypto.randomUUID per mounted composer; one selected movie, arranged:false, token-owned POST /watch-plans. Terms/friendship/group/block policies remain server-owned.",
@@ -2226,7 +2353,7 @@
         ],
         "automation": "TypeScript passed; 40 focused regressions passed, zero failed/skipped; production/SSR build prerendered 33 pages; static SEO passed with 27 sitemap URLs; local HTTP route/header checks passed.",
         "detector": "detector.json: zero primary findings or advisories.",
-        "recordedJourneys": "Odyssey director→Nolan; cast→Matt Damon; combined role/search and Interstellar return; TV credit destination reached while remote title remained loading; no-match clear and 24→48 credits; photo Next/ArrowLeft/Escape restores exact thumbnail focus/body scroll; separate guest origin loaded uncatalogued Tom Holland with named title/noindex.",
+        "recordedJourneys": "Odyssey director\u2192Nolan; cast\u2192Matt Damon; combined role/search and Interstellar return; TV credit destination reached while remote title remained loading; no-match clear and 24\u219248 credits; photo Next/ArrowLeft/Escape restores exact thumbnail focus/body scroll; separate guest origin loaded uncatalogued Tom Holland with named title/noindex.",
         "responsive": "No observed document overflow at 320/390px phones, 768px guest tablet, 844px guest landscape and actual 1531px desktop; complete contained artwork. No signed-in tablet or guest-phone capture implied.",
         "notVerified": [
           "Physical devices",
@@ -2397,7 +2524,7 @@
         "navigationComparison": {
           "scope": "Historical three-variant comparison at its original review boundary; later14November user selection implements the bottom-tab topology. Compact menu and scrolling row remain unselected.",
           "artifact": "/Users/lauradouglas/.codex/visualizations/2026/11/14/01a1d9db-075d-7a70-b86f-92cf4af182ff/flixie-mobile-navigation.html",
-          "avatarCorrection": "Shared header now embeds Alex’s actual existing astronaut image and selected earned FOUNDING_FILM_FRIEND border with incumbent #7c4dff/#65d6c4 frame; no new artwork. Corrected captures are comparison evidence, not deployed navigation.",
+          "avatarCorrection": "Shared header now embeds Alex\u2019s actual existing astronaut image and selected earned FOUNDING_FILM_FRIEND border with incumbent #7c4dff/#65d6c4 frame; no new artwork. Corrected captures are comparison evidence, not deployed navigation.",
           "supersededBy": "extensions.layout.mobileNavigation and extensions.evidence.socialPickerExtension; historical avatar/capture evidence remains scoped to the comparison."
         },
         "documentationPass": "Source and existing brief/review/verification/build/SEO/HTTP reconciliation only. Edited DESIGN.md, design.json and this extension documentation report. No runtime/browser/capture/detector/test/build rerun or deployment.",
@@ -2561,7 +2688,7 @@
         },
         "firebaseAudit": ".impeccable/review/auth-readiness/firebase-public-audit.json",
         "firebaseAuditScope": "Saved15November key-free public config/project read confirms projectflixie-9a8eb andadmin domain; root/www absent. Does not establish provider enablement or Apple Services ID/return URL setup. No new network audit or cloud mutation by documenter.",
-        "productionReadinessSource": "docs/web-app.md:243–253 records missing public Firebase build values and unverified provider round trips.",
+        "productionReadinessSource": "docs/web-app.md:243\u2013253 records missing public Firebase build values and unverified provider round trips.",
         "documentationPass": "Source, seven existing images, provenance and completed-log reconciliation only. No runtime/browser/test/build/detector/deploy pass, real signup, Terms acceptance or deletion request.",
         "notVerified": [
           "Production Terms/legacy redirect publication and live endpoint correction",
@@ -2634,7 +2761,7 @@
     "responsiveTypography": {
       "scope": "Connected browser surfaces. Native Flutter 14px body and the corporate marketing type system remain separate; wordmark dimensions remain artwork sizing.",
       "source": "src/web/web.css semantic variables and viewport queries; .impeccable/typography-brief.md",
-      "base": "DESIGN.md frontmatter typography; desktop applies above 1023px at the browser’s user-controlled root size.",
+      "base": "DESIGN.md frontmatter typography; desktop applies above 1023px at the browser\u2019s user-controlled root size.",
       "overrides": [
         {
           "query": "@media (max-width: 1023px)",
@@ -2669,7 +2796,7 @@
         "privateDiaryNote": "68ch / 1.55 at control size"
       },
       "specimens": "Component snippets inherit --fx-type-* when present; local rem fallbacks and viewport overrides keep the specimens responsive without a framework runtime.",
-      "sharedFooter": "Manrope support copy/navigation1rem; store names1.125rem→1rem through560px; attribution .875rem. Local supporting-navigation roles preserve enlargement; connected body18/17/16 remains unchanged."
+      "sharedFooter": "Manrope support copy/navigation1rem; store names1.125rem\u21921rem through560px; attribution .875rem. Local supporting-navigation roles preserve enlargement; connected body18/17/16 remains unchanged."
     }
   },
   "components": [
@@ -2726,7 +2853,7 @@
       "kind": "card",
       "refersTo": "watch-soon",
       "description": "Full 2:3 artwork beside flexible copy. This specimen deliberately demonstrates the implemented missing-poster fallback, with no invented score.",
-      "html": "<article class=\"ds-watch-soon\"><div class=\"ds-art-fallback\" role=\"img\" aria-label=\"Poster unavailable for Alien\"><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"2\" y=\"2\" width=\"20\" height=\"20\" rx=\"2.18\" ry=\"2.18\"/><path d=\"M7 2v20M17 2v20M2 7h5M2 17h5M17 17h5M17 7h5\"/></svg><span>Alien</span></div><div><h3 class=\"ds-soon-title\">Alien</h3><p class=\"ds-soon-meta\">1979 · Film</p><button class=\"ds-soon-button\" type=\"button\">Watch options</button></div></article>",
+      "html": "<article class=\"ds-watch-soon\"><div class=\"ds-art-fallback\" role=\"img\" aria-label=\"Poster unavailable for Alien\"><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"2\" y=\"2\" width=\"20\" height=\"20\" rx=\"2.18\" ry=\"2.18\"/><path d=\"M7 2v20M17 2v20M2 7h5M2 17h5M17 17h5M17 7h5\"/></svg><span>Alien</span></div><div><h3 class=\"ds-soon-title\">Alien</h3><p class=\"ds-soon-meta\">1979 \u00b7 Film</p><button class=\"ds-soon-button\" type=\"button\">Watch options</button></div></article>",
       "css": ".ds-watch-soon{font-family:FlixieManrope,Arial,sans-serif;display:grid;grid-template-columns:112px minmax(0,1fr);gap:19px;align-items:center;padding:17px;border:1px solid var(--fx-line,light-dark(#dbd1e7,#3e4058));border-radius:13px;background:var(--fx-surface,light-dark(#fff,#1e1f30));color:var(--fx-ink,light-dark(#261735,#f5f7fa))}.ds-art-fallback{aspect-ratio:2/3;border-radius:7px;background:#10111b;color:#b7c2d0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;font-size:var(--fx-type-label,.875rem)}.ds-soon-title{margin:0;font-size:1.5625rem;font-weight:800;line-height:1.35;letter-spacing:-.02em;overflow-wrap:anywhere}.ds-soon-meta{margin:6px 0;color:var(--fx-muted,light-dark(#62566f,#b7c2d0));font-size:var(--fx-type-label,.875rem)}.ds-soon-button{font-family:FlixieManrope,Arial,sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:10px 14px;border:1px solid var(--fx-line,light-dark(#dbd1e7,#3e4058));border-radius:9px;font-size:var(--fx-type-label,.875rem);font-weight:750;line-height:1.5;text-decoration:none;cursor:pointer;background:var(--fx-brand,#7c4dff);color:white;border-color:transparent;font-size:var(--fx-type-label,.875rem);padding:9px 11px}.ds-soon-button:not(:disabled):hover{filter:brightness(1.09)}.ds-soon-button:focus-visible{outline:3px solid var(--fx-purple,light-dark(#6534b8,#b9a0ff));outline-offset:3px}.ds-soon-button:active{transform:translateY(1px)}.ds-soon-button:disabled{opacity:.5;cursor:wait}@media(max-width:425px){.ds-watch-soon{grid-template-columns:88px minmax(0,1fr);gap:13px;padding:13px}.ds-soon-title{font-size:1.4375rem}}"
     },
     {
@@ -2765,7 +2892,7 @@
       "kind": "custom",
       "refersTo": "watch-review-modal",
       "description": "Inline style specimen of the scoped centered native dialog; runtime adds the existing official F, close control, focus lifecycle, validation and save/retry behavior. The outer dialog is centered on phones and desktop; only its form body scrolls.",
-      "html": "<section class=\"ds-watch-modal\" aria-label=\"All-in-one watch and review specimen\"><header class=\"ds-watch-header\"><h2>Your take on Obsession</h2><p>2026 · Film</p></header><div class=\"ds-watch-body\"><h3>Watch entry</h3><label class=\"ds-watch-date\">Watched on<input type=\"date\" value=\"2026-11-14\"></label><fieldset class=\"ds-watch-ratings\"><legend>Your rating</legend><div class=\"ds-watch-rating-grid\"><label class=\"ds-watch-rating\"><input type=\"radio\" name=\"ds-watch-rating\" value=\"1\" aria-label=\"Rate 1 out of 10\"><span>1</span></label><label class=\"ds-watch-rating\"><input type=\"radio\" name=\"ds-watch-rating\" value=\"2\" aria-label=\"Rate 2 out of 10\"><span>2</span></label><label class=\"ds-watch-rating\"><input type=\"radio\" name=\"ds-watch-rating\" value=\"3\" aria-label=\"Rate 3 out of 10\"><span>3</span></label><label class=\"ds-watch-rating\"><input type=\"radio\" name=\"ds-watch-rating\" value=\"4\" aria-label=\"Rate 4 out of 10\"><span>4</span></label><label class=\"ds-watch-rating\"><input type=\"radio\" name=\"ds-watch-rating\" value=\"5\" aria-label=\"Rate 5 out of 10\"><span>5</span></label><label class=\"ds-watch-rating\"><input type=\"radio\" name=\"ds-watch-rating\" value=\"6\" aria-label=\"Rate 6 out of 10\"><span>6</span></label><label class=\"ds-watch-rating\"><input type=\"radio\" name=\"ds-watch-rating\" value=\"7\" aria-label=\"Rate 7 out of 10\"><span>7</span></label><label class=\"ds-watch-rating\"><input type=\"radio\" name=\"ds-watch-rating\" value=\"8\" aria-label=\"Rate 8 out of 10\" checked><span>8</span></label><label class=\"ds-watch-rating\"><input type=\"radio\" name=\"ds-watch-rating\" value=\"9\" aria-label=\"Rate 9 out of 10\"><span>9</span></label><label class=\"ds-watch-rating\"><input type=\"radio\" name=\"ds-watch-rating\" value=\"10\" aria-label=\"Rate 10 out of 10\"><span>10</span></label></div></fieldset><div class=\"ds-watch-recommend\"><strong>Would you recommend it?</strong><button type=\"button\" aria-pressed=\"false\">Yes</button><button type=\"button\" aria-pressed=\"true\">No</button></div><label class=\"ds-watch-check\"><input type=\"checkbox\" checked>Watched at the cinema</label><details class=\"ds-watch-note\"><summary>Add a private diary note</summary><textarea aria-label=\"Private diary note\" placeholder=\"Only you can see this note.\"></textarea></details><div class=\"ds-watch-review\"><label>Review title <small>Optional</small><input type=\"text\" placeholder=\"Give your review a title\"></label><label>Your review <small>Optional</small><textarea placeholder=\"What did you think?\"></textarea></label><div class=\"ds-watch-options\"><label class=\"ds-watch-check\"><input type=\"checkbox\">Contains spoilers</label><label class=\"ds-watch-check\"><input type=\"checkbox\" checked>Include this review</label></div><p>Review sharing follows your profile’s privacy settings.</p></div></div><footer class=\"ds-watch-footer\"><button class=\"ds-watch-cancel\" type=\"button\">Cancel</button><button class=\"ds-watch-save\" type=\"button\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m20 6-11 11-5-5\"/></svg>Save watch &amp; review</button></footer></section>",
+      "html": "<section class=\"ds-watch-modal\" aria-label=\"All-in-one watch and review specimen\"><header class=\"ds-watch-header\"><h2>Your take on Obsession</h2><p>2026 \u00b7 Film</p></header><div class=\"ds-watch-body\"><h3>Watch entry</h3><label class=\"ds-watch-date\">Watched on<input type=\"date\" value=\"2026-11-14\"></label><fieldset class=\"ds-watch-ratings\"><legend>Your rating</legend><div class=\"ds-watch-rating-grid\"><label class=\"ds-watch-rating\"><input type=\"radio\" name=\"ds-watch-rating\" value=\"1\" aria-label=\"Rate 1 out of 10\"><span>1</span></label><label class=\"ds-watch-rating\"><input type=\"radio\" name=\"ds-watch-rating\" value=\"2\" aria-label=\"Rate 2 out of 10\"><span>2</span></label><label class=\"ds-watch-rating\"><input type=\"radio\" name=\"ds-watch-rating\" value=\"3\" aria-label=\"Rate 3 out of 10\"><span>3</span></label><label class=\"ds-watch-rating\"><input type=\"radio\" name=\"ds-watch-rating\" value=\"4\" aria-label=\"Rate 4 out of 10\"><span>4</span></label><label class=\"ds-watch-rating\"><input type=\"radio\" name=\"ds-watch-rating\" value=\"5\" aria-label=\"Rate 5 out of 10\"><span>5</span></label><label class=\"ds-watch-rating\"><input type=\"radio\" name=\"ds-watch-rating\" value=\"6\" aria-label=\"Rate 6 out of 10\"><span>6</span></label><label class=\"ds-watch-rating\"><input type=\"radio\" name=\"ds-watch-rating\" value=\"7\" aria-label=\"Rate 7 out of 10\"><span>7</span></label><label class=\"ds-watch-rating\"><input type=\"radio\" name=\"ds-watch-rating\" value=\"8\" aria-label=\"Rate 8 out of 10\" checked><span>8</span></label><label class=\"ds-watch-rating\"><input type=\"radio\" name=\"ds-watch-rating\" value=\"9\" aria-label=\"Rate 9 out of 10\"><span>9</span></label><label class=\"ds-watch-rating\"><input type=\"radio\" name=\"ds-watch-rating\" value=\"10\" aria-label=\"Rate 10 out of 10\"><span>10</span></label></div></fieldset><div class=\"ds-watch-recommend\"><strong>Would you recommend it?</strong><button type=\"button\" aria-pressed=\"false\">Yes</button><button type=\"button\" aria-pressed=\"true\">No</button></div><label class=\"ds-watch-check\"><input type=\"checkbox\" checked>Watched at the cinema</label><details class=\"ds-watch-note\"><summary>Add a private diary note</summary><textarea aria-label=\"Private diary note\" placeholder=\"Only you can see this note.\"></textarea></details><div class=\"ds-watch-review\"><label>Review title <small>Optional</small><input type=\"text\" placeholder=\"Give your review a title\"></label><label>Your review <small>Optional</small><textarea placeholder=\"What did you think?\"></textarea></label><div class=\"ds-watch-options\"><label class=\"ds-watch-check\"><input type=\"checkbox\">Contains spoilers</label><label class=\"ds-watch-check\"><input type=\"checkbox\" checked>Include this review</label></div><p>Review sharing follows your profile\u2019s privacy settings.</p></div></div><footer class=\"ds-watch-footer\"><button class=\"ds-watch-cancel\" type=\"button\">Cancel</button><button class=\"ds-watch-save\" type=\"button\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m20 6-11 11-5-5\"/></svg>Save watch &amp; review</button></footer></section>",
       "css": ".ds-watch-modal{font-family:FlixieManrope,Arial,sans-serif;display:flex;flex-direction:column;max-height:calc(100dvh - 48px);width:min(640px,100%);border-radius:16px;overflow:hidden;background:var(--fx-surface,light-dark(#fff,#1e1f30));color:var(--fx-ink,light-dark(#261735,#f5f7fa));box-shadow:0 18px 55px #0005}.ds-watch-header{padding:24px 26px 20px;flex:none}.ds-watch-header h2{margin:0;font-size:var(--ds-type-section);font-weight:800;line-height:1.3;overflow-wrap:anywhere}.ds-watch-header p{margin:5px 0 0;color:var(--fx-muted,light-dark(#62566f,#b7c2d0));font-size:var(--fx-type-label,.875rem)}.ds-watch-body{overflow:auto;overscroll-behavior:contain;padding:0 26px 22px;min-height:0;font-size:var(--ds-type-body);line-height:1.5}.ds-watch-body h3{margin:0 0 13px;font-size:var(--fx-type-control,1rem);font-weight:800}.ds-watch-date{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:19px;color:var(--fx-muted,light-dark(#62566f,#b7c2d0));font-size:var(--fx-type-label,.875rem)}.ds-watch-body input[type=\"date\"],.ds-watch-body input[type=\"text\"],.ds-watch-body textarea{box-sizing:border-box;min-height:44px;padding:11px 13px;border:1px solid var(--fx-line,light-dark(#dbd1e7,#3e4058));border-radius:8px;background:var(--fx-lift,light-dark(#eee7f6,#292b3e));color:var(--fx-ink,light-dark(#261735,#f5f7fa));font:inherit;font-size:var(--ds-type-body)}.ds-watch-body input[type=\"date\"]{max-width:175px;background:var(--fx-surface,light-dark(#fff,#1e1f30));font-size:var(--fx-type-control,1rem)}.ds-watch-body input[type=\"text\"],.ds-watch-body textarea{display:block;width:100%;margin-top:9px}.ds-watch-body textarea{resize:vertical;min-height:85px;line-height:1.5}.ds-watch-ratings{border:0;margin:0;padding:0;min-width:0}.ds-watch-ratings legend{padding:8px 0 16px;font-size:var(--fx-type-control,1rem);font-weight:750}.ds-watch-rating-grid{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:6px}.ds-watch-rating{position:relative;display:grid;place-items:center;min-width:0;min-height:44px}.ds-watch-rating input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}.ds-watch-rating span{display:grid;place-items:center;box-sizing:border-box;width:100%;min-height:44px;border:1px solid var(--fx-line,light-dark(#dbd1e7,#3e4058));border-radius:8px;color:var(--fx-muted,light-dark(#62566f,#b7c2d0));font-weight:750}.ds-watch-rating input:checked+span{background:var(--fx-brand,#7c4dff);border-color:transparent;color:#fff}.ds-watch-rating input:focus-visible+span{outline:3px solid var(--fx-purple,light-dark(#6534b8,#b9a0ff));outline-offset:3px}.ds-watch-recommend{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:19px}.ds-watch-recommend strong{margin-right:auto}.ds-watch-recommend button{min-width:70px;min-height:44px;padding:9px 13px;border:1px solid var(--fx-line,light-dark(#dbd1e7,#3e4058));border-radius:8px;background:var(--fx-surface,light-dark(#fff,#1e1f30));color:var(--fx-muted,light-dark(#62566f,#b7c2d0));font-family:inherit;font-size:var(--fx-type-label,.875rem);font-weight:700;cursor:pointer}.ds-watch-recommend button[aria-pressed=\"true\"]{border-color:var(--fx-purple,light-dark(#6534b8,#b9a0ff));background:var(--fx-lift,light-dark(#eee7f6,#292b3e));color:var(--fx-purple,light-dark(#6534b8,#b9a0ff))}.ds-watch-check{display:flex;align-items:center;gap:9px;min-height:44px;color:var(--fx-muted,light-dark(#62566f,#b7c2d0));font-size:var(--fx-type-label,.875rem)}.ds-watch-check input{width:18px;height:18px;margin:0;accent-color:var(--fx-brand,#7c4dff)}.ds-watch-note summary{min-height:44px;display:flex;align-items:center;color:var(--fx-purple,light-dark(#6534b8,#b9a0ff));font-size:var(--fx-type-label,.875rem);font-weight:700;cursor:pointer}.ds-watch-review{margin-top:14px;padding-top:22px;border-top:1px solid var(--fx-line,light-dark(#dbd1e7,#3e4058))}.ds-watch-review>label{display:block;margin-top:17px;font-weight:750}.ds-watch-review>label:first-child{margin-top:0}.ds-watch-review small{float:right;color:var(--fx-muted,light-dark(#62566f,#b7c2d0));font-size:var(--fx-type-label,.875rem);font-weight:400}.ds-watch-options{display:flex;justify-content:space-between;flex-wrap:wrap;gap:0 12px;margin-top:7px}.ds-watch-review p{margin:0;color:var(--fx-muted,light-dark(#62566f,#b7c2d0));font-size:var(--fx-type-label,.875rem);line-height:1.5}.ds-watch-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 26px;border-top:1px solid var(--fx-line,light-dark(#dbd1e7,#3e4058));flex:none}.ds-watch-cancel{min-height:44px;padding:5px 0;border:0;background:transparent;color:var(--fx-purple,light-dark(#6534b8,#b9a0ff));font-family:inherit;font-size:var(--fx-type-label,.875rem);font-weight:700;text-decoration:underline;cursor:pointer}.ds-watch-save{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 24px;border:0;border-radius:12px;background:var(--fx-brand,#7c4dff);color:#fff;font-family:inherit;font-size:var(--fx-type-control,1rem);font-weight:700;line-height:1.375;cursor:pointer}.ds-watch-modal :is(button,input,textarea,summary):focus-visible{outline:3px solid var(--fx-purple,light-dark(#6534b8,#b9a0ff));outline-offset:3px}.ds-watch-modal button:not(:disabled):hover{filter:brightness(1.09)}.ds-watch-modal button:active{transform:translateY(1px)}@media(max-width:680px){.ds-watch-modal{max-height:calc(100dvh - 32px)}.ds-watch-header{padding:21px 18px 17px}.ds-watch-header h2{font-size:var(--ds-type-section)}.ds-watch-body{padding:0 18px 20px}.ds-watch-rating-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}.ds-watch-body input[type=\"date\"],.ds-watch-body input[type=\"text\"],.ds-watch-body textarea{font-size:var(--fx-type-control,1rem)}.ds-watch-footer{padding:14px 18px}.ds-watch-save{flex:1;padding:12px}}.ds-watch-modal{--ds-type-body:var(--fx-type-body,1.125rem);--ds-type-section:var(--fx-type-section,1.375rem)}@media(max-width:1023px){.ds-watch-modal{--ds-type-body:var(--fx-type-body,1.0625rem);--ds-type-section:var(--fx-type-section,1.3125rem)}}@media(max-width:640px){.ds-watch-modal{--ds-type-body:var(--fx-type-body,1rem);--ds-type-section:var(--fx-type-section,1.25rem)}}"
     },
     {
@@ -2773,7 +2900,7 @@
       "kind": "custom",
       "refersTo": "provider-offer",
       "description": "Actual saved-service match specimen with the implemented initial fallback. Runtime uses full source-supplied logos, precise Stream/Rent/Buy labels and real regional data; All options opens the responsive choice dialog, centered on desktop/tablet with a phone sheet permitted. No provider logo is synthesized in this specimen.",
-      "html": "<section class=\"ds-provider-overview\" aria-label=\"Where to watch\"><div class=\"ds-provider-heading\"><div><h3>On your services</h3><span>United Kingdom</span></div><button class=\"ds-provider-options\" type=\"button\">All options<svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10M7 17 17 7\"/></svg></button></div><ul class=\"ds-provider-list\"><li><a class=\"ds-provider-offer\" href=\"https://www.themoviedb.org/movie/348-alien/watch?locale=GB\" aria-label=\"Disney Plus, Stream — viewing details on TMDB\"><span class=\"ds-provider-initial\" aria-hidden=\"true\">D</span><span class=\"ds-provider-copy\"><strong>Disney Plus</strong><small>Stream</small></span></a></li></ul><p class=\"ds-provider-source\">TMDB / JustWatch</p></section>",
+      "html": "<section class=\"ds-provider-overview\" aria-label=\"Where to watch\"><div class=\"ds-provider-heading\"><div><h3>On your services</h3><span>United Kingdom</span></div><button class=\"ds-provider-options\" type=\"button\">All options<svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10M7 17 17 7\"/></svg></button></div><ul class=\"ds-provider-list\"><li><a class=\"ds-provider-offer\" href=\"https://www.themoviedb.org/movie/348-alien/watch?locale=GB\" aria-label=\"Disney Plus, Stream \u2014 viewing details on TMDB\"><span class=\"ds-provider-initial\" aria-hidden=\"true\">D</span><span class=\"ds-provider-copy\"><strong>Disney Plus</strong><small>Stream</small></span></a></li></ul><p class=\"ds-provider-source\">TMDB / JustWatch</p></section>",
       "css": ".ds-provider-overview{font-family:FlixieManrope,Arial,sans-serif;container-type:inline-size;margin-top:6px;padding:8px 0 14px;border-bottom:1px solid var(--fx-line,light-dark(#dbd1e7,#3e4058));min-height:115px;color:var(--fx-ink,light-dark(#261735,#f5f7fa))}.ds-provider-heading{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 16px}.ds-provider-heading>div{display:flex;align-items:baseline;flex-wrap:wrap;gap:7px 12px}.ds-provider-heading h3{margin:0;font-size:var(--fx-type-control,1rem);font-weight:750}.ds-provider-heading span{font-size:var(--fx-type-label,.875rem);color:var(--fx-muted,light-dark(#62566f,#b7c2d0))}.ds-provider-options{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:5px 0;border:0;background:transparent;color:var(--fx-purple,light-dark(#6534b8,#b9a0ff));font-family:inherit;font-size:var(--fx-type-label,.875rem);font-weight:700;cursor:pointer}.ds-provider-options:hover{filter:brightness(1.09)}.ds-provider-options:active{transform:translateY(1px)}.ds-provider-options:focus-visible,.ds-provider-offer:focus-visible{outline:3px solid var(--fx-purple,light-dark(#6534b8,#b9a0ff));outline-offset:3px}.ds-provider-list{display:flex;flex-wrap:wrap;gap:9px;list-style:none;margin:0;padding:0}.ds-provider-list>li{flex:0 1 180px;min-width:0}.ds-provider-offer{display:flex;align-items:center;gap:10px;box-sizing:border-box;padding:10px 12px;min-height:62px;height:100%;border:1px solid var(--fx-line,light-dark(#dbd1e7,#3e4058));border-radius:10px;background:var(--fx-surface,light-dark(#fff,#1e1f30));color:var(--fx-ink,light-dark(#261735,#f5f7fa));text-decoration:none}.ds-provider-initial{flex:none;width:34px;height:34px;border-radius:7px;display:grid;place-items:center;background:var(--fx-lift,light-dark(#eee7f6,#292b3e));color:var(--fx-purple,light-dark(#6534b8,#b9a0ff));font-size:var(--fx-type-subheading,1.125rem);font-weight:750}.ds-provider-copy{min-width:0}.ds-provider-copy strong{display:block;font-size:var(--fx-type-label,.875rem);line-height:1.4;font-weight:750;overflow-wrap:anywhere}.ds-provider-copy small{display:block;margin-top:3px;font-size:var(--fx-type-label,.875rem);color:var(--fx-muted,light-dark(#62566f,#b7c2d0))}.ds-provider-source{margin:9px 0 0;font-size:var(--fx-type-label,.875rem);line-height:1.5;color:var(--fx-muted,light-dark(#62566f,#b7c2d0))}@container(max-width:680px){.ds-provider-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.ds-provider-offer{flex-direction:column;align-items:center;text-align:center;padding:11px 6px;gap:7px}.ds-provider-heading>div{flex-direction:column;align-items:flex-start;gap:3px}}"
     },
     {
@@ -2788,14 +2915,14 @@
       "name": "Person Filmography Controls",
       "kind": "custom",
       "refersTo": "person-role-filter-selected",
-      "description": "Inline style specimen of Matt Damon’s observed role counts and the implemented responsive search/type/year/sort layout. Native inputs/selects render directly; runtime owns filtering, live counts, clear and 24-credit pagination. This specimen has no filtering handlers or invented artwork.",
-      "html": "<section class=\"ds-person-controls\" aria-label=\"Person filmography controls style specimen\"><div class=\"ds-person-section-head\"><h2>Filmography</h2><span>205 titles</span></div><div class=\"ds-person-roles\" aria-label=\"Credit role\"><button type=\"button\" aria-pressed=\"true\">All roles<span>205</span></button><button type=\"button\" aria-pressed=\"false\">Acting<span>181</span></button><button type=\"button\" aria-pressed=\"false\">Writing<span>4</span></button><button type=\"button\" aria-pressed=\"false\">Production<span>31</span></button></div><div class=\"ds-person-fields\"><label>Search credits<input type=\"search\" placeholder=\"Title, character or job\" /></label><label>Type<select><option>Films &amp; TV</option><option>Films</option><option>TV</option></select></label><label>Year<select><option>All years</option></select></label><label>Sort<select><option>Newest released</option><option>Oldest first</option><option>Most popular</option></select></label></div><p class=\"ds-person-count\">205 titles · showing 24</p></section>",
+      "description": "Inline style specimen of Matt Damon\u2019s observed role counts and the implemented responsive search/type/year/sort layout. Native inputs/selects render directly; runtime owns filtering, live counts, clear and 24-credit pagination. This specimen has no filtering handlers or invented artwork.",
+      "html": "<section class=\"ds-person-controls\" aria-label=\"Person filmography controls style specimen\"><div class=\"ds-person-section-head\"><h2>Filmography</h2><span>205 titles</span></div><div class=\"ds-person-roles\" aria-label=\"Credit role\"><button type=\"button\" aria-pressed=\"true\">All roles<span>205</span></button><button type=\"button\" aria-pressed=\"false\">Acting<span>181</span></button><button type=\"button\" aria-pressed=\"false\">Writing<span>4</span></button><button type=\"button\" aria-pressed=\"false\">Production<span>31</span></button></div><div class=\"ds-person-fields\"><label>Search credits<input type=\"search\" placeholder=\"Title, character or job\" /></label><label>Type<select><option>Films &amp; TV</option><option>Films</option><option>TV</option></select></label><label>Year<select><option>All years</option></select></label><label>Sort<select><option>Newest released</option><option>Oldest first</option><option>Most popular</option></select></label></div><p class=\"ds-person-count\">205 titles \u00b7 showing 24</p></section>",
       "css": ".ds-person-controls{font-family:FlixieManrope,Arial,sans-serif;container-type:inline-size;color:var(--fx-ink,light-dark(#261735,#f5f7fa));line-height:1.5}.ds-person-section-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}.ds-person-section-head h2{margin:0;font-size:var(--ds-type-section);line-height:1.3;font-weight:750;letter-spacing:-.02em}.ds-person-section-head>span{font-size:var(--fx-type-label,.875rem);color:var(--fx-muted,light-dark(#62566f,#b7c2d0))}.ds-person-roles{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 16px}.ds-person-roles button{display:flex;align-items:center;gap:9px;min-height:44px;padding:10px 14px;border:1px solid var(--fx-line,light-dark(#dbd1e7,#3e4058));border-radius:9px;background:var(--fx-surface,light-dark(#fff,#1e1f30));color:var(--fx-ink,light-dark(#261735,#f5f7fa));font-family:inherit;font-size:var(--fx-type-label,.875rem);line-height:1.5;font-weight:750;cursor:pointer}.ds-person-roles button span{font-size:var(--fx-type-label,.875rem);color:var(--fx-muted,light-dark(#62566f,#b7c2d0));font-variant-numeric:tabular-nums}.ds-person-roles button[aria-pressed=true]{background:var(--fx-lift,light-dark(#eee7f6,#292b3e));color:var(--fx-purple,light-dark(#6534b8,#b9a0ff));border-color:var(--fx-purple,light-dark(#6534b8,#b9a0ff))}.ds-person-roles button:hover{filter:brightness(1.09)}.ds-person-roles button:active{transform:translateY(1px)}.ds-person-fields{display:grid;grid-template-columns:minmax(180px,2fr) repeat(3,minmax(110px,1fr));gap:12px}.ds-person-fields label{display:flex;flex-direction:column;gap:7px;min-width:0;font-size:var(--fx-type-label,.875rem);font-weight:750}.ds-person-fields :is(input,select){box-sizing:border-box;width:100%;min-width:0;min-height:48px;padding:10px 12px;border:1px solid var(--fx-line,light-dark(#dbd1e7,#3e4058));border-radius:9px;background:var(--fx-surface,light-dark(#fff,#1e1f30));color:var(--fx-ink,light-dark(#261735,#f5f7fa));font-family:inherit;font-size:var(--fx-type-control,1rem);line-height:1.5}.ds-person-fields input::placeholder{color:var(--fx-muted,light-dark(#62566f,#b7c2d0))}.ds-person-controls :is(button,input,select):focus-visible{outline:3px solid var(--fx-purple,light-dark(#6534b8,#b9a0ff));outline-offset:3px}.ds-person-count{margin:14px 0 20px;color:var(--fx-muted,light-dark(#62566f,#b7c2d0));font-size:var(--fx-type-label,.875rem)}@container(max-width:850px){.ds-person-fields{grid-template-columns:repeat(3,minmax(0,1fr))}.ds-person-fields label:first-child{grid-column:1/-1}}@container(max-width:680px){.ds-person-fields{grid-template-columns:repeat(2,minmax(0,1fr))}.ds-person-fields label:last-child{grid-column:1/-1}.ds-person-fields :is(input,select){font-size:var(--fx-type-control,1rem)}}.ds-person-controls{--ds-type-body:var(--fx-type-body,1.125rem);--ds-type-section:var(--fx-type-section,1.375rem)}@media(max-width:1023px){.ds-person-controls{--ds-type-body:var(--fx-type-body,1.0625rem);--ds-type-section:var(--fx-type-section,1.3125rem)}}@media(max-width:640px){.ds-person-controls{--ds-type-body:var(--fx-type-body,1rem);--ds-type-section:var(--fx-type-section,1.25rem)}}"
     },
     {
       "name": "Earned Border Choices",
       "kind": "custom",
-      "description": "Static style specimen of the native-adapted profile chooser using Alex’s initials fallback and an earned OG border. Runtime supplies the actual owner, catalogue artwork and earned badges, pressed/check state, identity-bound saving and bounded responsive dialog focus lifecycle (centered desktop/tablet, phone sheet permitted); the specimen grants no border or mutation.",
+      "description": "Static style specimen of the native-adapted profile chooser using Alex\u2019s initials fallback and an earned OG border. Runtime supplies the actual owner, catalogue artwork and earned badges, pressed/check state, identity-bound saving and bounded responsive dialog focus lifecycle (centered desktop/tablet, phone sheet permitted); the specimen grants no border or mutation.",
       "html": "<section class=\"ds-profile-choices\" aria-label=\"Earned border choices style specimen\"><h2>Choose your avatar border</h2><p>Choose from your earned borders.</p><div class=\"ds-profile-grid\"><button type=\"button\" aria-pressed=\"false\"><span class=\"ds-profile-avatar ds-profile-none\" role=\"img\" aria-label=\"Alex, no border\"><span>A</span></span>No border</button><button type=\"button\" aria-pressed=\"true\"><span class=\"ds-profile-avatar\" role=\"img\" aria-label=\"Alex, OG border\"><span>A</span></span>OG<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg></button></div><footer><button type=\"button\">Save choice</button><button type=\"button\">Cancel</button></footer></section>",
       "css": ".ds-profile-choices{font-family:FlixieManrope,Arial,sans-serif;color:var(--fx-ink,light-dark(#261735,#f5f7fa));line-height:1.5;--ds-type-body:var(--fx-type-body,1.125rem);--ds-type-section:var(--fx-type-section,1.375rem)}.ds-profile-choices h2{font-size:var(--ds-type-section);font-weight:750;line-height:1.3;margin:0;overflow-wrap:anywhere}.ds-profile-choices p{font-size:var(--ds-type-body);line-height:1.6;max-width:65ch;color:var(--fx-muted,light-dark(#62566f,#b7c2d0))}.ds-profile-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,6rem),1fr));gap:12px;margin-top:24px}.ds-profile-grid button{display:flex;flex-direction:column;align-items:center;gap:12px;padding:12px 8px;border:1px solid var(--fx-line,light-dark(#dbd1e7,#3e4058));border-radius:12px;background:var(--fx-lift,light-dark(#eee7f6,#292b3e));color:inherit;font-family:inherit;font-size:var(--fx-type-label,.875rem);font-weight:750;overflow-wrap:anywhere;cursor:pointer}.ds-profile-grid button[aria-pressed=true]{border-color:var(--fx-purple,light-dark(#6534b8,#b9a0ff));background:var(--fx-surface,light-dark(#fff,#1e1f30));color:var(--fx-purple,light-dark(#6534b8,#b9a0ff))}.ds-profile-avatar{display:inline-grid;place-items:center;width:72px;height:72px;padding:4px;box-sizing:border-box;border-radius:50%;background:conic-gradient(#ff8a66,#d561a8,#ff8a66)}.ds-profile-none{padding:0;background:none}.ds-profile-avatar>span{display:grid;place-items:center;width:100%;height:100%;border-radius:50%;background:var(--fx-lift,light-dark(#eee7f6,#292b3e));color:var(--fx-ink,light-dark(#261735,#f5f7fa));font-size:var(--fx-type-score,2rem);font-weight:750;line-height:1}.ds-profile-choices footer{position:sticky;bottom:0;display:flex;flex-wrap:wrap;gap:12px;padding-block:16px;margin-top:24px;background:var(--fx-surface,light-dark(#fff,#1e1f30))}.ds-profile-choices footer button{min-height:48px;padding:12px 24px;border:1px solid var(--fx-line,light-dark(#dbd1e7,#3e4058));border-radius:12px;background:var(--fx-surface,light-dark(#fff,#1e1f30));color:inherit;font-family:inherit;font-size:var(--fx-type-control,1rem);font-weight:700;line-height:1.375;cursor:pointer}.ds-profile-choices footer button:first-child{border-color:transparent;background:var(--fx-brand,#7c4dff);color:white}.ds-profile-choices button:hover{filter:brightness(1.09)}.ds-profile-choices button:active{transform:translateY(1px)}.ds-profile-choices button:focus-visible{outline:3px solid var(--fx-purple,light-dark(#6534b8,#b9a0ff));outline-offset:3px}@media(max-width:1023px){.ds-profile-choices{--ds-type-body:var(--fx-type-body,1.0625rem);--ds-type-section:var(--fx-type-section,1.3125rem)}.ds-profile-avatar>span{font-size:var(--fx-type-score,1.875rem)}}@media(max-width:640px){.ds-profile-choices{--ds-type-body:var(--fx-type-body,1rem);--ds-type-section:var(--fx-type-section,1.25rem)}.ds-profile-avatar>span{font-size:var(--fx-type-score,1.75rem)}}"
     },
@@ -2819,7 +2946,7 @@
       "name": "Episode Spoiler Row",
       "kind": "custom",
       "description": "Static signed-in spoiler-hidden episode row matching the captured Succession S1E1 state; guests instead default to visible details with the reversible Show episode spoilers control checked. Native details reveals only supplied text; runtime supplies actual seasons/stills, owner progress, aired gating and confirmed watched/unwatched actions. No episode state is changed by the specimen.",
-      "html": "<div class=\"ds-episodes\"><section class=\"ds-episode\"><div class=\"ds-episode-still\">Episode 1</div><div class=\"ds-episode-copy\"><h3>Episode 1</h3><p class=\"ds-episode-meta\">3 Jun 2018 · 62 min</p><details><summary>Show episode details · may contain spoilers</summary><h4>Celebration</h4><p>On his 80th birthday, media magnate Logan Roy shocks his family by announcing that his retirement is on hold.</p></details></div><button type=\"button\" class=\"ds-library-button\" aria-pressed=\"false\">Mark watched</button></section></div>",
+      "html": "<div class=\"ds-episodes\"><section class=\"ds-episode\"><div class=\"ds-episode-still\">Episode 1</div><div class=\"ds-episode-copy\"><h3>Episode 1</h3><p class=\"ds-episode-meta\">3 Jun 2018 \u00b7 62 min</p><details><summary>Show episode details \u00b7 may contain spoilers</summary><h4>Celebration</h4><p>On his 80th birthday, media magnate Logan Roy shocks his family by announcing that his retirement is on hold.</p></details></div><button type=\"button\" class=\"ds-library-button\" aria-pressed=\"false\">Mark watched</button></section></div>",
       "css": ".ds-library-button{font-family:inherit;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 24px;border:1px solid var(--fx-brand,#7c4dff);border-radius:8px;background:transparent;color:var(--fx-purple,light-dark(#6534b8,#b9a0ff));font-size:var(--fx-type-control,1rem);font-weight:700;line-height:1.375;white-space:normal;cursor:pointer}.ds-library-button:hover:not(:disabled){filter:brightness(1.09)}.ds-library-button:focus-visible{outline:3px solid var(--fx-purple,light-dark(#6534b8,#b9a0ff));outline-offset:3px}.ds-library-button:active:not(:disabled){transform:translateY(1px)}.ds-library-button:disabled{opacity:.5;cursor:wait}.ds-episodes{container-type:inline-size}.ds-episode{font-family:FlixieManrope,Arial,sans-serif;display:grid;grid-template-columns:160px minmax(0,1fr) auto;align-items:start;gap:20px;padding-block:22px;color:var(--fx-ink,light-dark(#261735,#f5f7fa))}.ds-episode-still{aspect-ratio:16/9;display:grid;place-items:center;border-radius:8px;background:var(--fx-lift,light-dark(#eee7f6,#292b3e));color:var(--fx-muted,light-dark(#62566f,#b7c2d0));font-size:var(--fx-type-label,.875rem)}.ds-episode-copy{min-width:0}.ds-episode h3,.ds-episode h4{margin:0;font-size:var(--fx-type-control,1rem);line-height:1.5;overflow-wrap:anywhere}.ds-episode p{margin:8px 0 0;max-width:65ch;font-size:var(--fx-type-body,1.125rem);line-height:1.5}.ds-episode .ds-episode-meta{font-size:var(--fx-type-label,.875rem);color:var(--fx-muted,light-dark(#62566f,#b7c2d0))}.ds-episode summary{min-height:44px;box-sizing:border-box;padding-block:10px;color:var(--fx-purple,light-dark(#6534b8,#b9a0ff));font-size:var(--fx-type-control,1rem);cursor:pointer}.ds-episode summary:focus-visible{outline:3px solid var(--fx-purple,light-dark(#6534b8,#b9a0ff));outline-offset:3px}@container(max-width:760px){.ds-episode{grid-template-columns:110px minmax(0,1fr);gap:12px}.ds-episode>.ds-library-button{grid-column:2;justify-self:start}}@container(max-width:420px){.ds-episode{grid-template-columns:minmax(0,1fr)}.ds-episode-still{max-width:240px}.ds-episode>.ds-library-button{grid-column:1}}"
     },
     {
@@ -2827,7 +2954,7 @@
       "kind": "custom",
       "refersTo": "pick-for-us-modal",
       "description": "Static first-step mood specimen of the current two-step centered picker; actual eight named icon accents and visible pressed/check state. Runtime adds protected dialog lifecycle, optional advanced genres, second-step people/time/place/services/languages/exclusions and sourced one-at-a-time results with Not tonight/Undo. This specimen submits nothing.",
-      "html": "<section class=\"ds-pick\" aria-label=\"Pick for me\"><h2>What do you fancy?</h2><p>Pick a mood, a genre, or leave both open.</p><button type=\"button\" class=\"ds-mood ds-open\" aria-pressed=\"true\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z\"/><path d=\"M20 2v4\"/><path d=\"M22 4h-4\"/><circle cx=\"4\" cy=\"20\" r=\"2\"/></svg><span>Keep my options open</span><svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg></button><div class=\"ds-moods\"><button type=\"button\" class=\"ds-mood ds-mood-laugh\" aria-pressed=\"false\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M8 14s1.5 2 4 2 4-2 4-2\"/><line x1=\"9\" x2=\"9.01\" y1=\"9\" y2=\"9\"/><line x1=\"15\" x2=\"15.01\" y1=\"9\" y2=\"9\"/></svg><span>Have a laugh</span></button><button type=\"button\" class=\"ds-mood ds-mood-hooked\" aria-pressed=\"false\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect width=\"18\" height=\"18\" x=\"3\" y=\"3\" rx=\"2\"/><path d=\"M7 3v18\"/><path d=\"M3 7.5h4\"/><path d=\"M3 12h18\"/><path d=\"M3 16.5h4\"/><path d=\"M17 3v18\"/><path d=\"M17 7.5h4\"/><path d=\"M17 16.5h4\"/></svg><span>Get hooked</span></button><button type=\"button\" class=\"ds-mood ds-mood-feel_good\" aria-pressed=\"false\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2\"/><path d=\"M12 20v2\"/><path d=\"m4.93 4.93 1.41 1.41\"/><path d=\"m17.66 17.66 1.41 1.41\"/><path d=\"M2 12h2\"/><path d=\"M20 12h2\"/><path d=\"m6.34 17.66-1.41 1.41\"/><path d=\"m19.07 4.93-1.41 1.41\"/></svg><span>Feel good</span></button><button type=\"button\" class=\"ds-mood ds-mood-escape\" aria-pressed=\"false\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m8 3 4 8 5-5 5 15H2L8 3z\"/></svg><span>Escape somewhere</span></button><button type=\"button\" class=\"ds-mood ds-mood-switch_off\" aria-pressed=\"false\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3\"/><path d=\"M2 16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0z\"/><path d=\"M4 18v2\"/><path d=\"M20 18v2\"/><path d=\"M12 4v9\"/></svg><span>Switch off</span></button><button type=\"button\" class=\"ds-mood ds-mood-feel_something\" aria-pressed=\"false\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5\"/></svg><span>Feel something</span></button><button type=\"button\" class=\"ds-mood ds-mood-challenged\" aria-pressed=\"false\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5\"/><path d=\"M9 18h6\"/><path d=\"M10 22h4\"/></svg><span>Be challenged</span></button><button type=\"button\" class=\"ds-mood ds-mood-scared\" aria-pressed=\"false\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401\"/></svg><span>Get scared</span></button></div><details><summary>Genre · Any genre</summary><p>Choose up to three genres. Match any selected genre or all in the same film.</p></details><p>Mood is how it feels. Genre is the kind of story.</p><footer><button type=\"button\">Cancel</button><button type=\"button\" class=\"ds-pick-primary\">Continue</button></footer></section>",
+      "html": "<section class=\"ds-pick\" aria-label=\"Pick for me\"><h2>What do you fancy?</h2><p>Pick a mood, a genre, or leave both open.</p><button type=\"button\" class=\"ds-mood ds-open\" aria-pressed=\"true\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z\"/><path d=\"M20 2v4\"/><path d=\"M22 4h-4\"/><circle cx=\"4\" cy=\"20\" r=\"2\"/></svg><span>Keep my options open</span><svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg></button><div class=\"ds-moods\"><button type=\"button\" class=\"ds-mood ds-mood-laugh\" aria-pressed=\"false\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M8 14s1.5 2 4 2 4-2 4-2\"/><line x1=\"9\" x2=\"9.01\" y1=\"9\" y2=\"9\"/><line x1=\"15\" x2=\"15.01\" y1=\"9\" y2=\"9\"/></svg><span>Have a laugh</span></button><button type=\"button\" class=\"ds-mood ds-mood-hooked\" aria-pressed=\"false\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect width=\"18\" height=\"18\" x=\"3\" y=\"3\" rx=\"2\"/><path d=\"M7 3v18\"/><path d=\"M3 7.5h4\"/><path d=\"M3 12h18\"/><path d=\"M3 16.5h4\"/><path d=\"M17 3v18\"/><path d=\"M17 7.5h4\"/><path d=\"M17 16.5h4\"/></svg><span>Get hooked</span></button><button type=\"button\" class=\"ds-mood ds-mood-feel_good\" aria-pressed=\"false\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2\"/><path d=\"M12 20v2\"/><path d=\"m4.93 4.93 1.41 1.41\"/><path d=\"m17.66 17.66 1.41 1.41\"/><path d=\"M2 12h2\"/><path d=\"M20 12h2\"/><path d=\"m6.34 17.66-1.41 1.41\"/><path d=\"m19.07 4.93-1.41 1.41\"/></svg><span>Feel good</span></button><button type=\"button\" class=\"ds-mood ds-mood-escape\" aria-pressed=\"false\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m8 3 4 8 5-5 5 15H2L8 3z\"/></svg><span>Escape somewhere</span></button><button type=\"button\" class=\"ds-mood ds-mood-switch_off\" aria-pressed=\"false\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3\"/><path d=\"M2 16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0z\"/><path d=\"M4 18v2\"/><path d=\"M20 18v2\"/><path d=\"M12 4v9\"/></svg><span>Switch off</span></button><button type=\"button\" class=\"ds-mood ds-mood-feel_something\" aria-pressed=\"false\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5\"/></svg><span>Feel something</span></button><button type=\"button\" class=\"ds-mood ds-mood-challenged\" aria-pressed=\"false\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5\"/><path d=\"M9 18h6\"/><path d=\"M10 22h4\"/></svg><span>Be challenged</span></button><button type=\"button\" class=\"ds-mood ds-mood-scared\" aria-pressed=\"false\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401\"/></svg><span>Get scared</span></button></div><details><summary>Genre \u00b7 Any genre</summary><p>Choose up to three genres. Match any selected genre or all in the same film.</p></details><p>Mood is how it feels. Genre is the kind of story.</p><footer><button type=\"button\">Cancel</button><button type=\"button\" class=\"ds-pick-primary\">Continue</button></footer></section>",
       "css": ".ds-pick{font-family:FlixieManrope,Arial,sans-serif;color:var(--fx-ink,light-dark(#261735,#f5f7fa));background:var(--fx-surface,light-dark(#fff,#1e1f30));padding:24px 26px;border-radius:16px;max-width:760px}.ds-pick h2{font-size:var(--fx-type-page,2rem);line-height:1.25;margin:0 0 8px}.ds-pick p{font-size:var(--fx-type-body,1.125rem);line-height:1.5}.ds-moods{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,9.5rem),1fr));gap:10px;margin:12px 0 22px}.ds-mood{font-family:inherit;display:flex;align-items:center;gap:10px;min-width:0;min-height:50px;padding:13px 14px;border:1px solid var(--fx-line,light-dark(#dbd1e7,#3e4058));border-radius:12px;background:var(--fx-surface,light-dark(#fff,#1e1f30));color:inherit;text-align:left;font-size:var(--fx-type-control,1rem);line-height:1.5;cursor:pointer}.ds-mood>span{flex:1;overflow-wrap:anywhere}.ds-mood svg{flex:none}.ds-open{width:100%;background:var(--fx-lift,light-dark(#eee7f6,#292b3e));border-color:var(--fx-purple,light-dark(#6534b8,#b9a0ff))}.ds-open>svg{color:var(--fx-purple,light-dark(#6534b8,#b9a0ff))}.ds-mood:hover{border-color:var(--fx-purple,light-dark(#6534b8,#b9a0ff))}.ds-mood:focus-visible,.ds-pick summary:focus-visible,.ds-pick footer button:focus-visible{outline:3px solid var(--fx-purple,light-dark(#6534b8,#b9a0ff));outline-offset:3px}.ds-mood:active,.ds-pick footer button:active{transform:translateY(1px)}.ds-mood-laugh>svg:first-child{color:light-dark(#916000,#ffca61)}.ds-mood-hooked>svg:first-child{color:light-dark(#b82e59,#ff6d85)}.ds-mood-feel_good>svg:first-child{color:light-dark(#a64a00,#ffb55c)}.ds-mood-escape>svg:first-child{color:light-dark(#217a63,#69dbbd)}.ds-mood-switch_off>svg:first-child{color:light-dark(#6c40b8,#b694f5)}.ds-mood-feel_something>svg:first-child{color:light-dark(#a53586,#f68ed7)}.ds-mood-challenged>svg:first-child{color:light-dark(#126d98,#7dcfff)}.ds-mood-scared>svg:first-child{color:light-dark(#555476,#e7e4f1)}.ds-pick summary{min-height:54px;display:flex;align-items:center;cursor:pointer;border-top:1px solid var(--fx-line,light-dark(#dbd1e7,#3e4058))}.ds-pick footer{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end}.ds-pick footer button{font:inherit;min-height:48px;padding:12px 24px;border:1px solid #7c4dff;border-radius:12px;background:transparent;color:var(--fx-purple,light-dark(#6534b8,#b9a0ff));cursor:pointer}.ds-pick footer button:hover{filter:brightness(1.09)}.ds-pick footer .ds-pick-primary{background:#7c4dff;color:#fff}@media(max-width:640px){.ds-pick{padding:20px 18px}.ds-pick h2{font-size:1.75rem}.ds-pick p{font-size:1rem}.ds-pick footer button{flex:1}}"
     },
     {
@@ -2864,7 +2991,7 @@
   ],
   "narrative": {
     "northStar": "Flixie's existing app identity",
-    "overview": "This document records the connected browser implementation in `src/web/`, the public catalogue in `src/components/CatalogView.tsx`, the shared mobile app prompt and the shared website footer. It extends the approved Flixie concept with the existing account and backend. The white/purple wordmark, bundled Manrope, official Pip and F assets, full portrait film artwork and each person's own badge border remain the visual authority.\n\nCompact navigation and tonal lavender or navy surfaces keep personal films and actions easy to scan. Film artwork carries the visual interest; purple marks actions and selected states. Desktop can show personal film, television, friend and plan information in parallel; smaller containers reflow the same content. Public pages distinguish title information, rating sources and deliberately public reviews from personal account content.\n\nThis is a scoped browser system. The pre-existing marketing pages and their Inter/Space Grotesk styles remain separate; the approved shared footer brings the same Manrope navigation, support/legal and store destinations to marketing, catalogue, public detail, sign-in and signed-in shells. Corporate pages retain their marketing footer palette; inside the connected browser shell the footer follows the existing app light/dark roles. Browser dimensions here do not replace native Flutter tokens. Product scope and release dependencies live in `PRODUCT.md` and `docs/web-app.md`; surface composition stays in `.impeccable/web-app-brief.md` and `.impeccable/home-footer-brief.md`.\n\n",
+    "overview": "This document records the connected browser implementation in `src/web/`, the public catalogue in `src/components/CatalogView.tsx`, the shared mobile app prompt and the shared website footer. It extends the approved Flixie concept with the existing account and backend. The white/purple wordmark, bundled Manrope, official Pip and F assets, full portrait film artwork and each person's own badge border remain the visual authority.\n\nCompact navigation and tonal lavender or navy surfaces keep personal films and actions easy to scan. Film artwork carries the visual interest; purple marks actions and selected states. Desktop can show personal film, television, friend and plan information in parallel; smaller containers reflow the same content. Public pages distinguish title information, rating sources and deliberately public reviews from personal account content.\n\nThis is a scoped browser system. The pre-existing marketing pages and their Inter/Space Grotesk styles remain separate; the approved shared footer brings the same Manrope navigation, support/legal and store destinations to marketing, catalogue, public detail, sign-in and signed-in shells. Corporate pages retain their marketing footer palette; inside the connected browser shell the footer follows the existing app light/dark roles. Browser dimensions here do not replace native Flutter tokens. Product scope and release dependencies live in `PRODUCT.md` and `docs/web-app.md`; surface composition stays in `.impeccable/web-app-brief.md` and `.impeccable/home-footer-brief.md`.\n\n\n\n15November2026: the user explicitly extends the app palette to corporate pages and footer; prior fixed marketing-colour scope is superseded for colours only. Existing corporate typography/layout/content and routes remain.",
     "keyCharacteristics": [
       "White flix / purple ie in one shared artwork on dark chrome; the latest website instruction aligns visible letter bottoms and uses one font, weight and size.",
       "Bundled Manrope, strong title weights and readable body copy.",

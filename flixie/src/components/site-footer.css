@@ -13,7 +13,7 @@
   font-family: FlixieManrope, Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  color-scheme: dark;
+  color-scheme: inherit;
 }
 .site-footer * {
   box-sizing: border-box;
@@ -242,4 +242,16 @@
   .site-footer .site-footer-stores {
     grid-template-columns: 1fr;
   }
+}
+
+.site-footer .site-footer-wordmark { display: none; }
+.site-footer .site-footer-theme-wordmark {
+  display: block;
+  width: 96px;
+  height: 32px;
+  /* Two flat brand colours in the measured gap. The single approved image
+     mask keeps every letter's size and aligned baseline unchanged. */
+  background: linear-gradient(90deg,var(--fx-ink) 0 64.33%,var(--fx-brand) 64.33% 100%);
+  mask: url('/web/flixie-wordmark-matched.png') center / contain no-repeat;
+  -webkit-mask: url('/web/flixie-wordmark-matched.png') center / contain no-repeat;
 }

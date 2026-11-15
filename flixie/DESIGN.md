@@ -13,15 +13,15 @@ colors:
   fx-brand-shade: "#6534e8"
   fx-danger: "light-dark(#ad3c50, #e57373)"
   fx-share: "light-dark(#185ab0, #5599ff)"
-  color-bg-darkest: "#101012"
-  color-bg-card: "#1D1C21"
-  color-bg-elevated: "#29272E"
-  color-border-custom: "#3A363F"
-  color-text-primary: "#F5F1E9"
-  color-text-secondary: "#C3BEC8"
-  color-text-muted: "#ABA3B3"
-  color-flixie-purple: "#B494EF"
-  color-flixie-light: "#C5A8F2"
+  color-bg-darkest: "{colors.fx-bg}"
+  color-bg-card: "{colors.fx-surface}"
+  color-bg-elevated: "{colors.fx-lift}"
+  color-border-custom: "{colors.fx-line}"
+  color-text-primary: "{colors.fx-ink}"
+  color-text-secondary: "{colors.fx-muted}"
+  color-text-muted: "{colors.fx-muted}"
+  color-flixie-purple: "{colors.fx-purple}"
+  color-flixie-light: "{colors.fx-purple}"
   fx-gold: "light-dark(#8c630e, #ffc857)"
   fx-mint: "light-dark(#207568, #95e3d7)"
   sidebar-ground: "light-dark(#f9f6fe, #181925)"
@@ -652,7 +652,7 @@ For films, a quiet cinema status may appear beneath the provider heading. It use
 
 Manrope footer navigation follows its owning shell. Corporate pages retain the existing fixed-dark marketing variant recorded in the footer component tokens. Inside `.flixie-web`, `app-footer.css` maps the same local footer variables to existing app ground, surface, lifted surface, ink, muted ink, line and readable-purple roles, inheriting its light/dark color scheme. This implements the user's explicit correction that the mobile footer should match the app theme; the earlier charcoal interpretation is superseded. Explore, support/legal, app stores and source attribution stay distinct. Links underline and use the shell's accent on hover/focus; focus retains a (3px) outline with (4px) offset. Store cards keep (64px) minimum height, line border and container corners, lifting tonally on hover. Both actual store destinations remain visible in every variant.
 
-The connected footer uses the approved single PNG as an alpha mask at (96px × 32px), with app ink for flix and brand purple for ie. The two flat colors meet in the measured letter gap; letter geometry and aligned bottoms remain unchanged. Corporate pages retain the original image, while the companion themed span is hidden there. Supplied standalone built-page phone captures show footer and app grounds matching in both light and dark themes, with a separate enlarged-text capture. This extension does not rewrite corporate typography, the marketing palette or native theme tokens.
+The connected footer uses the approved single PNG as an alpha mask at (96px × 32px), with app ink for flix and brand purple for ie. The two flat colors meet in the measured letter gap; letter geometry and aligned bottoms remain unchanged. The later corporate consistency request extends this same themed span to corporate pages; the original image is hidden in both footer variants. Supplied standalone built-page phone captures show footer and app grounds matching in both light and dark themes, with a separate enlarged-text capture. This extension does not rewrite corporate typography, the marketing palette or native theme tokens.
 
 ### Diary and review reading
 
@@ -758,3 +758,25 @@ The in-page prompt uses the official F icon, a clear heading and both official s
 - **Don't** expose personal diary notes, friend activity, plans or private reviews on public title or search-discovery pages.
 - **Don't** invent films, availability, reviews, scores or achieved search rankings to fill absent state.
 - **Don't** turn app download guidance into a redirect or screen-covering install interstitial.
+
+
+## Corporate palette consistency —15 November 2026
+
+User-authorised refinement: corporate and consumer pages share the native app's
+light/dark palette, with one source in `src/theme.css`. Corporate page ground and
+footer are #151522 dark / #f3edfc light; cards use #1e1f30 / white and raised
+surfaces #292b3e / #eee7f6. Existing marketing utility tokens alias those semantic
+roles. Their old warm charcoal values are superseded, not a second theme.
+Corporate header retains app dark chrome #10111b with readable chrome text in
+both themes. Primary CTAs use #7c4dff and white, hover #6534e8. Body/headings,
+borders, links, FAQ states and analytics controls follow the selected theme.
+The shared footer uses the approved single-image alpha mask with theme ink and
+brand purple for aligned lettering. Corporate typography, content, routes,
+policy wording, stores and layouts are preserved. Dark browser captures and
+passive built-HTML light-theme fixtures validate colours without changing OS
+appearance; fixture captures do not establish live light-theme interaction.
+
+Corporate enlarged-text correction keeps the logo96px32px, wraps header controls,
+allows long headings to break, and uses rem-sensitive main clearance. Actual
+large-text fixture355CSSpx/root32px has no horizontal overflow and the heading
+starts below the header; this is not an exact320px physical-device claim.

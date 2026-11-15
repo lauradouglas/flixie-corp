@@ -30,7 +30,7 @@ export default function App({ page, year, View }: { page: PageId; year: number; 
   if (page === 'home' || page === 'webApp' || page === 'mediaShare' || page === 'personShare' || page.startsWith('title-') || page.startsWith('person-')) return <InitialPerson.Provider value={catalogPerson(page)}><InitialTitle.Provider value={catalogTitle(page)}><View /></InitialTitle.Provider></InitialPerson.Provider>;
 
   return <MotionConfig reducedMotion="user">
-    <div className="min-h-screen bg-bg-main flex flex-col text-text-primary antialiased">
+    <div className="corporate-site min-h-screen bg-bg-main flex flex-col text-text-primary antialiased">
       <a className="skip-link" href="#main-content">Skip to content</a>
       <Navbar currentPage={page} />
       <main id="main-content" tabIndex={-1} className="flex-1"><View /></main>

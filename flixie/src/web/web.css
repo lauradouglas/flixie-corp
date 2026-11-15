@@ -15,20 +15,6 @@
   --fx-type-section: 1.375rem;
   --fx-type-film-title: 2.875rem;
   --fx-type-score: 2rem;
-  --fx-bg: light-dark(#f3edfc, #151522);
-  --fx-surface: light-dark(#fff, #1e1f30);
-  --fx-lift: light-dark(#eee7f6, #292b3e);
-  --fx-ink: light-dark(#261735, #f5f7fa);
-  --fx-muted: light-dark(#62566f, #b7c2d0);
-  --fx-line: light-dark(#dbd1e7, #3e4058);
-  --fx-purple: light-dark(#6534b8, #b9a0ff);
-  /* Native AppTheme/FlixiePalette button colours. */
-  --fx-brand: #7c4dff;
-  --fx-brand-shade: #6534e8;
-  --fx-danger: light-dark(#ad3c50, #e57373);
-  --fx-share: light-dark(#185ab0, #5599ff);
-  --fx-mint: light-dark(#207568, #95e3d7);
-  --fx-gold: light-dark(#8c630e, #ffc857);
   font-family: FlixieManrope, Arial, sans-serif;
   font-size: var(--fx-type-body);
   line-height: 1.5;
