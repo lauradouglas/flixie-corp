@@ -1,5 +1,5 @@
 import { connectionState, friendRequests, inboxPage, peopleSearch } from './social';
-import {discoveryFilms, discoveryCountry} from './publicDiscovery';
+import {discoveryFilms, discoveryCountry, validDiscoveryCountry} from './publicDiscovery';
 import { castMembers, friendOpinions, titlePhotos } from "./titleDetails";
 import { savedProviders } from "./watchProviders";
 import { directorPeople, talent, talentCredits } from "./personDetails";
@@ -69,8 +69,13 @@ export class FlixieApi {
   assertIdentity(uid: string) {
     if (this.identity()?.uid !== uid) throw new SessionChanged();
   }
-  async discovery(kind:MediaKind,signal?:AbortSignal) {
-    return discoveryFilms(await this.request(kind==='movie'?'/movies/popular':'/shows/popular',{public:true,signal:signal?AbortSignal.any([signal,AbortSignal.timeout(15000)]):undefined}),kind);
+  async discovery(kind:MediaKind,signal?:AbortSignal,region='GB') {
+    if(!validDiscoveryCountry(region))throw new Error('Choose a supported country.');
+    return discoveryFilms(await this.request(kind==='movie'?`/movies/popular?region=${encodeURIComponent(discoveryCountry(region))}`:'/shows/popular',{public:true,signal:signal?AbortSignal.any([signal,AbortSignal.timeout(15000)]):undefined}),kind);
+  }
+  async detectedCountry(signal?:AbortSignal):Promise<string|null> {
+    const raw=object(await this.request('/guest/country',{public:true,signal:signal?AbortSignal.any([signal,AbortSignal.timeout(4000)]):AbortSignal.timeout(4000)}));
+    return validDiscoveryCountry(raw.country);
   }
   async cinemaDiscovery(region:string,signal?:AbortSignal) {
     if(discoveryCountry(region)!==region)throw new Error('Choose a supported cinema country.');

@@ -1,3 +1,4 @@
+import countryRows from '../catalog/countries.json';
 import snapshot from '../catalog/discovery.json';
 import {film, object, text, type Film, type MediaKind} from './models';
 
@@ -19,11 +20,13 @@ export function discoveryFilms(value:unknown,kind:MediaKind,limit=12):Film[] {
   return result;
 }
 export const discoveryYear=(date:string)=>date.match(/\b(?:18|19|20|21)\d{2}\b/)?.[0]??'';
-export const discoverySnapshot={updatedAt:snapshot.updatedAt,
+export const discoverySnapshot={updatedAt:snapshot.updatedAt,region:"GB",
   movies:discoveryFilms(snapshot.movies,'movie'),shows:discoveryFilms(snapshot.shows,'show')};
-export const discoveryCountries=[['GB','United Kingdom'],['IE','Ireland'],['US','United States'],
-  ['AU','Australia'],['CA','Canada'],['NZ','New Zealand'],['DE','Germany'],['FR','France'],['IN','India'],['BR','Brazil']] as const;
-export function discoveryCountry(value:unknown):string {
-  const normalized=typeof value==='string'?value.toUpperCase().replace(/^UK$/,'GB'):'';
-  return discoveryCountries.some(([id])=>id===normalized)?normalized:'GB';
+export const discoveryCountries=countryRows as [string,string][];
+export function validDiscoveryCountry(value:unknown):string|null {
+  const raw=typeof value==='string'?value.trim().toUpperCase():'';
+  const aliases:Record<string,string>={UK:'GB',XI:'GB',BU:'MM',TP:'TL',SU:'RU',ZR:'CD',YU:'RS',CS:'RS',XG:'DE',XC:'CZ'};
+  const normalized=aliases[raw]??raw;
+  return discoveryCountries.some(([id])=>id===normalized)?normalized:null;
 }
+export function discoveryCountry(value:unknown):string {return validDiscoveryCountry(value)??'GB';}

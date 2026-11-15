@@ -24,7 +24,7 @@ export default function PrivacyView() {
               corresponding deployed features and set Last Updated to the publication
               date. Review Apple App Privacy answers separately in App Store Connect. */}
           <p className="text-text-muted text-xs font-mono">
-            Last Updated: October 19, 2026
+            Last Updated: November 15, 2026
           </p>
         </div>
 
@@ -37,6 +37,9 @@ export default function PrivacyView() {
               We collect information needed to create your account, provide Flixie’s movie and social features, keep the service safe, and respond to support requests.
             </p>
             
+            <p>
+              <strong>Website country:</strong> For visitors who are not signed in, Flixie briefly uses the connection’s IP address on its own server to estimate a country for popular films and cinema listings. This lookup does not request GPS access, determine a precise location, send the IP address to a separate lookup service, or store it for this purpose. You can change the country. When signed in, browsing starts with the country saved on your profile.
+            </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
               <div className="bg-bg-card border border-border-custom p-4 rounded-xl space-y-2">
                 <h3 className="font-bold text-white text-xs uppercase tracking-wider">Account and profile information</h3>

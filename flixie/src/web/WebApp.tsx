@@ -204,7 +204,7 @@ function ConnectedApp() {
       navigate("/app/search?q=" + encodeURIComponent(query.trim()));
   }
   function content() {
-    if(route.page==='home'&&!user&&!identity)return <PublicHomePage actions={actions}/>;
+    if(route.page==='explore'&&(!identity||user)||route.page==='home'&&!user&&!identity)return <PublicHomePage actions={actions}/>;
     if (route.page === "person") return <PersonPage key={route.id} id={route.id} />;
     if (route.page === "title")
       return (
@@ -355,7 +355,7 @@ function ConnectedApp() {
                 <br />
                 Your next good watch.
               </p>
-              <a href="/films">Explore films &amp; TV</a>
+              <Link to="/app/explore">Explore films &amp; TV</Link>
               <a href="/download">Get the app</a>
               <a href="/about">About Flixie</a>
             </div>
@@ -364,7 +364,7 @@ function ConnectedApp() {
         <main
           id="web-main"
           tabIndex={-1}
-          className={guestTitle ? "fx-public-main" : `fx-main${route.page==='home'&&!user&&!identity?' fx-discovery-main':''}`}
+          className={guestTitle ? "fx-public-main" : `fx-main${route.page==='explore'||route.page==='home'&&!user&&!identity?' fx-discovery-main':''}`}
         >
           {user && terms.data?.accepted === false && (
             <div className="fx-terms-notice">

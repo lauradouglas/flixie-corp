@@ -1,5 +1,6 @@
 {
   "updatedAt": "2026-11-15",
+  "region": "GB",
   "movies": [
     {
       "id": 1423191,
@@ -11,7 +12,7 @@
       "id": 1263337,
       "title": "Heart of the Beast",
       "posterPath": "/6sYemVUn79UPKz1ZsSG6kPU4RVy.jpg",
-      "releaseDate": "25 Sep 2026"
+      "releaseDate": "23 Sep 2026"
     },
     {
       "id": 1368337,
@@ -23,13 +24,13 @@
       "id": 687163,
       "title": "Project Hail Mary",
       "posterPath": "/iOb2fjXLbpJgyQXe46n1WtGCnaa.jpg",
-      "releaseDate": "20 Mar 2026"
+      "releaseDate": "19 Mar 2026"
     },
     {
       "id": 969681,
       "title": "Spider-Man: Brand New Day",
       "posterPath": "/bjiS5ipwxb9JFy3XRRN4OAilSeX.jpg",
-      "releaseDate": "31 Jul 2026"
+      "releaseDate": "29 Jul 2026"
     },
     {
       "id": 1400837,
@@ -41,7 +42,7 @@
       "id": 1058424,
       "title": "Hope",
       "posterPath": "/6VY1ZKgpsc8CfGsQcCGiYEgHdH0.jpg",
-      "releaseDate": "9 Sep 2026"
+      "releaseDate": "25 Sep 2026"
     },
     {
       "id": 1813355,
@@ -56,22 +57,22 @@
       "releaseDate": "30 Oct 2026"
     },
     {
-      "id": 1244523,
-      "title": "Beware Boiúna",
-      "posterPath": "/7mI13sTZcuwWEIUK9fckAb8Zmba.jpg",
-      "releaseDate": "2 Oct 2026"
-    },
-    {
       "id": 1616687,
       "title": "Never Surrender",
       "posterPath": "/hKROmLddpzpjkxKKVFYFRAOXX1b.jpg",
       "releaseDate": "12 Nov 2026"
     },
     {
+      "id": 1244523,
+      "title": "Beware Boiúna",
+      "posterPath": "/7mI13sTZcuwWEIUK9fckAb8Zmba.jpg",
+      "releaseDate": "1 Oct 2026"
+    },
+    {
       "id": 1381071,
       "title": "Godzilla Minus Zero",
       "posterPath": "/hSmIJluOJmTWvJs4d7kHRxjc8s8.jpg",
-      "releaseDate": "3 Nov 2026"
+      "releaseDate": "5 Nov 2026"
     }
   ],
   "shows": [

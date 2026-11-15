@@ -1,3 +1,5 @@
+import {useBrowseCountry} from './browseCountry';
+import {discoveryCountries} from './publicDiscovery';
 import { useState, type FormEvent } from "react";
 import { ArrowRight, Monitor } from "lucide-react";
 import { useSession } from "./auth";
@@ -27,10 +29,13 @@ export function WatchOptions({
   onClose: () => void;
 }) {
   const { api, user } = useSession();
-  const [country, setCountry] = useState(user?.country ?? "GB");
+  const {country:resolvedCountry,ready}=useBrowseCountry();
+  const [override,setCountry]=useState<string|null>(null);
+  const country=override??resolvedCountry;
+  const countryReady=override!==null||ready;
   const result = useLoad(
-    `options:${film.kind}:${film.id}:${country}`,
-    (signal) => api.options(film, country, signal),
+    `options:${film.kind}:${film.id}:${country}:${countryReady}`,
+    (signal) => countryReady?api.options(film, country, signal):Promise.resolve(null),
   );
   const groups = object(object(result.data).watchProviders ?? result.data);
   return (
@@ -42,24 +47,13 @@ export function WatchOptions({
         value={country}
         onChange={(e) => setCountry(e.target.value)}
       >
-        {[
-          ["GB", "United Kingdom"],
-          ["US", "United States"],
-          ["AU", "Australia"],
-          ["CA", "Canada"],
-          ["IE", "Ireland"],
-          ["NZ", "New Zealand"],
-          ["DE", "Germany"],
-          ["FR", "France"],
-          ["IN", "India"],
-          ["BR", "Brazil"],
-        ].map(([id, name]) => (
+        {discoveryCountries.map(([id, name]) => (
           <option key={id} value={id}>
             {name}
           </option>
         ))}
       </select>
-      {result.loading ? (
+      {!countryReady||result.loading ? (
         <p role="status">Checking viewing options…</p>
       ) : result.error ? (
         <ErrorState message={result.error} retry={result.retry} />

@@ -19,13 +19,13 @@ test('public discovery retains source ordering and safe artwork/year, drops priv
   assert(!JSON.stringify(result).includes('PRIVATE'));
   for(const value of [null,{},'bad'])assert.throws(()=>discoveryFilms(value,'movie'));
   assert.equal(discoveryYear('Mon Sep 20 1999'),'1999');assert.equal(discoveryYear(''),'');
-  assert.equal(discoveryCountry('uk'),'GB');assert.equal(discoveryCountry('invalid'),'GB');
+  assert.equal(discoveryCountry('uk'),'GB');assert.equal(discoveryCountry('XI'),'GB');assert.equal(discoveryCountry('ES'),'ES');assert.equal(discoveryCountry('invalid'),'GB');
 });
 test('public film, TV and selected-country cinema feeds never read identity, send bearer or send cookies',async()=>{
   const calls:{url:string;init?:RequestInit}[]=[];
   const api=new FlixieApi('https://example.invalid',()=>{throw Error('Identity must not be accessed');},async(url,init)=>{calls.push({url:String(url),init});return new Response(JSON.stringify([row(1)]),{status:200});});
   await api.discovery('movie');await api.discovery('show');await api.cinemaDiscovery('IE');
-  assert.deepEqual(calls.map(c=>new URL(c.url).pathname+new URL(c.url).search),['/movies/popular','/shows/popular','/movies/now_playing?region=IE']);
+  assert.deepEqual(calls.map(c=>new URL(c.url).pathname+new URL(c.url).search),['/movies/popular?region=GB','/shows/popular','/movies/now_playing?region=IE']);
   for(const c of calls){assert.equal(c.init?.credentials,'omit');assert.equal((c.init?.headers as Record<string,string>).Authorization,undefined);}
   await assert.rejects(api.cinemaDiscovery('XX'));assert.equal(calls.length,3);
 });
@@ -66,7 +66,7 @@ test('changing cinema country clears old results, ignores a late earlier country
   try{
     await act(async()=>{root.render(<SessionContext.Provider value={session}><PublicHomePage actions={actions}/></SessionContext.Provider>);});
     assert(dom.window.document.querySelector('#public-cinema')?.textContent?.includes('GB Alien'));
-    const select=dom.window.document.querySelector<HTMLSelectElement>('select[aria-label="Cinema country"]')!;
+    const select=dom.window.document.querySelector<HTMLSelectElement>('select[aria-label="Browsing country"]')!;
     await act(async()=>{select.value='US';select.dispatchEvent(new dom.window.Event('change',{bubbles:true}));});
     assert(!dom.window.document.querySelector('#public-cinema')?.textContent?.includes('GB Alien'));
     assert(dom.window.document.querySelector('#public-cinema')?.textContent?.includes('Checking cinema releases for United States'));
@@ -79,4 +79,86 @@ test('changing cinema country clears old results, ignores a late earlier country
     await act(async()=>{dom.window.document.querySelector<HTMLButtonElement>('.fx-discovery-save')!.click();});
     assert.deepEqual(saves,[1]);
   }finally{await act(async()=>root.unmount());dom.window.close();}
+});
+
+async function countryPage(transport:(url:string)=>Promise<Response>,run:(page:{dom:JSDOM;render:(value:Partial<Session>)=>Promise<void>})=>Promise<void>,stored?:string) {
+  const dom=new JSDOM('<div id="country-test"></div>',{url:'https://www.flixie.co.uk/'});
+  Object.assign(globalThis,{window:dom.window,document:dom.window.document,HTMLElement:dom.window.HTMLElement,Event:dom.window.Event,localStorage:dom.window.localStorage,sessionStorage:dom.window.sessionStorage,IS_REACT_ACT_ENVIRONMENT:true});
+  if(stored)dom.window.localStorage.setItem('flixie-cinema-country',stored);
+  const api=new FlixieApi('https://example.invalid',()=>{throw Error('Discovery must not read identity');},url=>transport(String(url)));
+  const actions:PageActions={open:()=>{},save:async()=>{},saved:()=>false,busyIds:new Set(),refresh:()=>{},toast:()=>{}};
+  const {createRoot}=await import('react-dom/client');const root=createRoot(dom.window.document.getElementById('country-test')!);
+  const base={api,user:null,identity:null,loading:false,error:'',local:false} as Session;
+  const render=async(value:Partial<Session>)=>{await act(async()=>root.render(<SessionContext.Provider value={{...base,...value}}><PublicHomePage actions={actions}/></SessionContext.Provider>));};
+  try{await run({dom,render});}finally{await act(async()=>root.unmount());dom.window.close();}
+}
+const countryResponse=(country:string)=>new Response(JSON.stringify({country,source:'ip'}));
+const countryTitles=(url:string)=>new Response(JSON.stringify([row(348,`${new URL(url).searchParams.get('region')??'TV'} Alien`)]));
+
+test('guest detection supplies the same country to popular movies and cinemas, then a manual choice updates both',async()=>{
+  const calls:string[]=[];
+  await countryPage(async url=>{calls.push(url);return url.endsWith('/guest/country')?countryResponse('IE'):countryTitles(url);},async({dom,render})=>{
+    await render({});
+    const country=dom.window.document.querySelector<HTMLSelectElement>('[aria-label="Browsing country"]')!;
+    assert.equal(country.value,'IE');
+    assert(dom.window.document.querySelector('#public-films')?.textContent?.includes('IE Alien'));
+    assert(dom.window.document.querySelector('#public-cinema')?.textContent?.includes('IE Alien'));
+    assert(calls.some(url=>url.endsWith('/movies/popular?region=IE')));
+    assert(calls.some(url=>url.endsWith('/movies/now_playing?region=IE')));
+    await act(async()=>{country.value='AU';country.dispatchEvent(new dom.window.Event('change',{bubbles:true}));});
+    assert(dom.window.document.querySelector('#public-films')?.textContent?.includes('AU Alien'));
+    assert(dom.window.document.querySelector('#public-cinema')?.textContent?.includes('AU Alien'));
+    assert.equal(dom.window.localStorage.getItem('flixie-cinema-country'),'AU');
+  });
+});
+test('saved account country wins over guest preference, profile changes and account switches replace it, and sign-out restores the guest choice',async()=>{
+  let detections=0;
+  const member=(id:string,country:string)=>({id,country,username:'fictional_member',firstName:'Alex',externalId:id,avatar:{},profileBadges:[],completedSetup:true});
+  await countryPage(async url=>{if(url.endsWith('/guest/country')){detections++;return countryResponse('DE');}return countryTitles(url);},async({dom,render})=>{
+    await render({user:member('fixture-a','ES')});
+    assert.equal(dom.window.document.querySelector<HTMLSelectElement>('select')?.value,'ES');
+    assert(dom.window.document.querySelector('#public-films')?.textContent?.includes('ES Alien'));
+    assert(dom.window.document.querySelector('#public-cinema')?.textContent?.includes('ES Alien'));
+    assert(dom.window.document.body.textContent?.includes('Using your saved country.'));
+    assert.equal(detections,0);
+    await render({user:member('fixture-a','IE')});
+    assert(dom.window.document.querySelector('#public-films')?.textContent?.includes('IE Alien'));
+    assert(!dom.window.document.querySelector('#public-films')?.textContent?.includes('ES Alien'));
+    await render({user:member('fixture-b','XX')});
+    assert.equal(dom.window.document.querySelector<HTMLSelectElement>('select')?.value,'GB');
+    assert(dom.window.document.body.textContent?.includes('Your saved country is unavailable'));
+    await render({user:member('fixture-b','CA')});
+    assert.equal(dom.window.document.querySelector<HTMLSelectElement>('select')?.value,'CA');
+    await render({user:null,identity:null});
+    assert.equal(dom.window.document.querySelector<HTMLSelectElement>('select')?.value,'US');
+    assert.equal(detections,0);
+    assert.equal(dom.window.localStorage.getItem('flixie-cinema-country'),'US');
+  },'US');
+});
+test('a manual guest country wins over late detection and another-country errors never borrow the GB snapshot',async()=>{
+  let finishDetection!:(response:Response)=>void;
+  await countryPage(async url=>{
+    if(url.endsWith('/guest/country'))return new Promise<Response>(resolve=>{finishDetection=resolve;});
+    if(url.includes('/movies/popular?region=IE'))return new Response('{}',{status:503});
+    return countryTitles(url);
+  },async({dom,render})=>{
+    await render({});
+    const country=dom.window.document.querySelector<HTMLSelectElement>('select')!;
+    await act(async()=>{country.value='IE';country.dispatchEvent(new dom.window.Event('change',{bubbles:true}));});
+    await act(async()=>{finishDetection(countryResponse('US'));});
+    assert.equal(country.value,'IE');
+    assert.equal(dom.window.document.querySelectorAll('#public-films article').length,0);
+    assert(!dom.window.document.querySelector('#public-films')?.textContent?.includes('Showing saved selections'));
+    assert(dom.window.document.querySelector('#public-films')?.textContent?.includes('could not be loaded'));
+    assert(dom.window.document.querySelector('#public-cinema')?.textContent?.includes('IE Alien'));
+  });
+});
+test('failed guest detection falls back visibly to GB and manual country selection remains available',async()=>{
+  await countryPage(async url=>url.endsWith('/guest/country')?new Response('{}',{status:503}):countryTitles(url),async({dom,render})=>{
+    await render({});
+    assert.equal(dom.window.document.querySelector<HTMLSelectElement>('select')?.value,'GB');
+    assert(dom.window.document.body.textContent?.includes('Country detection is unavailable'));
+    assert(dom.window.document.querySelector('#public-films')?.textContent?.includes('GB Alien'));
+    assert(dom.window.document.querySelector('#public-cinema')?.textContent?.includes('GB Alien'));
+  });
 });

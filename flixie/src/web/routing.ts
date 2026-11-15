@@ -4,6 +4,7 @@ export type WebRoute =
   | {
       page:
         | "home"
+        | "explore"
         | "watchlist"
         | "diary"
         | "friends"
@@ -33,6 +34,7 @@ export function parseRoute(path: string, search = ""): WebRoute {
     };
   const part = path.replace(/^\/app\/?/, "").replace(/\/$/, "");
   const known = [
+    "explore",
     "watchlist",
     "diary",
     "friends",

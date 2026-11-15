@@ -54,8 +54,10 @@ choices remain inline with existing consent logic. At narrow enlarged text,
 poster shelves use rem-based auto-fit, footer groups wrap and Pip heading/art
 share flexible space. Preserve all existing global tokens.
 
-Implementation is complete locally; a new Azure publication/release receipt is
-pending. The earlier5738841 release is historical and did not publish this root.
+Released as13fcdd1b4f90ff0b7cf6db73de364763c6e4da62 via Azure43736973395.
+Exact marker,37 URLs and two store redirects verified. Production CI passed116
+checks, TypeScript, analytics, build35/SEO29. Both named review fixes resolved;
+disposition ship. The earlier5738841 release did not publish this root.
 Earlier mockup-only notes are explicitly superseded by the user's implementation
 approval. Supplied116 checks/types/build35/SEO29 passed before responsive fixes;
 four focused checks, types, build35/SEO29 and analytics pass after the reflow batch,

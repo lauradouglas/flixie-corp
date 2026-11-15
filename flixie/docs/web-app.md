@@ -465,3 +465,80 @@ captures; current documentation now resolves the stale-status finding. Receipts:
 `.impeccable/review/public-home-implementation/`. No physical-device acceptance,
 completed real/new signup, Terms acceptance, completed new member-intent journey,
 real-account write, backend/native change or new deployment is claimed here.
+
+
+## Public discovery homepage released — 15 November 2026
+
+This supersedes the implementation-pending status above. Website commit
+`13fcdd1b4f90ff0b7cf6db73de364763c6e4da62` is live through
+[Azure workflow43736973395](https://github.com/lauradouglas/flixie-corp/actions/runs/43736973395).
+The exact no-store release marker,37 live URLs and two store redirects pass.
+Production CI passed116 website regressions, TypeScript, analytics,35-page build
+and29-URL sitemap/SEO/HTTP checks. The reviewer scored both named reflow and
+documentation fixes resolved, with disposition ship. Actual live guest Home and
+Meet Flixie were verified; all three64×96 cinema posters loaded. The valid live
+full-page capture and immutable source ZIP are beside
+`flixie-homepage-live-release-20261115.json` in the task artifact directory.
+No backend/native release, real-account mutation or release notification occurred.
+Local responsive captures cover desktop, tablet, phone and narrow200% text; no
+physical-device or completed new-account registration claim is added. An extra live
+phone capture was not completed after the browser connection became unavailable.
+
+
+## Saved and detected country discovery — 15 November 2026
+
+The user explicitly requests saved profile country for members, guest country
+detection and the same region for popular movies/cinema instead of the backend US
+default. This supersedes manual-GB/ten-country behavior;13fcdd1 remains the prior
+homepage release. Current country source is complete locally, with new website
+publication pending final review/backend readiness and its exact release receipt.
+
+`browseCountry.ts` resolves members' saved profile country ahead of guest
+preferences. A temporary manual page override resets on account/profile-country
+changes without updating the profile. Guests' saved `flixie-cinema-country` wins
+over first-party detection, cached successfully in the session for one hour.
+Invalid/missing/failed detection visibly falls back toGB and keeps manual control.
+All250 current choices are available, including UK/XI→GB aliases. The selector
+sits above both movie/cinema feeds; saved/estimated/loading/unavailable hints and
+a wrapping label/10rem select basis preserve clarity at narrow enlarged text.
+
+Public movies now request `/movies/popular?region=…`, matching
+`/movies/now_playing?region=…`. Region/ready keys clear old-country results and
+ignore late replies; cinema expansion resets. TV remains `/shows/popular` without
+regional claims. The finite movie SSR fallback and refresh script are explicitly
+GB-only; a different-country failure shows its own error/retry instead of GB
+titles. The public field projection and no-bearer/no-cookie transport remain.
+Members retain root→personal `/app`, with Home/sidebar Explore films & TV opening
+noindex `/app/explore` in their existing authenticated shell. Title providers,
+cinema status and Watch options inherit this resolver and wait for readiness;
+Watch options permits a temporary selection. Auth/Terms and privacy boundaries
+remain unchanged.
+
+The additive anonymous `/guest/country` estimates country inside the existing
+Flixie backend. Bundled7.9MB country-only MMDB is public-domain PDDL-1.0 from
+sapics/ip-location-db, with published SHA-256 verification/provenance in
+`data/geoip/` and MIT maxmind reader. Azure uses its overwritten client-ip only
+on Azure; other environments ignore forwarding headers and use socket IP.
+Response contains country/source only with `private, no-store`/`noindex`. No GPS,
+city/coordinates, third-party visitor lookup, IP logging or account write is added;
+request address is used only in lookup memory for this purpose. Dataset refresh
+is deliberate download/checksum/provenance/tests/reviewed release, not a runtime
+download or scheduler. Parent-updated PrivacyView adds the factual country
+paragraph and15November date; this documentation pass edits no policy.
+
+Supplied checks pass120 website regressions/types/build35/SEO29 and993 backend
+regressions/types/build, including compiled database path. Country/account/manual/
+race/failure/transport checks use fictional accounts and controlled responses.
+Desktop1440/phone390 show Ireland in the actual browser;320px/200% light is a
+passive current-DOM fixture with serialized Ireland and eager artwork, not an
+interactive OS/theme or physical-device test. The reviewer scored the country-row
+fix resolved across all three rebuilt captures; documentation is reconciled for
+its final verdict. Three unchanged detector
+advisories remain documented; no additional detector pass is run here.
+
+Backend993 CI checks passed and5e4985524b43481763f14b9f18e88cab2bf1f56b is deploying
+through isolated workflow43743118572;
+the release owner records readiness/live behavior and the new website SHA
+separately. No schema/migration, production data job, main branch change, native
+release, real-account update or release notification is asserted by this record.
+Receipts: `.impeccable/review/country-discovery/`.

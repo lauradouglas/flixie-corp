@@ -238,6 +238,7 @@ export function HomePage({
         <div>
           <h1>Hello, {user.firstName || user.username}.</h1>
           <p>Your next film night starts here.</p>
+          <Link to="/app/explore" className="fx-text-button">Explore films &amp; TV <ArrowRight size={17}/></Link>
         </div>
         <button
           className="fx-button fx-soft"

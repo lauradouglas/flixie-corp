@@ -1313,13 +1313,14 @@
       "publicMaximumWidth": "1160px",
       "catalogMaximumWidth": "1200px",
       "publicHomepage": {
-        "source": "src/web/PublicHome.tsx; public-home.css; publicDiscovery.ts; site.ts; views.ts; WebApp.tsx",
-        "scope": "User-approved implemented guest root; earlier mockup-only root statements are historical and superseded. Members continue to personal /app; former marketing Home retained at /welcome as Meet Flixie. Publication pending a new release.",
+        "source": "src/web/PublicHome.tsx; public-home.css; browseCountry.ts; publicDiscovery.ts; site.ts; views.ts; WebApp.tsx; routing.ts",
+        "scope": "Implemented public root; initial homepage live as13fcdd1, country follow-up complete locally awaiting its new release. Members retain personal /app and open shared regional discovery via Home/sidebar Explore films & TV at noindex /app/explore. Former marketing Home retained at /welcome as Meet Flixie. Earlier mockup-only/manual-GB/ten-country/default-US movie behavior is historical and superseded.",
         "composition": "1760px maximum; introduction/account actions, popular films, country cinema, popular TV with Pip and existing shared themed footer. Six film columns and four TV columns beside Pip; cinema three columns.",
         "responsive": "Through1100px: four film columns, two cinema columns and stacked TV/Pip. Through680px: rem-based auto-fit poster shelves minmax(min(100%,9rem),1fr) and single-column cinema. Pip heading/art wrap in flex. Connected footer groups through560px wrap from8.5rem basis for narrow enlarged text.",
         "posters": "Complete2:3 contain fitting. Cinema64x96px,56x84px on phone; no cropped landscape artwork.",
         "disclosure": "Initially up to6 films,4 shows,3 cinema; reversible expansion up to12 per feed. Country change resets cinema expansion and clears previous-region results.",
-        "states": "Dated finite public popular-film/TV snapshot in SSR, live refresh with saved-date/retry fallback; cinema live loading/error/empty/retry, no static current-availability claim. Explicit10-country local browser choice,GB default; no GPS/account-country edit or nearby showtimes.",
+        "states": "Country selector above both movie/cinema feeds offers250 existing countries,UK/XI aliases toGB; both requests use explicit resolved region and clear stale country state. GB-only dated movie SSR fallback never fills another country; TV remains non-regional. Cinema live loading/error/empty/retry with no static availability claim. Source-status hints distinguish saved/detected/loading/unavailable and keep manual control.",
+        "countryPriority": "Members saved profile country overrides guest preferences; temporary page manual override resets on account/profile-country change. Guests saved manual browser choice beats first-party country estimate, cached in session for1hour. Detection failure visibly falls back toGB. Country label/select wrap with10rem select basis for narrow enlarged text. No GPS/account-country edit or nearby showtimes.",
         "analytics": "Inline root analytics choice uses existing consent logic, without a fixed bottom overlay. Existing member navigation is unchanged."
       },
       "posterAspectRatio": "2/3",
@@ -1902,12 +1903,13 @@
       "scores": "Primary title label Community rating for either actual selected source, with that source’s real count; compact FilmCard caption community. Native optional About this rating explains provenance. Keep the existing valid-score/twenty-Flixie-rater selection; never blend the two averages.",
       "missingData": "Explicit loading, retry, empty, no-rating or missing-artwork treatment.",
       "homeDiscovery": {
-        "source": "PublicHome.tsx; publicDiscovery.ts; catalog/discovery.json; scripts/sync-home-discovery.ts; API.discovery/cinemaDiscovery",
+        "source": "PublicHome.tsx; browseCountry.ts; publicDiscovery.ts; catalog/countries.json; catalog/discovery.json; scripts/sync-home-discovery.ts; API.discovery/detectedCountry/cinemaDiscovery",
         "projection": "Finite public snapshot and refreshed lists contain only valid bounded media ID/title, safe poster path and release date; kind supplied by endpoint. No score/review/account/owner fields. Static snapshot refreshed by explicit public-only script, not a new scheduled job.",
-        "transport": "Existing anonymous movies/popular, shows/popular and movies/now_playing?region endpoints; no bearer,credentials omit,no-store. Snapshot script requires HTTPS or loopback and retains prior file for empty feeds.",
-        "country": "GB default; explicit local browser preference amongGB/IE/US/AU/CA/NZ/DE/FR/IN/BR. No GPS,account-country mutation,nearby venue or showtime integration. Clear previous country immediately on change.",
+        "transport": "Anonymous movies/popular?region=<resolved>,shows/popular,movies/now_playing?region=<resolved> and guest/country; no bearer,credentials omit,no-store. Snapshot script explicitly requests regionGB,requires HTTPS or loopback and retains prior file for empty feeds. GB movie snapshot is eligible only forGB; TV remains non-regional.",
+        "country": "All250 current Flixie countries;UK/XI normalize toGB. Members use saved profile country ahead of guest preferences with temporary manual page override reset by account/profile changes. Guests manual browser choice beats detected country;1hour session estimate cache. Failed estimate visibly falls back toGB with selector usable. Region-keyed movie/cinema and title-provider state clears old country.",
+        "guestDetection": "Existing Flixie backend uses bundled checksum-verified7.9MB PDDL country-only MMDB and MIT maxmind reader. Only Azure-overwritten client-ip onAzure,otherwise socketIP. Country/source-only anonymous response,no-store/noindex; no GPS/coordinates,third-party visitor lookup,IP logging,account update or runtime data download. Manual reviewed dataset refresh/release.",
         "continuation": "Guest saves reuse centred auth continuation; safe picker/mood intent enters existing member picker only after profile and Terms gates. Supplied browser checks cover opening/continuation, not completed new signup/member-intent execution.",
-        "history": "Prior root mockup-only records and5738841 public-navigation release remain historical; implemented root is local awaiting its new release receipt."
+        "history": "Initial root published as13fcdd1. Mockup-only,manual-GB/ten-country and default-US movie behavior remain historical; latest country source is locally verified awaiting its new release receipt."
       },
       "reviewComposer": {
         "watchEntry": "Date, optional 1–10 rating and explicit Yes/No recommendation, cinema and private diary note precede optional review title/body.",
