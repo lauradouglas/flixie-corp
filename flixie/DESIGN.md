@@ -867,3 +867,16 @@ stays full width; synopsis and people links follow. Public HTML retains the
 single title, synopsis and internal links, and its shell shares this layout.
 Existing desktop/tablet composition, friends/badge privacy, episode spoiler
 choices, backend mutations, download prompts and authentication remain intact.
+
+## Mobile title density and Home control —15 November2026
+
+User feedback supersedes the initial title-page outer spacing: only mobile title
+mains remove their top padding and use safe-area-aware12px gutters. The hero
+has no negative top-offset approximation, so its actual backdrop meets the header
+border in signed-in and guest layouts. Its first breadcrumb becomes a44px
+chevron Home link with an accessible name and the same account/guest destination;
+full breadcrumb text stays on larger layouts and in public HTML. Cards use a
+compact3px action surface inset,56px action targets,8px provider padding and6px
+offer gaps. Section and app-link gaps reduce without shrinking text. Signed-in
+previews use the real title, Avatar and bottom-tab components with fictional
+account/provider/progress data; these fixtures are excluded from publication.

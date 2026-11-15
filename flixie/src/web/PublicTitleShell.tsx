@@ -1,4 +1,5 @@
 import { createContext } from "react";
+import { ChevronLeft } from 'lucide-react';
 import { catalogTitles, catalogPath, type CatalogTitle } from "../catalog";
 import { film } from "./models";
 import { Poster } from "./components";
@@ -15,7 +16,7 @@ export function PublicTitleShell({ title }: { title: CatalogTitle }) {
       <main className="fx-public-main">
         <div className="fx-title-view">
         <nav className="fx-breadcrumb" aria-label="Breadcrumb">
-          <a href="/">Flixie</a>
+          <a href="/" className="fx-title-home" aria-label="Home"><ChevronLeft size={22} aria-hidden="true"/><span>Flixie</span></a>
           <span>/</span>
           <a href="/films">Films &amp; TV</a>
           <span>/</span>

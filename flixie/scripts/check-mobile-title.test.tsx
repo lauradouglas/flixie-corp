@@ -47,6 +47,8 @@ test('mobile title actions retain movie watchlist, favourite, review, provider a
   try {
     const doc = t.dom.window.document;
     assert.equal(doc.querySelectorAll('h1').length, 1);
+    assert.equal(doc.querySelector('.fx-title-home')!.getAttribute('aria-label'), 'Home');
+    assert.equal(doc.querySelector('.fx-title-home')!.getAttribute('href'), '/app');
     assert.match(doc.querySelector('.fx-title-artwork source')!.getAttribute('srcset')!, /actual-landscape/);
     assert.match(doc.querySelector('.fx-poster')!.getAttribute('src')!, /portrait/);
     await act(async () => doc.querySelector('.fx-title-artwork img')!.dispatchEvent(new t.dom.window.Event('error')));
@@ -66,6 +68,7 @@ test('show keeps episode tracking and spoiler controls; guests see public episod
     try {
       const doc = t.dom.window.document;
       assert.equal(doc.querySelector('.fx-title-rate'), null);
+      assert.equal(doc.querySelector('.fx-title-home')!.getAttribute('href'), guest ? '/' : '/app');
       assert(doc.querySelector('a[href="#title-episodes"]'));
       const spoilers = doc.querySelector('input[type="checkbox"]') as HTMLInputElement;
       assert.equal(spoilers.checked, guest);

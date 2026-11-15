@@ -13,6 +13,7 @@ import {
   BookmarkCheck,
   BookmarkPlus,
   Check,
+  ChevronLeft,
   Clapperboard,
   Monitor,
   Share2,
@@ -687,7 +688,7 @@ export function TitlePage({
     <>
       <div className="fx-title-view">
       <div className="fx-breadcrumb">
-        <Link to={user ? "/app" : "/"}>Home</Link>
+        <Link to={user ? "/app" : "/"} className="fx-title-home" aria-label="Home"><ChevronLeft size={22} aria-hidden="true"/><span>Home</span></Link>
         <ArrowRight size={13} />
         <span>{f.title}</span>
       </div>
