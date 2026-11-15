@@ -23,7 +23,7 @@ export default function PublicBrowseHeader({returnTo='/films',query,onQueryChang
     <details className="fx-public-menu" ref={menu} onToggle={event=>{if(event.currentTarget.open)setSearchOpen(false);}}>
       <summary aria-label="Open navigation menu"><Menu size={23} aria-hidden="true"/></summary>
       <nav className="fx-public-menu-panel" aria-label="Public navigation">
-        <a href="/">Home</a><a href="/films">Films &amp; TV</a><a href="/features">Features</a><a href="/about">About Flixie</a><a href="/faqs">FAQs</a><a href="/contact">Contact &amp; support</a>
+        <a href="/">Home</a><a href="/films">Films &amp; TV</a><a href="/features">Features</a><a href="/about">About Flixie</a><a href="/welcome">Meet Flixie</a><a href="/faqs">FAQs</a><a href="/contact">Contact &amp; support</a>
         <Link to={`/app/join?next=${next}`}>Create an account</Link>
       </nav>
     </details>

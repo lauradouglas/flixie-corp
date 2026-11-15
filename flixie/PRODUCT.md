@@ -240,6 +240,7 @@ scope, with its two responsive findings resolved; this is not root-publication
 approval. Source is verified and awaiting release.
 No real-account write, Terms acceptance, backend or native change is part of it.
 
+**Historical mockup stage — superseded by the approved implementation below.**
 The user authorised creating a separate public root-homepage mockup; its design
 awaits the user's review. Its film/TV
 browsing, sign-in/signup, country-specific In cinemas, Features/About and public
@@ -254,3 +255,51 @@ and showtimes are not implemented. Root routing,
 real catalogue/cinema wiring, country handling and publication remain separate
 implementation work. Earlier discussion-only entries remain historical; this
 mockup request does not mean the corporate root has been replaced.
+
+
+## Public discovery homepage implemented — 15 November 2026
+
+The user explicitly approved implementation with “implment new home”, after
+requesting wee complete posters beside the In cinemas titles. This supersedes
+the mockup-only/root-review status above. The new guest `/` is implemented locally
+in the existing website: a short introduction and account actions, actual popular
+films, country-specific cinema, popular TV and the existing Pip picker entry.
+Signed-in members entering `/` continue to personal `/app`. The old marketing
+homepage is preserved at `/welcome` as Meet Flixie; Features, About, support,
+privacy, Terms, account deletion and both store destinations retain access.
+
+Popular feeds initially show up to six films and four shows and expand to twelve
+each. Cinema initially shows three and expands to up to twelve, with full 2:3
+posters at 64×96 desktop or 56×84 phone. The explicit ten-country selector defaults
+to GB and remembers a local browser choice. It does not use GPS, infer nearby
+cinemas, edit an account country or supply showtimes. Country changes clear old
+cinema results and reset expansion; loading, error/retry and empty states remain
+truthful. Existing fresh regional now-playing results supply cinema, not a static
+availability claim or release-date guess.
+
+A finite public film/TV snapshot is present in server HTML and refreshed from
+the existing public popular feeds. Only title ID/name, safe poster path and release
+date are projected; no scores, reviews, accounts or owner state enter discovery.
+Failed refresh retains saved selections with their date and retry. Public reads
+send neither bearer credentials nor cookies. The bounded refresh script uses
+existing public endpoints and retains the prior snapshot if a feed is empty.
+
+Guest Save opens the existing centred authentication continuation. Pick for us
+and the two mood links preserve safe intent into the existing member picker after
+authentication/profile and explicit Terms gating. The root analytics choice is
+inline, retaining the existing consent choices and logic. The app light/dark
+palette, compact phone header, full posters and themed footer remain; rem-based
+phone shelves, wrapping footer groups and flexible Pip heading/art allow narrow
+enlarged text to reflow.
+
+Status: source implementation complete locally, publication pending a new Azure
+release and exact release receipt. The previous 5738841 public-navigation release
+remains a separate live receipt. Supplied pre-responsive-batch checks passed 116
+regressions, TypeScript, build35 and sitemap/SEO29. After the reflow batch, four
+focused checks, TypeScript, build35/SEO29 and analytics checks pass; the full 116
+checks will run again during release CI. Browser checks cover GB→US→GB, film/TV
+expansion to twelve, Save/auth with two signup checkboxes, mood continuation and
+Meet Flixie/wordmark navigation. Light and 320px/200% captures are passive current
+DOM fixtures, not OS-setting or interactive theme tests. No physical-device,
+completed new signup/member intent, real-account write, backend/native change or
+new deployment is claimed by this local implementation record.

@@ -401,3 +401,67 @@ precise geolocation, nearby venues or showtimes. Catalogue/cinema wiring, root
 behavior and publication remain separate work; the mockup design awaits the
 user's review. The durable scoped direction is
 also recorded in `.impeccable/public-browse-brief.md`.
+
+
+**Public browsing follow-up released — 15 November 2026:** Website commit `57388417a2bc6ed5d58f93e2ac39221b8bb54d86` deployed successfully through [Azure workflow 43720282308](https://github.com/lauradouglas/flixie-corp/actions/runs/43720282308). The app-themed connected footer, compact guest phone header/full desktop search and guest episode defaults are live. 112 focused checks, TypeScript, build34, SEO28 and HTTP/device/store checks passed; 36 live URLs and two store redirects verified against the exact release marker. Finish review: ship. No backend/native deployment, real-account write or notification. Root homepage remains a mockup awaiting user design approval; the user explicitly wants to review it before replacement/publication. Country selection is a proposed mechanism. No further homepage deployment is authorised by this receipt. Physical phone/laptop testing remains with the user.
+
+
+## Public discovery root implemented — 15 November 2026
+
+The user's later “implment new home” approves implementing the new public root,
+including wee complete posters beside cinema titles. This explicitly supersedes
+the earlier mockup-only/root-review status above. The5738841 live follow-up remains
+historical; this implementation is local pending its new Azure release and exact
+release receipt. No earlier publication receipt is rewritten as this release.
+
+`PublicHome.tsx`, `public-home.css` and `publicDiscovery.ts` implement guest `/`.
+`site.ts`/`views.ts` select the new root and preserve the original `HomeView` at
+`/welcome` as Meet Flixie. Members entering `/` continue to their personal `/app`.
+Features/About, FAQ/support, Privacy, Terms, deletion and both stores retain their
+paths; the footer exposes Meet Flixie and the shared wordmark returns to `/`.
+
+Actual `/movies/popular` and `/shows/popular` feeds show up to six films/four shows
+initially, with reversible expansion to twelve each. Regional `/movies/now_playing`
+shows three cinema cards initially and up to twelve expanded. Small complete 2:3
+posters are64×96px desktop or56×84px phone. The cinema selector offers GB, IE, US,
+AU, CA, NZ, DE, FR, IN and BR, defaults to GB and retains an explicit local browser
+preference under `flixie-cinema-country`. It performs no GPS lookup or account
+country update. Changes clear the old country immediately, reset expansion and
+show selected-country loading/error/retry/empty states. Country listings and
+Check local cinema showtimes do not imply nearby venues or actual showtimes.
+
+`src/catalog/discovery.json` supplies a dated finite public film/TV snapshot in
+server HTML, refreshed by the existing live popular routes after hydration.
+`discoveryFilms` validates/bounds IDs and titles, accepts safe poster paths and
+projects release dates; no account/owner, score or review fields are retained.
+Failure retains the snapshot with its saved date and retry. Cinema is checked
+live, with no static claim of current availability. Public transport sends no
+bearer and uses `credentials: omit`/`cache: no-store`.
+`scripts/sync-home-discovery.ts` explicitly refreshes only public film/TV fields,
+requires HTTPS or loopback and preserves the previous snapshot if a feed is empty;
+no scheduler, account fixture, backend/schema or metadata source was introduced.
+
+Guest Save reuses the existing centred auth continuation. The picker and mood
+links carry safe `next` intent into `/app?pick=…`; existing member/profile and
+explicit Terms gates must settle before the existing picker opens. The root uses
+inline `WebsiteAnalyticsChoice` in normal flow, preserving the existing consent
+logic and choices rather than placing a bottom overlay over discovery.
+
+The source preserves app light/dark roles, full artwork, current compact phone
+header and themed footer. The scoped responsive fix replaces forced phone poster
+columns with rem-based auto-fit, lets footer navigation groups wrap, and places
+Pip's heading/art in flexible wrapping space. This resolves the review's narrow
+200% reflow finding without shrinking text or changing global tokens.
+
+Supplied checks passed116 regressions/types/build35 and29 sitemap/SEO URLs before
+the reflow batch. Four focused cases, TypeScript, build35/SEO29 and analytics pass
+after that batch; release CI will rerun the full116. Actual browser checks cover
+GB→US→GB,12-film/show expansions, Save opening auth, signup's two checkboxes, mood
+continuation, Meet Flixie's preserved page and wordmark return to root. Desktop1440,
+tablet820 and dark phone390 captures are actual browser evidence. Light390 and
+320px/200% are passive current-DOM fixtures, not interactive theme or OS text-size
+verification. The reviewer scored the responsive finding resolved across all six
+captures; current documentation now resolves the stale-status finding. Receipts:
+`.impeccable/review/public-home-implementation/`. No physical-device acceptance,
+completed real/new signup, Terms acceptance, completed new member-intent journey,
+real-account write, backend/native change or new deployment is claimed here.

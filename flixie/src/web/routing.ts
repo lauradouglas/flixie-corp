@@ -61,7 +61,7 @@ export function safeNext(raw: string | null): string {
     return "/app";
   try {
     const url = new URL(raw, "https://www.flixie.co.uk");
-    return /^\/(app(?:\/|$)|movies\/[1-9]\d*$|shows\/[1-9]\d*$|people\/[1-9]\d*$)/.test(url.pathname)
+    return url.pathname==='/' || /^\/(app(?:\/|$)|movies\/[1-9]\d*$|shows\/[1-9]\d*$|people\/[1-9]\d*$)/.test(url.pathname)
       ? url.pathname + url.search
       : "/app";
   } catch {

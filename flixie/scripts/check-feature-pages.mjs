@@ -30,7 +30,8 @@ for (const key of features) {
 }
 assert.equal(titles.size, features.length, 'Distinct page titles');
 assert.equal(descriptions.size, features.length, 'Distinct page descriptions');
-const home = await readFile('dist/index.html', 'utf8');
+// The existing marketing homepage is preserved at its own public address.
+const home = await readFile('dist/welcome.html', 'utf8');
 assert.match(home, /href="\/film-diary"/);
 assert.match(home, /href="\/tv-show-tracker"/);
 assert.doesNotMatch(home, /real sync times|segmented, targeted notifications/);

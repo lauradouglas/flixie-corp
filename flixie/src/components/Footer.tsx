@@ -62,6 +62,7 @@ export default function Footer({
             <a className="site-footer-link" href="/about">
               About Flixie
             </a>
+            <a className="site-footer-link" href="/welcome">Meet Flixie</a>
           </nav>
           <nav aria-labelledby="footer-help-title" className="site-footer-nav">
             <h2 className="site-footer-title" id="footer-help-title">

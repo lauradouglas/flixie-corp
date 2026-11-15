@@ -1312,6 +1312,16 @@
       "homeRailWidth": "300px",
       "publicMaximumWidth": "1160px",
       "catalogMaximumWidth": "1200px",
+      "publicHomepage": {
+        "source": "src/web/PublicHome.tsx; public-home.css; publicDiscovery.ts; site.ts; views.ts; WebApp.tsx",
+        "scope": "User-approved implemented guest root; earlier mockup-only root statements are historical and superseded. Members continue to personal /app; former marketing Home retained at /welcome as Meet Flixie. Publication pending a new release.",
+        "composition": "1760px maximum; introduction/account actions, popular films, country cinema, popular TV with Pip and existing shared themed footer. Six film columns and four TV columns beside Pip; cinema three columns.",
+        "responsive": "Through1100px: four film columns, two cinema columns and stacked TV/Pip. Through680px: rem-based auto-fit poster shelves minmax(min(100%,9rem),1fr) and single-column cinema. Pip heading/art wrap in flex. Connected footer groups through560px wrap from8.5rem basis for narrow enlarged text.",
+        "posters": "Complete2:3 contain fitting. Cinema64x96px,56x84px on phone; no cropped landscape artwork.",
+        "disclosure": "Initially up to6 films,4 shows,3 cinema; reversible expansion up to12 per feed. Country change resets cinema expansion and clears previous-region results.",
+        "states": "Dated finite public popular-film/TV snapshot in SSR, live refresh with saved-date/retry fallback; cinema live loading/error/empty/retry, no static current-availability claim. Explicit10-country local browser choice,GB default; no GPS/account-country edit or nearby showtimes.",
+        "analytics": "Inline root analytics choice uses existing consent logic, without a fixed bottom overlay. Existing member navigation is unchanged."
+      },
       "posterAspectRatio": "2/3",
       "posterFit": "contain",
       "sheet": {
@@ -1697,7 +1707,7 @@
         "navigation": "Signup opens /terms and /privacy in safe separate tabs; both website footers expose /terms and /contact#account-deletion.",
         "deletion": "Privacy section9 and Contact have account-deletion anchors with header clearance. Initial and hashchange handling after CSR mount is scoped to those pages. Contact opens an unsent mailto request and links to retention information; no password requested and no deletion sent automatically.",
         "legacyRedirect": "public/staticwebapp.config.json:18–22 prepares /web/terms.html → /terms with301; production publication not performed.",
-        "routeLimit": "No new root or signup/onboarding route change; product-entrance proposal remains discussion only."
+        "routeLimit": "Historical public-policy extension changed no root or signup/onboarding route. Later user-approved PublicHome implementation supersedes the discussion-only product-entrance status; existing policy destinations remain public."
       },
       "localAuthState": {
         "source": "src/web/AccountGate.tsx; AuthForm.tsx; WebApp.tsx route/login-dialog ownership; auth.tsx existing session join/profile flow",
@@ -1741,7 +1751,7 @@
         "maximumWidth": "1760px",
         "wide": "Four columns; gap32px48px; padding48px clamp(20px,3vw,48px)24px.",
         "intermediate": "Through1100px viewport: two columns, brand/download span both, stores two columns max540px; attribution below copyright.",
-        "phone": "Through560px: padding32px20px24px, gap26px20px; through360px stores stack.",
+        "phone": "Through560px: padding32px20px24px, gap26px20px; through360px stores stack. Connected public-home stylesheet permits footer navigation groups to wrap from8.5rem basis at narrow enlarged text.",
         "variants": "Compact omits only feature-index row; corporate, FAQ/support, legal/deletion and both stores persist.",
         "linkStates": "44px minimum navigation targets; shell-accent underline on hover/focus-visible,5px underline offset; 3px shell-accent focus outline/4px offset. Corporate uses existing lavender; connected uses readable fx-purple.",
         "store": "64px minimum height;10px16px padding,12px corners; hover uses existing elevated fill/purple border; through560px padding10px12px.",
@@ -1751,6 +1761,7 @@
           "/app",
           "/features",
           "/about",
+          "/welcome",
           "/faqs",
           "/contact",
           "/privacy",
@@ -1890,6 +1901,14 @@
       "privateContent": "Owner diary notes, friend activity and plans do not belong on public title or discovery pages.",
       "scores": "Primary title label Community rating for either actual selected source, with that source’s real count; compact FilmCard caption community. Native optional About this rating explains provenance. Keep the existing valid-score/twenty-Flixie-rater selection; never blend the two averages.",
       "missingData": "Explicit loading, retry, empty, no-rating or missing-artwork treatment.",
+      "homeDiscovery": {
+        "source": "PublicHome.tsx; publicDiscovery.ts; catalog/discovery.json; scripts/sync-home-discovery.ts; API.discovery/cinemaDiscovery",
+        "projection": "Finite public snapshot and refreshed lists contain only valid bounded media ID/title, safe poster path and release date; kind supplied by endpoint. No score/review/account/owner fields. Static snapshot refreshed by explicit public-only script, not a new scheduled job.",
+        "transport": "Existing anonymous movies/popular, shows/popular and movies/now_playing?region endpoints; no bearer,credentials omit,no-store. Snapshot script requires HTTPS or loopback and retains prior file for empty feeds.",
+        "country": "GB default; explicit local browser preference amongGB/IE/US/AU/CA/NZ/DE/FR/IN/BR. No GPS,account-country mutation,nearby venue or showtime integration. Clear previous country immediately on change.",
+        "continuation": "Guest saves reuse centred auth continuation; safe picker/mood intent enters existing member picker only after profile and Terms gates. Supplied browser checks cover opening/continuation, not completed new signup/member-intent execution.",
+        "history": "Prior root mockup-only records and5738841 public-navigation release remain historical; implemented root is local awaiting its new release receipt."
+      },
       "reviewComposer": {
         "watchEntry": "Date, optional 1–10 rating and explicit Yes/No recommendation, cinema and private diary note precede optional review title/body.",
         "reviewSharing": "Uses the existing profile privacy setting; Include this review and Contains spoilers remain distinct choices.",

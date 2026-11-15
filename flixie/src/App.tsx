@@ -27,7 +27,7 @@ export default function App({ page, year, View }: { page: PageId; year: number; 
     return () => { cancelAnimationFrame(frame); window.removeEventListener('hashchange', revealDeletion); };
   }, [page]);
 
-  if (page === 'webApp' || page === 'mediaShare' || page === 'personShare' || page.startsWith('title-') || page.startsWith('person-')) return <InitialPerson.Provider value={catalogPerson(page)}><InitialTitle.Provider value={catalogTitle(page)}><View /></InitialTitle.Provider></InitialPerson.Provider>;
+  if (page === 'home' || page === 'webApp' || page === 'mediaShare' || page === 'personShare' || page.startsWith('title-') || page.startsWith('person-')) return <InitialPerson.Provider value={catalogPerson(page)}><InitialTitle.Provider value={catalogTitle(page)}><View /></InitialTitle.Provider></InitialPerson.Provider>;
 
   return <MotionConfig reducedMotion="user">
     <div className="min-h-screen bg-bg-main flex flex-col text-text-primary antialiased">

@@ -37,10 +37,16 @@ const basePages = {
   },
   home: {
     path: "/",
-    title: "Flixie: Your Movie & TV Companion",
+    title: "Flixie: Explore Films, TV Shows & Cinema Releases",
     description:
-      "Find tonight’s film and keep up with your shows. Get personal film picks, check where to watch, track your viewing and plan film nights with Flixie.",
+      "Explore popular films and TV shows, find cinema releases in your country, and join Flixie to save a watchlist, keep a film diary and plan with friends.",
     label: "Home",
+  },
+  welcome: {
+    path: "/welcome",
+    title: "Meet Flixie: Your Movie & TV Companion",
+    description: "See how Flixie helps you find tonight’s film, keep up with shows, remember your film nights and make plans with friends on web, iPhone and Android.",
+    label: "Meet Flixie",
   },
   features: {
     path: "/features",

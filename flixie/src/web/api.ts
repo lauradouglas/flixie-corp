@@ -1,4 +1,5 @@
 import { connectionState, friendRequests, inboxPage, peopleSearch } from './social';
+import {discoveryFilms, discoveryCountry} from './publicDiscovery';
 import { castMembers, friendOpinions, titlePhotos } from "./titleDetails";
 import { savedProviders } from "./watchProviders";
 import { directorPeople, talent, talentCredits } from "./personDetails";
@@ -67,6 +68,13 @@ export class FlixieApi {
   ) {}
   assertIdentity(uid: string) {
     if (this.identity()?.uid !== uid) throw new SessionChanged();
+  }
+  async discovery(kind:MediaKind,signal?:AbortSignal) {
+    return discoveryFilms(await this.request(kind==='movie'?'/movies/popular':'/shows/popular',{public:true,signal:signal?AbortSignal.any([signal,AbortSignal.timeout(15000)]):undefined}),kind);
+  }
+  async cinemaDiscovery(region:string,signal?:AbortSignal) {
+    if(discoveryCountry(region)!==region)throw new Error('Choose a supported cinema country.');
+    return discoveryFilms(await this.request(`/movies/now_playing?region=${encodeURIComponent(region)}`,{public:true,signal:signal?AbortSignal.any([signal,AbortSignal.timeout(15000)]):undefined}),'movie');
   }
   async request(
     path: string,

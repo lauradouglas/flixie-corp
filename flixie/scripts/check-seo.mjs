@@ -91,7 +91,10 @@ for (const [path, html] of documents) {
 assert.match(documents.get('/faqs'), /<details[\s>]/);
 assert.match(documents.get('/faqs'), /How do I rate a movie\?/);
 assert.match(documents.get('/faqs'), /select your rating out of 10/);
-assert.match(documents.get('/'), /Illustrative app demo/);
+assert.match(documents.get('/welcome'), /Illustrative app demo/);
+assert.match(documents.get('/'), /Popular films/);
+assert.match(documents.get('/'), /Find your next series/);
+assert.match(documents.get('/'), /href="\/welcome"/);
 assert.match(documents.get('/404'), /This page could not be found/);
 assert.doesNotMatch(documents.get('/invite'), /Invited by @/);
 const og = await readFile('dist/og/flixie-companion.png');

@@ -56,8 +56,11 @@ import "./mobile-navigation.css";
 import PublicBrowseHeader from './PublicBrowseHeader';
 import './public-browse-header.css';
 import './app-footer.css';
+import './public-home.css';
+import PublicHomePage,{PublicHomeShell} from './PublicHome';
+import WebsiteAnalyticsChoice from '../components/WebsiteAnalyticsChoice';
 
-export default function WebApp() {
+export default function WebApp({publicHome=false}:{publicHome?:boolean}) {
   const initialTitle = useContext(InitialTitle);
   const initialPerson = useContext(InitialPerson);
   const [mounted, setMounted] = useState(false);
@@ -68,7 +71,7 @@ export default function WebApp() {
         <AuthProvider>
           <ConnectedApp />
         </AuthProvider>
-      ) : initialPerson ? (
+      ) : publicHome ? <PublicHomeShell/> : initialPerson ? (
         <PublicPersonShell snapshot={initialPerson} />
       ) : initialTitle ? (
         <PublicTitleShell title={initialTitle} />
@@ -127,6 +130,16 @@ function ConnectedApp() {
         true,
       );
   }, [user, route.page]);
+  useEffect(()=>{
+    if(user&&window.location.pathname==='/')navigate('/app',true);
+  },[user?.id]);
+  useEffect(()=>{
+    const intent=new URLSearchParams(window.location.search).get('pick');
+    if(user&&route.page==='home'&&terms.data?.accepted&&['tonight','laugh','hooked'].includes(intent??'')){
+      setAction({type:'picker',...(intent==='laugh'||intent==='hooked'?{mood:intent}:{})});
+      navigate('/app',true);
+    }
+  },[user?.id,route.page,terms.data?.accepted]);
   useEffect(() => {
     const template = document.createElement("template");
     template.innerHTML = renderHead(pageFromPath(window.location.pathname));
@@ -191,6 +204,7 @@ function ConnectedApp() {
       navigate("/app/search?q=" + encodeURIComponent(query.trim()));
   }
   function content() {
+    if(route.page==='home'&&!user&&!identity)return <PublicHomePage actions={actions}/>;
     if (route.page === "person") return <PersonPage key={route.id} id={route.id} />;
     if (route.page === "title")
       return (
@@ -350,7 +364,7 @@ function ConnectedApp() {
         <main
           id="web-main"
           tabIndex={-1}
-          className={guestTitle ? "fx-public-main" : "fx-main"}
+          className={guestTitle ? "fx-public-main" : `fx-main${route.page==='home'&&!user&&!identity?' fx-discovery-main':''}`}
         >
           {user && terms.data?.accepted === false && (
             <div className="fx-terms-notice">
@@ -375,6 +389,7 @@ function ConnectedApp() {
         </main>
       </div>
       <Footer year={new Date().getFullYear()} compact />
+      {!user&&!identity&&route.page==='home'&&<WebsiteAnalyticsChoice page="home" inline/>}
       {action?.type === "terms" && user && (
         <TermsSheet
           version={action.version}
@@ -409,6 +424,7 @@ function ConnectedApp() {
       {action?.type === "picker" && user && (
         <Picker
           key={user.id}
+          initialMood={action.mood}
           onPlanSaved={refresh}
           onViewPlans={() => { setAction(null); navigate('/app/plans'); }}
           onClose={() => setAction(null)}

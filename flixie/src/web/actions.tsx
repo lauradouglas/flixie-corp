@@ -15,7 +15,7 @@ export type Action =
   | { type: "login"; save?: Film }
   | { type: "log"; film: Film }
   | { type: "options"; film: Film }
-  | { type: "picker" }
+  | { type: "picker"; mood?:'laugh'|'hooked' }
   | { type: "plan"; plan: Plan }
   | { type: "terms"; version: string };
 export { WatchLog } from "./WatchLog";
