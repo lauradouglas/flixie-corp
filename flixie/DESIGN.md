@@ -810,3 +810,14 @@ current compiled CSS with shared/base CSS intentionally last. Phone dark/light,
 search expansion, one active tab, desktop sidebar and200% labels were checked.
 Automatic approval review blocked starting live Apple auth; the successful local
 simulation does not claim a real Apple login or physical-device retest.
+
+## Provider sign-in controls —15 November2026
+
+Provider identity is a deliberate exception to app-purple CTA styling. Google
+uses the official four-colour G, self-hosted “Flixie Google Sans” Medium, white
+#fff surface, #747775 border and #1f1f1f text from Google's published standard.
+Apple uses its official white-background logo asset, black text and system type.
+Both are full-width semantic buttons with real labels and a48px minimum target;
+text and artwork scale together and wrap at increased text size. These controls
+are brand-compliant owned markup, not SDK-rendered widgets. Scope the font and
+palette exception to provider controls; all other Flixie typography is unchanged.

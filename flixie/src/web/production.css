@@ -291,14 +291,53 @@
   margin-top: 15px;
 }
 .flixie-web .fx-provider-buttons {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: 10px;
   margin-top: 16px;
 }
-.flixie-web .fx-provider-buttons .fx-button {
-  flex: 1 1 180px;
+@font-face {
+  font-family: "Flixie Google Sans";
+  src: url("/web/providers/google-sans-medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
+.flixie-web .fx-provider-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .625rem;
+  width: 100%;
+  min-height: 3rem;
+  padding: .125rem .75rem;
+  border: 1px solid #747775;
+  border-radius: 8px;
+  background: #fff;
+  color: #1f1f1f;
+  font: 500 1rem/1.4 "Flixie Google Sans", Arial, sans-serif;
+  text-align: center;
+  cursor: pointer;
+}
+.flixie-web .fx-provider-button img {
+  flex: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  object-fit: contain;
+}
+.flixie-web .fx-provider-button span { overflow-wrap: anywhere; }
+.flixie-web .fx-provider-button:focus-visible { outline: 3px solid var(--fx-accent); outline-offset: 4px; }
+.flixie-web .fx-provider-button:disabled { opacity: .5; cursor: default; }
+.flixie-web .fx-provider-apple {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  background: #fff;
+  color: #000;
+}
+@media (hover: hover) and (pointer: fine) {
+  .flixie-web .fx-provider-button:not(:disabled):hover { box-shadow: inset 0 0 0 100px #0000000a; }
+}
+.flixie-web .fx-provider-retry { margin-top: 12px; }
 .flixie-web .fx-auth .fx-error {
   margin-top: 20px;
 }

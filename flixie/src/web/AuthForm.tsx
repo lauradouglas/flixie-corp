@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
 import { authMessage, useSession } from "./auth";
 import { navigate, safeNext } from "./routing";
 import { ErrorState } from "./components";
@@ -41,6 +41,20 @@ export default function AuthForm({
   const submitLock = useRef(false);
   const providerButtons = useRef<Record<"google" | "apple", HTMLButtonElement | null>>({google: null, apple: null});
   const previousProvider = useRef<"google" | "apple" | null>(null);
+  const [appleReady, setAppleReady] = useState(!session.prepareProvider || session.local);
+  const [appleError, setAppleError] = useState("");
+  const prepareApple = useCallback(async () => {
+    setAppleReady(false);
+    setAppleError("");
+    try { await session.prepareProvider?.("apple"); setAppleReady(true); }
+    catch (error) { setAppleError(authMessage(error)); }
+  }, [session.prepareProvider]);
+  useEffect(() => {
+    if (session.local || session.identity || !session.prepareProvider) return;
+    void prepareApple();
+    const timer = window.setInterval(() => { if (!submitLock.current) void prepareApple(); }, 4 * 60_000);
+    return () => window.clearInterval(timer);
+  }, [prepareApple, session.local, session.identity?.uid]);
   useEffect(() => {
     if (!pendingProvider && previousProvider.current && !session.identity)
       providerButtons.current[previousProvider.current]?.focus();
@@ -108,6 +122,7 @@ export default function AuthForm({
     } catch (e) {
       setError(authMessage(e));
     } finally {
+      if (provider === "apple" && session.prepareProvider) await prepareApple();
       submitLock.current = false;
       setBusy(false);
       setPendingProvider(null);
@@ -255,21 +270,27 @@ export default function AuthForm({
           <div className="fx-provider-buttons">
             <button
               ref={node => { providerButtons.current.google = node; }}
-              className="fx-button"
+              type="button"
+              className="fx-provider-button fx-provider-google"
               disabled={busy || session.local}
               onClick={() => void continueWithProvider("google")}
             >
-              Continue with Google
+              <img src="/web/providers/google-icon.svg" alt="" width={44} height={44} />
+              <span>Sign in with Google</span>
             </button>
             <button
               ref={node => { providerButtons.current.apple = node; }}
-              className="fx-button"
-              disabled={busy || session.local}
+              type="button"
+              className="fx-provider-button fx-provider-apple"
+              disabled={busy || session.local || !appleReady}
               onClick={() => void continueWithProvider("apple")}
             >
-              Continue with Apple
+              <img src="/web/providers/apple-logo-white.png" alt="" width={44} height={44} />
+              <span>Sign in with Apple</span>
             </button>
           </div>
+          {!session.local && !appleReady && !appleError && <p className="fx-small fx-muted" role="status">Loading Apple sign-in…</p>}
+          {appleError && <div className="fx-provider-retry"><p role="alert">{appleError}</p><button type="button" className="fx-text-button" disabled={busy} onClick={() => void prepareApple()}>Retry Apple sign-in</button></div>}
           {session.local && (
             <p className="fx-small fx-muted">
               In this local preview, use the demo email and password. Google and

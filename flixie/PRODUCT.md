@@ -419,3 +419,28 @@ fictional provider waiting/cancel/profile-loading tests and local compiled-CSS
 phone light/dark, desktop and enlarged-text inspection. Automatic approval review
 blocked starting live Apple auth; no actual external-provider/device retest claim.
 Final publication recorded below.
+
+
+## Published corporate/mobile/provider update —15 November 2026
+
+Corporate palette7f008f2 and mobile/provider follow-up
+d4a351d80ac1780ec5dc57fe46f92108b9cab927 are live. Follow-up workflow43749208954
+succeeded, including122 web checks/types/build35/SEO29. Notification job skipped.
+Exact release marker and37 public/legal/store URL checks pass. Live corporate
+body/main/footer compute#151522, header#10111b, primary#7c4dff and themed footer
+wordmark visible. Compiled-CSS fictional phone/member/provider checks retain the
+limitations above. User explicitly chose the real Apple test on their iPhone; no
+live Apple auth retry or credentials/consent submitted. Final scoped review: ship.
+Durable receipt: flixie-mobile-corporate-release-20261115.json in the task artifact
+folder, with immutable source ZIP and phone/corporate/provider preview images.
+
+## Recognisable provider sign-in —15 November2026
+
+User-approved standard Apple/Google artwork/buttons accompany a direct Apple
+web SDK popup that avoids Firebase's white helper page. Existing Firebase
+identities, explicit account completion/Terms/sharing and Google/email flows
+remain. Only provider buttons use the vendor's black/white brand palette/font;
+app CTAs keep native purple. Apple script failures permit explicit retry without
+blocking other sign-in methods. Real iPhone completion remains user verification.
+Friends mobile alternatives (compact list, rating grid, reviews first) are
+fictional mockups only, awaiting the user's selection.

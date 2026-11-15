@@ -593,3 +593,47 @@ fictional provider waiting/cancel/profile-loading tests and local compiled-CSS
 phone light/dark, desktop and enlarged-text inspection. Automatic approval review
 blocked starting live Apple auth; no actual external-provider/device retest claim.
 Final publication recorded below.
+
+
+## Published corporate/mobile/provider update —15 November 2026
+
+Corporate palette7f008f2 and mobile/provider follow-up
+d4a351d80ac1780ec5dc57fe46f92108b9cab927 are live. Follow-up workflow43749208954
+succeeded, including122 web checks/types/build35/SEO29. Notification job skipped.
+Exact release marker and37 public/legal/store URL checks pass. Live corporate
+body/main/footer compute#151522, header#10111b, primary#7c4dff and themed footer
+wordmark visible. Compiled-CSS fictional phone/member/provider checks retain the
+limitations above. User explicitly chose the real Apple test on their iPhone; no
+live Apple auth retry or credentials/consent submitted. Final scoped review: ship.
+Durable receipt: flixie-mobile-corporate-release-20261115.json in the task artifact
+folder, with immutable source ZIP and phone/corporate/provider preview images.
+
+## Direct Apple web sign-in and provider buttons —15 November2026
+
+The user supplied a physical iPhone screenshot identifying Firebase's white
+“Continue to the app” helper, superseding the earlier assumption that only the
+owned Flixie backdrop needed theming. They explicitly approved removing that
+helper and standard Apple/Google buttons. AuthForm now uses official provider
+artwork and scalable text; provenance is in public/web/providers/SOURCES.md.
+
+Apple alone uses the official Apple JS SDK with popup/web_message mode, the
+existing Services ID com.flixie.web and the already registered return URL
+https://flixie-9a8eb.firebaseapp.com/__/auth/handler. SDK loading and cryptographic
+nonce preparation happen before the click so signIn() keeps Safari user
+activation. Each attempt has a single-use random state and SHA256-hashed nonce;
+state/token structure are checked before Firebase signInWithCredential receives
+the Apple ID token plus raw nonce. Firebase remains the identity authority. No
+provider secrets, Firebase domain configuration, backend or native code changed.
+There is no fallback through the old Firebase popup helper, token persistence,
+manual identity linking, implicit Terms agreement or automatic profile creation.
+Google retains the existing Firebase popup. Email and Google stay usable if the
+Apple script fails; explicit retry and cancellation restore one form and focus.
+
+128 browser regressions, TypeScript, build35, SEO29/HTTP and campaign checks pass.
+An offline check of Apple's actual1.5.7 SDK intercepts window.open and confirms
+response_mode=web_message, state/nonce and promise return to the original page;
+it does not contact Apple or Firebase. Built-CSS fictional mobile/desktop and
+large-text views verify the controls and cancellation. Real iPhone Apple/Firebase
+credential exchange is reserved for the user's test, not claimed by simulations.
+The Friends mobile redesign remains a separate three-option mockup comparison;
+no Friends component/data/privacy behavior is changed by this release.

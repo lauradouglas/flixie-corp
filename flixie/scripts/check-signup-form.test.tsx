@@ -120,6 +120,25 @@ function deferred() {
   return { promise, resolve, reject };
 }
 
+test("Apple preparation gates only its own button; a failed load has an explicit working retry", async () => {
+  const t = await setup(false);
+  try {
+    t.session.local = false;
+    const pending = deferred(); let attempts = 0;
+    t.session.prepareProvider = async name => { assert.equal(name, "apple"); attempts++; if (attempts === 1) return pending.promise; };
+    await t.render();
+    const button = (name: string) => [...t.dom.window.document.querySelectorAll("button")].find(b => b.textContent?.trim() === name)!;
+    assert.equal(button("Sign in with Apple").disabled, true);
+    assert.equal(button("Sign in with Google").disabled, false);
+    assert.equal(t.input("fx-email").disabled, false);
+    await act(async () => pending.reject(Object.assign(new Error("fixture"), { code: "auth/apple-sdk-unavailable" })));
+    assert.match(t.dom.window.document.body.textContent!, /Apple sign-in could not load/);
+    await act(async () => button("Retry Apple sign-in").click());
+    assert.equal(attempts, 2); assert.equal(button("Sign in with Apple").disabled, false);
+    assert.equal(t.dom.window.document.querySelectorAll("form").length, 1);
+  } finally { await t.close(); }
+});
+
 test("email sign-up keeps one filled form and exactly two chosen checkboxes while Firebase and profile creation finish", async () => {
   const t = await setup();
   try {
@@ -306,7 +325,7 @@ test('Apple and Google keep one branded waiting screen and restore the form afte
       await t.render();
       await t.type('fx-email','draft@example.invalid');
       const label=provider==='apple'?'Apple':'Google';
-      const button=[...t.dom.window.document.querySelectorAll('button')].find(b=>b.textContent===`Continue with ${label}`)!;
+      const button=[...t.dom.window.document.querySelectorAll('button')].find(b=>b.textContent===`Sign in with ${label}`)!;
       await act(async()=>button.click());
       const status=t.dom.window.document.querySelector('[role=status]')!;
       assert(status.textContent?.includes(`Finish signing in with ${label}`));
@@ -319,7 +338,7 @@ test('Apple and Google keep one branded waiting screen and restore the form afte
       assert.equal(t.input('fx-email').value,'draft@example.invalid');
       assert(t.dom.window.document.body.textContent?.includes('Sign-in was closed. You can try again.'));
       assert.equal(t.checks().length,0);
-      assert.equal(t.dom.window.document.activeElement?.textContent,`Continue with ${label}`);
+      assert.equal(t.dom.window.document.activeElement?.textContent,`Sign in with ${label}`);
     } finally { await t.close(); }
   }
 });
@@ -330,7 +349,7 @@ test('provider success hands off to the branded profile loading state without fl
     t.session.local=false;
     const pending=deferred();t.session.provider=()=>pending.promise;
     await t.render();
-    await act(async()=>[...t.dom.window.document.querySelectorAll('button')].find(b=>b.textContent==='Continue with Apple')!.click());
+    await act(async()=>[...t.dom.window.document.querySelectorAll('button')].find(b=>b.textContent==='Sign in with Apple')!.click());
     t.session.identity=identity;t.session.loading=true;
     await t.render();
     await act(async()=>pending.resolve());
