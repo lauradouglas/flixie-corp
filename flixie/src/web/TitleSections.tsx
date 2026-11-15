@@ -5,7 +5,7 @@ import {
   Check,
   Expand,
   Image as ImageIcon,
-  Star,
+  LockKeyhole,
   ThumbsUp,
   Users,
 } from "lucide-react";
@@ -138,9 +138,9 @@ export function FriendsSection({
       id="title-friends"
       aria-labelledby="title-friends-heading"
     >
-      <div className="fx-section-head">
+      <div className="fx-friends-heading">
         <h2 id="title-friends-heading">Your friends on {film.title}</h2>
-        {user && <span className="fx-small fx-muted">Only visible to you</span>}
+        {user && <p className="fx-friend-privacy"><LockKeyhole size={14} aria-hidden="true" />Only visible to you</p>}
       </div>
       {!user ? (
         <div className="fx-friend-join">
@@ -161,30 +161,31 @@ export function FriendsSection({
         <>
           <div className="fx-friend-summary">
             {opinions.average !== null && (
-              <p>
-                <Star size={16} aria-hidden="true" />
-                <strong>
+              <div className="fx-friend-average">
+                <span className="fx-friend-average-score">
                   {opinions.average.toFixed(1)}
-                  <small> / 10</small>
-                </strong>
-                <span>friends’ average · {opinions.ratedCount} rated</span>
-              </p>
+                  <small>/10</small>
+                </span>
+                <p><strong>Friends’ average</strong><span>From {opinions.ratedCount} {opinions.ratedCount === 1 ? "rating" : "ratings"}</span></p>
+              </div>
             )}
-            {opinions.watchedCount > 0 && (
-              <p>
-                <Check size={16} aria-hidden="true" />
-                {opinions.watchedCount} watched
-              </p>
-            )}
-            {opinions.recommendedCount > 0 && (
-              <p>
-                <ThumbsUp size={16} aria-hidden="true" />
-                {opinions.recommendedCount}{" "}
-                {opinions.recommendedCount === 1
-                  ? "recommends it"
-                  : "recommend it"}
-              </p>
-            )}
+            <div className="fx-friend-counts">
+              {opinions.watchedCount > 0 && (
+                <p>
+                  <Check size={16} aria-hidden="true" />
+                  {opinions.watchedCount} watched
+                </p>
+              )}
+              {opinions.recommendedCount > 0 && (
+                <p className="fx-recommends">
+                  <ThumbsUp size={16} aria-hidden="true" />
+                  {opinions.recommendedCount}{" "}
+                  {opinions.recommendedCount === 1
+                    ? "recommends it"
+                    : "recommend it"}
+                </p>
+              )}
+            </div>
           </div>
           <ul className="fx-friend-opinions">
             {opinions.friends.map((opinion) => (

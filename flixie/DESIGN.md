@@ -821,3 +821,15 @@ Both are full-width semantic buttons with real labels and a48px minimum target;
 text and artwork scale together and wrap at increased text size. These controls
 are brand-compliant owned markup, not SDK-rendered widgets. Scope the font and
 palette exception to provider controls; all other Flixie typography is unchanged.
+
+## Compact title Friends list —15 November2026
+
+The user's selected Compact list supersedes the filled friends-opinion panel.
+A readable52rem maximum keeps one list on the page surface. Title/privacy lead;
+the average uses the shared score role beside its label/rating count, followed
+by wrapping watched/recommendation totals. Names/status occupy the flexible
+column between44px avatars and tabular scores.16px vertical row padding and12px
+gaps keep density compact, with separators between people only. Scores move
+below metadata at local widths below16rem, allowing enlarged text to retain
+whole status words. All avatars keep actual awarded/selected badge preferences;
+profile links, guest sign-in and data/privacy states keep existing behavior.

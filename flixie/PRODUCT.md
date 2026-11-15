@@ -444,3 +444,11 @@ app CTAs keep native purple. Apple script failures permit explicit retry without
 blocking other sign-in methods. Real iPhone completion remains user verification.
 Friends mobile alternatives (compact list, rating grid, reviews first) are
 fictional mockups only, awaiting the user's selection.
+
+## Compact Friends selection —15 November2026
+
+The user selected Compact list and authorised implementation, superseding the
+mockup-only status above for that variant. Movie/show Friends sections now use
+the compact summary and aligned list, real profile links/avatar borders, readable
+desktop width and enlarged-text reflow. Rating grid and reviews-first remain
+unselected. This is a presentation refinement using existing private data scopes.

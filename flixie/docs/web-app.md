@@ -637,3 +637,18 @@ large-text views verify the controls and cancellation. Real iPhone Apple/Firebas
 credential exchange is reserved for the user's test, not claimed by simulations.
 The Friends mobile redesign remains a separate three-option mockup comparison;
 no Friends component/data/privacy behavior is changed by this release.
+
+## Selected compact movie/show Friends section —15 November2026
+
+User selected Compact list from the mobile comparison and requested implementation.
+The real shared FriendsSection now has title/privacy, a clear average/rating-count
+summary, watched/recommended totals and one aligned list on the page background.
+Each user's actual AvatarLink/profileBadges and name/profile navigation remain.
+No rating is shown for unrated friends and no review snippet is introduced.
+Guest gating, account/title scope, backend privacy, loading, errors and empty state
+remain unchanged. Readable desktop width is52rem; narrow/enlarged text reflows a
+score below metadata instead of squeezing status words. Dividers are between rows.
+128 existing browser regressions, TypeScript, build35 and SEO/HTTP checks pass;
+built-CSS fictional phone/desktop, long-name,200% and guest/unrated states are
+verified separately. Native source, backend, real user data and database seeds
+are unchanged. Existing guarded local movie-opinion seeds remain available.
