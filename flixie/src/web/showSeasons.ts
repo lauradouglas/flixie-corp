@@ -1,6 +1,11 @@
 import { list, number, object, text } from './models';
 export interface ShowEpisode { id: number; season: number; number: number; name: string; overview: string; still: string; date: string; runtime: number | null; watched: boolean }
 export interface ShowSeason { id: number; number: number; name: string; episodes: ShowEpisode[] }
+export interface EpisodeSpoilerChoice { viewer: string | null; show: boolean }
+/** Guests can browse public episode details; member choices stay with their viewer. */
+export function showEpisodeSpoilers(viewer: string | null, choice?: EpisodeSpoilerChoice): boolean {
+  return choice?.viewer === viewer ? choice.show : viewer === null;
+}
 export function showSeasons(value: unknown, showId: number): ShowSeason[] {
   const raw = object(value);
   if (raw.id !== showId || !Array.isArray(raw.seasons)) throw new Error('Episode details could not be loaded. Please try again.');

@@ -319,3 +319,85 @@ Route changes close the prior route's login dialog, and the gate suppresses an i
 ## Publication verification —15 November 2026
 
 The release workflow now runs the browser regression suite alongside TypeScript, analytics and generated SEO/HTTP checks before uploading to the existing Azure Static Web App. It writes `/release.json` with the exact deployed commit, served with no-store and noindex headers for live verification. `/app` is the browser product entry point; the existing corporate `/`, features, support, privacy, terms and account-deletion routes remain public. A successful deployment is recorded separately after the workflow and live checks complete. Physical phone/laptop and new-account journeys remain user acceptance checks.
+
+
+### Verified live publication —15 November 2026
+
+Published to the existing Azure Static Web App as `fda43a0d0deaf7e6d747f6cb0471c284dd3b0702`: https://github.com/lauradouglas/flixie-corp/actions/runs/43713088843. The successful workflow ran109 browser regressions, TypeScript, analytics,34 rendered pages and28-URL SEO/HTTP checks. `/release.json` on the live HTTPS host returns this exact commit with no-store/noindex.36 live URLs, both store redirects, public corporate/legal/support/deletion pages and both association JSON resources passed verification. The root remains the corporate site; use https://www.flixie.co.uk/app for the browser product.
+
+The prerequisite regional cinema API is live as `323f3c8980a731d01c788fc16cfe1b777fefbe75`: https://github.com/lauradouglas/FlixieBE/actions/runs/43712111175, with989 passing backend regressions. The native top12 response retains synopsis and score fields; live GB cinema membership and invalid-ID handling are verified. No migration or production fixture ran.
+
+Anonymous live checks at1280px desktop and390px phone confirm enabled Google/Apple controls, exact native purple and no horizontal page overflow. The reported Join→search→guest save→Create account→Back journey now returns to one form, two checkboxes, zero dialogs and no duplicate IDs, with Terms unchecked. No real signup, Terms acceptance or real activity write was performed. Physical phone/laptop acceptance and new-account journeys remain for the user. Existing-account Google/Apple successes were previously confirmed by the user. The initial API CI helper typing issue was corrected before the successful release; Azure restart completed before the new endpoint was verified. No release message was sent.
+
+## Prepared public browsing navigation and guest episode defaults — 15 November 2026
+
+The user requested Home and a search bar always at the top of public pages,
+using the Adrian Grenier page as the example, and visible episode details by
+default when signed out. `PublicBrowseHeader.tsx` and
+`public-browse-header.css` now own the shared sticky guest header in
+`PublicTitleShell`, public `PersonPage` and guest `WebApp` branches. The wordmark
+and labeled Home link point to `/`; Sign in/Join Flixie preserve the public
+continuation. The search form uses native GET `/app/search` and input name `q`
+before hydration, with the existing client search handler on connected routes.
+Desktop keeps Home, full visible search and account actions in one row, including
+the native GET form before hydration. The user's later IMDb phone reference
+supersedes the initial expanded phone search. The existing phone/compact-landscape
+selector shows native menu, wordmark, search icon, Sign in and Use app; at <=360px
+the official F replaces the wordmark. The bounded scrollable menu exposes Home,
+Films & TV, company/support links and Create an account. After hydration, search
+disclosure reveals and focuses the 16px input; menu/search exclude each other and
+Escape restores focus to the closed control. Route changes reset disclosures.
+Phone targets remain at least 44px, and Use app follows existing `/download`.
+Sticky `top: 0` and 160px public anchor clearance keep navigation available during
+long detail pages. Signed-in bottom tabs, profile and compact member search are
+unchanged.
+
+`ShowEpisodesSection.tsx` and `showSeasons.ts` now default guests to checked
+Show episode spoilers, with actual names, complete stills and descriptions
+visible. Unchecking conceals unwatched details; checking restores them. Explicit
+choices are keyed to the viewer, preserving signed-in unwatched protection on
+account transitions. Watched episodes remain visible, progress eligibility is
+unchanged and review spoiler disclosures remain separate. This supersedes the
+unqualified unwatched-default wording in the earlier Favourites, show episodes
+and Pick for Us implementation note; that earlier note remains historical.
+
+The user corrected the footer requirement after phone inspection: use the app
+theme, not fixed corporate charcoal. `src/web/app-footer.css` aliases the shared
+footer's local background, card/lift, text/muted, line and accent variables to
+existing `--fx-*` roles, with inherited light/dark color scheme. Corporate pages
+retain their marketing footer. A companion span in `Footer.tsx` uses the exact
+approved wordmark PNG as an alpha mask at 96x32, with two flat app-ink/brand-purple
+colors meeting in the measured 64.33% gap. Letter shape and aligned bottoms are
+unchanged; corporate pages keep the original image and hide the companion span.
+
+Prepared verification: 112 focused web regressions, TypeScript, production build
+with 34 prerendered pages and 28-URL SEO/HTTP checks pass. Local production-build
+browser evidence verifies Adrian Grenier → Alien guest search, header top 0 at
+scrollY 1000, compact phone menu/disclosed search without horizontal overflow,
+and Newsroom guest names/stills/descriptions visible with reversible uncheck/check.
+Standalone built-page fixtures with same-origin CSS/assets show footer background
+equal to app background in light (rgb 243,237,252) and dark (rgb 21,21,34), with
+an enlarged-text fixture without page overflow. Final independent disposition is
+ship for local source/capture and mockup scope in
+`final-theme-home-verdict.md`; its two responsive findings are resolved. The
+mockup design still awaits the user's review. Captures and
+contract/finish receipts are in `.impeccable/review/guest-homepage/`. No real-account
+write, signup/Terms acceptance, backend or native change was performed. This
+prepared extension is not yet live; the prior fda43a0 publication remains a
+separate completed release until the current release receipt supersedes it.
+
+The root-homepage proposal is separate and remains mockup-only in
+`/Users/lauradouglas/.codex/visualizations/2026/11/14/01a1d9db-075d-7a70-b86f-92cf4af182ff/flixie-public-homepage.html`.
+The user authorised this exploration, which includes movies/shows, clear sign-in/signup,
+country-specific In cinemas, Features/About and legal/support/footer routes.
+The proposed response to the user's location question is saved country for
+members and an explicit country selector for guests; that mechanism is not
+user-confirmed and requires agreement when implementing it. The artifact uses
+public API cinema snapshots for GB/IE/US and
+sends no account details. Its footer follows the app theme; an optional phone app
+banner is a local design control, while the actual website retains existing
+Safari app metadata. It does not implement root routing, saved-country integration,
+precise geolocation, nearby venues or showtimes. Catalogue/cinema wiring, root
+behavior and publication remain separate work; the mockup design awaits the
+user's review. The durable scoped direction is
+also recorded in `.impeccable/public-browse-brief.md`.

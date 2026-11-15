@@ -4,13 +4,14 @@ import { useSession } from './auth';
 import { Empty, ErrorState, Loading } from './components';
 import { useLoad, errorMessage } from './hooks';
 import { imageUrl, viewDate } from './models';
-import { episodeReleased, type ShowEpisode } from './showSeasons';
+import { episodeReleased, showEpisodeSpoilers, type EpisodeSpoilerChoice, type ShowEpisode } from './showSeasons';
 import './show-seasons.css';
 
 export default function ShowSeasons({id,revision,onChange,onSignIn}:{id:number;revision:number;onChange:()=>void;onSignIn:()=>void}) {
   const {api,user}=useSession();
   const result=useLoad(`seasons:${user?.externalId??'guest'}:${id}:${revision}`,signal=>api.seasons(id,user?{uid:user.externalId,id:user.id}:undefined,signal));
-  const [selected,setSelected]=useState<number|null>(null),[reveal,setReveal]=useState(false),[busy,setBusy]=useState<number|null>(null),[error,setError]=useState(''),[status,setStatus]=useState('');
+  const [selected,setSelected]=useState<number|null>(null),[spoilerChoice,setSpoilerChoice]=useState<EpisodeSpoilerChoice>(),[busy,setBusy]=useState<number|null>(null),[error,setError]=useState(''),[status,setStatus]=useState('');
+  const viewer=user?.externalId??null,reveal=showEpisodeSpoilers(viewer,spoilerChoice);
   const lock=useRef(false),owner=useRef(user?.externalId);owner.current=user?.externalId;
   async function toggle(episode:ShowEpisode){
     if(!user){onSignIn();return;}
@@ -23,7 +24,7 @@ export default function ShowSeasons({id,revision,onChange,onSignIn}:{id:number;r
   const seasons=result.data??[],season=seasons.find(s=>s.number===selected)??seasons.find(s=>s.number>0)??seasons[0];
   return <section id="title-episodes" className="fx-show-seasons"><h2>Seasons &amp; episodes</h2>
     {result.loading?<Loading label="Loading seasons and episodes…"/>:result.error?<ErrorState message={result.error} retry={result.retry}/>:!season?<Empty title="Episodes aren’t available yet">Check back when season details are available.</Empty>:<>
-      <div className="fx-season-controls"><label>Season<select value={season.number} onChange={e=>{setSelected(Number(e.target.value));setError('');}}>{seasons.map(s=><option key={s.id} value={s.number}>{s.number===0?'Specials':`Season ${s.number}`} · {s.episodes.length} episodes</option>)}</select></label><label className="fx-check"><input type="checkbox" checked={reveal} onChange={e=>setReveal(e.target.checked)}/>Show episode spoilers</label></div>
+      <div className="fx-season-controls"><label>Season<select value={season.number} onChange={e=>{setSelected(Number(e.target.value));setError('');}}>{seasons.map(s=><option key={s.id} value={s.number}>{s.number===0?'Specials':`Season ${s.number}`} · {s.episodes.length} episodes</option>)}</select></label><label className="fx-check"><input type="checkbox" checked={reveal} onChange={e=>setSpoilerChoice({viewer,show:e.target.checked})}/>Show episode spoilers</label></div>
       <p className="fx-small fx-muted">{user?`${season.episodes.filter(e=>e.watched).length} of ${season.episodes.length} watched`:'Sign in to track what you’ve watched.'}</p>
       {error&&<p role="alert" className="fx-form-error">{error}</p>}<p className="fx-sr-only" role="status">{status}</p>
       {!season.episodes.length?<p>No episodes are listed for this season yet.</p>:<ol className="fx-episode-list">{season.episodes.map(episode=>{

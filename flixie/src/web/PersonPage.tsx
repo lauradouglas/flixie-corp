@@ -2,7 +2,8 @@ import Footer from "../components/Footer";
 import { useContext, useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, ExternalLink, Users } from "lucide-react";
 import { useSession } from "./auth";
-import { Empty, ErrorState, Link, Loading, Poster, Sheet, Wordmark } from "./components";
+import { Empty, ErrorState, Link, Loading, Poster, Sheet } from "./components";
+import PublicBrowseHeader from './PublicBrowseHeader';
 import { useLoad } from "./hooks";
 import { imageUrl, type MediaKind } from "./models";
 import { titlePath } from "./routing";
@@ -105,7 +106,7 @@ export function PersonContent({ person, credits, creditState }: { person: Talent
   </>;
 }
 export function PublicPersonShell({ snapshot }: { snapshot: PersonSnapshot }) {
-  return <><header className="fx-top"><Wordmark to="/" /><a className="fx-text-button" href="/app">Use Flixie</a></header><main className="fx-public-main fx-person-page"><PersonContent person={snapshot.person} credits={snapshot.credits} /></main><Footer year={new Date().getFullYear()} compact /></>;
+  return <><PublicBrowseHeader returnTo={`/people/${snapshot.person.id}`}/><main className="fx-public-main fx-person-page"><PersonContent person={snapshot.person} credits={snapshot.credits} /></main><Footer year={new Date().getFullYear()} compact /></>;
 }
 export default function PersonPage({ id }: { id: number }) {
   const { api } = useSession();

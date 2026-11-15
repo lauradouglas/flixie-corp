@@ -1,13 +1,25 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {FlixieApi,ApiError,SessionChanged} from '../src/web/api';
-import {showSeasons,episodeReleased} from '../src/web/showSeasons';
+import {showSeasons,episodeReleased,showEpisodeSpoilers} from '../src/web/showSeasons';
 import {pickGroups,pickRequest,pickResults,type PickPreferences} from '../src/web/pickForUs';
 const identity={uid:'alex-uid',token:async()=>'fixture-token'};
 const response=(value:unknown,status=200)=>new Response(JSON.stringify(value),{status});
 const favourite=(id:number,kind='movie',rank=1)=>({id:`favourite-${id}`,userId:'alex',rank,[kind]:{id,title:`Title ${id}`,posterPath:'/poster.jpg'}});
 const preferences:PickPreferences={viewer:{type:'solo'},mood:'any',maxMinutes:120,venue:'streaming',watching:'together',openToRent:false,request:'',allowRewatches:false,avoid:[]};
 const seasonData={id:76331,seasons:[{id:10,seasonNumber:1,name:'Season 1',episodes:[{id:101,showId:76331,seasonNumber:1,episodeNumber:1,name:'Pilot',overview:'A spoiler',airDate:'2024-01-01',runtime:45,stillPath:'/still.jpg',userState:{watched:true},privateNote:'PRIVATE'}]}],privateNotes:'PRIVATE'};
+
+test('guest episode details default visible, hiding is reversible and choices do not transfer to another account',()=>{
+ assert.equal(showEpisodeSpoilers(null),true);
+ assert.equal(showEpisodeSpoilers(null,{viewer:null,show:false}),false);
+ assert.equal(showEpisodeSpoilers(null,{viewer:null,show:true}),true);
+ assert.equal(showEpisodeSpoilers('alex'),false);
+ assert.equal(showEpisodeSpoilers('alex',{viewer:null,show:true}),false);
+ assert.equal(showEpisodeSpoilers('alex',{viewer:'alex',show:true}),true);
+ assert.equal(showEpisodeSpoilers('alex',{viewer:'alex',show:false}),false);
+ assert.equal(showEpisodeSpoilers('robin',{viewer:'alex',show:true}),false);
+ assert.equal(showEpisodeSpoilers(null,{viewer:'alex',show:false}),true);
+});
 
 test('favourite add/remove uses native idempotent import routes and preserves other titles/ranks for films and TV',async()=>{
  for(const kind of ['movie','show'] as const){let state=[favourite(1,kind,1)],calls:{url:string;init?:RequestInit}[]=[];

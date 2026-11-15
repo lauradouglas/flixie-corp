@@ -198,3 +198,59 @@ User preference15November2026: consumer website action buttons must use the actu
 ## Email registration stability —15November2026
 
 User reported repeated email/password signup form parts including both checkboxes. Preserve a single mounted draft through Firebase/profile creation; keep explicit consent choices, prevent repeated submit and retain draft after failure. Only one authentication layer may render: navigation dismisses its route-owned dialog, and a pending dialog suppresses inline signup. Changing account resets draft/Terms; existing-account sign-in must not flash registration fields. Local fix and browser/React regressions complete, no real account or Terms operation by the agent.
+
+
+## Public browsing navigation and guest episode defaults — 15 November 2026
+
+From the Adrian Grenier public-page screenshot, the user requested a way Home and
+search always visible at the top. Public person/film/show shells and connected
+guest routes now share the existing Flixie header. Desktop keeps Home, a full
+search field, Sign in and Join Flixie. Home points to the current root; account
+links retain the public continuation. Visible desktop native GET search to
+`/app/search?q=…` works before hydration. The header stays at the top while
+scrolling. The user's later IMDb phone reference selects a compact menu, logo,
+search icon, Sign in and Use app instead of the initial expanded phone search.
+The menu provides Home/company/support/account routes; search opens a focused
+input, and Use app follows `/download`. The official F replaces the wordmark at
+the smallest width. Signed-in bottom tabs, profile and compact member search
+retain their existing behavior.
+
+The user also explicitly requested visible episode details when signed out.
+Guests start with Show episode spoilers checked and actual names, complete stills
+and descriptions visible. Uncheck/check reverses that choice. Choices belong to
+the current viewer; members keep protected unwatched details by default, and
+watched-state rules and public-review spoiler disclosure remain unchanged.
+This removes guest browsing dead ends and makes public show information useful
+before registration without changing tracking or review controls.
+
+The user corrected the footer requirement after viewing it on their phone: it
+must match the app theme, not fixed charcoal. Connected footer variables now map
+to the existing app light/dark ground, ink, links, lines and surfaces. Its approved
+wordmark keeps the same image geometry with readable ink/purple colors through
+the PNG alpha mask. Corporate pages retain their separate marketing footer.
+
+This extension is implemented and verified locally; its release is pending the
+current publication work. Supplied evidence records 112 web regressions,
+TypeScript, 34-page build and 28-URL SEO/HTTP checks passing, plus production-build
+guest Alien search, sticky scrolling and reversible Newsroom episode visibility.
+Refreshed evidence covers compact phone menu/search and built-page light/dark
+footers matching app backgrounds, plus enlarged text without page overflow.
+The final independent review records ship for local source/capture and mockup
+scope, with its two responsive findings resolved; this is not root-publication
+approval. Source is verified and awaiting release.
+No real-account write, Terms acceptance, backend or native change is part of it.
+
+The user authorised creating a separate public root-homepage mockup; its design
+awaits the user's review. Its film/TV
+browsing, sign-in/signup, country-specific In cinemas, Features/About and public
+legal/support/footer navigation live in the standalone
+`flixie-public-homepage.html` artifact, outside website source. The proposed cinema
+behavior uses a member's saved country and an explicit guest country selector
+as a response to the user's location question; that mechanism is not user-confirmed.
+The mockup uses public cinema snapshots for country previews. Its footer follows
+the app theme; an optional app banner is a local preview control, while the actual
+website retains existing Safari app metadata. Precise location, nearby cinemas
+and showtimes are not implemented. Root routing,
+real catalogue/cinema wiring, country handling and publication remain separate
+implementation work. Earlier discussion-only entries remain historical; this
+mockup request does not mean the corporate root has been replaced.

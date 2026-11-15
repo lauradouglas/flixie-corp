@@ -1,0 +1,25 @@
+/* Connected pages follow the app theme; corporate pages retain their own footer. */
+.flixie-web .site-footer {
+  --color-bg-darkest: var(--fx-bg);
+  --color-bg-card: var(--fx-surface);
+  --color-bg-elevated: var(--fx-lift);
+  --color-text-primary: var(--fx-ink);
+  --color-text-secondary: var(--fx-muted);
+  --color-text-muted: var(--fx-muted);
+  --color-border-custom: var(--fx-line);
+  --color-flixie-purple: var(--fx-purple);
+  --color-flixie-light: var(--fx-purple);
+  color-scheme: inherit;
+}
+.site-footer-theme-wordmark { display: none; }
+.flixie-web .site-footer .site-footer-wordmark { display: none; }
+.flixie-web .site-footer-theme-wordmark {
+  display: block;
+  width: 96px;
+  height: 32px;
+  /* Two flat brand colours in the measured gap. The single approved image
+     mask keeps every letter's size and aligned baseline unchanged. */
+  background: linear-gradient(90deg,var(--fx-ink) 0 64.33%,var(--fx-brand) 64.33% 100%);
+  mask: url('/web/flixie-wordmark-matched.png') center / contain no-repeat;
+  -webkit-mask: url('/web/flixie-wordmark-matched.png') center / contain no-repeat;
+}

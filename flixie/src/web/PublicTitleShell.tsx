@@ -1,7 +1,8 @@
 import { createContext } from "react";
 import { catalogTitles, catalogPath, type CatalogTitle } from "../catalog";
 import { film } from "./models";
-import { FilmMeta, Poster, Wordmark } from "./components";
+import { FilmMeta, Poster } from "./components";
+import PublicBrowseHeader from './PublicBrowseHeader';
 import DownloadPrompt from "./DownloadPrompt";
 import Footer from "../components/Footer";
 export const InitialTitle = createContext<CatalogTitle | undefined>(undefined);
@@ -9,12 +10,7 @@ export function PublicTitleShell({ title }: { title: CatalogTitle }) {
   const value = film(title, title.kind);
   return (
     <>
-      <header className="fx-top">
-        <Wordmark to="/" />
-        <a className="fx-text-button" href="/app">
-          Use Flixie
-        </a>
-      </header>
+      <PublicBrowseHeader returnTo={catalogPath(title)}/>
       <main className="fx-public-main">
         <nav className="fx-breadcrumb" aria-label="Breadcrumb">
           <a href="/">Flixie</a>

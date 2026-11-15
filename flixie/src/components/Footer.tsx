@@ -22,6 +22,7 @@ export default function Footer({
               id="footer-logo-button"
             >
               <BrandLogo className="site-footer-wordmark" alt="" />
+              <span className="site-footer-theme-wordmark" aria-hidden="true" />
             </a>
             <p className="site-footer-tagline">
               Your films. Your people.

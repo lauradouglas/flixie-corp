@@ -53,6 +53,9 @@ import "./title-sections.css";
 import NotificationsPage, { NotificationBell } from './Notifications';
 import MobileNavigation, { appNavigation, activeNavigation } from "./MobileNavigation";
 import "./mobile-navigation.css";
+import PublicBrowseHeader from './PublicBrowseHeader';
+import './public-browse-header.css';
+import './app-footer.css';
 
 export default function WebApp() {
   const initialTitle = useContext(InitialTitle);
@@ -70,8 +73,7 @@ export default function WebApp() {
       ) : initialTitle ? (
         <PublicTitleShell title={initialTitle} />
       ) : (
-        <><div className="fx-start">
-          <Wordmark />
+        <><PublicBrowseHeader/><div className="fx-start">
           <h1>Your movie &amp; TV companion</h1>
           <p>Loading Flixie…</p>
           <p>
@@ -181,8 +183,8 @@ function ConnectedApp() {
     toast: setToast,
   };
   const authPage = !user && (route.page === 'join' || route.page === 'sign-in');
+  const guestTitle = !user && (route.page === 'title' || route.page === 'person');
   const continuation = authPage ? safeNext(new URLSearchParams(window.location.search).get('next')) : window.location.pathname + window.location.search;
-  const guestTitle = (route.page === "title" || route.page === "person") && !user;
   function search(event: FormEvent) {
     event.preventDefault();
     if (query.trim())
@@ -248,11 +250,8 @@ function ConnectedApp() {
           LOCAL · Development accounts and database
         </div>
       )}
-      <header className="fx-top" data-auth-page={authPage}>
+      {!user ? <PublicBrowseHeader returnTo={continuation} query={query} onQueryChange={setQuery} onSearch={search} authPage={authPage?route.page as 'join'|'sign-in':undefined}/> : <header className="fx-top" data-auth-page={authPage}>
         <Wordmark />
-        {guestTitle ? (
-          <p className="fx-guest-tagline">Your movie &amp; TV companion</p>
-        ) : (
           <form id="fx-header-search" className="fx-search" data-mobile-open={mobileSearchOpen} onSubmit={search} role="search" onKeyDown={event => { if(event.key === 'Escape') { setMobileSearchOpen(false); searchToggle.current?.focus(); } }}>
             <Search size={18} aria-hidden="true" />
             <input
@@ -267,9 +266,8 @@ function ConnectedApp() {
               <Search size={16} />
             </button>
           </form>
-        )}
         <div className="fx-top-actions">
-          {!guestTitle && !authPage && <button ref={searchToggle} type="button" className="fx-icon-button fx-mobile-search-toggle" aria-label={mobileSearchOpen ? 'Close search' : 'Search films and shows'} aria-expanded={mobileSearchOpen} aria-controls="fx-header-search" onClick={() => setMobileSearchOpen(open => !open)}><Search size={21} aria-hidden="true"/></button>}
+          {!authPage && <button ref={searchToggle} type="button" className="fx-icon-button fx-mobile-search-toggle" aria-label={mobileSearchOpen ? 'Close search' : 'Search films and shows'} aria-expanded={mobileSearchOpen} aria-controls="fx-header-search" onClick={() => setMobileSearchOpen(open => !open)}><Search size={21} aria-hidden="true"/></button>}
           {user ? (
             <>
               <button
@@ -307,7 +305,7 @@ function ConnectedApp() {
             </>
           )}
         </div>
-      </header>
+      </header>}
       <div className={user ? "fx-app-layout" : "fx-guest-layout"}>
         {user && (
           <aside className="fx-sidebar">
@@ -442,7 +440,7 @@ function ConnectedApp() {
         <WatchPlanPreview plan={action.plan} onClose={() => setAction(null)} />
       )}
       {user && <MobileNavigation active={activePage}/>}
-      <MobileAppPrompt />
+      {user && <MobileAppPrompt />}
       {toast && (
         <div className="fx-toast" role="status" aria-live="polite">
           {toast}
