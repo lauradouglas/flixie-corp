@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import { AuthProvider, useSession } from "./auth";
 import AuthForm from "./AuthForm";
+import ShowRating from './ShowRating';
 import AccountGate from "./AccountGate";
 import "./mobile-task.css";
 import Footer from "../components/Footer";
@@ -423,6 +424,7 @@ function ConnectedApp() {
           }}
         />
       )}
+      {action?.type === 'rate-show' && user && <ShowRating key={`${user.id}:${action.film.id}`} film={action.film} onClose={() => setAction(null)} onSaved={() => { action.onSaved?.(); setAction(null); refresh(); setToast('Your show rating has been saved'); }}/>}
       {action?.type === "picker" && user && (
         <Picker
           key={user.id}

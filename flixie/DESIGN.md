@@ -880,3 +880,21 @@ compact3px action surface inset,56px action targets,8px provider padding and6px
 offer gaps. Section and app-link gaps reduce without shrinking text. Signed-in
 previews use the real title, Avatar and bottom-tab components with fictional
 account/provider/progress data; these fixtures are excluded from publication.
+
+## Title action hierarchy and show rating —15 November2026
+
+User clarified that the action rows need more vertical separation, and asked
+for only Rate, Watchlist, Favourite and Share. The phone rate CTA is now a
+standalone full-width row,12px above the three-icon action surface. The app
+button is another12px below;12px outer gutters and the flush backdrop remain.
+Watch options is removed from title actions; the provider section's All options
+control retains the full country/provider view. Action source/focus order is
+Rate, Watchlist, Favourite, Share. Larger layouts retain their inline controls.
+
+Shows gain an overall-series rating editor using the app's existing authenticated
+API. It loads the current rating/recommendation, preserves drafts on failed saves,
+locks duplicate submissions and guards account changes. Guests first sign in.
+It uses the shared full-screen phone task and centred desktop dialog treatment,
+with real focus/busy/error handling, fixed safe-area footer and enlarged-text
+reflow. Recommendation choices wrap. Movie watch/review remains the existing
+unified flow; no backend, native or authentication changes are required.

@@ -15,7 +15,6 @@ import {
   Check,
   ChevronLeft,
   Clapperboard,
-  Monitor,
   Share2,
   Star,
 } from "lucide-react";
@@ -721,16 +720,15 @@ export function TitlePage({
             <CommunityRating film={f} compactOnMobile/>
             <ProviderOverview film={f} onOptions={() => actions.open({ type: "options", film: f })} onSignIn={() => actions.open({ type: "login" })} />
             <div className={`fx-detail-actions ${user && kind === "movie" ? "fx-has-review" : ""}`}>
-              {user && kind === "movie" && (
                 <button
                   className="fx-button fx-primary fx-title-primary fx-title-rate"
-                  onClick={() => actions.open({ type: "log", film: f })}
+                  onClick={() => actions.open(!user ? { type: "login" } : kind === 'movie' ? { type: 'log', film: f } : { type: 'rate-show', film: f, onSaved: result.retry })}
                 >
                   <Check size={18} className="fx-title-desktop-label" aria-hidden="true"/>
                   <Star size={20} className="fx-title-mobile-label" aria-hidden="true"/>
-                  Rate &amp; review
+                  {kind === "movie" ? "Rate & review" : "Rate"}
                 </button>
-              )}
+              <div className="fx-title-secondary-actions">
               <button
                 aria-pressed={actions.saved(f)}
                 aria-label={actions.saved(f) ? `Remove ${f.title} from watchlist` : `Save ${f.title} to watchlist`}
@@ -742,13 +740,7 @@ export function TitlePage({
                 <span className="fx-title-desktop-label">{actions.saved(f) ? "In watchlist" : "Save to watchlist"}</span>
                 <span className="fx-title-mobile-label">Watchlist</span>
               </button>
-              <button
-                className="fx-button fx-title-secondary fx-title-options"
-                onClick={() => actions.open({ type: "options", film: f })}
-              >
-                <Monitor size={18} />
-                Watch options
-              </button>
+              <TitleFavourite key={`${user?.externalId ?? 'guest'}:${kind}:${id}`} film={f} actions={actions} revision={revision} />
               <button
                 className="fx-button fx-title-secondary fx-title-share"
                 aria-label={`Share ${f.title}`}
@@ -772,7 +764,7 @@ export function TitlePage({
                 <Share2 size={18} />
                 Share
               </button>
-              <TitleFavourite key={`${user?.externalId ?? 'guest'}:${kind}:${id}`} film={f} actions={actions} revision={revision} />
+              </div>
             </div>
             {appLink && (
               <a className="fx-text-button fx-open-app" href={appLink}>

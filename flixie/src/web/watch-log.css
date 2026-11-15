@@ -48,7 +48,7 @@
 .flixie-web .fx-watch-scale .fx-text-button { min-height: 44px; text-decoration: underline; text-underline-offset: 3px; }
 .flixie-web .fx-watch-recommend { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 12px; }
 .flixie-web .fx-watch-recommend > p { font-weight: 750; }
-.flixie-web .fx-watch-recommend > div { display: flex; gap: 8px; }
+.flixie-web .fx-watch-recommend > div { display: flex; flex-wrap: wrap; gap: 8px; }
 .flixie-web .fx-watch-choice { display: inline-flex; align-items: center; justify-content: center; gap: 7px; border: 1px solid var(--fx-line); border-radius: 8px; min-width: 70px; min-height: 44px; padding: 9px 13px; background: var(--fx-surface); color: var(--fx-muted); font-size: var(--fx-type-label, .875rem); font-weight: 700; }
 .flixie-web .fx-watch-choice[aria-pressed="true"] { border-color: var(--fx-purple); background: var(--fx-lift); color: var(--fx-purple); }
 .flixie-web .fx-watch-check { display: flex; align-items: center; gap: 9px; font-size: var(--fx-type-label, .875rem); color: var(--fx-muted); min-height: 44px; }

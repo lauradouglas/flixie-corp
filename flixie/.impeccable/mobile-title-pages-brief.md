@@ -61,3 +61,39 @@ zero anti-patterns; advisories are the documented native-derived type roles.
 Saved signed-in movie/show/episode previews use actual components and metadata
 with explicitly fictional account, friends, progress and services. No real sign-in
 was performed, and no real account or database writes were made.
+
+Spacing refinement published:7262bc21c13c81e42c06f03cbb5b6e5e294852fe,
+workflow43764772123 success, notifications skipped. Exact apex/www version,
+12 URLs and actual CSS/shared JS verified. Live guest show page header bottom
+and backdrop top both74px (gap0); card gutter12px; Home link named with hidden
+phone text; no horizontal overflow. Signed-in images remain labelled fixtures,
+not a real account/sign-in acceptance claim. Source and release/review evidence
+are durable in the chat artifact folder. Temporary tabs/server closed; viewport
+reset. Native/backend/auth code and other page layouts remain unchanged.
+
+## Vertical separation and four title actions —15 November2026
+
+User clarified “More separation between rows” and asked to remove Watch options,
+leaving rate, watchlist, favourite and share. Phone rate becomes a standalone CTA,
+then12px gap, then a three-icon surface, then12px to the app button. Horizontal
+12px gutters and flush header/backdrop stay. The redundant Watch options title
+button is removed; All options remains in the viewing-provider section. Action
+DOM/focus order now matches the requested order. Shared title-control selectors
+support the new presentation-only wrapper; its wider-layout display is contents.
+
+Show Rate previously had no website implementation. Added an overall-show rating
+editor using the same native app read/write routes and userId/rating/recommendation
+contract, verified against show controller/service/repository and ownership/terms
+middleware. Existing ratings load; saves are account-bound, validated and guarded
+against double submission/stale accounts; failure keeps the draft. Rating success
+retries the title score and refreshes personal/social sections. Guest Rate opens
+sign-in. Phone is full-screen; desktop is centred. No show review feature, backend,
+native or Firebase change was made.
+
+133 website regressions and types pass, including current rating load, failed-save
+retry, one-save locking, own-account transport, invalid input and stale/foreign
+response guards. Build35, SEO29/HTTP, analytics pass. One bounded dark/light phone,
+guest,320px/200% text, desktop and fictional show save inspection passes; actual
+rate-to-row and row-to-app gaps12px. No horizontal overflow; desktop editor640px
+wide and centred. Detector has0 anti-patterns; native-role advisories remain.
+Fixtures use fictional account data and never write to real accounts.

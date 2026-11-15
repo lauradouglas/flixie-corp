@@ -1,5 +1,6 @@
 /* Phone title composition follows MovieDetailHeroTokens and MediaDetailAction.
    One set of data/actions is reflowed; wider website layouts keep their order. */
+.flixie-web .fx-title-secondary-actions { display: contents; }
 .flixie-web .fx-title-artwork,
 .flixie-web .fx-title-mobile-label,
 .flixie-web .fx-title-rating-star,
@@ -46,20 +47,20 @@
   .flixie-web .fx-title-view .fx-title-rating-info { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: var(--fx-ink); cursor: pointer; }
   .flixie-web .fx-title-view .fx-title-rating > .fx-muted { font-size: .8125rem; line-height: 1.5; padding-block: 8px; }
 
-  .flixie-web .fx-title-view .fx-film-detail .fx-detail-actions { grid-area: actions; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; align-items: stretch; margin: 12px var(--fx-title-gutter) 0; padding: 3px; background: var(--fx-surface); border-radius: 14px; }
-  .flixie-web .fx-title-view .fx-film-detail .fx-detail-actions > .fx-button { display: flex; flex-direction: column; justify-content: center; gap: 4px; min-width: 0; min-height: 56px; padding: 4px 3px; margin: 0; border: 0; border-radius: 8px; background: transparent; color: var(--fx-purple); font-size: .75rem; font-weight: 600; line-height: 1.3; text-align: center; white-space: normal; overflow-wrap: anywhere; }
-  .flixie-web .fx-title-view .fx-film-detail .fx-detail-actions > .fx-button svg { width: 22px; height: 22px; }
+  .flixie-web .fx-title-view .fx-film-detail .fx-detail-actions { grid-area: actions; display: grid; grid-template-columns: minmax(0,1fr); gap: 12px; align-items: stretch; margin: 16px var(--fx-title-gutter) 0; padding: 0; background: transparent; border-radius: 0; }
+  .flixie-web .fx-title-view .fx-title-secondary-actions { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); padding: 3px; border-radius: 14px; background: var(--fx-surface); }
+  .flixie-web .fx-title-view .fx-film-detail .fx-detail-actions .fx-button { display: flex; flex-direction: column; justify-content: center; gap: 4px; min-width: 0; min-height: 56px; padding: 4px 3px; margin: 0; border: 0; border-radius: 8px; background: transparent; color: var(--fx-purple); font-size: .75rem; font-weight: 600; line-height: 1.3; text-align: center; white-space: normal; overflow-wrap: anywhere; }
+  .flixie-web .fx-title-view .fx-film-detail .fx-detail-actions .fx-button svg { width: 22px; height: 22px; }
   .flixie-web .fx-title-view .fx-title-mobile-label { display: inline; }
   .flixie-web .fx-title-view .fx-title-desktop-label { display: none; }
-  .flixie-web .fx-title-view .fx-film-detail .fx-detail-actions > .fx-title-rate { grid-column: 1 / -1; order: -2; flex-direction: row; gap: 9px; min-height: 44px; margin-bottom: 4px; background: var(--fx-brand); color: white; font-size: .875rem; padding: 10px 14px; }
-  .flixie-web .fx-title-view .fx-film-detail .fx-detail-actions > .fx-title-watchlist { order: 0; color: var(--fx-gold); }
-  .flixie-web .fx-title-view .fx-film-detail .fx-detail-actions > .fx-title-watchlist[aria-pressed=true] { background: color-mix(in srgb, var(--fx-gold) 12%, var(--fx-surface)); color: var(--fx-gold); }
-  .flixie-web .fx-title-view .fx-film-detail .fx-detail-actions > .fx-title-favourite { order: 0; grid-column: auto; color: var(--fx-danger); }
-  .flixie-web .fx-title-view .fx-film-detail .fx-detail-actions > .fx-title-favourite[aria-pressed=true] { background: color-mix(in srgb, var(--fx-danger) 12%, var(--fx-surface)); color: var(--fx-danger); }
-  .flixie-web .fx-title-view .fx-film-detail .fx-detail-actions > .fx-title-options { order: 0; }
-  .flixie-web .fx-title-view .fx-film-detail .fx-detail-actions > .fx-title-share { order: 0; color: var(--fx-share); }
-  .flixie-web .fx-title-view .fx-film-detail .fx-detail-actions > .fx-favourite-feedback { order: 4; grid-column: 1 / -1; padding: 10px; }
-  .flixie-web .fx-title-view .fx-open-app { grid-area: app; width: auto; min-height: 44px; margin: 8px var(--fx-title-gutter) 0; padding: 9px; border-radius: 10px; font-size: .875rem; }
+  .flixie-web .fx-title-view .fx-film-detail .fx-detail-actions .fx-title-rate { grid-column: 1 / -1; order: -2; flex-direction: row; gap: 9px; min-height: 44px; margin-bottom: 0; background: var(--fx-brand); color: white; font-size: .875rem; padding: 10px 14px; }
+  .flixie-web .fx-title-view .fx-film-detail .fx-detail-actions .fx-title-watchlist { order: 0; color: var(--fx-gold); }
+  .flixie-web .fx-title-view .fx-film-detail .fx-detail-actions .fx-title-watchlist[aria-pressed=true] { background: color-mix(in srgb, var(--fx-gold) 12%, var(--fx-surface)); color: var(--fx-gold); }
+  .flixie-web .fx-title-view .fx-film-detail .fx-detail-actions .fx-title-favourite { order: 0; grid-column: auto; color: var(--fx-danger); }
+  .flixie-web .fx-title-view .fx-film-detail .fx-detail-actions .fx-title-favourite[aria-pressed=true] { background: color-mix(in srgb, var(--fx-danger) 12%, var(--fx-surface)); color: var(--fx-danger); }
+  .flixie-web .fx-title-view .fx-film-detail .fx-detail-actions .fx-title-share { order: 0; color: var(--fx-share); }
+  .flixie-web .fx-title-view .fx-film-detail .fx-detail-actions .fx-favourite-feedback { order: 4; grid-column: 1 / -1; padding: 10px; }
+  .flixie-web .fx-title-view .fx-open-app { grid-area: app; width: auto; min-height: 44px; margin: 12px var(--fx-title-gutter) 0; padding: 9px; border-radius: 10px; font-size: .875rem; }
   .flixie-web .fx-title-view .fx-provider-overview { grid-area: providers; margin: 12px var(--fx-title-gutter) 0; padding: 0 0 12px; }
   .flixie-web .fx-title-view .fx-provider-overview-heading > div { flex-direction: row; align-items: baseline; gap: 8px; }
   .flixie-web .fx-title-view .fx-provider-overview-heading h3 { font-size: .9375rem; }
@@ -94,7 +95,8 @@
     .flixie-web .fx-title-view .fx-title-rating,
     .flixie-web .fx-title-view .fx-title-metadata > .fx-muted,
     .flixie-web .fx-title-view .fx-tagline { margin-left: var(--fx-title-gutter); }
-    .flixie-web .fx-title-view .fx-film-detail .fx-detail-actions { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .flixie-web .fx-title-view .fx-title-secondary-actions { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .flixie-web .fx-title-view .fx-title-secondary-actions .fx-title-share { grid-column: 1 / -1; }
     .flixie-web:has(.fx-title-view) .fx-episode-list > li { grid-template-columns: minmax(0,1fr); }
     .flixie-web:has(.fx-title-view) .fx-episode-still { width: min(100%,240px); }
     .flixie-web:has(.fx-title-view) .fx-episode-list > li > button { grid-column: 1; }

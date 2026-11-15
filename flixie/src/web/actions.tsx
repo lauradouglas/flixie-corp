@@ -16,6 +16,7 @@ import {
 export type Action =
   | { type: "login"; save?: Film }
   | { type: "log"; film: Film }
+  | { type: 'rate-show'; film: Film; onSaved?: () => void }
   | { type: "options"; film: Film }
   | { type: "picker"; mood?:'laugh'|'hooked' }
   | { type: "plan"; plan: Plan }

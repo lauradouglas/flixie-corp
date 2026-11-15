@@ -16,6 +16,7 @@ import {
   film,
   list,
   object,
+  number,
   pick,
   plan,
   review,
@@ -60,6 +61,7 @@ export interface MovieReviewInput {
   recommended: boolean;
   containsSpoilers: boolean;
 }
+export interface ShowRatingValue { rating: number | null; recommendation: 'recommend' | 'neutral' | 'avoid' }
 export class FlixieApi {
   constructor(
     readonly baseUrl: string,
@@ -313,6 +315,23 @@ export class FlixieApi {
       cast: castMembers(raw),
       directors: directorPeople(raw),
     };
+  }
+  async showRating(uid: string, ownerId: string, showId: number, signal?: AbortSignal): Promise<ShowRatingValue> {
+    this.assertIdentity(uid);
+    const raw = await this.request(`/shows/${showId}/user/rating`, { method: 'POST', body: { userId: ownerId }, signal });
+    this.assertIdentity(uid);
+    if (raw === null) return { rating: null, recommendation: 'neutral' };
+    const row = object(raw), value = number(row.rating), recommendation = row.recommendation ?? 'neutral';
+    if (row.userId !== ownerId || number(row.showId) !== showId || value === null || value < 1 || value > 10 || !['recommend','neutral','avoid'].includes(String(recommendation)))
+      throw new ApiError('Your rating could not be loaded. Please try again.');
+    return { rating: value, recommendation: recommendation as ShowRatingValue['recommendation'] };
+  }
+  async rateShow(uid: string, ownerId: string, showId: number, rating: number, recommendation: ShowRatingValue['recommendation']) {
+    this.assertIdentity(uid);
+    if (!Number.isSafeInteger(showId) || showId < 1 || !Number.isInteger(rating) || rating < 1 || rating > 10 || !['recommend','neutral','avoid'].includes(recommendation))
+      throw new ApiError('Choose a rating from 1 to 10.');
+    await this.request(`/shows/${showId}/add/rating`, { method: 'POST', body: { userId: ownerId, rating, recommendation } });
+    this.assertIdentity(uid);
   }
   async person(id: number, signal?: AbortSignal) {
     return talent(await this.request(`/people/${id}`, { public: true, signal }), id);
