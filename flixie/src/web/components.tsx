@@ -1,4 +1,5 @@
 import WordmarkArtwork from '../components/WordmarkArtwork';
+import { followMobileTaskViewport } from './mobileTaskViewport';
 import {
   useEffect,
   useRef,
@@ -264,6 +265,7 @@ export function Sheet({
   description,
   dismissible = true,
   className = "",
+  mobileFullScreen = false,
 }: {
   title: string;
   children: ReactNode;
@@ -274,6 +276,7 @@ export function Sheet({
   description?: ReactNode;
   dismissible?: boolean;
   className?: string;
+  mobileFullScreen?: boolean;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => {
@@ -288,10 +291,13 @@ export function Sheet({
       focus?.focus();
     };
   }, []);
+  useEffect(() => {
+    if (mobileFullScreen && ref.current) return followMobileTaskViewport(ref.current);
+  }, [mobileFullScreen]);
   return (
     <dialog
       ref={ref}
-      className={`${presentation === "lightbox" ? "fx-photo-lightbox" : presentation === "modal" ? "fx-watch-modal" : `fx-sheet ${wide ? "fx-sheet-wide" : ""}`} ${className}`.trim()}
+      className={`${presentation === "lightbox" ? "fx-photo-lightbox" : presentation === "modal" ? "fx-watch-modal" : `fx-sheet ${wide ? "fx-sheet-wide" : ""}`} ${mobileFullScreen ? "fx-mobile-task" : ""} ${className}`.trim()}
       onKeyDown={onKeyDown}
       onCancel={(event) => {
         event.preventDefault();

@@ -7,6 +7,7 @@ import {
 import { AuthProvider, useSession } from "./auth";
 import AuthForm from "./AuthForm";
 import AccountGate from "./AccountGate";
+import "./mobile-task.css";
 import Footer from "../components/Footer";
 import {
   Avatar,

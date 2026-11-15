@@ -833,3 +833,15 @@ gaps keep density compact, with separators between people only. Scores move
 below metadata at local widths below16rem, allowing enlarged text to retain
 whole status words. All avatars keep actual awarded/selected badge preferences;
 profile links, guest sign-in and data/privacy states keep existing behavior.
+
+## Full-screen phone picker and rating/review —15 November2026
+
+User-requested exception to all-device centred editors: Pick for Me/Us and the
+unified Rate & Review form now fill the phone viewport. Native dialog semantics
+remain, with app ground, square edges, bounded header/Close, scrollable content
+and a persistent safe-area-aware footer above page navigation. Visual viewport
+sizing follows the keyboard at normal scale and leaves pinch zoom native. Drafts
+persist through size changes. Desktop/tablet retain centred modal geometry.
+Opt-in mobileFullScreen is limited to those flows. Date inputs use text-relative
+width; at narrow text-relative widths the rating moves below its legend. Public
+routes, native Flutter appearance and other dialog presentations are unchanged.

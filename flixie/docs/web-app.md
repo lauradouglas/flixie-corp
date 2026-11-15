@@ -676,3 +676,29 @@ retired standalone SDK controller/preparation UI are removed because that flow i
 removed. No real session is started and physical acceptance remains the user's test.
 Restoring Firebase also restores its white transition page; that cosmetic issue
 remains open and must not be reported as solved by this repair.
+
+## Full-screen mobile tasks —15 November2026
+
+User requested full-page mobile picking and rating/reviewing. Existing Sheet gains
+an opt-in mobileFullScreen presentation, used by WatchLog and PickForUsDialog only.
+These are full-viewport task views retaining native dialog focus/inert/cancel
+behavior, not new browser routes. The header and actions remain in place while
+the body scrolls; app ground, safe-area padding and square edges match the app.
+visualViewport sizing handles keyboard height/offset at scale1 and clears on
+larger layouts/pinch zoom/cleanup.680px phones and short coarse-pointer landscape
+use this presentation; wider/tablet/desktop dialogs stay centred. Busy close,
+single-save/checkpoint, privacy, recommendations and account semantics are intact.
+The related Watch Plan composer/ranking/profile editors are not silently changed.
+
+129 web regressions/types/build35/SEO29/HTTP/analytics pass. New tests exercise the
+real picker/review components against fictional APIs: draft survives resizing,
+one watch plus linked review saves, chosen mood/time reaches the returned film,
+viewport listeners clean up and desktop/zoom sizing clears. Built-CSS local IAB
+views verify390×850, short430px,1440px desktop and320px/200% light text; date/rating
+reflow stays accessible. Real iPhone keyboard behavior remains user verification.
+
+Flutter feasibility: the native repo includes web scaffold and web sign-in code,
+but no complete browser build/compatibility audit was performed. Storage/push and
+other mobile integrations need review before reuse. The user accepted matching
+the app within the existing website for now. Public searchable HTML content stays;
+no Flutter framework migration, native change or backend/schema/fixture write.

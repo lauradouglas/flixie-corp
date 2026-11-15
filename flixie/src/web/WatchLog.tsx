@@ -69,7 +69,7 @@ export function WatchLog({ film, onClose, onSaved }: {
 
   if (!user) return null;
   return <Sheet title={`Your take on ${film.title}`} description={<FilmMeta film={film} />}
-    presentation="modal" dismissible={!busy} onClose={close}>
+    presentation="modal" mobileFullScreen dismissible={!busy} onClose={close}>
     <form className="fx-watch-form" onSubmit={submit} noValidate aria-busy={busy}>
       <div className="fx-watch-content">
         {watchSaved && <p className="fx-watch-status" role="status">Your watch entry is saved. Finish your review below.</p>}

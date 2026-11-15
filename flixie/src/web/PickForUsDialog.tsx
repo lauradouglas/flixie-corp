@@ -45,7 +45,7 @@ export default function PickForUs({onClose,onChoose,onPlanSaved,onViewPlans,init
     }catch(error){if(active.current)setError(errorMessage(error));}finally{lock.current=false;if(active.current)setBusy(false);}
   }
   if(planFilm&&planContext)return <WatchPlanComposer film={planFilm} context={planContext} onBack={()=>setPlanFilm(null)} onClose={onClose} onSaved={onPlanSaved} onViewPlans={onViewPlans}/>;
-  return <Sheet title={solo?'Pick for me':'Pick for us'} presentation="modal" className="fx-pick-modal" dismissible={!busy&&!services.busy} onClose={onClose}>
+  return <Sheet title={solo?'Pick for me':'Pick for us'} presentation="modal" mobileFullScreen className="fx-pick-modal" dismissible={!busy&&!services.busy} onClose={onClose}>
     <div ref={body} className="fx-pick-body">
       {results?<>
         <button type="button" className="fx-pick-summary" onClick={back} disabled={busy}><Layers size={20} aria-hidden="true"/><span>{companyLabel} · {moodLabel} · {genreLabel} · {minutes?`Up to ${minutes} min`:'Any length'}</span><span>Edit</span></button>

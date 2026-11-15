@@ -461,3 +461,14 @@ flow the user previously verified, while retaining standard provider artwork and
 Flixie's waiting/form recovery. The white Firebase transition page returns for
 now. Its removal remains open; the previous simulated SDK checks did not establish
 real Safari/Apple/Firebase success. Do not reintroduce a replacement on that evidence.
+
+## App-like full-screen phone tasks —15 November2026
+
+Pick for Me/Us and unified Rate & Review fill the mobile viewport with persistent
+header/actions, safe-area spacing and scrolling content. Desktop/tablet retain
+centred dialogs. Keep watch entry above review and optional review title. Browser
+viewport changes retain drafts and match keyboard space without suppressing zoom.
+The user accepted adapting the existing website to resemble the app; a Flutter
+web migration remains a feasibility option, not approved implementation. Public
+film/show/person HTML remains for search. Watch Plan creation and favourite-rank
+editing are suggested future full-screen candidates, not part of this change.

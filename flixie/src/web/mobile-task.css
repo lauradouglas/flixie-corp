@@ -1,0 +1,62 @@
+/* Only explicitly opted-in long tasks fill the phone viewport. Native <dialog>
+   retains focus containment, background inertness and the protected busy state. */
+@media (max-width: 680px), (max-width: 1023px) and (max-height: 500px) and (pointer: coarse) {
+  .flixie-web dialog.fx-watch-modal.fx-mobile-task {
+    inset: auto;
+    top: var(--fx-task-top, 0px);
+    left: 0;
+    margin: 0;
+    width: 100%;
+    max-width: none;
+    height: var(--fx-task-height, 100dvh);
+    max-height: var(--fx-task-height, 100dvh);
+    min-height: 0;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: hidden;
+    background: var(--fx-bg);
+  }
+  .flixie-web .fx-mobile-task > .fx-watch-heading {
+    padding: max(16px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) 16px max(18px, env(safe-area-inset-left));
+    border-bottom: 1px solid var(--fx-line);
+    background: var(--fx-bg);
+    max-height: 35%;
+    overflow: auto;
+  }
+  .flixie-web .fx-mobile-task > .fx-watch-form {
+    flex: 1 1 auto;
+    min-height: 0;
+    container-type: inline-size;
+  }
+  .flixie-web .fx-mobile-task .fx-watch-content,
+  .flixie-web .fx-mobile-task > .fx-pick-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scroll-padding-block: 18px;
+    padding: 20px max(18px, env(safe-area-inset-right)) 20px max(18px, env(safe-area-inset-left));
+  }
+  .flixie-web .fx-mobile-task .fx-watch-footer,
+  .flixie-web .fx-mobile-task > .fx-pick-footer {
+    flex: none;
+    flex-wrap: wrap;
+    max-height: 40%;
+    overflow: auto;
+    padding: 14px max(18px, env(safe-area-inset-right)) max(14px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left));
+    background: var(--fx-bg);
+  }
+  .flixie-web .fx-mobile-task .fx-watch-footer .fx-text-button { max-width: none; }
+  .flixie-web dialog.fx-mobile-task input[type="date"] {
+    width: min(100%, 12rem);
+    max-width: 100%;
+  }
+  @container (max-width: 18rem) {
+    .flixie-web .fx-mobile-task .fx-watch-rating > legend { padding-right: 0; }
+    .flixie-web .fx-mobile-task .fx-watch-score {
+      position: static;
+      justify-content: flex-end;
+      margin-bottom: 12px;
+    }
+  }
+}
