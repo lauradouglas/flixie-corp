@@ -1,0 +1,66 @@
+.flixie-web .fx-pick-modal { width: min(760px,calc(100% - 32px)); }
+.flixie-web .fx-pick-body { min-height: 0; overflow: auto; padding: 24px 26px; overscroll-behavior: contain; }
+.flixie-web .fx-pick-body p { max-width: 65ch; }
+.flixie-web .fx-pick-body fieldset { margin: 0; min-width: 0; }
+.flixie-web .fx-pick-heading { font-size: var(--fx-type-page); margin-bottom: 8px; }
+.flixie-web .fx-pick-heading:focus { outline: none; }
+.flixie-web .fx-pick-body h4 { font-size: var(--fx-type-section); margin: 26px 0 12px; }
+.flixie-web .fx-pick-choice { display: flex; align-items: center; gap: 10px; min-width: 0; min-height: 50px; padding: 13px 14px; border: 1px solid var(--fx-line); border-radius: 12px; background: var(--fx-surface); color: var(--fx-ink); text-align: left; font-size: var(--fx-type-control); line-height: 1.5; }
+.flixie-web .fx-pick-choice > svg { flex: none; color: var(--fx-purple); }
+.flixie-web .fx-pick-choice > span { flex: 1; overflow-wrap: anywhere; }
+.flixie-web .fx-pick-choice strong,.flixie-web .fx-pick-choice small { display: block; }
+.flixie-web .fx-pick-choice small { margin-top: 3px; color: var(--fx-muted); font-size: var(--fx-type-label); }
+.flixie-web .fx-pick-choice[aria-pressed=true] { background: var(--fx-lift); border-color: var(--fx-purple); }
+.flixie-web .fx-pick-choice-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,9.5rem),1fr)); gap: 10px; }
+.flixie-web .fx-pick-mood { margin-block: 22px; }
+.flixie-web .fx-pick-mood > .fx-pick-choice { width: 100%; margin-bottom: 12px; }
+.flixie-web .fx-pick-edit { margin-block: 18px; border-top: 1px solid var(--fx-line); padding-top: 6px; }
+.flixie-web .fx-pick-edit summary { display: flex; align-items: center; gap: 12px; min-height: 54px; color: var(--fx-ink); font-size: var(--fx-type-control); font-weight: 650; cursor: pointer; list-style: none; }
+.flixie-web .fx-pick-edit summary::-webkit-details-marker { display: none; }
+.flixie-web .fx-pick-edit summary > span:first-of-type { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.flixie-web .fx-pick-edit summary > svg { flex: none; color: var(--fx-purple); }
+.flixie-web .fx-pick-edit summary small { display: block; font-size: var(--fx-type-label); font-weight: 400; color: var(--fx-muted); margin-top: 4px; }
+.flixie-web .fx-pick-edit > p { margin-block: 12px; }
+.flixie-web .fx-pick-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-block: 12px; }
+.flixie-web .fx-pick-select { display: grid; gap: 7px; margin-top: 16px; font-size: var(--fx-type-label); font-weight: 650; }
+.flixie-web .fx-pick-select select,.flixie-web .fx-pick-select input { width: 100%; min-width: 0; min-height: 48px; border: 1px solid var(--fx-line); border-radius: 8px; padding: 11px 13px; background: var(--fx-lift); color: var(--fx-ink); font-size: var(--fx-type-control); }
+.flixie-web .fx-pick-viewers { display: flex; flex-wrap: wrap; gap: 12px 20px; margin-top: 14px; }
+.flixie-web .fx-pick-viewers > span { display: inline-flex; align-items: center; gap: 9px; font-size: var(--fx-type-label); }
+.flixie-web .fx-pick-summary { width: 100%; display: flex; align-items: center; gap: 12px; text-align: left; padding: 14px; margin-block: 20px; border: 1px solid var(--fx-line); border-radius: 12px; background: var(--fx-surface); color: var(--fx-ink); font-size: var(--fx-type-control); }
+.flixie-web .fx-pick-summary > span:first-of-type { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.flixie-web .fx-pick-summary > svg,.flixie-web .fx-pick-summary > span:last-child { color: var(--fx-purple); flex: none; }
+.flixie-web .fx-pick-services { margin-block: 20px; padding: 16px; background: var(--fx-lift); border-radius: 12px; }
+.flixie-web .fx-pick-services h4 { margin: 0 0 8px; }
+.flixie-web .fx-pick-services p { font-size: var(--fx-type-control); }
+.flixie-web .fx-pick-services a { margin-top: 12px; }
+.flixie-web .fx-pick-body .fx-check { display: flex; align-items: center; gap: 12px; min-height: 48px; font-size: var(--fx-type-control); line-height: 1.5; padding-block: 10px; }
+.flixie-web .fx-pick-body .fx-check input { width: 20px; height: 20px; flex: none; accent-color: var(--fx-purple); }
+.flixie-web .fx-pick-body .fx-check small { display: block; font-size: var(--fx-type-label); }
+.flixie-web .fx-pick-language-options { max-height: 260px; overflow: auto; overscroll-behavior: contain; margin-top: 12px; }
+.flixie-web .fx-pick-viewing-note { margin-top: 20px; }
+.flixie-web .fx-pick-footer { display: flex; flex-direction: column; gap: 12px; max-height: 40dvh; overflow: auto; padding: 18px 26px; border-top: 1px solid var(--fx-line); flex: none; }
+.flixie-web .fx-pick-footer-main { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
+.flixie-web .fx-pick-pass { display: flex; flex-wrap: wrap; gap: 12px; }
+.flixie-web .fx-pick-pass > .fx-button { flex: 1; }
+.flixie-web .fx-pick-film { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 20px; }
+.flixie-web .fx-pick-film > .fx-poster { flex: none; width: 124px; height: 186px; object-fit: contain; }
+.flixie-web .fx-pick-film > div:not(.fx-poster) { flex: 1 1 10rem; min-width: 0; }
+.flixie-web .fx-pick-film h3 { font-size: var(--fx-type-section); overflow-wrap: anywhere; margin-bottom: 8px; }
+.flixie-web .fx-pick-offer { margin-top: 10px; padding: 10px 12px; background: var(--fx-lift); border-radius: 8px; }
+.flixie-web .fx-pick-reasons h4 { margin-top: 24px; }
+.flixie-web .fx-pick-reasons ul { padding: 0; list-style: none; display: grid; gap: 12px; }
+.flixie-web .fx-pick-reasons li { display: flex; align-items: start; gap: 10px; }
+.flixie-web .fx-pick-reasons li > svg { color: var(--fx-purple); flex: none; margin-top: 3px; }
+.flixie-web .fx-pick-result-links { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; margin-top: 16px; }
+@media (max-width:640px) { .flixie-web .fx-pick-body { padding: 20px 18px; } .flixie-web .fx-pick-footer { padding: 16px 18px; } .flixie-web .fx-pick-footer-main .fx-button { flex: 1 1 auto; } }
+@media (max-height:560px) { .flixie-web .fx-pick-modal { overflow: auto; } .flixie-web .fx-pick-body { flex: none; overflow: visible; } .flixie-web .fx-pick-footer { max-height: none; overflow: visible; } }
+
+/* Distinct mood icon colours requested by the user; paired for the actual theme. */
+.flixie-web .fx-pick-choice[data-mood=laugh] > svg:first-child { color: light-dark(#916000,#ffca61); }
+.flixie-web .fx-pick-choice[data-mood=hooked] > svg:first-child { color: light-dark(#b82e59,#ff6d85); }
+.flixie-web .fx-pick-choice[data-mood=feel_good] > svg:first-child { color: light-dark(#a64a00,#ffb55c); }
+.flixie-web .fx-pick-choice[data-mood=escape] > svg:first-child { color: light-dark(#217a63,#69dbbd); }
+.flixie-web .fx-pick-choice[data-mood=switch_off] > svg:first-child { color: light-dark(#6c40b8,#b694f5); }
+.flixie-web .fx-pick-choice[data-mood=feel_something] > svg:first-child { color: light-dark(#a53586,#f68ed7); }
+.flixie-web .fx-pick-choice[data-mood=challenged] > svg:first-child { color: light-dark(#126d98,#7dcfff); }
+.flixie-web .fx-pick-choice[data-mood=scared] > svg:first-child { color: light-dark(#555476,#e7e4f1); }

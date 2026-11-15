@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from "react";
-import { ArrowRight, BookmarkCheck, Check, Monitor } from "lucide-react";
+import { ArrowRight, Monitor } from "lucide-react";
 import { useSession } from "./auth";
-import { ErrorState, FilmMeta, Poster, Sheet } from "./components";
+import { ErrorState, Sheet } from "./components";
 import { useLoad, errorMessage } from "./hooks";
 import {
   imageUrl,
@@ -9,140 +9,16 @@ import {
   object,
   text,
   type Film,
-  type Pick as FilmPick,
-  type JsonObject,
+  type Plan,
 } from "./models";
-import { navigate, titlePath } from "./routing";
 export type Action =
   | { type: "login"; save?: Film }
   | { type: "log"; film: Film }
   | { type: "options"; film: Film }
   | { type: "picker" }
-  | { type: "plan"; plan: JsonObject }
+  | { type: "plan"; plan: Plan }
   | { type: "terms"; version: string };
-export function WatchLog({
-  film,
-  onClose,
-  onSaved,
-}: {
-  film: Film;
-  onClose: () => void;
-  onSaved: () => void;
-}) {
-  const { api, user } = useSession();
-  const [date, setDate] = useState(() => {
-      const d = new Date();
-      return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
-    }),
-    [rating, setRating] = useState(""),
-    [notes, setNotes] = useState(""),
-    [cinema, setCinema] = useState(false),
-    [recommend, setRecommend] = useState(""),
-    [busy, setBusy] = useState(false),
-    [error, setError] = useState("");
-  async function submit(event: FormEvent) {
-    event.preventDefault();
-    if (!user || busy) return;
-    setBusy(true);
-    setError("");
-    const owner = user.id;
-    try {
-      await api.log(owner, {
-        movieId: film.id,
-        watchedAt: new Date(date + "T12:00:00").toISOString(),
-        rating: rating ? Number(rating) : null,
-        recommended: recommend ? recommend === "yes" : null,
-        notes,
-        watchedAtCinema: cinema,
-      });
-      onSaved();
-    } catch (e) {
-      setError(errorMessage(e));
-    } finally {
-      setBusy(false);
-    }
-  }
-  return (
-    <Sheet title={`Log ${film.title}`} onClose={onClose}>
-      <form onSubmit={submit}>
-        <div className="fx-log-film">
-          <Poster film={film} />
-          <div>
-            <h3>{film.title}</h3>
-            <FilmMeta film={film} />
-          </div>
-        </div>
-        <label htmlFor="fx-watch-date">Watched on</label>
-        <input
-          id="fx-watch-date"
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          required
-        />
-        <label htmlFor="fx-watch-rating">Your rating</label>
-        <select
-          id="fx-watch-rating"
-          value={rating}
-          onChange={(e) => setRating(e.target.value)}
-        >
-          <option value="">No rating</option>
-          {Array.from({ length: 10 }, (_, i) => i + 1).map((n) => (
-            <option key={n} value={n}>
-              {n} / 10
-            </option>
-          ))}
-        </select>
-        <label htmlFor="fx-recommend">Would you recommend it?</label>
-        <select
-          id="fx-recommend"
-          value={recommend}
-          onChange={(e) => setRecommend(e.target.value)}
-        >
-          <option value="">Leave undecided</option>
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
-        </select>
-        <label htmlFor="fx-watch-notes">
-          Private diary note <span className="fx-muted">(optional)</span>
-        </label>
-        <textarea
-          id="fx-watch-notes"
-          value={notes}
-          onChange={(e) => setNotes(e.target.value)}
-          maxLength={2000}
-          rows={3}
-        />
-        <label className="fx-check">
-          <input
-            type="checkbox"
-            checked={cinema}
-            onChange={(e) => setCinema(e.target.checked)}
-          />
-          Watched at the cinema
-        </label>
-        {error && <ErrorState message={error} />}
-        <div className="fx-button-row">
-          <button
-            type="submit"
-            className="fx-button fx-primary"
-            disabled={busy}
-          >
-            {busy ? "Saving…" : "Save watch"}
-          </button>
-          <button
-            type="button"
-            className="fx-button"
-            disabled={busy}
-            onClick={onClose}
-          >
-            Cancel
-          </button>
-        </div>
-      </form>
-    </Sheet>
-  );
-}
+export { WatchLog } from "./WatchLog";
 export function WatchOptions({
   film,
   onClose,
@@ -154,7 +30,7 @@ export function WatchOptions({
   const [country, setCountry] = useState(user?.country ?? "GB");
   const result = useLoad(
     `options:${film.kind}:${film.id}:${country}`,
-    (signal) => api.options(film, country),
+    (signal) => api.options(film, country, signal),
   );
   const groups = object(object(result.data).watchProviders ?? result.data);
   return (
@@ -249,128 +125,7 @@ export function WatchOptions({
     </Sheet>
   );
 }
-const moods = [
-  ["hooked", "Get hooked"],
-  ["switch_off", "Something lighter"],
-  ["challenged", "Make me think"],
-];
-export function Picker({
-  onClose,
-  onChoose,
-}: {
-  onClose: () => void;
-  onChoose: (film: Film) => void;
-}) {
-  const { api } = useSession();
-  const [mood, setMood] = useState("hooked"),
-    [minutes, setMinutes] = useState("120"),
-    [busy, setBusy] = useState(false),
-    [choices, setChoices] = useState<FilmPick[] | null>(null),
-    [message, setMessage] = useState(""),
-    [error, setError] = useState("");
-  async function submit(event: FormEvent) {
-    event.preventDefault();
-    if (busy) return;
-    setBusy(true);
-    setError("");
-    try {
-      const result = await api.pick(mood, minutes ? Number(minutes) : null);
-      setChoices(result.choices);
-      setMessage(result.message);
-    } catch (e) {
-      setError(errorMessage(e));
-    } finally {
-      setBusy(false);
-    }
-  }
-  return (
-    <Sheet
-      title={choices ? "Tonight’s picks" : "Find tonight’s film"}
-      onClose={onClose}
-    >
-      {choices ? (
-        <>
-          <p className="fx-muted">
-            {message || "A few films that fit your night."}
-          </p>
-          {choices.map((choice) => (
-            <section className="fx-picker-result" key={choice.film.id}>
-              <Poster film={choice.film} />
-              <div>
-                <h3>{choice.film.title}</h3>
-                <FilmMeta film={choice.film} />
-                <ul>
-                  {choice.reasons.slice(0, 3).map((reason) => (
-                    <li key={reason}>{reason}</li>
-                  ))}
-                </ul>
-                {choice.offers.map((offer) => (
-                  <p className="fx-small fx-muted" key={offer}>
-                    {offer}
-                  </p>
-                ))}
-                <button
-                  className="fx-button fx-primary"
-                  onClick={() => onChoose(choice.film)}
-                >
-                  View film
-                  <ArrowRight size={16} />
-                </button>
-              </div>
-            </section>
-          ))}
-          {choices.length === 0 && (
-            <p>Try a different mood or give yourself more time.</p>
-          )}
-          <button className="fx-button" onClick={() => setChoices(null)}>
-            Change choices
-          </button>
-        </>
-      ) : (
-        <form onSubmit={submit}>
-          <p className="fx-muted">What kind of evening are you having?</p>
-          <label>Your mood</label>
-          <div className="fx-choice-row">
-            {moods.map(([id, label]) => (
-              <button
-                type="button"
-                key={id}
-                aria-pressed={id === mood}
-                onClick={() => setMood(id)}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-          <label htmlFor="fx-time">How much time?</label>
-          <select
-            id="fx-time"
-            value={minutes}
-            onChange={(e) => setMinutes(e.target.value)}
-          >
-            <option value="90">Up to 90 minutes</option>
-            <option value="120">Up to 2 hours</option>
-            <option value="180">Up to 3 hours</option>
-            <option value="">A longer evening</option>
-          </select>
-          {error && <ErrorState message={error} />}
-          <div className="fx-button-row">
-            <button className="fx-button fx-primary" disabled={busy}>
-              {busy ? (
-                "Finding your films…"
-              ) : (
-                <>
-                  Show my picks
-                  <ArrowRight size={16} />
-                </>
-              )}
-            </button>
-          </div>
-        </form>
-      )}
-    </Sheet>
-  );
-}
+export { default as Picker } from './PickForUsDialog';
 
 export function TermsSheet({
   version,

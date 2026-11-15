@@ -1,0 +1,62 @@
+.flixie-web .fx-person-page { max-width: 1200px; margin-inline: auto; min-width: 0; }
+.flixie-web .fx-person-hero { display: grid; grid-template-columns: 210px minmax(0,1fr); gap: 22px 32px; align-items: start; }
+.flixie-web .fx-person-portrait { grid-row: span 2; aspect-ratio: 2/3; background: var(--fx-lift); border-radius: 12px; overflow: hidden; }
+.flixie-web .fx-person-portrait img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.flixie-web .fx-person-no-photo { height: 100%; display: grid; align-content: center; justify-items: center; gap: 12px; padding: 16px; color: var(--fx-muted); font-size: var(--fx-type-label, .875rem); }
+.flixie-web .fx-person-no-photo svg { width: 32px; height: 32px; }
+.flixie-web .fx-person-summary h1 { overflow-wrap: anywhere; }
+.flixie-web .fx-person-department { color: var(--fx-purple); font-size: var(--fx-type-control, 1rem); margin-top: 8px; font-weight: 750; }
+.flixie-web .fx-person-facts { display: flex; flex-wrap: wrap; gap: 16px 30px; margin: 20px 0 8px; font-size: var(--fx-type-control, 1rem); }
+.flixie-web .fx-person-facts dt { color: var(--fx-muted); font-size: var(--fx-type-label, .875rem); margin-bottom: 4px; }
+.flixie-web .fx-person-facts dd { margin: 0; max-width: 45ch; }
+.flixie-web .fx-person-summary .fx-text-button { min-height: 44px; }
+.flixie-web .fx-person-biography { min-width: 0; max-width: 65ch; font-size: var(--fx-type-body); line-height: 1.6; }
+.flixie-web .fx-person-biography h2 { font-size: var(--fx-type-section); margin-bottom: 10px; }
+.flixie-web .fx-person-biography p { white-space: pre-line; }
+.flixie-web .fx-person-biography summary { display: list-item; padding-block: 12px; color: var(--fx-purple); font-weight: 750; cursor: pointer; min-height: 44px; }
+.flixie-web .fx-person-section { margin-top: 32px; scroll-margin-top: 18px; }
+.flixie-web .fx-person-section h2 { margin-bottom: 18px; }
+.flixie-web .fx-person-section .fx-section-head h2 { margin-bottom: 0; }
+.flixie-web .fx-person-known-for { margin-block: 24px 32px; }
+.flixie-web .fx-person-known-for h3 { margin-bottom: 16px; }
+.flixie-web #person-credits > h3 { margin-top: 24px; }
+.flixie-web .fx-person-known-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(140px,1fr)); gap: 20px; max-width: 760px; }
+.flixie-web .fx-person-credit-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(140px,1fr)); gap: 26px 20px; }
+.flixie-web .fx-person-credit { display: flex; flex-direction: column; align-items: start; min-width: 0; color: var(--fx-ink); border-radius: 7px; }
+.flixie-web .fx-person-credit .fx-poster { width: 100%; aspect-ratio: 2/3; object-fit: contain; margin-bottom: 10px; }
+.flixie-web .fx-person-credit strong { font-size: var(--fx-type-control, 1rem); line-height: 1.4; overflow-wrap: anywhere; }
+.flixie-web .fx-person-credit > span { font-size: var(--fx-type-label, .875rem); color: var(--fx-muted); margin-top: 5px; }
+.flixie-web .fx-person-credit small { font-size: var(--fx-type-label, .875rem); color: var(--fx-muted); margin-top: 5px; overflow-wrap: anywhere; }
+.flixie-web .fx-person-credit:hover strong, .flixie-web .fx-cast-rail > a:hover strong { color: var(--fx-purple); text-decoration: underline; text-underline-offset: 3px; }
+.flixie-web .fx-person-role-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-block: 20px 16px; }
+.flixie-web .fx-person-role-filters button { display: flex; gap: 9px; align-items: center; padding: 10px 14px; min-height: 44px; border: 1px solid var(--fx-line); border-radius: 9px; background: var(--fx-surface); color: var(--fx-ink); font-size: var(--fx-type-label, .875rem); font-weight: 750; }
+.flixie-web .fx-person-role-filters button span { font-size: var(--fx-type-label, .875rem); color: var(--fx-muted); font-variant-numeric: tabular-nums; }
+.flixie-web .fx-person-role-filters button[aria-pressed=true] { color: var(--fx-purple); background: var(--fx-lift); border-color: var(--fx-purple); }
+.flixie-web .fx-person-credit-filters { display: grid; grid-template-columns: minmax(180px,2fr) repeat(3,minmax(110px,1fr)); gap: 12px; }
+.flixie-web .fx-person-credit-filters label { display: flex; flex-direction: column; gap: 7px; min-width: 0; font-size: var(--fx-type-label, .875rem); font-weight: 750; }
+.flixie-web .fx-person-credit-filters :is(input,select) { width: 100%; min-height: 48px; padding: 10px 12px; border: 1px solid var(--fx-line); border-radius: 9px; background: var(--fx-surface); color: var(--fx-ink); font-size: var(--fx-type-control, 1rem); }
+.flixie-web .fx-person-credit-filters input::placeholder { color: var(--fx-muted); }
+.flixie-web .fx-person-result-count { color: var(--fx-muted); font-size: var(--fx-type-label, .875rem); margin-block: 14px 20px; }
+.flixie-web .fx-person-more { margin-top: 24px; }
+.flixie-web .fx-person-photo-rail { display: grid; grid-template-columns: repeat(auto-fill,minmax(100px,1fr)); gap: 12px; }
+.flixie-web .fx-person-photo-rail button { aspect-ratio: 2/3; padding: 0; overflow: hidden; border: 0; border-radius: 9px; background: var(--fx-lift); }
+.flixie-web .fx-person-photo-rail img { width: 100%; height: 100%; object-fit: contain; }
+.flixie-web .fx-photo-viewer .fx-person-no-photo { color: #b7c2d0; }
+.flixie-web .fx-person-name { color: var(--fx-purple); font-weight: 750; text-underline-offset: 3px; }
+.flixie-web .fx-person-name:hover { text-decoration: underline; }
+.flixie-web .fx-cast-rail > a { min-width: 0; border-radius: 7px; }
+@container (max-width: 850px) {
+  .flixie-web .fx-person-credit-filters { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .flixie-web .fx-person-credit-filters label:first-child { grid-column: 1/-1; }
+}
+@container (max-width: 680px) {
+  .flixie-web .fx-person-hero { grid-template-columns: 110px minmax(0,1fr); gap: 20px 16px; }
+  .flixie-web .fx-person-portrait { grid-row: auto; }
+  .flixie-web .fx-person-summary h1 { font-size: var(--fx-type-page); }
+  .flixie-web .fx-person-facts { margin-top: 14px; gap: 10px; }
+  .flixie-web .fx-person-biography { grid-column: 1/-1; }
+  .flixie-web .fx-person-known-grid, .flixie-web .fx-person-credit-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px 14px; }
+  .flixie-web .fx-person-credit-filters { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .flixie-web .fx-person-credit-filters label:last-child { grid-column: 1/-1; }
+  .flixie-web .fx-person-credit-filters :is(input,select) { font-size: var(--fx-type-control, 1rem); }
+}

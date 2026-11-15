@@ -1,3 +1,4 @@
+import WordmarkArtwork from '../components/WordmarkArtwork';
 import {
   useEffect,
   useRef,
@@ -15,24 +16,27 @@ import {
 } from "lucide-react";
 import {
   avatarBorder,
-  avatarUrl,
   imageUrl,
   movieMeta,
   type Film,
   type Person,
 } from "./models";
-import { navigate, titlePath } from "./routing";
+import { navigate, profilePath, titlePath } from "./routing";
+import { avatarSources, resolveAvatarImage } from './avatarImages';
 
 export function Link({
   to,
   children,
   className = "",
+  onNavigate,
   ...props
 }: {
   to: string;
   children: ReactNode;
   className?: string;
   "aria-label"?: string;
+  "aria-current"?: "page";
+  onNavigate?: () => void;
 }) {
   const click = (event: MouseEvent<HTMLAnchorElement>) => {
     if (
@@ -45,6 +49,7 @@ export function Link({
     ) {
       event.preventDefault();
       navigate(to);
+      onNavigate?.();
     }
   };
   return (
@@ -53,35 +58,45 @@ export function Link({
     </a>
   );
 }
-export function Wordmark() {
+export function Wordmark({ to = "/app" }: { to?: string }) {
   return (
-    <Link to="/app" className="fx-wordmark" aria-label="Flixie Home">
-      flix<span>ie</span>
+    <Link to={to} className="fx-wordmark" aria-label="Flixie Home">
+      <WordmarkArtwork/>
     </Link>
   );
 }
 export function Avatar({
   person,
   small = false,
+  large = false,
 }: {
   person: Person;
   small?: boolean;
+  large?: boolean;
 }) {
-  const [failed, setFailed] = useState(false);
-  const src = avatarUrl(person.avatar);
+  const sources=avatarSources(person.avatar,large), sourceKey=JSON.stringify(sources);
+  const [loaded, setLoaded]=useState<{key:string;src:string}>({key:'',src:''}), [sourceIndex,setSourceIndex]=useState(0);
+  useEffect(()=>{setSourceIndex(0);setLoaded({key:'',src:''});},[sourceKey]);
+  useEffect(()=>{
+    let active=true;
+    const source=sources[sourceIndex];
+    if (source) void resolveAvatarImage(source).then(src=>{if(active)setLoaded({key:sourceKey,src});}).catch(()=>{if(active)setSourceIndex(i=>i+1);});
+    return ()=>{active=false;};
+  },[sourceKey,sourceIndex]);
+  const src=loaded.key===sourceKey?loaded.src:'';
   const badge = avatarBorder(person.profileBadges);
   return (
     <span
-      className={`fx-avatar ${small ? "fx-tiny" : ""} ${badge ? "" : "fx-no-border"} ${badge === "BORDER_CHRISTMAS_LIGHTS" ? "fx-christmas" : ""}`}
+      className={`fx-avatar ${small ? "fx-tiny" : ""} ${large ? "fx-avatar-large" : ""} ${badge ? "" : "fx-no-border"} ${badge === "BORDER_CHRISTMAS_LIGHTS" ? "fx-christmas" : ""}`}
       data-badges={badge}
       role="img"
       aria-label={`${person.username}${badge ? ", " + badge.replaceAll("_", " ").toLowerCase() + " border" : ""}`}
     >
-      {src && !failed ? (
-        <img src={src} alt="" onError={() => setFailed(true)} />
+      {src ? (
+        <img src={src} alt="" loading="lazy" decoding="async" onError={() => {setLoaded({key:'',src:''});setSourceIndex(i=>i+1);}} />
       ) : (
         <span className="fx-initials" aria-hidden="true">
-          {person.username.slice(0, 1).toUpperCase()}
+          {(person.firstName || person.username).slice(0, 1).toUpperCase()}
         </span>
       )}
       {badge === "BORDER_CHRISTMAS_LIGHTS" && (
@@ -93,6 +108,9 @@ export function Avatar({
       )}
     </span>
   );
+}
+export function AvatarLink({ person, small=false, to }: {person:Person;small?:boolean;to?:string}) {
+  return person.id ? <Link to={to||profilePath(person.id)} className="fx-profile-link" aria-label={`View ${person.username}’s profile`}><Avatar person={person} small={small}/></Link> : <Avatar person={person} small={small}/>;
 }
 export function Poster({
   film,
@@ -163,7 +181,7 @@ export function FilmCard({
         {film.score !== null && film.scoreSource && (
           <span>
             {" "}
-            · {film.score.toFixed(1)} <small>{film.scoreSource}</small>
+            · {film.score.toFixed(1)} <small>community</small>
           </span>
         )}
       </p>
@@ -242,12 +260,20 @@ export function Sheet({
   onClose,
   wide = false,
   onKeyDown,
+  presentation = "sheet",
+  description,
+  dismissible = true,
+  className = "",
 }: {
   title: string;
   children: ReactNode;
   onClose: () => void;
   wide?: boolean;
   onKeyDown?: KeyboardEventHandler<HTMLDialogElement>;
+  presentation?: "sheet" | "modal" | "lightbox";
+  description?: ReactNode;
+  dismissible?: boolean;
+  className?: string;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => {
@@ -265,20 +291,25 @@ export function Sheet({
   return (
     <dialog
       ref={ref}
-      className={`fx-sheet ${wide ? "fx-sheet-wide" : ""}`}
+      className={`${presentation === "lightbox" ? "fx-photo-lightbox" : presentation === "modal" ? "fx-watch-modal" : `fx-sheet ${wide ? "fx-sheet-wide" : ""}`} ${className}`.trim()}
       onKeyDown={onKeyDown}
       onCancel={(event) => {
         event.preventDefault();
-        onClose();
+        if (dismissible) onClose();
       }}
       onClick={(event) => {
-        if (event.target === event.currentTarget) onClose();
+        if (dismissible && event.target === event.currentTarget) onClose();
       }}
       aria-labelledby="fx-sheet-title"
+      aria-describedby={description ? "fx-sheet-description" : undefined}
     >
-      <div className="fx-sheet-top">
-        <h2 id="fx-sheet-title">{title}</h2>
-        <button className="fx-icon-button" aria-label="Close" onClick={onClose}>
+      <div className={presentation === "lightbox" ? "fx-lightbox-heading" : presentation === "modal" ? "fx-watch-heading" : "fx-sheet-top"}>
+        {presentation === "modal" && <img className="fx-watch-brand" src="/web/flixie-f.png" alt="" width={36} height={36} />}
+        <div>
+          <h2 id="fx-sheet-title">{title}</h2>
+          {description && <div id="fx-sheet-description">{description}</div>}
+        </div>
+        <button className="fx-icon-button" aria-label="Close" onClick={onClose} disabled={!dismissible}>
           <X />
         </button>
       </div>

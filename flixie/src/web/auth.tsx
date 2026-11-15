@@ -28,7 +28,7 @@ import { FlixieApi, ApiError, type Identity } from "./api";
 import { webConfig, type WebConfig } from "./config";
 import type { Account, JsonObject } from "./models";
 
-interface Session {
+export interface Session {
   user: Account | null;
   identity: User | null;
   loading: boolean;
@@ -42,7 +42,7 @@ interface Session {
   reset: (email: string) => Promise<void>;
   reloadProfile: () => Promise<void>;
 }
-const Context = createContext<Session | null>(null);
+export const SessionContext = createContext<Session | null>(null);
 export function authMessage(error: unknown): string {
   const code =
     typeof error === "object" && error && "code" in error
@@ -253,10 +253,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       await sendPasswordResetEmail(requireAuth(), email.trim());
     },
   };
-  return <Context.Provider value={value}>{children}</Context.Provider>;
+  return <SessionContext.Provider value={value}>{children}</SessionContext.Provider>;
 }
 export function useSession() {
-  const value = useContext(Context);
+  const value = useContext(SessionContext);
   if (!value) throw new Error("AuthProvider is required");
   return value;
 }

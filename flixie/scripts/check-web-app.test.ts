@@ -38,6 +38,15 @@ test("local frontend cannot connect to production services", () => {
     ),
   );
 });
+test("the website production build has the registered Flixie Firebase web app without private build environment values", () => {
+  const config = makeConfig({ MODE: "production" }, "www.flixie.co.uk");
+  assert.equal(config.local, false);
+  assert.equal(config.firebase.projectId, "flixie-9a8eb");
+  assert.equal(config.firebase.appId, "1:1093787683868:web:cbfb38400d174042e963d9");
+  assert.equal(config.firebase.authDomain, "flixie-9a8eb.firebaseapp.com");
+  assert.match(config.firebase.apiKey, /^AIza[\w-]+$/);
+  assert.equal(new URL(config.apiUrl).protocol, "https:");
+});
 test("shared links and sign-in continuation retain the title and reject external destinations", () => {
   assert.deepEqual(parseRoute("/shows/15621"), {
     page: "title",
@@ -257,6 +266,7 @@ test("cast portraits preserve actual roles, ordering and unique people", async (
       },
       { id: 1, name: "Duplicate" },
       { id: 0, name: "Invalid" },
+      { id: 2147483648, name: "Outside person route range" },
     ],
   });
   assert.deepEqual(

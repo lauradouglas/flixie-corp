@@ -1,7 +1,10 @@
+import './components/site-footer.css';
 import MobileAppPrompt from './web/MobileAppPrompt';
 import {InitialTitle} from './web/PublicTitleShell';
 import {catalogTitle} from './catalog';
-import type { ComponentType } from 'react';
+import {catalogPerson} from './peopleCatalog';
+import {InitialPerson} from './web/personContext';
+import { useEffect, type ComponentType } from 'react';
 import { useSectionMotion } from './useSectionMotion';
 import { MotionConfig } from 'motion/react';
 import { type PageId } from './site';
@@ -11,8 +14,20 @@ import WebsiteAnalyticsChoice from './components/WebsiteAnalyticsChoice';
 
 export default function App({ page, year, View }: { page: PageId; year: number; View: ComponentType }) {
   useSectionMotion(page);
+  useEffect(() => {
+    if (page !== 'privacy' && page !== 'contact') return;
+    let frame = 0;
+    const revealDeletion = () => {
+      if (window.location.hash !== '#account-deletion') return;
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => document.getElementById('account-deletion')?.scrollIntoView({block:'start',behavior:'instant'}));
+    };
+    revealDeletion();
+    window.addEventListener('hashchange', revealDeletion);
+    return () => { cancelAnimationFrame(frame); window.removeEventListener('hashchange', revealDeletion); };
+  }, [page]);
 
-  if (page === 'webApp' || page === 'mediaShare' || page.startsWith('title-')) return <InitialTitle.Provider value={catalogTitle(page)}><View /></InitialTitle.Provider>;
+  if (page === 'webApp' || page === 'mediaShare' || page === 'personShare' || page.startsWith('title-') || page.startsWith('person-')) return <InitialPerson.Provider value={catalogPerson(page)}><InitialTitle.Provider value={catalogTitle(page)}><View /></InitialTitle.Provider></InitialPerson.Provider>;
 
   return <MotionConfig reducedMotion="user">
     <div className="min-h-screen bg-bg-main flex flex-col text-text-primary antialiased">
@@ -21,7 +36,7 @@ export default function App({ page, year, View }: { page: PageId; year: number; 
       <main id="main-content" tabIndex={-1} className="flex-1"><View /></main>
       <Footer year={year} />
       <WebsiteAnalyticsChoice page={page} />
-      <MobileAppPrompt/>
+      {!['privacy', 'terms', 'contact'].includes(page) && <MobileAppPrompt/>}
     </div>
   </MotionConfig>;
 }

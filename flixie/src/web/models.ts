@@ -50,6 +50,7 @@ export interface DiaryEntry {
   rating: number | null;
   notes: string;
   watchedAtCinema: boolean;
+  review: { id: string; title: string; body: string; containsSpoilers: boolean } | null;
 }
 export interface Activity {
   id: string;
@@ -79,10 +80,16 @@ export interface ContinuedShow {
 export interface Plan {
   id: string;
   films: Film[];
-  people: Person[];
+  people: (Person & { response: "joined" | "pending" | "declined" | "included" | null })[];
   date: string;
+  dateOnly: boolean;
   location: string;
+  placeKind: string;
+  hostId: string | null;
   status: string;
+  confirmed: boolean;
+  changesProposed: boolean;
+  selectedMovieId: number | null;
 }
 export interface Pick {
   film: Film;
@@ -194,6 +201,8 @@ export function avatarBorder(badges: string[]): string {
 }
 export function diaryEntry(value: unknown): DiaryEntry {
   const row = object(value);
+  const linkedReview = list(row.reviews).map(object).find(item =>
+    text(item.watchEntryId) === text(row.id) && text(item.userId) === text(row.userId) && text(row.userId) && text(item.body).trim());
   return {
     id: text(row.id),
     movie: film(row.movie),
@@ -201,6 +210,7 @@ export function diaryEntry(value: unknown): DiaryEntry {
     rating: number(row.rating),
     notes: text(row.notes),
     watchedAtCinema: row.watchedAtCinema === true,
+    review: linkedReview ? { id: text(linkedReview.id), title: text(linkedReview.title), body: text(linkedReview.body), containsSpoilers: linkedReview.containsSpoilers === true } : null,
   };
 }
 export function activity(value: unknown): Activity {
@@ -250,13 +260,26 @@ export function plan(value: unknown): Plan {
   const row = object(value),
     schedule = object(row.schedule),
     where = object(row.where);
+  if (!text(row.id)) throw new Error("This Watch Plan could not be loaded.");
+  const people = list(row.people).map((value) => {
+    const participant = object(value), user = person(participant.user);
+    const response = text(participant.response);
+    return { ...user, response: ["joined", "pending", "declined", "included"].includes(response) ? response as Plan["people"][number]["response"] : null };
+  }).filter((user, index, all) => user.id && all.findIndex(p => p.id === user.id) === index);
+  const date = text(schedule.date, text(schedule.at, text(schedule.dateTime)));
   return {
     id: text(row.id),
     films: list(row.films).map((f) => film(f)),
-    people: list(row.people).map((p) => person(object(p).user)),
-    date: text(schedule.date, text(schedule.at, text(schedule.dateTime))),
-    location: text(where.venue, text(where.kind)),
+    people,
+    date,
+    dateOnly: schedule.dateOnly === true || /^\d{4}-\d{2}-\d{2}$/.test(date),
+    location: text(where.venue).trim(),
+    placeKind: text(where.kind),
+    hostId: text(where.hostId) || null,
     status: text(row.status, text(row.phase, "Planned")),
+    confirmed: row.confirmed === true,
+    changesProposed: row.proposal != null,
+    selectedMovieId: number(row.selectedMovieId),
   };
 }
 export function pick(value: unknown): Pick {

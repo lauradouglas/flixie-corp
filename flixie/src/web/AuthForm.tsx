@@ -1,7 +1,7 @@
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { authMessage, useSession } from "./auth";
 import { navigate, safeNext } from "./routing";
-import { ErrorState,Loading } from "./components";
+import { ErrorState, Loading } from "./components";
 export default function AuthForm({
   initialJoin = false,
   onComplete,
@@ -11,7 +11,8 @@ export default function AuthForm({
 }) {
   const session = useSession();
   const [join, setJoin] = useState(
-    initialJoin || Boolean(session.identity && !session.user),
+    initialJoin ||
+      Boolean(session.identity && !session.user && !session.loading),
   );
   const [name, setName] = useState(session.identity?.email ?? ""),
     [password, setPassword] = useState(""),
@@ -22,7 +23,13 @@ export default function AuthForm({
     [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
     [notice, setNotice] = useState("");
-  useEffect(()=>{if(initialJoin)setJoin(true);},[initialJoin]);
+  const submitLock = useRef(false);
+  useEffect(() => {
+    if (initialJoin) setJoin(true);
+  }, [initialJoin]);
+  useEffect(() => {
+    if (session.identity && !busy) setPassword("");
+  }, [session.identity?.uid, busy]);
   useEffect(() => {
     if (session.user) {
       onComplete?.();
@@ -33,16 +40,21 @@ export default function AuthForm({
         );
     }
   }, [session.user]);
+  const isJoining =
+    join || Boolean(session.identity && !session.user && !session.loading);
+  const email = session.identity?.email || name;
   async function submit(event: FormEvent) {
     event.preventDefault();
+    if (submitLock.current) return;
+    submitLock.current = true;
     setError("");
     setNotice("");
     setBusy(true);
     try {
-      if (join) {
+      if (isJoining) {
         if (!accepted)
           throw new Error("Please read and agree to the Terms of Use.");
-        await session.join(name, password, {
+        await session.join(email, password, {
           firstName: firstName.trim(),
           username: username.trim(),
           lastName: "",
@@ -58,23 +70,59 @@ export default function AuthForm({
           : authMessage(e),
       );
     } finally {
+      submitLock.current = false;
       setBusy(false);
     }
   }
-  if(session.loading&&session.identity)return <Loading label="Opening your Flixie account…"/>;
+  function useDifferentAccount() {
+    if (submitLock.current) return;
+    void session
+      .signOut()
+      .then(() => {
+        setJoin(false);
+        setName("");
+        setPassword("");
+        setFirstName("");
+        setUsername("");
+        setAccepted(false);
+        setSharing(true);
+        setError("");
+        setNotice("");
+      })
+      .catch((e) => setError(authMessage(e)));
+  }
+  if (session.loading && !busy)
+    return <Loading label="Opening your Flixie account…" />;
+  if (session.error && session.identity && !busy)
+    return (
+      <div className="fx-auth">
+        <ErrorState
+          message={session.error}
+          retry={() => void session.reloadProfile()}
+        />
+        <button
+          type="button"
+          className="fx-text-button"
+          onClick={useDifferentAccount}
+        >
+          Use a different account
+        </button>
+      </div>
+    );
   return (
     <div className="fx-auth">
-      <h1>{join ? "Make Flixie yours" : "Welcome back."}</h1>
+      <h1>{isJoining ? "Make Flixie yours" : "Welcome back."}</h1>
       <p className="fx-muted">
-        {join
+        {isJoining
           ? "Keep your films, shows and people together."
           : "Your watchlist and diary are waiting for you."}
       </p>
-      <form onSubmit={submit}>
-        {join && (
+      <form onSubmit={submit} aria-busy={busy}>
+        {isJoining && (
           <>
             <label htmlFor="fx-first-name">First name</label>
             <input
+              disabled={busy}
               id="fx-first-name"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
@@ -84,6 +132,7 @@ export default function AuthForm({
             />
             <label htmlFor="fx-username">Username</label>
             <input
+              disabled={busy}
               id="fx-username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -94,34 +143,38 @@ export default function AuthForm({
             />
           </>
         )}
-        <label htmlFor="fx-email">{join ? "Email" : "Email or username"}</label>
+        <label htmlFor="fx-email">
+          {isJoining ? "Email" : "Email or username"}
+        </label>
         <input
           id="fx-email"
-          type={join ? "email" : "text"}
-          value={name}
+          type={isJoining ? "email" : "text"}
+          value={email}
           onChange={(e) => setName(e.target.value)}
           required
-          autoComplete={join ? "email" : "username"}
-          disabled={join && Boolean(session.identity)}
+          autoComplete={isJoining ? "email" : "username"}
+          disabled={busy || (isJoining && Boolean(session.identity))}
         />
-        {!session.identity && (
+        {(!session.identity || (busy && password.length > 0)) && (
           <>
             <label htmlFor="fx-password">Password</label>
             <input
+              disabled={busy}
               id="fx-password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              minLength={join ? 6 : 1}
-              autoComplete={join ? "new-password" : "current-password"}
+              minLength={isJoining ? 6 : 1}
+              autoComplete={isJoining ? "new-password" : "current-password"}
             />
           </>
         )}
-        {join && (
+        {isJoining && (
           <>
             <label className="fx-check">
               <input
+                disabled={busy}
                 type="checkbox"
                 checked={sharing}
                 onChange={(e) => setSharing(e.target.checked)}
@@ -133,6 +186,7 @@ export default function AuthForm({
             </p>
             <label className="fx-check">
               <input
+                disabled={busy}
                 type="checkbox"
                 required
                 checked={accepted}
@@ -140,11 +194,7 @@ export default function AuthForm({
               />
               <span>
                 I agree to the{" "}
-                <a
-                  href="/web/terms.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="/terms" target="_blank" rel="noopener noreferrer">
                   Terms of Use
                 </a>{" "}
                 and have read the{" "}
@@ -158,54 +208,63 @@ export default function AuthForm({
         )}
         {error && <ErrorState message={error} />}
         <button type="submit" className="fx-button fx-primary" disabled={busy}>
-          {busy ? "Please wait…" : join ? "Create account" : "Sign in"}
+          {busy ? "Please wait…" : isJoining ? "Create account" : "Sign in"}
         </button>
       </form>
       {!session.identity && (
-        <div className="fx-provider-buttons">
-          <button
-            className="fx-button"
-            disabled={busy}
-            onClick={() => {
-              setBusy(true);
-              void session
-                .provider("google")
-                .catch((e) => setError(authMessage(e)))
-                .finally(() => setBusy(false));
-            }}
-          >
-            Continue with Google
-          </button>
-          <button
-            className="fx-button"
-            disabled={busy}
-            onClick={() => {
-              setBusy(true);
-              void session
-                .provider("apple")
-                .catch((e) => setError(authMessage(e)))
-                .finally(() => setBusy(false));
-            }}
-          >
-            Continue with Apple
-          </button>
-        </div>
+        <>
+          <div className="fx-provider-buttons">
+            <button
+              className="fx-button"
+              disabled={busy || session.local}
+              onClick={() => {
+                setBusy(true);
+                void session
+                  .provider("google")
+                  .catch((e) => setError(authMessage(e)))
+                  .finally(() => setBusy(false));
+              }}
+            >
+              Continue with Google
+            </button>
+            <button
+              className="fx-button"
+              disabled={busy || session.local}
+              onClick={() => {
+                setBusy(true);
+                void session
+                  .provider("apple")
+                  .catch((e) => setError(authMessage(e)))
+                  .finally(() => setBusy(false));
+              }}
+            >
+              Continue with Apple
+            </button>
+          </div>
+          {session.local && (
+            <p className="fx-small fx-muted">
+              In this local preview, use the demo email and password. Google and
+              Apple sign-in are disabled.
+            </p>
+          )}
+        </>
       )}
       {!session.identity && (
         <button
           type="button"
           className="fx-text-button"
+          disabled={busy}
           onClick={() => {
             setJoin(!join);
             setError("");
           }}
         >
-          {join
+          {isJoining
             ? "Already have an account? Sign in"
             : "New to Flixie? Create an account"}
         </button>
       )}
-      {!join && (
+      {!isJoining && (
         <button
           type="button"
           className="fx-text-button"
@@ -235,7 +294,8 @@ export default function AuthForm({
         <button
           type="button"
           className="fx-text-button"
-          onClick={() => void session.signOut()}
+          disabled={busy}
+          onClick={useDifferentAccount}
         >
           Use a different account
         </button>

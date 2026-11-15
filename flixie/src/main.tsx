@@ -8,7 +8,10 @@ import { loadView } from './views';
 const root = document.getElementById('root')!;
 const page = pageFromPath(window.location.pathname);
 const year = Number(root.dataset.year) || new Date().getFullYear();
-loadView(page).then(View => {
+const typographyQa = import.meta.env.DEV
+  ? import('./web/typographyQa').then(module => module.applyTypographyQa())
+  : Promise.resolve();
+Promise.all([loadView(page), typographyQa]).then(([View]) => {
   const app = <StrictMode><App page={page} year={year} View={View} /></StrictMode>;
   if (root.dataset.prerendered === 'true') hydrateRoot(root, app);
   else createRoot(root).render(app);

@@ -1,17 +1,13 @@
 import { useContext, useEffect, useRef, useState, type FormEvent } from "react";
 import {
-  Bell,
-  BookOpen,
-  Bookmark,
-  CalendarDays,
   Clapperboard,
-  Home,
   LogOut,
   Search,
-  Users,
 } from "lucide-react";
 import { AuthProvider, useSession } from "./auth";
 import AuthForm from "./AuthForm";
+import AccountGate from "./AccountGate";
+import Footer from "../components/Footer";
 import {
   Avatar,
   ErrorState,
@@ -38,19 +34,29 @@ import {
   type PageActions,
 } from "./pages";
 import { useLoad, errorMessage } from "./hooks";
-import { list, text, viewDate, type Film, type Plan } from "./models";
+import { text, type Film } from "./models";
+import { WatchPlanPreview } from './WatchPlans';
 import { navigate, safeNext, titlePath, useRoute } from "./routing";
 import { InitialTitle, PublicTitleShell } from "./PublicTitleShell";
+import PersonPage, { PublicPersonShell } from "./PersonPage";
+import UserProfilePage from './UserProfilePage';
+import { InitialPerson } from "./personContext";
 import DownloadPrompt from "./DownloadPrompt";
 import MobileAppPrompt from "./MobileAppPrompt";
 import { renderHead } from "../seo";
 import { pageFromPath } from "../site";
 import "./web.css";
 import "./production.css";
+import "./home-layout.css";
+import "./diary.css";
 import "./title-sections.css";
+import NotificationsPage, { NotificationBell } from './Notifications';
+import MobileNavigation, { appNavigation, activeNavigation } from "./MobileNavigation";
+import "./mobile-navigation.css";
 
 export default function WebApp() {
   const initialTitle = useContext(InitialTitle);
+  const initialPerson = useContext(InitialPerson);
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
   return (
@@ -59,20 +65,20 @@ export default function WebApp() {
         <AuthProvider>
           <ConnectedApp />
         </AuthProvider>
+      ) : initialPerson ? (
+        <PublicPersonShell snapshot={initialPerson} />
       ) : initialTitle ? (
         <PublicTitleShell title={initialTitle} />
       ) : (
-        <div className="fx-start">
-          <a className="fx-wordmark" href="/app">
-            flix<span>ie</span>
-          </a>
+        <><div className="fx-start">
+          <Wordmark />
           <h1>Your movie &amp; TV companion</h1>
           <p>Loading Flixie…</p>
           <p>
             <a href="/download">Get Flixie for iPhone or Android</a>
           </p>
           <DownloadPrompt />
-        </div>
+        </div><Footer year={new Date().getFullYear()} compact /></>
       )}
     </div>
   );
@@ -86,6 +92,8 @@ function ConnectedApp() {
     [toast, setToast] = useState(""),
     [query, setQuery] = useState(""),
     [busyIds, setBusyIds] = useState<Set<string>>(new Set());
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
+  const searchField = useRef<HTMLInputElement>(null), searchToggle = useRef<HTMLButtonElement>(null);
   const currentOwner = useRef(user?.id);
   currentOwner.current = user?.id;
   const terms = useLoad(`terms:${user?.id ?? "guest"}:${revision}`, () =>
@@ -101,6 +109,10 @@ function ConnectedApp() {
     setToast("");
     setQuery("");
   }, [identity?.uid]);
+  useEffect(() => {
+    // Navigation ends the previous route's preview or authentication dialog.
+    setAction(previous => previous?.type === 'plan' || previous?.type === 'login' ? null : previous);
+  }, [JSON.stringify(route)]);
   useEffect(() => {
     if (!toast) return;
     const timeout = setTimeout(() => setToast(""), 4000);
@@ -123,6 +135,12 @@ function ConnectedApp() {
       .forEach((node) => node.remove());
     document.head.append(template.content);
   }, [JSON.stringify(route)]);
+  useEffect(() => { setMobileSearchOpen(false); }, [JSON.stringify(route), identity?.uid]);
+  useEffect(() => { if (mobileSearchOpen) searchField.current?.focus(); }, [mobileSearchOpen]);
+  async function signOut() {
+    try { await session.signOut(); navigate('/app'); }
+    catch(error) { setToast(errorMessage(error)); }
+  }
   const refresh = () => setRevision((n) => n + 1);
   async function save(film: Film, enabled: boolean) {
     if (!user) {
@@ -162,13 +180,16 @@ function ConnectedApp() {
     refresh,
     toast: setToast,
   };
-  const guestTitle = route.page === "title" && !user;
+  const authPage = !user && (route.page === 'join' || route.page === 'sign-in');
+  const continuation = authPage ? safeNext(new URLSearchParams(window.location.search).get('next')) : window.location.pathname + window.location.search;
+  const guestTitle = (route.page === "title" || route.page === "person") && !user;
   function search(event: FormEvent) {
     event.preventDefault();
     if (query.trim())
       navigate("/app/search?q=" + encodeURIComponent(query.trim()));
   }
   function content() {
+    if (route.page === "person") return <PersonPage key={route.id} id={route.id} />;
     if (route.page === "title")
       return (
         <TitlePage
@@ -180,43 +201,30 @@ function ConnectedApp() {
       );
     if (route.page === "search")
       return <SearchPage query={route.query ?? ""} actions={actions} />;
-    if (session.loading)
-      return <Loading label="Opening your Flixie account…" />;
-    if (session.error)
-      return (
-        <ErrorState
-          message={session.error}
-          retry={() =>
-            void session.reloadProfile().catch((e) => setToast(errorMessage(e)))
-          }
-        />
-      );
-    if (!user)
-      return (
-        <AuthForm
-          initialJoin={route.page === "join" || Boolean(identity)}
-          onComplete={() =>
-            navigate(
-              route.page === "sign-in" || route.page === "join"
-                ? safeNext(
-                    new URLSearchParams(window.location.search).get("next"),
-                  )
-                : window.location.pathname,
-              true,
-            )
-          }
-        />
-      );
+    return <AccountGate key={route.page} authDialogOpen={action?.type === "login"}
+      initialJoin={route.page === "join"}
+      onComplete={() => navigate(route.page === "sign-in" || route.page === "join"
+        ? safeNext(new URLSearchParams(window.location.search).get("next")) : window.location.pathname, true)}>
+      {user ? memberContent() : null}
+    </AccountGate>;
+  }
+  function memberContent() {
     switch (route.page) {
       case "watchlist":
         return <WatchlistPage library={library} actions={actions} />;
       case "diary":
         return <DiaryPage user={user} revision={revision} />;
       case "friends":
-        return <FriendsPage user={user} revision={revision} />;
+        return <FriendsPage user={user} revision={revision} onChanged={refresh}/>;
+      case "profile":
+        return <UserProfilePage key={`${user.id}:me`} revision={revision}/>;
+      case "user-profile":
+        return <UserProfilePage key={`${user.id}:${route.id}`} id={route.id} revision={revision}/>;
+      case "notifications":
+        return <NotificationsPage key={user.id} revision={revision} onChanged={refresh}/>;
       case "plans":
         return (
-          <PlansPage owner={user.id} revision={revision} actions={actions} />
+          <PlansPage owner={user.id} revision={revision} actions={actions} planId={route.page === "plans" ? route.planId : undefined} />
         );
       default:
         return (
@@ -229,13 +237,7 @@ function ConnectedApp() {
         );
     }
   }
-  const nav = [
-    ["home", "/app", Home, "Home"],
-    ["watchlist", "/app/watchlist", Bookmark, "Watchlist"],
-    ["diary", "/app/diary", BookOpen, "Film diary"],
-    ["friends", "/app/friends", Users, "Friends"],
-    ["plans", "/app/plans", CalendarDays, "Watch Plans"],
-  ] as const;
+  const activePage = activeNavigation(route, user?.id ?? '');
   return (
     <>
       <a className="fx-skip" href="#web-main">
@@ -246,14 +248,15 @@ function ConnectedApp() {
           LOCAL · Development accounts and database
         </div>
       )}
-      <header className="fx-top">
+      <header className="fx-top" data-auth-page={authPage}>
         <Wordmark />
         {guestTitle ? (
           <p className="fx-guest-tagline">Your movie &amp; TV companion</p>
         ) : (
-          <form className="fx-search" onSubmit={search} role="search">
+          <form id="fx-header-search" className="fx-search" data-mobile-open={mobileSearchOpen} onSubmit={search} role="search" onKeyDown={event => { if(event.key === 'Escape') { setMobileSearchOpen(false); searchToggle.current?.focus(); } }}>
             <Search size={18} aria-hidden="true" />
             <input
+              ref={searchField}
               aria-label="Search films and shows"
               type="search"
               placeholder="Search films and shows"
@@ -266,40 +269,38 @@ function ConnectedApp() {
           </form>
         )}
         <div className="fx-top-actions">
+          {!guestTitle && !authPage && <button ref={searchToggle} type="button" className="fx-icon-button fx-mobile-search-toggle" aria-label={mobileSearchOpen ? 'Close search' : 'Search films and shows'} aria-expanded={mobileSearchOpen} aria-controls="fx-header-search" onClick={() => setMobileSearchOpen(open => !open)}><Search size={21} aria-hidden="true"/></button>}
           {user ? (
             <>
               <button
-                className="fx-icon-button"
+                className="fx-icon-button fx-header-sign-out"
                 aria-label="Sign out"
-                onClick={() =>
-                  void session.signOut().then(() => navigate("/app"))
-                }
+                onClick={() => void signOut()}
               >
                 <LogOut size={18} />
               </button>
-              <Avatar person={user} />
+              <NotificationBell key={user.id} revision={revision} current={route.page === "notifications"}/>
+              <Link to="/app/profile" className="fx-header-profile" aria-label="Your profile" aria-current={activePage === "profile" ? "page" : undefined}><Avatar person={user}/></Link>
             </>
           ) : (
             <>
               <Link
                 to={
                   "/app/sign-in?next=" +
-                  encodeURIComponent(
-                    window.location.pathname + window.location.search,
-                  )
+                  encodeURIComponent(continuation)
                 }
-                className="fx-text-button"
+                className="fx-text-button fx-guest-sign-in"
+                aria-current={route.page === 'sign-in' ? 'page' : undefined}
               >
                 Sign in
               </Link>
               <Link
                 to={
                   "/app/join?next=" +
-                  encodeURIComponent(
-                    window.location.pathname + window.location.search,
-                  )
+                  encodeURIComponent(continuation)
                 }
-                className="fx-button fx-primary"
+                className="fx-button fx-primary fx-guest-join"
+                aria-current={route.page === 'join' ? 'page' : undefined}
               >
                 Join Flixie
               </Link>
@@ -311,16 +312,17 @@ function ConnectedApp() {
         {user && (
           <aside className="fx-sidebar">
             <nav aria-label="Main navigation">
-              {nav.map(([page, to, Icon, label]) => (
+              {appNavigation.map(({page, href:to, Icon, label}) => (
                 <Link
                   key={page}
                   to={to}
-                  className={`fx-nav-button ${route.page === page ? "fx-current" : ""}`}
+                  className={`fx-nav-button ${activePage === page ? "fx-current" : ""}`}
+                  aria-current={activePage === page ? "page" : undefined}
                 >
                   <Icon size={18} />
-                  {label}
+                  <span className="fx-nav-label">{label}</span>
                   {page === "watchlist" && library.data && (
-                    <span className="fx-count">{library.data.length}</span>
+                    <span className="fx-count">{new Intl.NumberFormat('en-GB').format(library.data.length)}</span>
                   )}
                 </Link>
               ))}
@@ -343,12 +345,13 @@ function ConnectedApp() {
               </p>
               <a href="/films">Explore films &amp; TV</a>
               <a href="/download">Get the app</a>
-              <a href="/">About Flixie</a>
+              <a href="/about">About Flixie</a>
             </div>
           </aside>
         )}
         <main
           id="web-main"
+          tabIndex={-1}
           className={guestTitle ? "fx-public-main" : "fx-main"}
         >
           {user && terms.data?.accepted === false && (
@@ -370,17 +373,10 @@ function ConnectedApp() {
             </div>
           )}
           {content()}
+          {user && activePage === 'profile' && <div className="fx-mobile-account-tools"><button type="button" className="fx-button" onClick={() => void signOut()}><LogOut size={18} aria-hidden="true"/>Sign out</button></div>}
         </main>
       </div>
-      <footer className="fx-footer">
-        <p>Discover, track and plan. Watch through your own services.</p>
-        <div>
-          <a href="/privacy">Privacy</a>
-          <a href="/web/terms.html">Terms</a>
-          <a href="/contact">Support</a>
-          <span>Movie data: TMDB · Availability: JustWatch</span>
-        </div>
-      </footer>
+      <Footer year={new Date().getFullYear()} compact />
       {action?.type === "terms" && user && (
         <TermsSheet
           version={action.version}
@@ -404,16 +400,19 @@ function ConnectedApp() {
           key={`${user.id}:${action.film.id}`}
           film={action.film}
           onClose={() => setAction(null)}
-          onSaved={() => {
+          onSaved={(includedReview) => {
             setAction(null);
             refresh();
-            setToast("Your film night is in your diary");
+            setToast(includedReview ? "Your watch and review have been saved" : "Your film night is in your diary");
             navigate("/app/diary");
           }}
         />
       )}
-      {action?.type === "picker" && (
+      {action?.type === "picker" && user && (
         <Picker
+          key={user.id}
+          onPlanSaved={refresh}
+          onViewPlans={() => { setAction(null); navigate('/app/plans'); }}
           onClose={() => setAction(null)}
           onChoose={(film) => {
             setAction(null);
@@ -440,25 +439,9 @@ function ConnectedApp() {
         </Sheet>
       )}
       {action?.type === "plan" && (
-        <Sheet title="Your Watch Plan" onClose={() => setAction(null)}>
-          <h3>
-            {list(action.plan.films)
-              .map((value) => text((value as Record<string, unknown>).title))
-              .join(" / ") || "Film night"}
-          </h3>
-          <p>{viewDate(text(action.plan.date) || null)}</p>
-          <p>{text(action.plan.location)}</p>
-          <div className="fx-plan-people">
-            {((action.plan.people as Plan["people"]) ?? []).map((person) => (
-              <Avatar key={person.id} person={person} />
-            ))}
-          </div>
-          <p className="fx-muted">Keep the plan going in Flixie.</p>
-          <a href="/download" className="fx-button">
-            Open Flixie on your phone
-          </a>
-        </Sheet>
+        <WatchPlanPreview plan={action.plan} onClose={() => setAction(null)} />
       )}
+      {user && <MobileNavigation active={activePage}/>}
       <MobileAppPrompt />
       {toast && (
         <div className="fx-toast" role="status" aria-live="polite">

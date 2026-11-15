@@ -1,8 +1,16 @@
 import { CastSection, FriendsSection, PhotosSection } from "./TitleSections";
-import { useEffect, useState } from "react";
+import { ProviderOverview } from "./ProviderOverview";
+import { DiaryRow, DiaryViews } from "./Diary";
+import { homeSavedFilms } from "./homeSelection";
+import TitleFavourite from './TitleFavourite';
+import CommunityRating from './CommunityRating';
+import './community-rating.css';
+import ShowSeasons from './ShowEpisodesSection';
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   BookmarkCheck,
+  BookmarkPlus,
   Check,
   Clapperboard,
   Monitor,
@@ -10,7 +18,7 @@ import {
 } from "lucide-react";
 import { useSession } from "./auth";
 import {
-  Avatar,
+  AvatarLink,
   Empty,
   ErrorState,
   FilmCard,
@@ -33,13 +41,14 @@ import {
   type ContinuedShow,
   type DiaryEntry,
   type Film,
-  type Plan,
   type PublicReview,
 } from "./models";
-import { titlePath } from "./routing";
+import { personPath, profilePath, titlePath } from "./routing";
+import FriendManager from './FriendManager';
 import { catalogTitles, catalogPath } from "../catalog";
 import DownloadPrompt from "./DownloadPrompt";
 import type { Action } from "./actions";
+import { PlanCard } from "./WatchPlans";
 import { sharedMediaOpenLink, sharedMediaStore } from "../mediaShare";
 type Resource<T> = {
   data?: T;
@@ -76,46 +85,6 @@ export function Shelf({
     </div>
   );
 }
-function DiaryRow({ entry }: { entry: DiaryEntry }) {
-  const date = entry.watchedAt ? new Date(entry.watchedAt) : null;
-  return (
-    <div className="fx-diary-strip">
-      <div className="fx-date">
-        {date && !Number.isNaN(date.getTime()) ? (
-          <>
-            <strong>{date.getDate()}</strong>
-            {date.toLocaleDateString("en-GB", { month: "short" }).toUpperCase()}
-            <span>{date.getFullYear()}</span>
-          </>
-        ) : (
-          <>
-            Date
-            <br />
-            not set
-          </>
-        )}
-      </div>
-      <Link to={titlePath(entry.movie.id)} className="fx-poster-button">
-        <Poster film={entry.movie} />
-      </Link>
-      <div>
-        <h3>
-          <Link to={titlePath(entry.movie.id)}>{entry.movie.title}</Link>
-        </h3>
-        {entry.notes && <p>{entry.notes}</p>}
-        {entry.watchedAtCinema && (
-          <p className="fx-small fx-muted">At the cinema</p>
-        )}
-      </div>
-      {entry.rating !== null && (
-        <span className="fx-score">
-          {entry.rating}
-          <small> / 10</small>
-        </span>
-      )}
-    </div>
-  );
-}
 function activityVerb(kind: string) {
   if (kind.includes("rating")) return "rated";
   if (kind.includes("watchlist")) return "saved";
@@ -131,10 +100,10 @@ export function ActivityRows({ items }: { items: Activity[] }) {
         .filter((item) => item.film)
         .map((item) => (
           <div className="fx-activity" key={`${item.kind}:${item.id}`}>
-            <Avatar person={item.person} />
+            <AvatarLink person={item.person} />
             <div>
               <p>
-                <strong>{item.person.username}</strong>{" "}
+                <Link to={profilePath(item.person.id)} className="fx-profile-name-link"><strong>{item.person.username}</strong></Link>{" "}
                 {activityVerb(item.kind)}{" "}
                 <Link to={titlePath(item.film!.id, item.film!.kind)}>
                   <strong>{item.film!.title}</strong>
@@ -147,36 +116,6 @@ export function ActivityRows({ items }: { items: Activity[] }) {
             </div>
           </div>
         ))}
-    </div>
-  );
-}
-export function PlanCard({ plan, onOpen }: { plan: Plan; onOpen: () => void }) {
-  return (
-    <div className="fx-plan">
-      <h3>
-        {plan.films.map((f) => f.title).join(" / ") || "A film night to plan"}
-      </h3>
-      <p>
-        {plan.date ? viewDate(plan.date) : "Date to be decided"}
-        {plan.location && (
-          <>
-            <br />
-            {plan.location}
-          </>
-        )}
-      </p>
-      <div className="fx-plan-people">
-        {plan.people.slice(0, 4).map((person) => (
-          <Avatar key={person.id} person={person} small />
-        ))}
-        <span>
-          {plan.people.length} {plan.people.length === 1 ? "person" : "people"}
-        </span>
-      </div>
-      <button className="fx-text-button" onClick={onOpen}>
-        View plan
-        <ArrowRight size={16} />
-      </button>
     </div>
   );
 }
@@ -286,8 +225,8 @@ export function HomePage({
     };
   });
   const data = home.data,
-    soon = data?.soon?.[0],
-    selected = soon ?? library.data?.find((f) => f.kind === "movie");
+    savedPreview = homeSavedFilms(data?.soon, library.data),
+    selected = savedPreview[0]?.film;
   const shelf = (library.data ?? []).filter(
     (f) => f.id !== selected?.id || f.kind !== selected?.kind,
   );
@@ -305,7 +244,7 @@ export function HomePage({
           onClick={() => actions.open({ type: "picker" })}
         >
           <Clapperboard size={18} />
-          Pick for me
+          Pick for us tonight
         </button>
       </div>
       <div className="fx-home-columns">
@@ -314,44 +253,20 @@ export function HomePage({
             <Loading />
           ) : selected ? (
             <section>
-              <SectionHeading to="/app/watchlist" label="Your watchlist">
-                {soon ? "Watch soon" : "Saved for another night"}
-              </SectionHeading>
-              <div className="fx-soon">
-                <Link className="fx-poster-button" to={titlePath(selected.id)}>
-                  <Poster film={selected} />
-                </Link>
-                <div className="fx-soon-copy">
-                  {soon && (
-                    <span className="fx-label">
-                      <BookmarkCheck size={14} />
-                      You wanted to watch this
-                    </span>
-                  )}
-                  <h3>
-                    <Link to={titlePath(selected.id)}>{selected.title}</Link>
-                  </h3>
-                  <FilmMeta film={selected} />
-                  <div className="fx-button-row">
-                    <button
-                      className="fx-button fx-primary"
-                      onClick={() =>
-                        actions.open({ type: "options", film: selected })
-                      }
-                    >
-                      Watch options
-                    </button>
-                    <button
-                      className="fx-button"
-                      onClick={() =>
-                        actions.open({ type: "log", film: selected })
-                      }
-                    >
-                      <Check size={17} />
-                      Log watch
-                    </button>
+              <SectionHeading to="/app/watchlist" label="Your watchlist">Saved for another night</SectionHeading>
+              <div className="fx-saved-preview">
+                {savedPreview.map(({film: savedFilm, watchSoon}) => <article className="fx-soon" key={savedFilm.id}>
+                  <Link className="fx-poster-button" to={titlePath(savedFilm.id)}><Poster film={savedFilm} /></Link>
+                  <div className="fx-soon-copy">
+                    {watchSoon && <span className="fx-label"><BookmarkCheck size={14} />Watch soon</span>}
+                    <h3><Link to={titlePath(savedFilm.id)}>{savedFilm.title}</Link></h3>
+                    <FilmMeta film={savedFilm} />
+                    <div className="fx-button-row">
+                      <button className="fx-button fx-primary" onClick={() => actions.open({type:"options",film:savedFilm})}>Watch options</button>
+                      <button className="fx-button" onClick={() => actions.open({type:"log",film:savedFilm})}><Check size={17} />Log watch</button>
+                    </div>
                   </div>
-                </div>
+                </article>)}
               </div>
             </section>
           ) : library.error ? (
@@ -369,6 +284,7 @@ export function HomePage({
               <Shelf films={shown} actions={actions} />
             </section>
           )}
+          <div className="fx-home-evening">
           {data?.diary?.[0] && (
             <section>
               <SectionHeading to="/app/diary" label="Open diary">
@@ -379,18 +295,19 @@ export function HomePage({
           )}
           <section className="fx-picker">
             <div>
-              <h2>What fits your night?</h2>
+              <h2>Pick for us tonight</h2>
               <p>A film for your mood, your time and the people watching.</p>
               <button
                 className="fx-text-button"
                 onClick={() => actions.open({ type: "picker" })}
               >
-                Find tonight’s film
+                Choose tonight’s film
                 <ArrowRight size={17} />
               </button>
             </div>
             <img src="/web/pip-hoodie.png" alt="Pip, Flixie’s mascot" />
           </section>
+          </div>
         </div>
         <aside className="fx-rail">
           <section className="fx-rail-section">
@@ -441,7 +358,7 @@ export function HomePage({
                 onOpen={() =>
                   actions.open({
                     type: "plan",
-                    plan: plans[0] as unknown as Record<string, unknown>,
+                    plan: plans[0],
                   })
                 }
               />
@@ -531,7 +448,7 @@ export function DiaryPage({
       ) : result.error ? (
         <ErrorState message={result.error} retry={result.retry} />
       ) : result.data?.length ? (
-        result.data.map((entry) => <DiaryRow key={entry.id} entry={entry} />)
+        <DiaryViews entries={result.data} />
       ) : (
         <Empty title="Your first film night belongs here">
           Open a film and choose Log watch to start your diary.
@@ -543,9 +460,11 @@ export function DiaryPage({
 export function FriendsPage({
   user,
   revision,
+  onChanged,
 }: {
   user: Account;
   revision: number;
+  onChanged: () => void;
 }) {
   const { api } = useSession();
   const result = useLoad(`friends:${user.id}:${revision}`, () =>
@@ -559,6 +478,8 @@ export function FriendsPage({
           <p>See what your friends have been watching.</p>
         </div>
       </div>
+      <FriendManager key={user.id} revision={revision} onChanged={onChanged}/>
+      <h2>Friends’ recent activity</h2>
       {result.loading ? (
         <Loading label="Loading friends’ activity…" />
       ) : result.error ? (
@@ -578,13 +499,21 @@ export function PlansPage({
   owner,
   revision,
   actions,
+  planId,
 }: {
   owner: string;
   revision: number;
   actions: PageActions;
+  planId?: string;
 }) {
-  const { api } = useSession();
+  const { api, user } = useSession();
   const result = useLoad(`plans:${owner}:${revision}`, () => api.plans());
+  const linked = useLoad(`linked-plan:${owner}:${planId ?? ''}`, signal => planId ? api.watchPlan(user!.externalId, planId, signal) : Promise.resolve(null));
+  const opened = useRef('');
+  useEffect(() => {
+    if (!planId) { opened.current = ''; return; }
+    if (linked.data && opened.current !== planId) { opened.current = planId; actions.open({type:'plan',plan:linked.data}); }
+  }, [planId, linked.data, actions]);
   return (
     <>
       <div className="fx-welcome">
@@ -593,6 +522,8 @@ export function PlansPage({
           <p>Make room for your next film night.</p>
         </div>
       </div>
+      {planId && linked.loading && <Loading label="Opening your Watch Plan…" />}
+      {linked.error && <ErrorState message={linked.error} retry={linked.retry} />}
       {result.loading ? (
         <Loading label="Loading your plans…" />
       ) : result.error ? (
@@ -600,17 +531,16 @@ export function PlansPage({
       ) : result.data?.length ? (
         <div className="fx-plans-list">
           {result.data.map((plan) => (
-            <section key={plan.id}>
               <PlanCard
+                key={plan.id}
                 plan={plan}
                 onOpen={() =>
                   actions.open({
                     type: "plan",
-                    plan: plan as unknown as Record<string, unknown>,
+                    plan: plan,
                   })
                 }
               />
-            </section>
           ))}
         </div>
       ) : (
@@ -673,9 +603,9 @@ function ReviewCard({ review }: { review: PublicReview }) {
   return (
     <article className="fx-review">
       <div className="fx-review-head">
-        <Avatar person={review.person} />
+        <AvatarLink person={review.person} />
         <div>
-          <strong>{review.person.username}</strong>
+          <Link to={profilePath(review.person.id)} className="fx-profile-name-link"><strong>{review.person.username}</strong></Link>
           <small>
             Public review ·{" "}
             {review.containsSpoilers ? "contains spoilers" : "no spoilers"}
@@ -749,7 +679,7 @@ export function TitlePage({
     );
   const f = result.data,
     directors = credits.data?.directors ?? [],
-    cast = (credits.data?.cast ?? []).slice(0, 3).map((member) => member.name);
+    cast = (credits.data?.cast ?? []).slice(0, 3);
   return (
     <>
       <div className="fx-breadcrumb">
@@ -771,68 +701,47 @@ export function TitlePage({
               <div className="fx-director">
                 {directors.length > 0 && (
                   <>
-                    Directed by <strong>{directors.join(", ")}</strong>
+                    Directed by {directors.map((person, index) => <span key={person.id}>{index > 0 && ", "}<Link to={personPath(person.id)} className="fx-person-name">{person.name}</Link></span>)}
                     <br />
                   </>
                 )}
                 {cast.length > 0 && (
                   <>
-                    With <strong>{cast.join(", ")}</strong>
+                    With {cast.map((person, index) => <span key={person.id}>{index > 0 && ", "}<Link to={personPath(person.id)} className="fx-person-name">{person.name}</Link></span>)}
                   </>
                 )}
               </div>
             )}
-            <div className="fx-rating-block">
-              {f.score !== null && f.scoreSource ? (
-                <>
-                  <div className="fx-rating-number">
-                    {f.score.toFixed(1)}
-                    <small>/10</small>
-                  </div>
-                  <div>
-                    <strong>
-                      {f.scoreSource === "Flixie"
-                        ? "Flixie community"
-                        : "TMDB audience"}
-                    </strong>
-                    {f.scoreCount > 0 && (
-                      <p className="fx-small fx-muted">
-                        {f.scoreCount.toLocaleString("en-GB")} ratings
-                      </p>
-                    )}
-                  </div>
-                </>
-              ) : (
-                <p className="fx-muted">No rating yet.</p>
+            <CommunityRating film={f}/>
+            <ProviderOverview film={f} onOptions={() => actions.open({ type: "options", film: f })} onSignIn={() => actions.open({ type: "login" })} />
+            <div className={`fx-detail-actions ${user && kind === "movie" ? "fx-has-review" : ""}`}>
+              {user && kind === "movie" && (
+                <button
+                  className="fx-button fx-primary fx-title-primary"
+                  onClick={() => actions.open({ type: "log", film: f })}
+                >
+                  <Check size={18} />
+                  Rate &amp; review
+                </button>
               )}
-            </div>
-            <div className="fx-detail-actions">
               <button
-                className={`fx-button ${actions.saved(f) ? "fx-soft" : "fx-primary"}`}
+                aria-pressed={actions.saved(f)}
+                className={`fx-button fx-title-watchlist ${actions.saved(f) ? "fx-soft" : user ? "fx-title-secondary" : "fx-primary fx-title-primary"}`}
                 disabled={actions.busyIds.has(`${f.kind}:${f.id}`)}
                 onClick={() => void actions.save(f, !actions.saved(f))}
               >
-                <BookmarkCheck size={18} />
+                {actions.saved(f) ? <BookmarkCheck size={18} /> : <BookmarkPlus size={18} />}
                 {actions.saved(f) ? "In your watchlist" : "Save to watchlist"}
               </button>
               <button
-                className="fx-button"
+                className="fx-button fx-title-secondary"
                 onClick={() => actions.open({ type: "options", film: f })}
               >
                 <Monitor size={18} />
                 Watch options
               </button>
-              {user && kind === "movie" && (
-                <button
-                  className="fx-button"
-                  onClick={() => actions.open({ type: "log", film: f })}
-                >
-                  <Check size={18} />
-                  Log watch
-                </button>
-              )}
               <button
-                className="fx-icon-button"
+                className="fx-button fx-title-secondary fx-title-share"
                 aria-label={`Share ${f.title}`}
                 onClick={() => {
                   const url = "https://www.flixie.co.uk" + titlePath(id, kind);
@@ -852,10 +761,12 @@ export function TitlePage({
                 }}
               >
                 <Share2 size={18} />
+                Share
               </button>
+              <TitleFavourite key={`${user?.externalId ?? 'guest'}:${kind}:${id}`} film={f} actions={actions} revision={revision} />
             </div>
             {appLink && (
-              <a className="fx-text-button" href={appLink}>
+              <a className="fx-text-button fx-open-app" href={appLink}>
                 Open in the Flixie app
                 <ArrowRight size={15} />
               </a>
@@ -864,11 +775,13 @@ export function TitlePage({
         </div>
       </div>
       <nav className="fx-title-section-links" aria-label="On this title">
+        {kind === 'show' && <a href="#title-episodes">Episodes</a>}
         <a href="#title-friends">Friends</a>
         <a href="#title-cast">Cast</a>
         <a href="#title-photos">Photos</a>
         <a href="#title-reviews">Reviews</a>
       </nav>
+      {kind === 'show' && <ShowSeasons key={`${user?.externalId ?? 'guest'}:${id}`} id={id} revision={revision} onChange={actions.refresh} onSignIn={() => actions.open({type:'login'})} />}
       <FriendsSection
         key={`friends:${user?.id ?? "guest"}:${kind}:${id}`}
         film={f}
@@ -904,16 +817,18 @@ export function TitlePage({
               Keep your watchlist, diary and friends’ opinions together when you
               join Flixie.
             </p>
-            <button
-              className="fx-button fx-soft"
-              onClick={() => actions.open({ type: "login" })}
-            >
-              Find your film people
-              <ArrowRight size={16} />
-            </button>
-            <a className="fx-text-button" href="/download">
-              Get the iPhone or Android app
-            </a>
+            <div className="fx-guest-friends-actions">
+              <button
+                className="fx-button fx-primary"
+                onClick={() => actions.open({ type: "login" })}
+              >
+                Find your film people
+                <ArrowRight size={16} />
+              </button>
+              <a className="fx-button" href="/download">
+                Get the iPhone or Android app
+              </a>
+            </div>
           </aside>
         )}
       </div>

@@ -7,14 +7,23 @@ export type WebRoute =
         | "watchlist"
         | "diary"
         | "friends"
+        | "profile"
         | "plans"
+        | "notifications"
         | "sign-in"
         | "join"
         | "search";
       query?: string;
+      planId?: string;
     }
-  | { page: "title"; id: number; kind: MediaKind };
+  | { page: "title"; id: number; kind: MediaKind }
+  | { page: "person"; id: number }
+  | { page: "user-profile"; id: string };
 export function parseRoute(path: string, search = ""): WebRoute {
+  const profile=/^\/app\/profiles\/([A-Za-z0-9_-]{1,100})\/?$/.exec(path);
+  if(profile) return {page:'user-profile',id:profile[1]};
+  const person = /^\/people\/([1-9]\d*)\/?$/.exec(path);
+  if (person && Number(person[1]) <= 2147483647) return { page: "person", id: Number(person[1]) };
   const match = /^\/(movies|shows)\/([1-9]\d*)\/?$/.exec(path);
   if (match && Number(match[2]) <= 2147483647)
     return {
@@ -27,7 +36,9 @@ export function parseRoute(path: string, search = ""): WebRoute {
     "watchlist",
     "diary",
     "friends",
+    "profile",
     "plans",
+    "notifications",
     "sign-in",
     "join",
     "search",
@@ -36,6 +47,7 @@ export function parseRoute(path: string, search = ""): WebRoute {
     ? {
         page: part as (typeof known)[number],
         query: new URLSearchParams(search).get("q") ?? "",
+        ...(part === "plans" && /^[A-Za-z0-9_-]{1,100}$/.test(new URLSearchParams(search).get("plan") ?? "") ? { planId: new URLSearchParams(search).get("plan")! } : {}),
       }
     : { page: "home" };
 }
@@ -49,7 +61,7 @@ export function safeNext(raw: string | null): string {
     return "/app";
   try {
     const url = new URL(raw, "https://www.flixie.co.uk");
-    return /^\/(app(?:\/|$)|movies\/\d+$|shows\/\d+$)/.test(url.pathname)
+    return /^\/(app(?:\/|$)|movies\/[1-9]\d*$|shows\/[1-9]\d*$|people\/[1-9]\d*$)/.test(url.pathname)
       ? url.pathname + url.search
       : "/app";
   } catch {
@@ -76,3 +88,5 @@ export function useRoute() {
 }
 export const titlePath = (id: number, kind: MediaKind = "movie") =>
   `/${kind === "movie" ? "movies" : "shows"}/${id}`;
+export const personPath = (id: number) => `/people/${id}`;
+export const profilePath = (id: string) => `/app/profiles/${encodeURIComponent(id)}`;

@@ -1,4 +1,6 @@
 import { catalogTitle, catalogPath } from "./catalog";
+import { catalogPerson } from "./peopleCatalog";
+import { imageUrl } from "./web/models";
 import { featureContent, isFeaturePage } from "./featureContent";
 import { isIndexable, pages, site, type PageId } from "./site";
 
@@ -13,6 +15,7 @@ const escapeHtml = (value: string) =>
 export function renderHead(page: PageId) {
   const metadata = pages[page];
   const title = catalogTitle(page);
+  const person = catalogPerson(page)?.person;
   const url = site.origin + metadata.path;
   const image = site.origin + "/og/flixie-companion.png";
   const graph: Record<string, unknown>[] = [
@@ -84,6 +87,14 @@ export function renderHead(page: PageId) {
     graph.find((entity) => entity["@type"] === "WebPage")!.mainEntity = {
       "@id": url + "#title",
     };
+  }
+  if (person) {
+    graph.push({ "@type": "Person", "@id": url + "#person", name: person.name,
+      description: person.biography, ...(person.portrait ? { image: imageUrl(person.portrait) } : {}),
+      ...(person.birthDate ? { birthDate: person.birthDate } : {}), ...(person.deathDate ? { deathDate: person.deathDate } : {}),
+      ...(person.department ? { jobTitle: person.department } : {}),
+      ...(person.imdbId ? { sameAs: [`https://www.imdb.com/name/${person.imdbId}/`] } : {}) });
+    graph.find(entity => entity["@type"] === "WebPage")!.mainEntity = { "@id": url + "#person" };
   }
   if (page !== "home")
     graph.push({

@@ -7,6 +7,7 @@ import {
   text,
   type Person,
 } from "./models";
+import { preferredPersonPortrait } from "./personPortraits";
 
 export interface CastMember {
   id: number;
@@ -44,7 +45,7 @@ export function castMembers(value: unknown): CastMember[] {
       const row = object(value),
         id = number(row.id),
         name = text(row.name);
-      if (!id || !Number.isSafeInteger(id) || id < 1 || !name || seen.has(id))
+      if (!id || !Number.isSafeInteger(id) || id < 1 || id > 2147483647 || !name || seen.has(id))
         return [];
       seen.add(id);
       return [
@@ -52,7 +53,7 @@ export function castMembers(value: unknown): CastMember[] {
           id,
           name,
           character: text(row.character),
-          portrait: text(row.profileImage, text(row.profile_path)),
+          portrait: preferredPersonPortrait(id, text(row.profileImage, text(row.profile_path))),
           order: number(row.order) ?? index,
         },
       ];

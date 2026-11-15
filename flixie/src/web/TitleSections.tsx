@@ -10,7 +10,8 @@ import {
   Users,
 } from "lucide-react";
 import { useSession } from "./auth";
-import { Avatar, Empty, ErrorState, Sheet } from "./components";
+import { AvatarLink, Empty, ErrorState, Link, Sheet } from "./components";
+import { personPath, profilePath } from "./routing";
 import { useLoad } from "./hooks";
 import { imageUrl, type Film } from "./models";
 import type { CastMember, TitlePhoto } from "./titleDetails";
@@ -84,13 +85,15 @@ export function CastSection({
             aria-label="Cast portraits. Scroll to see more."
           >
             {members.slice(0, limit).map((member) => (
-              <figure className="fx-cast-member" key={member.id}>
+              <Link to={personPath(member.id)} key={member.id} aria-label={`View ${member.name}`}>
+              <figure className="fx-cast-member">
                 <Portrait member={member} />
                 <figcaption>
                   <strong>{member.name}</strong>
                   {member.character && <span>{member.character}</span>}
                 </figcaption>
               </figure>
+              </Link>
             ))}
           </div>
           {members.length > limit && (
@@ -186,9 +189,9 @@ export function FriendsSection({
           <ul className="fx-friend-opinions">
             {opinions.friends.map((opinion) => (
               <li key={opinion.person.id}>
-                <Avatar person={opinion.person} />
+                <AvatarLink person={opinion.person} />
                 <div>
-                  <strong>{opinion.person.username}</strong>
+                  <Link to={profilePath(opinion.person.id)} className="fx-profile-name-link"><strong>{opinion.person.username}</strong></Link>
                   <div className="fx-friend-signals">
                     {opinion.watched && (
                       <span>
@@ -239,15 +242,21 @@ function Photo({
   large?: boolean;
 }) {
   const [failed, setFailed] = useState(false);
-  useEffect(() => setFailed(false), [photo.id]);
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => { setFailed(false); setLoaded(false); }, [photo.id]);
   const source = imageUrl(photo.path, large ? "original" : "w780");
   return source && !failed ? (
-    <img
-      src={source}
-      alt={`${title} ${photo.kind === "poster" ? "poster artwork" : "still"}`}
-      loading={large ? "eager" : "lazy"}
-      onError={() => setFailed(true)}
-    />
+    <>
+      {large && !loaded && <p className="fx-photo-loading" role="status">Loading image…</p>}
+      <img
+        src={source}
+        alt={`${title} ${photo.kind === "poster" ? "poster artwork" : "still"}`}
+        loading={large ? "eager" : "lazy"}
+        decoding="async"
+        onLoad={() => setLoaded(true)}
+        onError={() => setFailed(true)}
+      />
+    </>
   ) : (
     <div
       className="fx-photo-fallback"
@@ -358,8 +367,9 @@ export function PhotosSection({ film }: { film: Film }) {
       )}
       {current && (
         <Sheet
-          wide
-          title={`${film.title} · ${active === "poster" ? "Poster" : "Still"} ${selected! + 1} of ${photos.length}`}
+          presentation="lightbox"
+          title={film.title}
+          description={`${active === "poster" ? "Poster" : "Still"} ${selected! + 1} of ${photos.length}`}
           onClose={() => setSelected(null)}
           onKeyDown={(event) => {
             if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
@@ -369,29 +379,29 @@ export function PhotosSection({ film }: { film: Film }) {
           }}
         >
           <div
-            className={`fx-photo-viewer ${active === "poster" ? "fx-photo-viewer-poster" : ""}`}
+            className="fx-photo-viewer"
           >
-            <Photo photo={current} title={film.title} large />
+            <Photo key={current.id} photo={current} title={film.title} large />
           </div>
           <div className="fx-photo-navigation">
             <button
-              className="fx-button"
+              className="fx-lightbox-button"
               onClick={() => move(-1)}
               disabled={photos.length < 2}
             >
-              <ArrowLeft size={17} />
+              <ArrowLeft size={18} aria-hidden="true" />
               Previous
             </button>
-            <p className="fx-small fx-muted">
+            <p aria-live="polite" aria-atomic="true">
               {selected! + 1} / {photos.length}
             </p>
             <button
-              className="fx-button"
+              className="fx-lightbox-button"
               onClick={() => move(1)}
               disabled={photos.length < 2}
             >
               Next
-              <ArrowRight size={17} />
+              <ArrowRight size={18} aria-hidden="true" />
             </button>
           </div>
         </Sheet>

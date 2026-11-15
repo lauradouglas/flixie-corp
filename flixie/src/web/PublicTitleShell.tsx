@@ -1,17 +1,16 @@
 import { createContext } from "react";
 import { catalogTitles, catalogPath, type CatalogTitle } from "../catalog";
 import { film } from "./models";
-import { FilmMeta, Poster } from "./components";
+import { FilmMeta, Poster, Wordmark } from "./components";
 import DownloadPrompt from "./DownloadPrompt";
+import Footer from "../components/Footer";
 export const InitialTitle = createContext<CatalogTitle | undefined>(undefined);
 export function PublicTitleShell({ title }: { title: CatalogTitle }) {
   const value = film(title, title.kind);
   return (
     <>
       <header className="fx-top">
-        <a className="fx-wordmark" href="/">
-          flix<span>ie</span>
-        </a>
+        <Wordmark to="/" />
         <a className="fx-text-button" href="/app">
           Use Flixie
         </a>
@@ -70,6 +69,7 @@ export function PublicTitleShell({ title }: { title: CatalogTitle }) {
           track titles; viewing takes place through your own services.
         </p>
       </main>
+      <Footer year={new Date().getFullYear()} compact />
     </>
   );
 }

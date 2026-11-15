@@ -1,0 +1,75 @@
+.flixie-web .fx-user-profile { max-width: 1100px; margin-inline: auto; min-width: 0; }
+.flixie-web .fx-profile-back { margin-bottom: 24px; }
+.flixie-web .fx-avatar.fx-avatar-large { width: 96px; height: 96px; flex-basis: 96px; padding: 4px; }
+.flixie-web .fx-avatar-large .fx-initials { font-size: var(--fx-type-score); }
+.flixie-web .fx-avatar.fx-avatar-large.fx-no-border { padding: 0; }
+.flixie-web .fx-profile-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px; }
+.flixie-web .fx-profile-identity { display: flex; align-items: center; gap: 24px; min-width: 0; }
+.flixie-web .fx-profile-identity > div { min-width: 0; }
+.flixie-web .fx-profile-identity h1, .flixie-web .fx-profile-identity p { overflow-wrap: anywhere; }
+.flixie-web .fx-profile-identity p { margin-top: 6px; }
+.flixie-web .fx-profile-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.flixie-web .fx-profile-relationship, .flixie-web .fx-profile-privacy { display: flex; align-items: start; gap: 8px; color: var(--fx-muted); }
+.flixie-web .fx-profile-relationship svg, .flixie-web .fx-profile-privacy svg { flex-shrink: 0; margin-top: 3px; }
+.flixie-web .fx-profile-privacy { font-size: var(--fx-type-label, .875rem); max-width: 65ch; margin-block: 16px; }
+.flixie-web .fx-profile-bio { font-size: var(--fx-type-body); line-height: 1.6; max-width: 65ch; white-space: pre-line; overflow-wrap: anywhere; margin-top: 20px; }
+.flixie-web .fx-profile-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.flixie-web .fx-profile-badges > :is(button,span) { background: var(--fx-lift); color: var(--fx-purple); border: 0; border-radius: 8px; padding: 8px 12px; font-size: var(--fx-type-label, .875rem); font-weight: 750; }
+.flixie-web .fx-profile-badges > button { min-height: 44px; }
+.flixie-web .fx-profile-totals { display: flex; flex-wrap: wrap; gap: 20px 40px; margin-block: 28px; }
+.flixie-web .fx-profile-totals > div { display: flex; flex-direction: column; }
+.flixie-web .fx-profile-totals dd { order: -1; font-size: var(--fx-type-score); font-weight: 800; margin: 0 0 4px; font-variant-numeric: tabular-nums; }
+.flixie-web .fx-profile-totals dt { color: var(--fx-muted); font-size: var(--fx-type-label, .875rem); }
+.flixie-web .fx-profile-tabs { display: flex; flex-wrap: wrap; gap: 8px 24px; border-bottom: 1px solid var(--fx-line); margin-top: 28px; }
+.flixie-web .fx-profile-tabs button { border: 0; border-bottom: 2px solid transparent; padding: 14px 4px; color: var(--fx-muted); background: transparent; font-size: var(--fx-type-control, 1rem); font-weight: 750; min-height: 48px; }
+.flixie-web .fx-profile-tabs button[aria-pressed=true] { color: var(--fx-purple); border-bottom-color: var(--fx-purple); }
+.flixie-web .fx-profile-tabs button:hover { color: var(--fx-purple); }
+.flixie-web .fx-profile-section { margin-top: 32px; }
+.flixie-web .fx-profile-section > h2 { margin-bottom: 18px; }
+.flixie-web .fx-profile-posters { display: grid; grid-template-columns: repeat(auto-fill,minmax(130px,1fr)); gap: 24px 18px; }
+.flixie-web .fx-profile-film { display: flex; flex-direction: column; gap: 8px; color: var(--fx-ink); min-width: 0; }
+.flixie-web .fx-profile-film .fx-poster { aspect-ratio: 2/3; width: 100%; object-fit: contain; }
+.flixie-web .fx-profile-film strong { font-size: var(--fx-type-control, 1rem); overflow-wrap: anywhere; }
+.flixie-web .fx-profile-film small, .flixie-web .fx-profile-people small { font-size: var(--fx-type-label, .875rem); color: var(--fx-muted); }
+.flixie-web .fx-profile-people { display: grid; grid-template-columns: repeat(auto-fill,minmax(120px,1fr)); gap: 24px 18px; }
+.flixie-web .fx-profile-people > a { display: flex; flex-direction: column; gap: 8px; min-width: 0; color: var(--fx-ink); overflow-wrap: anywhere; }
+.flixie-web .fx-profile-person-art { aspect-ratio: 2/3; display: grid; place-items: center; border-radius: 12px; overflow: hidden; background: var(--fx-lift); }
+.flixie-web .fx-profile-person-art img { width: 100%; height: 100%; object-fit: contain; }
+.flixie-web .fx-profile-library-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.flixie-web .fx-profile-post { display: grid; grid-template-columns: 68px minmax(0,1fr); align-items: start; gap: 18px; padding-block: 24px; }
+.flixie-web .fx-profile-post:not(:last-of-type) { border-bottom: 1px solid var(--fx-line); }
+.flixie-web .fx-profile-post-art .fx-poster { aspect-ratio: 2/3; width: 100%; object-fit: contain; }
+.flixie-web .fx-profile-post-title { display: flex; flex-wrap: wrap; align-items: start; gap: 8px 16px; }
+.flixie-web .fx-profile-post-title h2 { font-size: var(--fx-type-control, 1rem); flex: 1; min-width: 130px; overflow-wrap: anywhere; }
+.flixie-web .fx-profile-post-title a { color: var(--fx-ink); }
+.flixie-web .fx-profile-post-copy > p { margin-top: 6px; }
+.flixie-web .fx-profile-review-body, .flixie-web .fx-profile-spoiler { margin-top: 16px; max-width: 65ch; }
+.flixie-web .fx-profile-review-body p, .flixie-web .fx-profile-spoiler p { white-space: pre-line; overflow-wrap: anywhere; font-size: var(--fx-type-body); line-height: 1.6; margin-top: 8px; }
+.flixie-web .fx-profile-spoiler summary { min-height: 44px; padding-block: 12px; color: var(--fx-purple); cursor: pointer; font-size: var(--fx-type-control, 1rem); }
+.flixie-web .fx-profile-editor { display: grid; gap: 16px; }
+.flixie-web .fx-profile-editor label, .flixie-web .fx-profile-friend-search { display: flex; flex-direction: column; gap: 8px; font-size: var(--fx-type-control, 1rem); font-weight: 750; }
+.flixie-web .fx-profile-editor :is(input,textarea), .flixie-web .fx-profile-friend-search input { width: 100%; padding: 12px; min-height: 48px; background: var(--fx-lift); color: var(--fx-ink); border: 1px solid var(--fx-line); border-radius: 9px; font-size: var(--fx-type-control, 1rem); }
+.flixie-web .fx-profile-editor textarea { resize: vertical; }
+.flixie-web .fx-avatar-options { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,6rem),1fr)); gap: 12px; margin-top: 24px; }
+.flixie-web .fx-avatar-options button { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 12px 8px; border: 1px solid var(--fx-line); border-radius: 12px; background: var(--fx-lift); color: var(--fx-ink); font-size: var(--fx-type-label, .875rem); font-weight: 750; overflow-wrap: anywhere; }
+.flixie-web .fx-avatar-options button[aria-pressed=true] { border-color: var(--fx-purple); background: var(--fx-surface); color: var(--fx-purple); }
+.flixie-web .fx-avatar-options .fx-avatar-large { width: 72px; height: 72px; flex-basis: 72px; }
+.flixie-web .fx-profile-editor-actions { position: sticky; bottom: -24px; padding-block: 16px; margin-top: 24px; background: var(--fx-surface); }
+.flixie-web .fx-friend-directory { margin-block: 28px 40px; }
+.flixie-web .fx-profile-friend-search { max-width: 440px; margin-top: 20px; }
+.flixie-web .fx-friend-directory ul { list-style: none; padding: 0; margin-top: 16px; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+.flixie-web .fx-friend-directory li > a { display: flex; gap: 14px; align-items: center; padding: 16px; min-height: 72px; border-radius: 12px; background: var(--fx-surface); color: var(--fx-ink); }
+.flixie-web .fx-friend-directory strong { flex: 1; min-width: 0; overflow-wrap: anywhere; font-size: var(--fx-type-control, 1rem); }
+.flixie-web .fx-profile-link { display: inline-flex; align-items: center; border-radius: 8px; min-width: 44px; min-height: 44px; justify-content: center; color: inherit; }
+.flixie-web .fx-profile-name-link { color: inherit; text-underline-offset: 3px; }
+.flixie-web .fx-profile-name-link:hover, .flixie-web .fx-profile-film:hover strong, .flixie-web .fx-profile-post-title a:hover { color: var(--fx-purple); text-decoration: underline; }
+@container (max-width: 680px) {
+  .flixie-web .fx-profile-identity { gap: 16px; }
+  .flixie-web .fx-profile-actions { width: 100%; }
+  .flixie-web .fx-profile-actions > .fx-button { flex: 1; }
+  .flixie-web .fx-profile-totals { gap: 20px 28px; }
+  .flixie-web .fx-profile-posters { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px 14px; }
+  .flixie-web .fx-profile-people { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .flixie-web .fx-friend-directory ul { grid-template-columns: minmax(0,1fr); }
+  .flixie-web .fx-profile-post { grid-template-columns: 52px minmax(0,1fr); gap: 12px; }
+}

@@ -153,7 +153,7 @@ export default function PrivacyView() {
             </p>
           </section>
 
-          <section className="space-y-3">
+          <section id="account-deletion" className="space-y-3 scroll-mt-28">
             <h2 className="font-display font-bold text-base sm:text-lg text-white">9. Data Retention and Account Deletion</h2>
             <p>
               Flixie retains your account and associated information while your account is active or as needed to provide the service. You can permanently delete your account in the app from Profile → Settings → Delete Account.

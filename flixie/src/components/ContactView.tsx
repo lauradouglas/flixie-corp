@@ -62,7 +62,7 @@ export default function ContactView() {
           <p className="text-xs text-text-muted">This opens your preferred email app so you can send your message directly.</p>
         </div>
 
-        <div className="mt-6 bg-bg-card border border-status-error/30 p-6 sm:p-8 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center gap-5">
+        <div id="account-deletion" className="scroll-mt-28 mt-6 bg-bg-card border border-status-error/30 p-6 sm:p-8 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center gap-5">
           <div className="p-3 bg-status-error/10 text-status-error rounded-xl shrink-0">
             <Trash2 className="h-5 w-5" />
           </div>
@@ -71,6 +71,7 @@ export default function ContactView() {
             <p className="text-text-secondary text-sm leading-relaxed">
               First use Profile → Settings → Delete Account in the app. If you cannot access the app, email us from your registered address with your Flixie username. Never include your password.
             </p>
+            <p className="text-text-secondary text-sm leading-relaxed"><a href="/privacy#account-deletion" className="text-flixie-light underline">Read what account deletion removes and what may be retained.</a></p>
           </div>
           <a
             href={deletionRequestLink}

@@ -1,4 +1,5 @@
 import { catalogPages } from "./catalog";
+import { personPages } from "./peopleCatalog";
 import { featureContent } from "./featureContent";
 export const site = {
   origin: "https://www.flixie.co.uk",
@@ -13,6 +14,12 @@ export const site = {
 };
 
 const basePages = {
+  personShare: {
+    path: "/person-share",
+    title: "People: Biography & Film Credits | Flixie",
+    description: "Explore a person's biography, photos and film and TV credits on Flixie.",
+    label: "Person", noindex: true,
+  },
   catalog: {
     path: "/films",
     title: "Explore Films & TV Shows | Flixie",
@@ -117,6 +124,12 @@ const basePages = {
       "Read how Flixie handles account information, optional analytics, social sharing and your choices about privacy and account deletion.",
     label: "Privacy Policy",
   },
+  terms: {
+    path: "/terms",
+    title: "Terms of Use | Flixie",
+    description: "Read the Flixie Terms of Use, community rules, reporting, blocking and account responsibilities.",
+    label: "Terms of Use",
+  },
   contact: {
     path: "/contact",
     title: "Contact Flixie: App Support & Account Help",
@@ -156,8 +169,8 @@ const basePages = {
   },
 } as const;
 
-export const pages = { ...basePages, ...catalogPages } as typeof basePages &
-  typeof catalogPages;
+export const pages = { ...basePages, ...catalogPages, ...personPages } as typeof basePages &
+  typeof catalogPages & typeof personPages;
 export type PageId = keyof typeof pages;
 export const isIndexable = (page: PageId) => !("noindex" in pages[page]);
 export function pageFromPath(pathname: string): PageId {
@@ -168,6 +181,9 @@ export function pageFromPath(pathname: string): PageId {
     Object.keys(catalogPages) as (keyof typeof catalogPages)[]
   ).find((key) => catalogPages[key].path === normalized);
   if (known) return known;
+  const person = (Object.keys(personPages) as (keyof typeof personPages)[]).find(key => personPages[key].path === normalized);
+  if (person) return person;
+  if (/^\/people\/[1-9][0-9]*$/.test(normalized)) return "personShare";
   if (/^\/(movies|shows)\/[1-9][0-9]*$/.test(normalized)) return "mediaShare";
   return (
     (Object.keys(pages) as PageId[]).find(

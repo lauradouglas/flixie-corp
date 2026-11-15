@@ -6,7 +6,7 @@ const year = new Date().getFullYear();
 const config = JSON.parse(await readFile('public/staticwebapp.config.json', 'utf8'));
 // Keep the public extensionless Apple URL, serving JSON through its typed target.
 await writeFile('dist/.well-known/apple-app-site-association.json', await readFile('public/.well-known/apple-app-site-association'));
-const fallbackRoutes=(config.routes||[]).filter(rule=>['/movies/*','/shows/*'].includes(rule.route));
+const fallbackRoutes=(config.routes||[]).filter(rule=>['/movies/*','/shows/*','/people/*'].includes(rule.route));
 const routes = [...(config.routes || []).filter(rule=>!fallbackRoutes.includes(rule)), { route: '/index.html', redirect: '/', statusCode: 301 }];
 for (const [key, page] of Object.entries(pages)) {
   const file = key === 'home' ? 'index.html' : `${page.path.slice(1)}.html`;

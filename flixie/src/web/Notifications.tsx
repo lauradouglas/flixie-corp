@@ -1,0 +1,31 @@
+import { useEffect, useRef, useState } from 'react';
+import { Bell, Check, CheckCheck } from 'lucide-react';
+import { useSession } from './auth';
+import { Avatar, Empty, ErrorState, Link, Loading } from './components';
+import { errorMessage, useLoad } from './hooks';
+import { navigate } from './routing';
+import type { InboxItem } from './social';
+import './social.css';
+export function NotificationBell({revision,current}:{revision:number;current:boolean}){
+  const {api,user}=useSession(),[tick,setTick]=useState(0),owner=user!;
+  const result=useLoad(`bell:${owner.id}:${revision}:${tick}`,signal=>api.inbox(owner.externalId,owner.id,null,signal));
+  useEffect(()=>{const refresh=()=>{if(document.visibilityState==='visible')setTick(n=>n+1);};const timer=setInterval(refresh,60000);window.addEventListener('focus',refresh);document.addEventListener('visibilitychange',refresh);return()=>{clearInterval(timer);window.removeEventListener('focus',refresh);document.removeEventListener('visibilitychange',refresh);};},[owner.id]);
+  const unread=result.data?.unreadCount;
+  return <Link to="/app/notifications" className="fx-icon-button fx-notification-bell" aria-current={current?'page':undefined} aria-label={unread?`Notifications, ${unread} unread`:result.error?'Notifications, inbox unavailable':'Notifications'}><Bell size={21} aria-hidden="true"/>{!!unread&&<span aria-hidden="true">{unread>99?'99+':unread}</span>}</Link>;
+}
+export default function NotificationsPage({revision,onChanged}:{revision:number;onChanged:()=>void}){
+  const {api,user}=useSession(),owner=useRef({uid:user!.externalId,id:user!.id}),active=useRef(true),lock=useRef(false);
+  const first=useLoad(`inbox:${owner.current.id}:${revision}`,signal=>api.inbox(owner.current.uid,owner.current.id,null,signal));
+  const [extra,setExtra]=useState<InboxItem[]>([]),[cursor,setCursor]=useState<string|null|undefined>(),[filter,setFilter]=useState<'all'|'unread'>('all'),[busy,setBusy]=useState(''),[error,setError]=useState('');
+  useEffect(()=>{active.current=true;return()=>{active.current=false;};},[]);
+  useEffect(()=>{setExtra([]);setCursor(undefined);},[revision]);
+  const items=[...new Map([...(first.data?.items??[]),...extra].map(item=>[item.id,item])).values()],next=cursor===undefined?first.data?.nextCursor:cursor;
+  function refresh(){setExtra([]);setCursor(undefined);first.retry();onChanged();setError('');}
+  async function action(key:string,run:()=>Promise<unknown>){if(lock.current)return;lock.current=true;setBusy(key);setError('');try{await run();if(active.current)refresh();}catch(error){if(active.current)setError(errorMessage(error));}finally{lock.current=false;if(active.current)setBusy('');}}
+  async function more(){if(!next||lock.current)return;const pageCursor=next;lock.current=true;setBusy('more');setError('');try{const page=await api.inbox(owner.current.uid,owner.current.id,pageCursor);if(!active.current)return;if(page.nextCursor===pageCursor)throw Error('More notifications could not be loaded. Try again.');setExtra(previous=>[...previous,...page.items]);setCursor(page.nextCursor);}catch(error){if(active.current)setError(errorMessage(error));}finally{lock.current=false;if(active.current)setBusy('');}}
+  const visible=filter==='unread'?items.filter(item=>!item.read):items;
+  return <><div className="fx-welcome"><div><h1>Notifications</h1><p>Invitations, requests and updates from your film people.</p></div><button className="fx-button" disabled={!!busy||!first.data?.unreadCount} onClick={()=>void action('all',()=>api.readAllNotifications(owner.current.uid))}><CheckCheck size={18} aria-hidden="true"/>Mark all read</button></div><div className="fx-inbox-tools"><div className="fx-social-tabs" role="group" aria-label="Notification filter"><button type="button" className="fx-button" aria-pressed={filter==='all'} onClick={()=>setFilter('all')}>All activity</button><button type="button" className="fx-button" aria-pressed={filter==='unread'} onClick={()=>setFilter('unread')}>Unread{first.data?` · ${first.data.unreadCount}`:''}</button></div><button type="button" className="fx-text-button" disabled={!!busy} onClick={refresh}>Refresh inbox</button></div>
+    {error&&<ErrorState message={error}/>}{first.loading?<Loading label="Loading notifications…"/>:first.error?<ErrorState message={first.error} retry={first.retry}/>:visible.length?<ul className="fx-inbox-list">{visible.map(item=><li key={item.id} data-unread={!item.read}>{item.sender?<Avatar person={item.sender}/>:<img src="/web/flixie-f.png" alt="" width={34} height={34}/>}<div className="fx-inbox-copy"><h2>{item.title}{!item.read&&<span className="fx-inbox-unread">Unread</span>}</h2>{item.sender&&<p className="fx-small fx-muted">@{item.sender.username}</p>}<p>{item.message}</p>{item.createdAt&&Number.isFinite(new Date(item.createdAt).getTime())&&<time className="fx-small fx-muted" dateTime={item.createdAt}>{new Date(item.createdAt).toLocaleString('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})}</time>}<div className="fx-social-actions">{item.destination.native?<a className="fx-button" href={item.destination.href}>{item.destination.label}</a>:<button className="fx-button fx-primary" type="button" disabled={!!busy} onClick={()=>void action(item.id,async()=>{await api.setNotificationRead(owner.current.uid,item.id,true);if(active.current)navigate(item.destination.href);})}>{item.destination.label}</button>}<button className="fx-text-button" type="button" disabled={!!busy} onClick={()=>void action(item.id,()=>api.setNotificationRead(owner.current.uid,item.id,!item.read))}><Check size={16} aria-hidden="true"/>{item.read?'Mark unread':'Mark read'}</button></div></div></li>)}</ul>:<Empty title={filter==='unread'?(first.data?.unreadCount?'No unread updates on this page':'You’re all caught up'):'No notifications yet'}>{filter==='unread'?(first.data?.unreadCount?'Load more notifications to see earlier unread activity.':'Your unread updates will appear here.'):'Friend requests, Watch Plan invitations and activity will appear here.'}</Empty>}
+    {next&&<button className="fx-button" type="button" disabled={!!busy} onClick={()=>void more()}>{busy==='more'?'Loading…':'Load more notifications'}</button>}
+  </>;
+}

@@ -1,3 +1,5 @@
+import firebasePublicConfig from "./firebasePublicConfig.json";
+
 export interface WebConfig {
   apiUrl: string;
   local: boolean;
@@ -6,6 +8,7 @@ export interface WebConfig {
     appId: string;
     projectId: string;
     authDomain: string;
+    storageBucket: string;
   };
 }
 export function makeConfig(
@@ -36,12 +39,14 @@ export function makeConfig(
           appId: "1:123456789:web:flixie-local",
           projectId: "demo-flixie-local",
           authDomain: "demo-flixie-local.firebaseapp.com",
+          storageBucket: "demo-flixie-local.appspot.com",
         }
       : {
-          apiKey: String(env.VITE_FIREBASE_API_KEY || ""),
-          appId: String(env.VITE_FIREBASE_APP_ID || ""),
-          projectId: String(env.VITE_FIREBASE_PROJECT_ID || ""),
-          authDomain: String(env.VITE_FIREBASE_AUTH_DOMAIN || ""),
+          apiKey: String(env.VITE_FIREBASE_API_KEY || firebasePublicConfig.apiKey),
+          appId: String(env.VITE_FIREBASE_APP_ID || firebasePublicConfig.appId),
+          projectId: String(env.VITE_FIREBASE_PROJECT_ID || firebasePublicConfig.projectId),
+          authDomain: String(env.VITE_FIREBASE_AUTH_DOMAIN || firebasePublicConfig.authDomain),
+          storageBucket: String(env.VITE_FIREBASE_STORAGE_BUCKET || firebasePublicConfig.storageBucket),
         },
   };
 }

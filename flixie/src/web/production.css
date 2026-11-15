@@ -24,13 +24,13 @@
   background: #3b2e13;
   color: #ffe3a2;
   text-align: center;
-  font-size: 12px;
+  font-size: var(--fx-type-label, .875rem);
   font-weight: 700;
 }
 .flixie-web .fx-app-layout {
   min-height: calc(100dvh - 140px);
-  max-width: 1600px;
-  margin: auto;
+  max-width: 1920px;
+  margin: 0 auto;
 }
 .flixie-web .fx-main {
   min-height: 65dvh;
@@ -40,16 +40,18 @@
   margin: auto;
 }
 .flixie-web .fx-skip {
-  position: absolute;
+  position: fixed;
   left: 16px;
-  top: -60px;
+  top: 16px;
+  max-width: calc(100% - 32px);
+  transform: translateY(calc(-100% - 32px));
   z-index: 50;
   padding: 12px;
   background: var(--fx-surface);
   color: var(--fx-ink);
 }
 .flixie-web .fx-skip:focus {
-  top: 16px;
+  transform: translateY(0);
 }
 .flixie-web .fx-search button {
   border: 0;
@@ -68,8 +70,8 @@
   color: var(--fx-purple);
 }
 .flixie-web .fx-footer {
-  max-width: 1600px;
-  margin: auto;
+  max-width: 1920px;
+  margin: 0 auto;
 }
 .flixie-web .fx-footer > div {
   display: flex;
@@ -90,7 +92,7 @@
   position: relative;
 }
 .flixie-web .fx-film-meta small {
-  font-size: 11px;
+  font-size: var(--fx-type-label, .875rem);
   color: var(--fx-muted);
 }
 .flixie-web .fx-avatar {
@@ -122,12 +124,17 @@
 .flixie-web .fx-initials {
   width: 100%;
   height: 100%;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  line-height: 1;
   border-radius: 50%;
   background: var(--fx-lift);
   color: var(--fx-ink);
-  font-size: 14px;
+  font-size: var(--fx-type-control, 1rem);
   font-weight: 750;
 }
 .flixie-web .fx-missing-poster {
@@ -139,7 +146,7 @@
   color: #b7c2d0;
   text-align: center;
   padding: 15px;
-  font-size: 12px;
+  font-size: var(--fx-type-label, .875rem);
   overflow-wrap: anywhere;
 }
 .flixie-web .fx-missing-poster svg {
@@ -150,11 +157,11 @@
   overflow-wrap: anywhere;
 }
 .flixie-web .fx-soon-copy > .fx-muted {
-  font-size: 12px;
+  font-size: var(--fx-type-label, .875rem);
   margin: 6px 0;
 }
 .flixie-web .fx-rail-copy {
-  font-size: 14px;
+  font-size: var(--fx-type-control, 1rem);
   line-height: 1.65;
   margin-top: 13px;
 }
@@ -178,10 +185,10 @@
 }
 .flixie-web .fx-date > span {
   display: block;
-  font-size: 11px;
+  font-size: var(--fx-type-label, .875rem);
 }
 .flixie-web .fx-diary-strip small {
-  font-size: 12px;
+  font-size: var(--fx-type-label, .875rem);
   font-weight: 500;
 }
 .flixie-web .fx-activity a {
@@ -198,16 +205,6 @@
 }
 .flixie-web .fx-review > p:last-child {
   margin-top: 12px;
-}
-.flixie-web .fx-plans-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-  gap: 20px;
-}
-.flixie-web .fx-plans-list > section {
-  background: var(--fx-surface);
-  padding: 20px;
-  border-radius: 12px;
 }
 .flixie-web .fx-sheet {
   position: fixed;
@@ -226,6 +223,13 @@
 }
 .flixie-web .fx-sheet::backdrop {
   background: #090914b8;
+}
+@media (min-width:641px) {
+  .flixie-web .fx-sheet {
+    inset: 0;
+    margin: auto;
+    max-height: calc(100dvh - 48px);
+  }
 }
 .flixie-web .fx-sheet p {
   margin: 10px 0 18px;
@@ -249,7 +253,7 @@
   display: block;
   font-weight: 650;
   margin-top: 17px;
-  font-size: 13px;
+  font-size: var(--fx-type-label, .875rem);
 }
 .flixie-web .fx-sheet .fx-check,
 .flixie-web .fx-auth .fx-check {
@@ -257,7 +261,7 @@
   align-items: flex-start;
   gap: 10px;
   font-weight: 500;
-  font-size: 14px;
+  font-size: var(--fx-type-control, 1rem);
   line-height: 1.6;
 }
 .flixie-web .fx-check input {
@@ -302,7 +306,7 @@
   margin: 12px auto;
 }
 .flixie-web .fx-sheet .fx-auth h1 {
-  font-size: 23px;
+  font-size: 1.4375rem;
 }
 .flixie-web .fx-provider-group {
   margin-top: 20px;
@@ -318,7 +322,7 @@
   align-items: center;
   gap: 6px;
   color: var(--fx-purple);
-  font-size: 12px;
+  font-size: var(--fx-type-label, .875rem);
   margin-top: 3px;
 }
 .flixie-web .fx-log-film {
@@ -329,7 +333,7 @@
   margin: 16px 0;
 }
 .flixie-web .fx-log-film p {
-  font-size: 12px;
+  font-size: var(--fx-type-label, .875rem);
   margin: 5px 0;
 }
 .flixie-web .fx-error {
@@ -350,7 +354,7 @@
   text-align: left;
 }
 .flixie-web .fx-empty p {
-  font-size: 14px;
+  font-size: var(--fx-type-control, 1rem);
   margin-top: 8px;
   max-width: 55ch;
 }
@@ -378,7 +382,7 @@
 .flixie-web .fx-loading p {
   grid-column: 1/-1;
   color: var(--fx-muted);
-  font-size: 14px;
+  font-size: var(--fx-type-control, 1rem);
 }
 .flixie-web .fx-toast {
   position: fixed;
@@ -390,7 +394,7 @@
   color: #b9a0ff;
 }
 .flixie-web .fx-rating-block strong {
-  font-size: 12px;
+  font-size: var(--fx-type-label, .875rem);
 }
 .flixie-web .fx-detail-actions {
   margin-bottom: 12px;
@@ -399,7 +403,7 @@
   max-width: 100%;
 }
 .flixie-web .fx-guest-tagline {
-  font-size: 13px;
+  font-size: var(--fx-type-label, .875rem);
   color: #b7c2d0;
 }
 .flixie-web :is(a, input, select, textarea):focus-visible {
@@ -414,7 +418,7 @@
     display: none;
   }
   .flixie-web .fx-top-actions .fx-button {
-    font-size: 12px;
+    font-size: var(--fx-type-control, 1rem);
     padding: 9px 12px;
   }
   .flixie-web .fx-sheet {
@@ -425,7 +429,7 @@
   }
   .flixie-web .fx-auth input:not([type="checkbox"]),
   .flixie-web .fx-sheet :is(input, select, textarea) {
-    font-size: 16px;
+    font-size: var(--fx-type-control, 1rem);
   }
   .flixie-web .fx-nav-button {
     min-height: 44px;
@@ -555,8 +559,64 @@
     flex-direction: column;
   }
   .flixie-web .fx-download-prompt h2 {
-    font-size: 17px;
+    font-size: var(--fx-type-control, 1rem);
   }
 }
 
 .flixie-web .fx-guest-friends{align-self:start}
+
+/* Title actions keep one clear primary and a calm, consistent secondary row. */
+.flixie-web .fx-detail-actions > .fx-button {
+  min-height: 48px;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-size: var(--fx-type-control, 1rem);
+  font-weight: 700;
+  line-height: 1.4;
+}
+.flixie-web .fx-detail-actions > .fx-button svg { flex: none; }
+.flixie-web .fx-detail-actions > .fx-title-secondary {
+  background: var(--fx-surface);
+  border-color: var(--fx-line);
+  color: var(--fx-ink);
+}
+.flixie-web .fx-detail-actions > .fx-title-secondary:hover {
+  background: var(--fx-lift);
+}
+.flixie-web .fx-detail-actions > .fx-title-primary {
+  background: var(--fx-brand);
+  border-color: transparent;
+  color: #fff;
+}
+@container (max-width:680px) {
+  .flixie-web .fx-detail-actions {
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    align-items: stretch;
+    gap: 10px;
+  }
+  .flixie-web .fx-detail-actions > .fx-button {
+    min-width: 0;
+    padding: 11px 12px;
+  }
+  .flixie-web .fx-detail-actions:not(.fx-has-review) > .fx-button:first-child {
+    grid-column: auto;
+  }
+  .flixie-web .fx-detail-actions.fx-has-review > .fx-title-favourite {
+    grid-column: 1 / -1;
+  }
+  .flixie-web .fx-open-app {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 18px;
+    border: 1px solid var(--fx-line);
+    border-radius: 12px;
+    background: var(--fx-surface);
+    color: var(--fx-purple);
+    font-size: var(--fx-type-control, 1rem);
+    font-weight: 700;
+    text-align: center;
+  }
+}

@@ -13,6 +13,27 @@ try {
   assert.match(downloadHtml, /https:\/\/apps.apple.com\/app\/id6779375028/);
   assert.match(downloadHtml, /https:\/\/play.google.com\/store\/apps\/details/);
 
+  // Store-review resources must work for an anonymous visitor, independently
+  // of the personalised app entrance or its authentication redirects.
+  for (const [path, heading] of [['/privacy','Privacy Policy'],['/contact','Contact &amp; Support'],['/terms','Flixie Terms of Use']]) {
+    const response = await fetch(base + path, {redirect:'manual'});
+    assert.equal(response.status,200,`${path} must remain public`);
+    assert.equal(response.headers.get('location'),null);
+    const html = await response.text();
+    assert.ok(html.includes(heading),`${path} must contain its actual document`);
+    assert.doesNotMatch(html, /<input[^>]+type="password"/, `${path} must not be an authentication gate`);
+  }
+  const privacyHtml = await (await fetch(base + '/privacy')).text();
+  const contactHtml = await (await fetch(base + '/contact')).text();
+  for (const html of [privacyHtml,contactHtml]) assert.match(html,/id="account-deletion"/,'deletion link needs a real destination');
+  assert.match(contactHtml,/mailto:flixieadmin@gmail\.com\?subject=Flixie%20account%20deletion%20request/,'request pathway must be available without the app');
+  assert.match(contactHtml,/href="\/privacy#account-deletion"/);
+  const termsHtml = await (await fetch(base + '/terms')).text();
+  assert.match(termsHtml.replace(/<!--[^]*?-->/g,''),/Effective 16 September 2026/);
+  for (const heading of ['Using Flixie','Zero tolerance for objectionable content and abuse','Your content','Reporting and blocking','Moderation and enforcement','Privacy and your rights']) assert.ok(termsHtml.includes(heading));
+  const legacyTerms = await fetch(base + '/web/terms.html',{redirect:'manual'});
+  assert.equal(legacyTerms.status,301);assert.equal(legacyTerms.headers.get('location'),'/terms');
+
   for (const query of ['', '?utm_source=instagram']) {
     const response = await fetch(base + '/android' + query, { redirect: 'manual' });
     assert.equal(response.status, 302, 'Android download uses a temporary redirect');
@@ -88,6 +109,22 @@ try {
     assert.doesNotMatch(body, /Opening the App Store|Stay on this page/);
     assert.match(body, /apps.apple.com/);
     assert.match(body, /play.google.com/);
+  }
+  for (const [path, indexed] of [['/people/525', true], ['/people/999999', false]]) {
+    const response = await fetch(base + path);
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get('x-robots-tag'), indexed ? null : 'noindex');
+    const html = await response.text();
+    if (indexed) { assert.match(html, /<h1>Christopher Nolan<\/h1>/); assert.match(html, /"@type":"Person"/); assert.match(html, /Filmography/); }
+    assert.doesNotMatch(html, /dev_web_|Bearer |PRIVATE WEB FIXTURE/);
+  }
+  for (const path of ['/app/profile', '/app/profiles/7ea11114-2026-4000-a000-000000000002']) {
+    const response = await fetch(base + path);
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get('x-robots-tag'), 'noindex');
+    const html = await response.text();
+    assert.match(html, /content="noindex"/);
+    assert.doesNotMatch(html, /dev_web_|Fictional local profile|PRIVATE LOCAL|Bearer /);
   }
   const invite = await fetch(base + '/invite?code=TEST_ONLY');
   assert.equal(invite.status, 200);

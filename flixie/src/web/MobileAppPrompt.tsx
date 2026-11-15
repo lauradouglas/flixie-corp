@@ -4,11 +4,12 @@ import {mobilePromptDevice} from "./appPrompt";
 import "./mobile-app-prompt.css";
 import { site } from "../site";
 export default function MobileAppPrompt() {
-  const dismissed = useRef(false);
+  const dismissed = useRef(false), prompt = useRef<HTMLElement>(null);
   const [device, setDevice] = useState<"ios" | "android" | null>(null),
     [visible, setVisible] = useState(false);
   useEffect(() => {
-    const selected = mobilePromptDevice(
+    const preview = import.meta.env.DEV && window.innerWidth <= 820 ? document.documentElement.dataset.flixieQaAppPrompt : undefined;
+    const selected = preview === "ios" || preview === "android" ? preview : mobilePromptDevice(
       navigator.userAgent,
       navigator.platform,
       navigator.maxTouchPoints,
@@ -26,6 +27,13 @@ export default function MobileAppPrompt() {
     show();
     return () => window.removeEventListener("scroll", show);
   }, []);
+  useEffect(() => {
+    const element = prompt.current, root = element?.closest<HTMLElement>('.flixie-web');
+    if (!element || !root) return;
+    const update = () => { const height = Math.ceil(element.getBoundingClientRect().height); root.style.setProperty('--fx-app-prompt-clearance', `${height ? height + 24 : 12}px`); };
+    update(); const observer = new ResizeObserver(update); observer.observe(element);
+    return () => { observer.disconnect(); root.style.removeProperty('--fx-app-prompt-clearance'); };
+  }, [visible, device]);
   function dismiss() {
     dismissed.current = true;
     setVisible(false);
@@ -35,7 +43,7 @@ export default function MobileAppPrompt() {
   }
   if (!visible || !device) return null;
   return (
-    <aside className="fx-mobile-app-prompt" aria-label="Get the Flixie app">
+    <aside ref={prompt} className="fx-mobile-app-prompt" aria-label="Get the Flixie app">
       <img src="/web/flixie-f.png" alt="" width="38" height="38" />
       <div>
         <strong>Flixie on your phone</strong>

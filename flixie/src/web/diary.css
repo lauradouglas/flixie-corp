@@ -1,0 +1,330 @@
+.flixie-web .fx-diary {
+  container-type: inline-size;
+}
+.flixie-web .fx-diary-tools {
+  display: flex;
+  align-items: center;
+  gap: 14px 22px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.flixie-web .fx-diary-view {
+  display: flex;
+  padding: 4px;
+  gap: 4px;
+  border: 1px solid var(--fx-line);
+  border-radius: 12px;
+  background: var(--fx-surface);
+}
+.flixie-web .fx-diary-view button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 9px 16px;
+  border: 0;
+  border-radius: 8px;
+  color: var(--fx-muted);
+  background: transparent;
+  font-size: var(--fx-type-control);
+  font-weight: 750;
+}
+.flixie-web .fx-diary-view [aria-pressed="true"] {
+  color: var(--fx-purple);
+  background: var(--fx-lift);
+}
+.flixie-web .fx-diary-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--fx-line);
+  border-radius: 10px;
+  padding: 0 12px;
+  max-width: 330px;
+  flex: 1 1 220px;
+  color: var(--fx-muted);
+}
+.flixie-web .fx-diary-search input {
+  min-width: 0;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--fx-ink);
+  padding: 12px 0;
+  min-height: 48px;
+  font: inherit;
+  font-size: var(--fx-type-control);
+}
+.flixie-web .fx-diary-list {
+  max-width: 1080px;
+}
+.flixie-web .fx-diary-list section + section {
+  margin-top: 32px;
+}
+.flixie-web .fx-diary-list h2,
+.flixie-web .fx-diary-undated h2 {
+  margin-bottom: 12px;
+  font-size: var(--fx-type-subheading);
+}
+.flixie-web .fx-diary-entry {
+  display: grid;
+  grid-template-columns: 2.75rem 50px minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  padding: 16px 0;
+}
+.flixie-web .fx-diary-entry + .fx-diary-entry {
+  border-top: 1px solid var(--fx-line);
+}
+.flixie-web .fx-diary-date {
+  text-align: center;
+  color: var(--fx-muted);
+  padding-top: 2px;
+  font-size: var(--fx-type-label);
+  font-variant-numeric: tabular-nums;
+}
+.flixie-web .fx-diary-date time {
+  display: flex;
+  flex-direction: column;
+}
+.flixie-web .fx-diary-date strong {
+  color: var(--fx-ink);
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+.flixie-web .fx-diary-title {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 5px 16px;
+}
+.flixie-web .fx-diary-title h3 {
+  font-size: var(--fx-type-control);
+  font-weight: 750;
+  overflow-wrap: anywhere;
+}
+.flixie-web .fx-diary-title small,
+.flixie-web .fx-review-film small {
+  font-size: var(--fx-type-label);
+  margin-left: 3px;
+  font-weight: 500;
+}
+.flixie-web .fx-diary-copy {
+  min-width: 0;
+}
+.flixie-web .fx-diary-copy .fx-diary-note {
+  margin: 5px 0 0;
+  max-width: 68ch;
+  font-size: var(--fx-type-control);
+  line-height: 1.55;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: var(--fx-muted);
+}
+.flixie-web .fx-diary-read {
+  min-height: 44px;
+  flex-wrap: wrap;
+  gap: 7px;
+  font-size: var(--fx-type-label);
+  margin-top: 4px;
+  text-align: left;
+}
+.flixie-web .fx-spoiler-label {
+  font-size: var(--fx-type-label);
+  font-weight: 650;
+  color: var(--fx-gold);
+}
+.flixie-web .fx-diary-entry a {
+  font-weight: 750;
+  text-decoration: none;
+}
+.flixie-web .fx-diary-entry a:hover,
+.flixie-web .fx-diary-entry a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.flixie-web .fx-review-reader {
+  width: min(720px, calc(100% - 32px));
+}
+.flixie-web .fx-review-reader-content {
+  padding: 24px 28px 32px;
+  overflow: auto;
+  min-height: 0;
+  overscroll-behavior: contain;
+}
+.flixie-web .fx-review-film {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  align-items: center;
+  gap: 18px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--fx-line);
+}
+.flixie-web .fx-review-film h3 {
+  font-size: var(--fx-type-heading);
+  overflow-wrap: anywhere;
+}
+.flixie-web .fx-review-film p {
+  font-size: var(--fx-type-control);
+  color: var(--fx-muted);
+  margin: 6px 0 10px;
+}
+.flixie-web .fx-review-prose {
+  margin-top: 24px;
+  max-width: 68ch;
+}
+.flixie-web .fx-review-prose h3 {
+  margin: 12px 0;
+  font-size: var(--fx-type-subheading);
+}
+.flixie-web .fx-review-prose p {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: var(--fx-type-body);
+  line-height: 1.7;
+}
+.flixie-web .fx-review-spoiler {
+  text-align: center;
+  padding: 32px 12px 8px;
+}
+.flixie-web .fx-review-spoiler > svg {
+  color: var(--fx-gold);
+  display: block;
+  margin: 0 auto 12px;
+}
+.flixie-web .fx-review-spoiler p {
+  color: var(--fx-muted);
+  margin: 8px 0 22px;
+}
+.flixie-web .fx-diary-calendar-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(280px, 1fr);
+  gap: 32px;
+  max-width: 1400px;
+}
+.flixie-web .fx-calendar-heading {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 18px;
+}
+.flixie-web .fx-calendar-heading h2 {
+  font-size: var(--fx-type-subheading);
+  flex: 1;
+  text-align: center;
+}
+.flixie-web .fx-calendar-heading > .fx-text-button {
+  margin-left: 12px;
+}
+.flixie-web .fx-calendar-weekdays,
+.flixie-web .fx-calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 6px;
+}
+.flixie-web .fx-calendar-weekdays {
+  margin-bottom: 8px;
+  text-align: center;
+  font-size: var(--fx-type-label);
+  color: var(--fx-muted);
+}
+.flixie-web .fx-calendar-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  min-height: 104px;
+  border: 1px solid var(--fx-line);
+  border-radius: 9px;
+  background: transparent;
+  color: var(--fx-muted);
+  font: inherit;
+  font-size: var(--fx-type-control);
+  padding: 8px 3px;
+  font-variant-numeric: tabular-nums;
+}
+.flixie-web .fx-calendar-day.fx-has-watches {
+  background: var(--fx-surface);
+  color: var(--fx-ink);
+  font-weight: 750;
+}
+.flixie-web .fx-calendar-day .fx-poster {
+  width: 36px;
+  height: 54px;
+}
+.flixie-web .fx-calendar-day small {
+  font-size: var(--fx-type-label);
+  line-height: 1.3;
+}
+.flixie-web .fx-calendar-day[aria-pressed="true"] {
+  border-color: var(--fx-purple);
+  outline: 2px solid var(--fx-purple);
+  outline-offset: 1px;
+}
+.flixie-web .fx-calendar-day:hover {
+  background: var(--fx-lift);
+}
+.flixie-web .fx-calendar-selection h2 {
+  font-size: var(--fx-type-subheading);
+}
+.flixie-web .fx-diary-undated {
+  margin-top: 32px;
+  max-width: 1080px;
+}
+@container (max-width:800px) {
+  .flixie-web .fx-diary-calendar-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+}
+@media (max-width: 480px) {
+  .flixie-web .fx-diary-tools {
+    gap: 12px;
+  }
+  .flixie-web .fx-diary-search {
+    max-width: none;
+    flex-basis: 100%;
+    order: 3;
+  }
+  .flixie-web .fx-diary-entry {
+    grid-template-columns: 2.25rem 42px minmax(0, 1fr);
+    gap: 10px;
+  }
+  .flixie-web .fx-calendar-weekdays,
+  .flixie-web .fx-calendar-days {
+    gap: 4px;
+  }
+  .flixie-web .fx-calendar-day {
+    min-height: 76px;
+    padding: 7px 1px;
+    gap: 4px;
+  }
+  .flixie-web .fx-calendar-day .fx-poster {
+    width: 24px;
+    height: 36px;
+  }
+  .flixie-web .fx-review-reader-content {
+    padding: 20px;
+  }
+}
+
+.flixie-web .fx-diary-search .fx-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.flixie-web .fx-diary-title .fx-score,
+.flixie-web .fx-review-film .fx-score {
+  color: var(--fx-gold);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}

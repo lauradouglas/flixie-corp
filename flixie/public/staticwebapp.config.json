@@ -15,7 +15,33 @@
     "X-Content-Type-Options": "nosniff"
   },
   "routes": [
-    { "route": "/app/*", "rewrite": "/app.html", "headers": {"X-Robots-Tag": "noindex", "Cache-Control": "no-store"} },
+    {
+      "route": "/release.json",
+      "headers": {
+        "Cache-Control": "no-store",
+        "X-Robots-Tag": "noindex"
+      }
+    },
+    {
+      "route": "/web/terms.html",
+      "redirect": "/terms",
+      "statusCode": 301
+    },
+    {
+      "route": "/people/*",
+      "rewrite": "/person-share.html",
+      "headers": {
+        "X-Robots-Tag": "noindex"
+      }
+    },
+    {
+      "route": "/app/*",
+      "rewrite": "/app.html",
+      "headers": {
+        "X-Robots-Tag": "noindex",
+        "Cache-Control": "no-store"
+      }
+    },
     {
       "route": "/android",
       "redirect": "https://play.google.com/store/apps/details?id=com.flixie.app",

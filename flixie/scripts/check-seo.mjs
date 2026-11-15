@@ -21,6 +21,7 @@ for (const [key, page] of Object.entries(pages)) {
   const file = key === 'home' ? 'index.html' : `${page.path.slice(1)}.html`;
   const html = await readFile(`dist/${file}`, 'utf8');
   documents.set(page.path, html);
+  assert.match(html, /<meta name="darkreader-lock"\s*\/?\s*>/, `${key}: own-theme colours must survive browser recolouring`);
   assert.equal([...html.matchAll(/<h1\b/g)].length, 1, `${key}: one visible page heading`);
   assert.equal([...html.matchAll(/<title>/g)].length, 1, `${key}: one title`);
   assert.equal([...html.matchAll(/<meta name="description"/g)].length, 1);
@@ -76,6 +77,12 @@ for (const [path, html] of documents) {
     if (/^\/(?:images|assets)\//.test(targetPath)) { await access(`dist${targetPath}`); continue; }
     if(targetPath.startsWith('/web/')){await access(`dist${targetPath}`);continue;}
     if(targetPath.startsWith('/app/')){assert.ok(config.routes.some(rule=>rule.route==='/app/*'&&rule.rewrite==='/app.html'));continue;}
+    if (!documents.has(targetPath) && /^\/(movies|shows|people)\/[1-9]\d*$/.test(targetPath)) {
+      const wildcard = '/' + targetPath.split('/')[1] + '/*';
+      const fallback = config.routes.find(rule => rule.route === wildcard);
+      assert.ok(fallback?.rewrite && fallback.headers?.['X-Robots-Tag'] === 'noindex', `${path}: missing public-detail fallback ${href}`);
+      await access(`dist${fallback.rewrite}`); continue;
+    }
     const target = documents.get(targetPath || path);
     assert.ok(target, `${path}: broken internal link ${href}`);
     if (fragment) assert.ok(target.includes(`id="${fragment}"`), `${path}: missing anchor ${href}`);

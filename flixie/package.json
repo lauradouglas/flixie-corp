@@ -11,8 +11,9 @@
     "lint": "tsc --noEmit",
     "check:seo": "node scripts/check-seo.mjs && node scripts/check-http.mjs && tsx scripts/check-media-share.ts && tsx scripts/check-watch-invite.ts && node scripts/check-feature-pages.mjs && tsx scripts/check-download.ts",
     "check:analytics": "tsx scripts/check-campaign-analytics.ts",
-    "check:web": "node --import tsx --test scripts/check-web-app.test.ts",
-    "sync:catalog": "node --import tsx scripts/sync-title-catalog.ts"
+    "check:web": "node --import tsx --test scripts/check-web-app.test.ts scripts/check-watch-log.test.ts scripts/check-provider-overview.test.ts scripts/check-person-pages.test.ts scripts/check-user-profiles.test.ts scripts/check-watch-plans.test.ts scripts/check-favourite-ranking.test.ts scripts/check-website-library.test.ts scripts/check-plan-creation.test.ts scripts/check-community-rating.test.tsx scripts/check-mobile-navigation.test.tsx scripts/check-web-social-picker.test.ts scripts/check-brand-wordmark.test.tsx scripts/check-diary-home.test.tsx scripts/check-signup-form.test.tsx",
+    "sync:catalog": "node --import tsx scripts/sync-title-catalog.ts",
+    "sync:people": "node --import tsx scripts/sync-people-catalog.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
@@ -30,11 +31,13 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
+    "@types/jsdom": "^30.0.0",
     "@types/node": "^22.14.0",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "autoprefixer": "^10.4.21",
     "esbuild": "^0.25.0",
+    "jsdom": "^26.1.0",
     "tailwindcss": "^4.1.14",
     "tsx": "^4.21.0",
     "typescript": "~5.8.2",

@@ -9,7 +9,7 @@ export default function Navbar({ currentPage }: { currentPage: PageId }) {
   return <header className="fixed top-0 left-0 right-0 z-40 bg-bg-nav border-b border-border-custom py-3" id="main-navbar">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
       <a href="/" aria-label="Flixie home" className="shrink-0">
-        <span className="relative block h-10 w-28 overflow-hidden" aria-hidden="true"><BrandLogo className="absolute w-32 max-w-none -left-2 -top-[45px]" /></span>
+        <BrandLogo className="block h-8 w-24" />
       </a>
       <nav className="hidden md:flex items-center gap-1" aria-label="Main navigation">
         {links.map(key => <a key={key} href={pages[key].path} aria-current={activePage === key ? 'page' : undefined} className={`px-3 py-3 rounded-lg text-sm hover:bg-bg-elevated ${activePage === key ? 'text-flixie-light' : 'text-text-secondary'}`}>{pages[key].label}</a>)}
