@@ -452,3 +452,12 @@ mockup-only status above for that variant. Movie/show Friends sections now use
 the compact summary and aligned list, real profile links/avatar borders, readable
 desktop width and enlarged-text reflow. Rating grid and reviews-first remain
 unselected. This is a presentation refinement using existing private data scopes.
+
+## Apple handoff regression restoration —15 November2026
+
+The user reported that direct Apple web SDK sign-in returned to the sign-in form
+after Face ID. That new path is withdrawn. Apple again uses the Firebase popup
+flow the user previously verified, while retaining standard provider artwork and
+Flixie's waiting/form recovery. The white Firebase transition page returns for
+now. Its removal remains open; the previous simulated SDK checks did not establish
+real Safari/Apple/Firebase success. Do not reintroduce a replacement on that evidence.

@@ -337,7 +337,6 @@
 @media (hover: hover) and (pointer: fine) {
   .flixie-web .fx-provider-button:not(:disabled):hover { box-shadow: inset 0 0 0 100px #0000000a; }
 }
-.flixie-web .fx-provider-retry { margin-top: 12px; }
 .flixie-web .fx-auth .fx-error {
   margin-top: 20px;
 }

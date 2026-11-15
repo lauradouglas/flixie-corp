@@ -120,24 +120,6 @@ function deferred() {
   return { promise, resolve, reject };
 }
 
-test("Apple preparation gates only its own button; a failed load has an explicit working retry", async () => {
-  const t = await setup(false);
-  try {
-    t.session.local = false;
-    const pending = deferred(); let attempts = 0;
-    t.session.prepareProvider = async name => { assert.equal(name, "apple"); attempts++; if (attempts === 1) return pending.promise; };
-    await t.render();
-    const button = (name: string) => [...t.dom.window.document.querySelectorAll("button")].find(b => b.textContent?.trim() === name)!;
-    assert.equal(button("Sign in with Apple").disabled, true);
-    assert.equal(button("Sign in with Google").disabled, false);
-    assert.equal(t.input("fx-email").disabled, false);
-    await act(async () => pending.reject(Object.assign(new Error("fixture"), { code: "auth/apple-sdk-unavailable" })));
-    assert.match(t.dom.window.document.body.textContent!, /Apple sign-in could not load/);
-    await act(async () => button("Retry Apple sign-in").click());
-    assert.equal(attempts, 2); assert.equal(button("Sign in with Apple").disabled, false);
-    assert.equal(t.dom.window.document.querySelectorAll("form").length, 1);
-  } finally { await t.close(); }
-});
 
 test("email sign-up keeps one filled form and exactly two chosen checkboxes while Firebase and profile creation finish", async () => {
   const t = await setup();

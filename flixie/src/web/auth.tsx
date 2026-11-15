@@ -1,6 +1,5 @@
 import {
   createContext,
-  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -16,7 +15,6 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signInWithPopup,
-  signInWithCredential,
   GoogleAuthProvider,
   OAuthProvider,
   signOut,
@@ -29,7 +27,6 @@ import {
 import { FlixieApi, ApiError, type Identity } from "./api";
 import { webConfig, type WebConfig } from "./config";
 import type { Account, JsonObject } from "./models";
-import { createAppleSignIn } from "./appleSignIn";
 
 export interface Session {
   user: Account | null;
@@ -41,13 +38,12 @@ export interface Session {
   signIn: (name: string, password: string) => Promise<void>;
   join: (email: string, password: string, data: JsonObject) => Promise<void>;
   provider: (name: "google" | "apple") => Promise<void>;
-  prepareProvider?: (name: "google" | "apple") => Promise<void>;
   signOut: () => Promise<void>;
   reset: (email: string) => Promise<void>;
   reloadProfile: () => Promise<void>;
 }
 export const SessionContext = createContext<Session | null>(null);
-export function authMessage(error: unknown): string {
+export function authMessage(error: unknown, provider?: "google" | "apple"): string {
   const code =
     typeof error === "object" && error && "code" in error
       ? String(error.code)
@@ -60,7 +56,9 @@ export function authMessage(error: unknown): string {
       "auth/invalid-login-credentials",
     ].includes(code)
   )
-    return "Check your email or username and password.";
+    return provider
+      ? `${provider === "apple" ? "Apple" : "Google"} sign-in could not be completed. Please try again.`
+      : "Check your email or username and password.";
   if (code === "auth/email-already-in-use")
     return "This email already has an account. Sign in instead.";
   if (code === "auth/weak-password")
@@ -69,10 +67,8 @@ export function authMessage(error: unknown): string {
     return "Sign-in was closed. You can try again.";
   if (code === "auth/popup-blocked")
     return "Allow pop-ups for Flixie, then try signing in again.";
-  if (code === "auth/apple-sdk-unavailable" || code === "auth/apple-not-ready")
-    return "Apple sign-in could not load. Retry Apple sign-in or use another option.";
-  if (code === "auth/apple-invalid-response")
-    return "Apple sign-in could not be verified. Please try again.";
+  if (code === "auth/account-exists-with-different-credential")
+    return "This email already uses another sign-in method. Sign in using that method.";
   if (code === "auth/too-many-requests")
     return "Too many attempts. Wait a moment, then try again.";
   if (
@@ -104,10 +100,6 @@ function firebase(config: WebConfig): Auth | null {
 export function AuthProvider({ children }: { children: ReactNode }) {
   const config = useMemo(webConfig, []),
     auth = useMemo(() => firebase(config), [config]);
-  const apple = useMemo(() => createAppleSignIn(), []);
-  const prepareProvider = useCallback(async (name: "google" | "apple") => {
-    if (!config.local && name === "apple") await apple.prepare();
-  }, [apple, config.local]);
   const [identity, setIdentity] = useState<User | null>(null),
     [user, setUser] = useState<Account | null>(null),
     [loading, setLoading] = useState(true),
@@ -214,7 +206,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     api,
     local: config.local,
     reloadProfile,
-    prepareProvider,
     signIn: async (name, password) => {
       const sdk = requireAuth();
       await ensureLocal();
@@ -249,11 +240,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const sdk = requireAuth();
       if (config.local)
         throw new ApiError("Use the local email and password to test sign-in.");
-      if (name === "google") await signInWithPopup(sdk, new GoogleAuthProvider());
-      else await apple.signIn(async ({ idToken, rawNonce }) => {
-        const credential = new OAuthProvider("apple.com").credential({ idToken, rawNonce });
-        await signInWithCredential(sdk, credential);
-      });
+      // Firebase owns the whole exchange, as in the user-verified Apple flow.
+      await signInWithPopup(sdk, name === "google"
+        ? new GoogleAuthProvider()
+        : new OAuthProvider("apple.com"));
     },
     signOut: async () => {
       generation.current++;

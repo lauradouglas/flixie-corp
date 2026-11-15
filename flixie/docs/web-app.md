@@ -652,3 +652,27 @@ score below metadata instead of squeezing status words. Dividers are between row
 built-CSS fictional phone/desktop, long-name,200% and guest/unrated states are
 verified separately. Native source, backend, real user data and database seeds
 are unchanged. Existing guarded local movie-opinion seeds remain available.
+
+## Apple sign-in regression: restore verified Firebase flow —15 November2026
+
+User physical testing reports that direct Apple JS SDK sign-in returns to the
+sign-in page after Face ID/Apple confirmation. This supersedes that transport's
+local-pass status above. Exact direct-flow failure code/stage is not captured;
+the earlier complete Firebase Apple route had been verified by the user.
+
+Apple and Google now both call Firebase signInWithPopup with their proper provider.
+Remove the separate Apple SDK loader, prepared nonce/state/controller, credential
+exchange and preparation-dependent UI. Keep the official branded buttons and
+existing progress/form/focus recovery. Firebase remains responsible for OAuth,
+identity, persistence and profile loading. No domain/secrets/account/native/backend
+change or automatic identity linking/Terms acceptance is performed. A provider
+credential rejection no longer asks the user to check their email password.
+
+126 browser checks/types/build35 pass. Four new integration regressions exercise
+the real AuthProvider/AccountGate with only the Firebase network boundary mocked:
+existing Apple/Google member continuity, duplicate-click lock, cancellation/focus,
+provider-specific error recovery and new-member explicit Terms. Tests for the
+retired standalone SDK controller/preparation UI are removed because that flow is
+removed. No real session is started and physical acceptance remains the user's test.
+Restoring Firebase also restores its white transition page; that cosmetic issue
+remains open and must not be reported as solved by this repair.
