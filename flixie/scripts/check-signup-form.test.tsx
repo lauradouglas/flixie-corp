@@ -295,3 +295,50 @@ test("a pending login dialog and an auth page never render two signup forms or d
     await t.close();
   }
 });
+
+test('Apple and Google keep one branded waiting screen and restore the form after a closed provider window', async () => {
+  for (const provider of ['apple','google'] as const) {
+    const t=await setup(false);
+    try {
+      t.session.local=false;
+      const pending=deferred(), calls:string[]=[];
+      t.session.provider=name=>{calls.push(name);return pending.promise;};
+      await t.render();
+      await t.type('fx-email','draft@example.invalid');
+      const label=provider==='apple'?'Apple':'Google';
+      const button=[...t.dom.window.document.querySelectorAll('button')].find(b=>b.textContent===`Continue with ${label}`)!;
+      await act(async()=>button.click());
+      const status=t.dom.window.document.querySelector('[role=status]')!;
+      assert(status.textContent?.includes(`Finish signing in with ${label}`));
+      assert.equal(status.querySelector('img')?.getAttribute('src'),'/web/flixie-f.png');
+      assert.equal(t.dom.window.document.querySelectorAll('form').length,0);
+      assert.equal(t.dom.window.document.querySelectorAll('.fx-auth').length,1);
+      assert.deepEqual(calls,[provider]);
+      await act(async()=>pending.reject(Object.assign(new Error('Closed'),{code:'auth/popup-closed-by-user'})));
+      assert.equal(t.dom.window.document.querySelectorAll('form').length,1);
+      assert.equal(t.input('fx-email').value,'draft@example.invalid');
+      assert(t.dom.window.document.body.textContent?.includes('Sign-in was closed. You can try again.'));
+      assert.equal(t.checks().length,0);
+      assert.equal(t.dom.window.document.activeElement?.textContent,`Continue with ${label}`);
+    } finally { await t.close(); }
+  }
+});
+
+test('provider success hands off to the branded profile loading state without flashing signup fields for an existing member', async () => {
+  const t=await setup(false);
+  try {
+    t.session.local=false;
+    const pending=deferred();t.session.provider=()=>pending.promise;
+    await t.render();
+    await act(async()=>[...t.dom.window.document.querySelectorAll('button')].find(b=>b.textContent==='Continue with Apple')!.click());
+    t.session.identity=identity;t.session.loading=true;
+    await t.render();
+    await act(async()=>pending.resolve());
+    assert(t.dom.window.document.body.textContent?.includes('Opening your Flixie account…'));
+    assert.equal(t.dom.window.document.querySelectorAll('form').length,0);
+    assert.equal(t.checks().length,0);
+    t.session.user=member;t.session.loading=false;
+    await t.render();
+    assert.equal(t.dom.window.document.body.textContent,'Member home');
+  } finally { await t.close(); }
+});

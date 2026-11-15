@@ -727,12 +727,12 @@ export function TitlePage({
               )}
               <button
                 aria-pressed={actions.saved(f)}
-                className={`fx-button fx-title-watchlist ${actions.saved(f) ? "fx-soft" : user ? "fx-title-secondary" : "fx-primary fx-title-primary"}`}
+                className={`fx-button fx-title-watchlist ${user || actions.saved(f) ? "fx-title-secondary" : "fx-primary fx-title-primary"}`}
                 disabled={actions.busyIds.has(`${f.kind}:${f.id}`)}
                 onClick={() => void actions.save(f, !actions.saved(f))}
               >
                 {actions.saved(f) ? <BookmarkCheck size={18} /> : <BookmarkPlus size={18} />}
-                {actions.saved(f) ? "In your watchlist" : "Save to watchlist"}
+                {actions.saved(f) ? "In watchlist" : "Save to watchlist"}
               </button>
               <button
                 className="fx-button fx-title-secondary"

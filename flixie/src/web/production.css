@@ -620,3 +620,9 @@
     text-align: center;
   }
 }
+
+/* Keep Flixie's own screen behind provider windows and profile handoff. */
+.flixie-web .fx-auth-progress { text-align:center; padding:40px 0; }
+.flixie-web .fx-auth-progress > img { display:block; width:56px; height:56px; margin:0 auto 24px; }
+.flixie-web .fx-auth-progress h1 { font-size:1.5rem; line-height:1.35; text-wrap:balance; }
+.flixie-web .fx-auth-progress > p { max-width:34ch; margin:16px auto 0; }

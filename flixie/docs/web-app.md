@@ -572,3 +572,24 @@ the same themed ground and single-image wordmark. Existing corporate type,
 layout, imagery, copy, routes, legal text and store destinations stay intact.
 This supersedes earlier statements that corporate colours/footer stay separate.
 Source complete locally; final checks and publication recorded below.
+
+
+## Website mobile and provider handoff —15 November 2026
+
+Corporate colour consistency is published at7f008f246631a18644563b40487c00243ba6108d
+through successful Azure workflow43747753737; notification job skipped.
+
+User phone reports extend the current task: remove duplicated upper navigation
+on mobile, keep own profile in the header, improve the saved button, and improve
+Flixie's backdrop during Apple sign-in. Scoped CSS selectors now outrank older
+shared chunk styles, preserve desktop navigation, toggle phone search, hide
+header sign-out and avoid sticky touch hover. Saved title actions use native gold
+#ffc857/dark ink#261735 with “In watchlist”; existing save/remove API behavior
+stays. Share/favourite semantic colours survive chunk ordering. Narrow/enlarged
+text action groups stack. AuthForm shows branded F/provider progress instead of
+the form while waiting, then restores draft/error/button focus after cancellation.
+Existing provider SDK/config/consent remain.122 checks/types/build35 pass with
+fictional provider waiting/cancel/profile-loading tests and local compiled-CSS
+phone light/dark, desktop and enlarged-text inspection. Automatic approval review
+blocked starting live Apple auth; no actual external-provider/device retest claim.
+Final publication recorded below.

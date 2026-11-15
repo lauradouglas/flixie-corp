@@ -1507,11 +1507,12 @@
           "gap": "10px",
           "buttonPadding": "11px 12px",
           "leadingWatchlist": "Spans both columns when Rate & review is absent.",
-          "appDeepLink": "Full-width neutral button below the grid; destination unchanged."
+          "appDeepLink": "Full-width neutral button below the grid; destination unchanged.",
+          "narrowOrLargeText": "Container below22rem stacks actions into one column; ordinary390px retains two."
         },
         "semanticColors": {
           "primary": "Existing native brand purple/white text; hover uses native primaryShade #6534e8 with filter:none.",
-          "watchlist": "fx-gold / exact native warning;8% base surface mix, pressed12% light/16% dark,40% line mix.",
+          "watchlist": "Unsaved native gold label/8% tint; saved solid#ffc857 with#261735 ink and compact In watchlist label in both themes; aria-pressed and existing toggle preserved.",
           "favourite": "fx-danger / native danger;13% surface mix and35% line mix when pressed.",
           "share": "fx-share / native dark hero blue with darker accessible web light-surface text;8% surface mix,35% line mix."
         }
@@ -1802,7 +1803,9 @@
         "typeRef": "{typography.mobile-tab-label}",
         "clearance": "ResizeObserver measures ceil(nav.getBoundingClientRect().height) into --fx-bottom-nav-height. Content/toast use measured navigation plus --fx-app-prompt-clearance; prompt sits measured navigation+12px above bottom.",
         "interaction": "Actual anchors, aria-current, browser history and main-content focus. Expand search into header row; Escape returns focus to toggle.",
-        "history": "User selected bottom tabs on14November2026. Earlier menu and scrolling-row mockups remain historical and unselected."
+        "history": "User selected bottom tabs on14November2026. Earlier menu and scrolling-row mockups remain historical and unselected.",
+        "cascade": "Mobile sidebar hide and compact signed-in header selectors outrank shared/base rules independent of stylesheet chunk order; guest public-header selectors remain separate.",
+        "touchHover": "Hover fill applies only for hover:hover and pointer:fine; touch must not leave an inactive tab looking selected."
       },
       "friends": {
         "source": "src/web/FriendManager.tsx:10\u201333; src/web/api.ts:167\u2013203; src/web/social.ts:4\u201317",
@@ -1835,7 +1838,14 @@
         "profileCompletion": "After settled profile lookup, an authenticated identity without profile shows first name/username/sharing/explicit initially unchecked Terms with immutable identity email. Existing-account sign-in shows no registration-field flash. Preserve the mounted registration draft through identity/loading/profile transitions; do not treat pending lookup as missing profile.",
         "signupDraft": "During submitted registration keep the same input and two checkbox nodes mounted, preserve names and explicit choices, disable edits and reject rapid repeated submits with a synchronous lock. Retain the busy draft password field until identity use finishes, then clear password; existing-identity completion otherwise has no password field. Failure retains draft for deliberate retry; success reaches member content.",
         "differentAccount": "Use a different account clears names, email, password, notices/errors and Terms, and returns registration mode to sign-in after sign-out; sharing returns to its default. Terms remains explicit and initially unchecked. Local emulator isolation is unchanged.",
-        "ownership": "One authentication layer. A route-owned login dialog suppresses inline authentication; route changes close the previous login dialog. Browser Back to Join must have one form, two choice controls and unique field IDs."
+        "ownership": "One authentication layer. A route-owned login dialog suppresses inline authentication; route changes close the previous login dialog. Browser Back to Join must have one form, two choice controls and unique field IDs.",
+        "providerHandoff": {
+          "source": "AuthForm.tsx AuthProgress and continueWithProvider",
+          "waiting": "Official F, theme ink/ground, provider-named status; form replaced only while the provider promise is pending. Shared submit lock prevents duplicate starts.",
+          "cancellation": "Restores one original form, draft fields, readable error and initiating-button focus.",
+          "profileLoading": "Same branded progress state without signup fields while existing-member profile resolves.",
+          "externalFlow": "Firebase SDK/provider configuration unchanged; no real sign-in reproduced because live initiation was blocked by automatic approval review. Actual local component simulation plus two new regression journeys only."
+        }
       },
       "sidebarCompactWidth": {
         "value": "208px",

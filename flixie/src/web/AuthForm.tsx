@@ -1,7 +1,21 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { authMessage, useSession } from "./auth";
 import { navigate, safeNext } from "./routing";
-import { ErrorState, Loading } from "./components";
+import { ErrorState } from "./components";
+export function AuthProgress({ provider }: { provider?: "google" | "apple" }) {
+  const name = provider === "apple" ? "Apple" : "Google";
+  return (
+    <div className="fx-auth fx-auth-progress" role="status" aria-live="polite">
+      <img src="/web/flixie-f.png" alt="" width={56} height={56} />
+      <h1>{provider ? `Finish signing in with ${name}` : "Opening your Flixie account…"}</h1>
+      <p className="fx-muted">
+        {provider ? `Complete sign-in in the ${name} window.` : "Getting your films, shows and people ready."}
+      </p>
+      {provider && <p className="fx-small fx-muted">Close that window to return to this page.</p>}
+    </div>
+  );
+}
+
 export default function AuthForm({
   initialJoin = false,
   onComplete,
@@ -23,7 +37,15 @@ export default function AuthForm({
     [busy, setBusy] = useState(false),
     [error, setError] = useState(""),
     [notice, setNotice] = useState("");
+  const [pendingProvider, setPendingProvider] = useState<"google" | "apple" | null>(null);
   const submitLock = useRef(false);
+  const providerButtons = useRef<Record<"google" | "apple", HTMLButtonElement | null>>({google: null, apple: null});
+  const previousProvider = useRef<"google" | "apple" | null>(null);
+  useEffect(() => {
+    if (!pendingProvider && previousProvider.current && !session.identity)
+      providerButtons.current[previousProvider.current]?.focus();
+    previousProvider.current = pendingProvider;
+  }, [pendingProvider, session.identity]);
   useEffect(() => {
     if (initialJoin) setJoin(true);
   }, [initialJoin]);
@@ -74,6 +96,23 @@ export default function AuthForm({
       setBusy(false);
     }
   }
+  async function continueWithProvider(provider: "google" | "apple") {
+    if (submitLock.current) return;
+    submitLock.current = true;
+    setError("");
+    setNotice("");
+    setBusy(true);
+    setPendingProvider(provider);
+    try {
+      await session.provider(provider);
+    } catch (e) {
+      setError(authMessage(e));
+    } finally {
+      submitLock.current = false;
+      setBusy(false);
+      setPendingProvider(null);
+    }
+  }
   function useDifferentAccount() {
     if (submitLock.current) return;
     void session
@@ -91,8 +130,8 @@ export default function AuthForm({
       })
       .catch((e) => setError(authMessage(e)));
   }
-  if (session.loading && !busy)
-    return <Loading label="Opening your Flixie account…" />;
+  if (pendingProvider) return <AuthProgress provider={pendingProvider} />;
+  if (session.loading && !busy) return <AuthProgress />;
   if (session.error && session.identity && !busy)
     return (
       <div className="fx-auth">
@@ -215,28 +254,18 @@ export default function AuthForm({
         <>
           <div className="fx-provider-buttons">
             <button
+              ref={node => { providerButtons.current.google = node; }}
               className="fx-button"
               disabled={busy || session.local}
-              onClick={() => {
-                setBusy(true);
-                void session
-                  .provider("google")
-                  .catch((e) => setError(authMessage(e)))
-                  .finally(() => setBusy(false));
-              }}
+              onClick={() => void continueWithProvider("google")}
             >
               Continue with Google
             </button>
             <button
+              ref={node => { providerButtons.current.apple = node; }}
               className="fx-button"
               disabled={busy || session.local}
-              onClick={() => {
-                setBusy(true);
-                void session
-                  .provider("apple")
-                  .catch((e) => setError(authMessage(e)))
-                  .finally(() => setBusy(false));
-              }}
+              onClick={() => void continueWithProvider("apple")}
             >
               Continue with Apple
             </button>

@@ -10,18 +10,17 @@
   .flixie-web .fx-mobile-tab { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; min-width: 0; min-height: 54px; padding: 5px 2px; border-radius: 8px; color: var(--fx-muted); text-align: center; font-size: .75rem; font-weight: 650; line-height: 1.5; overflow-wrap: anywhere; }
   .flixie-web .fx-mobile-tab svg { flex: none; }
   .flixie-web .fx-mobile-tab[aria-current=page] { color: var(--fx-purple); background: var(--fx-lift); }
-  .flixie-web .fx-mobile-tab:hover { background: var(--fx-lift); }
   .flixie-web .fx-mobile-tab:focus-visible { outline-offset: -3px; }
-  .flixie-web .fx-sidebar { display: none; }
+  .flixie-web .fx-app-layout > .fx-sidebar { display: none; }
   .flixie-web .fx-app-layout { display: block; }
-  .flixie-web .fx-top { flex-wrap: wrap; gap: 10px; min-height: 73px; padding: max(12px,env(safe-area-inset-top)) max(15px,env(safe-area-inset-right)) 12px max(15px,env(safe-area-inset-left)); }
-  .flixie-web .fx-wordmark { font-size: 32px; margin-right: auto; }
-  .flixie-web .fx-top-actions { gap: 8px; }
+  .flixie-web .fx-top:not(.fx-public-top) { flex-wrap: wrap; gap: 10px; min-height: 73px; padding: max(12px,env(safe-area-inset-top)) max(15px,env(safe-area-inset-right)) 12px max(15px,env(safe-area-inset-left)); }
+  .flixie-web .fx-top:not(.fx-public-top) .fx-wordmark { font-size: 32px; margin-right: auto; }
+  .flixie-web .fx-top:not(.fx-public-top) .fx-top-actions { gap: 8px; }
   .flixie-web .fx-mobile-search-toggle { display: inline-flex; min-width: 44px; min-height: 44px; }
-  .flixie-web .fx-header-sign-out { display: none; }
+  .flixie-web .fx-top:not(.fx-public-top) .fx-header-sign-out { display: none; }
   .flixie-web .fx-mobile-account-tools { display: flex; justify-content: flex-end; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--fx-line); }
-  .flixie-web .fx-search { display: none; order: 3; flex-basis: 100%; flex-grow: 1; max-width: none; margin: 0; }
-  .flixie-web .fx-search[data-mobile-open=true] { display: flex; }
+  .flixie-web .fx-top:not(.fx-public-top) .fx-search { display: none; order: 3; flex-basis: 100%; flex-grow: 1; max-width: none; margin: 0; }
+  .flixie-web .fx-top:not(.fx-public-top) .fx-search[data-mobile-open=true] { display: flex; }
   .flixie-web .fx-search input { font-size: var(--fx-type-control); }
   .flixie-web .fx-search button { min-width: 44px; min-height: 44px; }
   .flixie-web .fx-main { padding-inline: max(15px,env(safe-area-inset-left)) max(15px,env(safe-area-inset-right)); }
@@ -30,4 +29,9 @@
 @media (max-width:680px), (max-width:960px) and (max-height:500px) {
   .flixie-web .fx-top[data-auth-page=true] .fx-top-actions .fx-guest-sign-in { display: inline-flex; }
   .flixie-web .fx-top[data-auth-page=true] .fx-top-actions a[aria-current=page] { display: none; }
+}
+
+/* Touch browsers must not retain a second tab as a sticky hover state. */
+@media (hover:hover) and (pointer:fine) {
+  .flixie-web .fx-mobile-tab:hover { background: var(--fx-lift); }
 }

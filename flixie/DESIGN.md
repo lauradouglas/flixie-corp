@@ -216,8 +216,8 @@ components:
     rounded: "{rounded.container}"
     padding: "12px 18px"
   title-action-saved:
-    backgroundColor: "light-dark(color-mix(in srgb, var(--fx-gold) 12%, var(--fx-surface)), color-mix(in srgb, var(--fx-gold) 16%, var(--fx-surface)))"
-    textColor: "{colors.fx-gold}"
+    backgroundColor: "#ffc857"
+    textColor: "#261735"
     typography: "{typography.title-action-label}"
     rounded: "{rounded.container}"
     padding: "12px 18px"
@@ -780,3 +780,33 @@ Corporate enlarged-text correction keeps the logo96px32px, wraps header controls
 allows long headings to break, and uses rem-sensitive main clearance. Actual
 large-text fixture355CSSpx/root32px has no horizontal overflow and the heading
 starts below the header; this is not an exact320px physical-device claim.
+
+
+## Mobile navigation, saved control and provider handoff —15 November 2026
+
+User phone screenshots show duplicated upper desktop navigation, exposed header
+search/sign-out, and lavender saved text on a muddy tinted control. Preserve the
+approved five bottom tabs and header profile. Mobile sidebar/header selectors now
+outrank the older shared/container styles regardless of chunk arrival order;
+the search row opens only by its toggle, and sign-out remains in account tools.
+Only hover-capable fine pointers receive tab hover fill, avoiding sticky touch
+hover that looks like a second selection. Desktop sidebar remains available.
+
+Saved title actions use a solid native #ffc857 fill and #261735 ink, labelled
+“In watchlist”, with existing aria-pressed/save/remove behavior. Share and pressed
+favourite retain native semantic blue/red through equally robust selectors.
+Actions stack below22rem of container width, including enlarged root text, with
+normal390px phone layout retaining its two-column grid and full-width app link.
+
+AuthForm uses the official F, app typography and themed ground while Apple or
+Google's provider promise is pending; the form is absent from the waiting view.
+No Material UI dependency/third-party screen was reproduced. The progress status
+names the provider and explains how to return; cancellation restores one form,
+its draft/error and focus to the initiating provider button. Profile loading uses
+the same branded status. External provider behavior and consent remain unchanged.
+122 website checks/types/build35 pass, including provider waiting/cancellation
+and existing-member handoff. Fictional UI fixtures use the real components and
+current compiled CSS with shared/base CSS intentionally last. Phone dark/light,
+search expansion, one active tab, desktop sidebar and200% labels were checked.
+Automatic approval review blocked starting live Apple auth; the successful local
+simulation does not claim a real Apple login or physical-device retest.

@@ -165,13 +165,11 @@ test('native button palette keeps readable text in both website themes', () => {
   const luminance=(hex:string)=>{const rgb=hex.match(/\w\w/g)!.map(v=>parseInt(v,16)/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4);return rgb[0]*.2126+rgb[1]*.7152+rgb[2]*.0722;};
   const contrast=(a:string,b:string)=>{const values=[luminance(a),luminance(b)].sort((a,b)=>b-a);return (values[0]+.05)/(values[1]+.05);};
   for(const [text,bg] of [['ffffff','7c4dff'],['ffffff','6534e8'],['ad3c50','ffffff'],['8c630e','ffffff'],['185ab0','ffffff'],['e57373','1e1f30'],['ffc857','1e1f30'],['5599ff','1e1f30']]) assert(contrast(text,bg)>=4.5,`${text} on ${bg}`);
-  // Calculate the actual selected surface, rather than assuming a white background.
+  // The saved control is native gold with dark ink in both themes.
   const actions=readFileSync(new URL('../src/web/home-layout.css',import.meta.url),'utf8');
   const selected=actions.match(/fx-title-watchlist\[aria-pressed="true"\]\s*\{([^}]+)/)![1];
-  const weights=[...selected.matchAll(/var\(--fx-gold\)\s+([\d.]+)%/g)].map(match=>Number(match[1])/100);
-  assert.equal(weights.length,2,'selected surface must declare both theme mixes');
-  const mix=(color:string,surface:string,weight:number)=>color.match(/\w\w/g)!.map((value,i)=>Math.round(parseInt(value,16)*weight+parseInt(surface.slice(i*2,i*2+2),16)*(1-weight)).toString(16).padStart(2,'0')).join('');
-  assert(contrast('8c630e',mix('8c630e','ffffff',weights[0]))>=4.5,'selected gold label on light tint');
-  assert(contrast('ffc857',mix('ffc857','1e1f30',weights[1]))>=4.5,'selected gold label on dark tint');
+  assert(selected.includes('color: #261735;'));
+  assert(selected.includes('background: #ffc857;'));
+  assert(contrast('261735','ffc857')>=4.5,'saved watchlist label on native gold');
 
 });
