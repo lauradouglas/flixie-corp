@@ -4,6 +4,7 @@ import { DiaryRow, DiaryViews } from "./Diary";
 import { homeSavedFilms } from "./homeSelection";
 import TitleFavourite from './TitleFavourite';
 import CommunityRating from './CommunityRating';
+import { TitleArtwork, TitleMetadata } from './TitlePresentation';
 import './community-rating.css';
 import ShowSeasons from './ShowEpisodesSection';
 import { useEffect, useRef, useState } from "react";
@@ -15,6 +16,7 @@ import {
   Clapperboard,
   Monitor,
   Share2,
+  Star,
 } from "lucide-react";
 import { useSession } from "./auth";
 import {
@@ -683,21 +685,23 @@ export function TitlePage({
     cast = (credits.data?.cast ?? []).slice(0, 3);
   return (
     <>
+      <div className="fx-title-view">
       <div className="fx-breadcrumb">
-        <Link to="/app">{user ? "Home" : "Flixie"}</Link>
+        <Link to={user ? "/app" : "/"}>Home</Link>
         <ArrowRight size={13} />
         <span>{f.title}</span>
       </div>
       <div className="fx-film-detail">
+        <TitleArtwork film={f}/>
         <Poster film={f} />
         <div className="fx-detail-body">
           <div className="fx-detail-heading">
             <h1>{f.title}</h1>
-            <FilmMeta film={f} />
+            <TitleMetadata film={f} />
             {f.tagline && <p className="fx-tagline">{f.tagline}</p>}
           </div>
           <div className="fx-detail-lower">
-            {f.overview && <p className="fx-synopsis">{f.overview}</p>}
+            {f.overview && <section className="fx-title-about"><h2>About {kind === 'movie' ? 'the film' : 'the show'}</h2><p className="fx-synopsis">{f.overview}</p></section>}
             {(directors.length > 0 || cast.length > 0) && (
               <div className="fx-director">
                 {directors.length > 0 && (
@@ -713,29 +717,32 @@ export function TitlePage({
                 )}
               </div>
             )}
-            <CommunityRating film={f}/>
+            <CommunityRating film={f} compactOnMobile/>
             <ProviderOverview film={f} onOptions={() => actions.open({ type: "options", film: f })} onSignIn={() => actions.open({ type: "login" })} />
             <div className={`fx-detail-actions ${user && kind === "movie" ? "fx-has-review" : ""}`}>
               {user && kind === "movie" && (
                 <button
-                  className="fx-button fx-primary fx-title-primary"
+                  className="fx-button fx-primary fx-title-primary fx-title-rate"
                   onClick={() => actions.open({ type: "log", film: f })}
                 >
-                  <Check size={18} />
+                  <Check size={18} className="fx-title-desktop-label" aria-hidden="true"/>
+                  <Star size={20} className="fx-title-mobile-label" aria-hidden="true"/>
                   Rate &amp; review
                 </button>
               )}
               <button
                 aria-pressed={actions.saved(f)}
+                aria-label={actions.saved(f) ? `Remove ${f.title} from watchlist` : `Save ${f.title} to watchlist`}
                 className={`fx-button fx-title-watchlist ${user || actions.saved(f) ? "fx-title-secondary" : "fx-primary fx-title-primary"}`}
                 disabled={actions.busyIds.has(`${f.kind}:${f.id}`)}
                 onClick={() => void actions.save(f, !actions.saved(f))}
               >
-                {actions.saved(f) ? <BookmarkCheck size={18} /> : <BookmarkPlus size={18} />}
-                {actions.saved(f) ? "In watchlist" : "Save to watchlist"}
+                {actions.saved(f) ? <BookmarkCheck size={18} aria-hidden="true" /> : <BookmarkPlus size={18} aria-hidden="true" />}
+                <span className="fx-title-desktop-label">{actions.saved(f) ? "In watchlist" : "Save to watchlist"}</span>
+                <span className="fx-title-mobile-label">Watchlist</span>
               </button>
               <button
-                className="fx-button fx-title-secondary"
+                className="fx-button fx-title-secondary fx-title-options"
                 onClick={() => actions.open({ type: "options", film: f })}
               >
                 <Monitor size={18} />
@@ -774,6 +781,7 @@ export function TitlePage({
             )}
           </div>
         </div>
+      </div>
       </div>
       <nav className="fx-title-section-links" aria-label="On this title">
         {kind === 'show' && <a href="#title-episodes">Episodes</a>}

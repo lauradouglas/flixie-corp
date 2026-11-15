@@ -58,6 +58,7 @@ import PublicBrowseHeader from './PublicBrowseHeader';
 import './public-browse-header.css';
 import './app-footer.css';
 import './public-home.css';
+import './mobile-title.css';
 import PublicHomePage,{PublicHomeShell} from './PublicHome';
 import WebsiteAnalyticsChoice from '../components/WebsiteAnalyticsChoice';
 

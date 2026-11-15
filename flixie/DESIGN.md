@@ -845,3 +845,25 @@ persist through size changes. Desktop/tablet retain centred modal geometry.
 Opt-in mobileFullScreen is limited to those flows. Date inputs use text-relative
 width; at narrow text-relative widths the rating moves below its legend. Public
 routes, native Flutter appearance and other dialog presentations are unchanged.
+
+## App-shaped phone movie/show pages —15 November2026
+
+The mobile title presentation now follows the existing Flutter detail heroes,
+not a new visual system. At phone widths (and coarse-pointer phone landscape),
+real landscape artwork fades into the app ground above a complete2:3poster;
+missing/failed artwork uses the plain ground. Movie backdropUrl and show
+backdropPath are both supported. Poster width120–144px, right radius12px,
+column gap12px and backdrop inset125–190px follow MovieDetailHeroTokens.
+Title22px, metadata13px, tagline/body14px, compact score15px, action label12px,
+genre11px and action surface14px radius are deliberate native-derived role
+exceptions to the wider website ramp, expressed in rem so browser text grows.
+All controls retain44px targets; narrow text-relative widths stack the hero,
+use two action columns and stack episode rows. Normal phones use compact
+coloured icon actions in source/focus order, with the movie review CTA above.
+Gold watchlist/red favourite selection remains visible; share is semantic blue.
+The compact community badge keeps the neutral primary label accessible and opens
+accurate provenance on request. Providers use compact logo/name rows; app link
+stays full width; synopsis and people links follow. Public HTML retains the
+single title, synopsis and internal links, and its shell shares this layout.
+Existing desktop/tablet composition, friends/badge privacy, episode spoiler
+choices, backend mutations, download prompts and authentication remain intact.

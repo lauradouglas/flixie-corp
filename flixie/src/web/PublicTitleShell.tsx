@@ -1,7 +1,8 @@
 import { createContext } from "react";
 import { catalogTitles, catalogPath, type CatalogTitle } from "../catalog";
 import { film } from "./models";
-import { FilmMeta, Poster } from "./components";
+import { Poster } from "./components";
+import { TitleArtwork, TitleMetadata } from './TitlePresentation';
 import PublicBrowseHeader from './PublicBrowseHeader';
 import DownloadPrompt from "./DownloadPrompt";
 import Footer from "../components/Footer";
@@ -12,6 +13,7 @@ export function PublicTitleShell({ title }: { title: CatalogTitle }) {
     <>
       <PublicBrowseHeader returnTo={catalogPath(title)}/>
       <main className="fx-public-main">
+        <div className="fx-title-view">
         <nav className="fx-breadcrumb" aria-label="Breadcrumb">
           <a href="/">Flixie</a>
           <span>/</span>
@@ -20,12 +22,16 @@ export function PublicTitleShell({ title }: { title: CatalogTitle }) {
           <span>{title.title}</span>
         </nav>
         <div className="fx-film-detail">
+          <TitleArtwork film={value}/>
           <Poster film={value} />
-          <div>
+          <div className="fx-detail-body">
+            <div className="fx-detail-heading">
             <h1>{title.title}</h1>
-            <FilmMeta film={value} />
+            <TitleMetadata film={value} />
             {title.tagline && <p className="fx-tagline">{title.tagline}</p>}
-            <p className="fx-synopsis">{title.overview}</p>
+            </div>
+            <div className="fx-detail-lower">
+            <section className="fx-title-about"><h2>About {title.kind === 'movie' ? 'the film' : 'the show'}</h2><p className="fx-synopsis">{title.overview}</p></section>
             <p className="fx-public-explainer">
               Save {title.title} to your watchlist, keep a personal viewing
               diary and check viewing options for your country with Flixie.
@@ -43,7 +49,9 @@ export function PublicTitleShell({ title }: { title: CatalogTitle }) {
                 About viewing options
               </a>
             </div>
+            </div>
           </div>
+        </div>
         </div>
         <DownloadPrompt />
         <section className="fx-related">

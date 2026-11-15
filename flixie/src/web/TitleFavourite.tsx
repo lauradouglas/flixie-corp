@@ -32,7 +32,7 @@ export default function TitleFavourite({ film, actions, revision }: { film: Film
     <button type="button" className={`fx-button fx-title-favourite ${enabled ? 'fx-soft' : 'fx-title-secondary'}`}
       aria-pressed={enabled} aria-label={enabled ? `Remove ${film.title} from favourites` : `Add ${film.title} to favourites`}
       disabled={busy || Boolean(user && (loading.loading || loading.error))} onClick={() => void toggle()}>
-      <Heart size={18} fill={enabled ? 'currentColor' : 'none'} aria-hidden="true" />{busy ? 'Saving…' : enabled ? 'Favourited' : 'Favourite'}
+      <Heart size={18} fill={enabled ? 'currentColor' : 'none'} aria-hidden="true" /><span className="fx-title-desktop-label">{busy ? 'Saving…' : enabled ? 'Favourited' : 'Favourite'}</span><span className="fx-title-mobile-label">{busy ? 'Saving…' : 'Favourite'}</span>
     </button>
     {(error || (user && loading.error)) && <div className="fx-favourite-feedback"><p role="alert">{error || loading.error}</p>
       <button type="button" className="fx-text-button" onClick={() => { setError(''); loading.retry(); }} disabled={busy}>Reload favourites</button>
