@@ -1,7 +1,7 @@
 {
   "updatedAt": "2026-11-16",
   "coverage": {
-    "mode": "curated",
+    "mode": "weekly-popular",
     "maximumMovies": 200,
     "priorityIds": [
       27205,
@@ -116,7 +116,8 @@
       10056,
       1616687,
       1234139
-    ]
+    ],
+    "automaticallyAddedIds": []
   },
   "titles": [
     {
