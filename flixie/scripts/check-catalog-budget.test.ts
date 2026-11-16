@@ -48,7 +48,7 @@ test('the published snapshot covers every editorial major movie with no duplicat
 });
 test('curated snapshot honours the exact user removals and keeps the four Dune films and Doomsday once each',()=>{
   assert.equal(catalogSnapshot.coverage.maximumMovies,200);
-  assert.equal(catalogSnapshot.coverage.mode,'curated');
+  assert(['curated','weekly-popular'].includes(catalogSnapshot.coverage.mode));
   assert(catalogTitles.filter(t=>t.kind==='movie').length<=200);
   assert.deepEqual(excludedMovies.map(t=>t.reviewNumber),[8,10,15,24,25,26,34,43,45,46,48,49,53,55,58,59,62,69,71,72,79,90,91,93,95]);
   assert.equal(new Set(excludedMovies.map(t=>t.id)).size,25);

@@ -1,0 +1,102 @@
+name: Weekly movie sitemap
+
+on:
+  schedule:
+    - cron: '17 4 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  refresh_and_deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    concurrency:
+      group: flixie-website-production
+      cancel-in-progress: false
+    permissions:
+      contents: write
+    env:
+      FLIXIE_CATALOG_API_URL: https://flixie-api-fmcehvaecwdheccm.northeurope-01.azurewebsites.net
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: flixie/package-lock.json
+
+      - name: Remember the source revision
+        run: git rev-parse HEAD > "$RUNNER_TEMP/flixie-catalog-base"
+
+      - name: Install dependencies
+        working-directory: flixie
+        run: npm ci
+
+      - name: Add eligible popular movies
+        working-directory: flixie
+        env:
+          FLIXIE_CATALOG_REPORT_PATH: ${{ runner.temp }}/flixie-catalog-report.json
+        run: npm run sync:catalog:popular
+
+      - name: Check TypeScript
+        working-directory: flixie
+        run: npm run lint
+
+      - name: Check website regressions
+        working-directory: flixie
+        run: npm run check:web
+
+      - name: Check analytics privacy
+        working-directory: flixie
+        run: npm run check:analytics
+
+      - name: Build and enforce Azure Free budgets
+        working-directory: flixie
+        run: npm run build
+
+      - name: Check SEO and HTTP routes
+        working-directory: flixie
+        run: npm run check:seo
+
+      - name: Save the validated public catalogue
+        shell: bash
+        run: |
+          set -euo pipefail
+          catalog_base=$(cat "$RUNNER_TEMP/flixie-catalog-base")
+          remote_head=$(git ls-remote origin refs/heads/main | cut -f1)
+          test "$remote_head" = "$catalog_base" || { echo 'Main changed; leaving the live site untouched.'; exit 1; }
+          git diff --exit-code -- . ':!flixie/src/catalog/titles.json'
+          if ! git diff --quiet -- flixie/src/catalog/titles.json; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add -- flixie/src/catalog/titles.json
+            git commit -m 'Refresh popular movie sitemap'
+            git push origin HEAD:main
+          fi
+
+      - name: Record and verify the deployment revision
+        shell: bash
+        run: |
+          set -euo pipefail
+          catalog_head=$(git rev-parse HEAD)
+          remote_head=$(git ls-remote origin refs/heads/main | cut -f1)
+          test "$remote_head" = "$catalog_head" || { echo 'Main changed; leaving the live site untouched.'; exit 1; }
+          node -e 'const fs=require("node:fs"),cp=require("node:child_process");fs.writeFileSync("flixie/dist/release.json",JSON.stringify({commit:cp.execFileSync("git",["rev-parse","HEAD"],{encoding:"utf8"}).trim()}))'
+
+      # A GITHUB_TOKEN push does not trigger the normal push workflow. Deploy
+      # this already-validated artifact directly, without a PAT or Actions write.
+      - name: Deploy validated catalogue to existing Azure hosting
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: upload
+          skip_app_build: true
+          app_location: flixie/dist
