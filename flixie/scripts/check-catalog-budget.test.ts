@@ -5,6 +5,7 @@ import { assertHostingBudget, freeTierBudget } from './lib/hosting-budget.mjs';
 import priorityMovies from './catalog-priority-movies.json';
 import {catalogTitles} from '../src/catalog';
 import catalogSnapshot from '../src/catalog/titles.json';
+import excludedMovies from './catalog-excluded-movies.json';
 const row=(id:number)=>({id,title:`Film ${id}`,posterPath:'/poster.jpg',releaseDate:'2020-02-20',runtime:100,
   overview:'A complete public synopsis.',tagline:'A film.',genres:['Drama'],userId:'PRIVATE',reviews:['PRIVATE'],voteAverage:8});
 const ref=(id:number)=>({kind:'movie' as const,id});
@@ -42,17 +43,26 @@ test('the published snapshot covers every editorial major movie with no duplicat
   assert.equal(new Set(priorityMovies.map(t=>t.id)).size,priorityMovies.length);
   for(const id of [27205,155,597,603,120,121,122,671,12445,11,19995,693134,862,808])
     assert(priorityMovies.some(t=>t.id===id),`Missing broad-film priority ${id}`);
-  for(const expected of priorityMovies)
+  for(const expected of priorityMovies.filter(t=>!excludedMovies.some(excluded=>excluded.id===t.id)))
     assert(catalogTitles.some(t=>t.kind==='movie'&&t.id===expected.id),`Missing required film ${expected.title}`);
 });
-test('the snapshot contains every valid classic, highly-rated and regional popular movie from its refresh',()=>{
+test('curated snapshot honours the exact user removals and keeps the four Dune films and Doomsday once each',()=>{
   assert.equal(catalogSnapshot.coverage.maximumMovies,200);
+  assert.equal(catalogSnapshot.coverage.mode,'curated');
   assert(catalogTitles.filter(t=>t.kind==='movie').length<=200);
-  assert.deepEqual(catalogSnapshot.coverage.guaranteedFeeds.map(feed=>feed.name),['classics','highlyRated','popular-GB']);
-  for(const feed of catalogSnapshot.coverage.guaranteedFeeds){
-    assert(feed.ids.length>0);assert.equal(new Set(feed.ids).size,feed.ids.length);
-    for(const id of feed.ids)assert(catalogTitles.some(t=>t.kind==='movie'&&t.id===id),`${feed.name}: missing movie ${id}`);
-  }
+  assert.deepEqual(excludedMovies.map(t=>t.reviewNumber),[8,10,15,24,25,26,34,43,45,46,48,49,53,55,58,59,62,69,71,72,79,90,91,93,95]);
+  assert.equal(new Set(excludedMovies.map(t=>t.id)).size,25);
+  assert.deepEqual(catalogSnapshot.coverage.excludedIds,excludedMovies.map(t=>t.id));
+  for(const {id,title} of excludedMovies)assert(!catalogTitles.some(t=>t.kind==='movie'&&t.id===id),`Removed film returned: ${title}`);
+  for(const id of [841,438631,693134,1170608,1003596])assert.equal(catalogTitles.filter(t=>t.kind==='movie'&&t.id===id).length,1);
+});
+test('user exclusions override previous titles, required movies and feed results; curated refresh leaves freed slots empty',async()=>{
+  assert.deepEqual(selectMovieReferences([ref(1),ref(2)],[ref(2),ref(3)],[[ref(2),ref(4)]],10,[2]).map(t=>t.id),[1,3,4]);
+  const calls:number[]=[];
+  const movie=publicTitle(row(1),ref(1)),removed=publicTitle(row(2),ref(2));
+  const result=await expandMovies([movie,removed],[],200,async({id})=>{calls.push(id);return row(id);},[ref(2),ref(3)],[2]);
+  assert.deepEqual(result.map(t=>t.id),[1,3]);assert.deepEqual(calls.sort(),[1,3]);
+  assert.throws(()=>selectMovieReferences([],[],[],200,[-1]),/Invalid excluded movie ID/);
 });
 test('refresh bounds requests, retains ordering and fails rather than returning a partial catalogue',async()=>{
   let active=0,peak=0;

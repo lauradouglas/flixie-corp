@@ -1,6 +1,7 @@
 {
   "updatedAt": "2026-11-16",
   "coverage": {
+    "mode": "curated",
     "maximumMovies": 200,
     "priorityIds": [
       27205,
@@ -84,84 +85,37 @@
       77,
       272,
       49026,
-      414906
+      414906,
+      841,
+      1170608,
+      1003596
     ],
-    "guaranteedFeeds": [
-      {
-        "name": "classics",
-        "ids": [
-          550,
-          278,
-          680,
-          13,
-          671,
-          603,
-          120,
-          597,
-          122,
-          121,
-          672,
-          807,
-          673,
-          238,
-          272,
-          11,
-          22,
-          674,
-          105,
-          98
-        ]
-      },
-      {
-        "name": "highlyRated",
-        "ids": [
-          980431,
-          1007757,
-          1311031,
-          278,
-          238,
-          687163,
-          936075,
-          389,
-          240,
-          424,
-          155,
-          129,
-          1218925,
-          122,
-          497,
-          19404,
-          372058,
-          157336,
-          496243,
-          680
-        ]
-      },
-      {
-        "name": "popular-GB",
-        "ids": [
-          1263337,
-          1423191,
-          1368337,
-          1400837,
-          969681,
-          687163,
-          1058424,
-          1813355,
-          1507696,
-          1616687,
-          1244523,
-          1003596,
-          1381071,
-          1294189,
-          1562642,
-          1422041,
-          656908,
-          1283515,
-          1101412,
-          354912
-        ]
-      }
+    "excludedIds": [
+      1560520,
+      1562642,
+      508791,
+      559581,
+      467909,
+      24740,
+      28974,
+      47760,
+      1632181,
+      1567605,
+      19898,
+      9610,
+      1483,
+      1621552,
+      9102,
+      71282,
+      3061,
+      322484,
+      14337,
+      239571,
+      31510,
+      15289,
+      10056,
+      1616687,
+      1234139
     ]
   },
   "titles": [
@@ -267,21 +221,6 @@
       ]
     },
     {
-      "id": 1560520,
-      "kind": "movie",
-      "title": "Batman: Knightfall Part 1: Knightfall",
-      "posterPath": "/9pKPTugulAt0EtH0g4gvJGffPSg.jpg",
-      "releaseDate": "2026-06-23",
-      "runtime": 79,
-      "overview": "Arkham Asylum has been destroyed, and all its inmates have been unleashed upon Gotham City. As Batman races to round up some of his greatest enemies, he is pushed to his physical and mental limits and into a final confrontation with a new threat: the man called Bane!",
-      "tagline": "",
-      "genres": [
-        "Action",
-        "Adventure",
-        "Animation"
-      ]
-    },
-    {
       "id": 1400837,
       "kind": "movie",
       "title": "Other Mommy",
@@ -292,20 +231,6 @@
       "tagline": "Your mommy won't save you.",
       "genres": [
         "Horror"
-      ]
-    },
-    {
-      "id": 1562642,
-      "kind": "movie",
-      "title": "Ghost Soldier",
-      "posterPath": "/8Y4oJ5iUs3hgPcDB3SIEmsNYjZk.jpg",
-      "releaseDate": "2026-11-04",
-      "runtime": 90,
-      "overview": "Henry “Fitz” Fitzgerald has spent years living quietly off the grid, hiding from a past few people know anything about. But when a powerful foreign corporation moves into his hometown to seize his neighbors’ land for a massive payday, Fitz is forced to reveal who he really is: a former Special Forces soldier and advanced weapons developer. Armed with experimental technology, lethal combat skills, and an unwavering code of justice, Fitz wages a one-man war against an enemy that never saw him coming.",
-      "tagline": "He's not a threat, he's a guarantee.",
-      "genres": [
-        "Action",
-        "Thriller"
       ]
     },
     {
@@ -366,20 +291,6 @@
         "Action",
         "Adventure",
         "Science Fiction"
-      ]
-    },
-    {
-      "id": 508791,
-      "kind": "movie",
-      "title": "The Sun Is Also a Star",
-      "posterPath": "/dGl7ZnnL3WoiCKQAQdgkEF0EAbj.jpg",
-      "releaseDate": "2019-05-16",
-      "runtime": 100,
-      "overview": "Two young New Yorkers begin to fall in love over the course of a single day, as a series of potentially life-altering meetings loom over their heads - hers concerning her family’s deportation to Jamaica, and his concerning an education at Dartmouth.",
-      "tagline": "Love is a universe all of its own.",
-      "genres": [
-        "Drama",
-        "Romance"
       ]
     },
     {
@@ -500,50 +411,6 @@
       ]
     },
     {
-      "id": 559581,
-      "kind": "movie",
-      "title": "Stowaway",
-      "posterPath": "/eFyRjhJfhNgM565U2mwEp5YUUOv.jpg",
-      "releaseDate": "2021-06-24",
-      "runtime": 116,
-      "overview": "A three-person crew on a mission to Mars faces an impossible choice when an unplanned passenger jeopardizes the lives of everyone on board.",
-      "tagline": "Millions of miles from home, survival comes with sacrifice.",
-      "genres": [
-        "Drama",
-        "Science Fiction",
-        "Thriller"
-      ]
-    },
-    {
-      "id": 467909,
-      "kind": "movie",
-      "title": "In the Heights",
-      "posterPath": "/lbf7wmrYRieR8fNFLnGiypMoPm1.jpg",
-      "releaseDate": "2021-06-10",
-      "runtime": 143,
-      "overview": "The story of Usnavi, a bodega owner who has mixed feelings about closing his store and retiring to the Dominican Republic or staying in Washington Heights.",
-      "tagline": "The time has come.",
-      "genres": [
-        "Drama",
-        "Romance"
-      ]
-    },
-    {
-      "id": 24740,
-      "kind": "movie",
-      "title": "The Entity",
-      "posterPath": "/k1cJOFM644cS3qzpZMECZnrVRMt.jpg",
-      "releaseDate": "1982-09-30",
-      "runtime": 125,
-      "overview": "A single mom is raped by an invisible force. Her psychiatrist believes the experience stems from childhood trauma, while she knows something supernatural is at play.",
-      "tagline": "There is no escape from something you cannot see.",
-      "genres": [
-        "Horror",
-        "Mystery",
-        "Thriller"
-      ]
-    },
-    {
       "id": 1007757,
       "kind": "movie",
       "title": "Swapped",
@@ -645,20 +512,6 @@
         "Adventure",
         "Drama",
         "Science Fiction"
-      ]
-    },
-    {
-      "id": 28974,
-      "kind": "movie",
-      "title": "A Woman of Paris: A Drama of Fate",
-      "posterPath": "/shmnpKWwfgNzntaDLPO0WYli5PX.jpg",
-      "releaseDate": "1923-10-01",
-      "runtime": 82,
-      "overview": "When Marie St. Clair believes she has been jilted by her artist fiance Jean, she decides to leave for Paris on her own. After spending a year in the city as a mistress of the wealthy Pierre Revel, she is reunited with Jean by chance. This leaves her with the choice between a glamorous life in Paris, and the true love she left behind.",
-      "tagline": "Humanity is composed not of heroes and villains.",
-      "genres": [
-        "Drama",
-        "Romance"
       ]
     },
     {
@@ -780,20 +633,6 @@
       ]
     },
     {
-      "id": 47760,
-      "kind": "movie",
-      "title": "Restless",
-      "posterPath": "/cv0AonfuCDrt1sfR8HRopODEbul.jpg",
-      "releaseDate": "2011-09-16",
-      "runtime": 91,
-      "overview": "Two outsiders, both shaped by the circumstances that have brought them together, forge a deep and lasting love.",
-      "tagline": "Who do you live for?",
-      "genres": [
-        "Drama",
-        "Romance"
-      ]
-    },
-    {
       "id": 426063,
       "kind": "movie",
       "title": "Nosferatu",
@@ -805,34 +644,6 @@
       "genres": [
         "Fantasy",
         "Horror"
-      ]
-    },
-    {
-      "id": 1632181,
-      "kind": "movie",
-      "title": "Accidental Partners",
-      "posterPath": "/j0CIVzeR7hRAPBPGR54qDZoOQpp.jpg",
-      "releaseDate": "2026-03-12",
-      "runtime": 110,
-      "overview": "Two women discover they were both scammed by the same man (who also got them pregnant). They form an alliance to take revenge.",
-      "tagline": "",
-      "genres": [
-        "Comedy",
-        "Romance"
-      ]
-    },
-    {
-      "id": 1567605,
-      "kind": "movie",
-      "title": "Ebenezer",
-      "posterPath": "/6H2N59jJW1hZEzn2ZdrMvJw5vNI.jpg",
-      "releaseDate": "2026-11-11",
-      "runtime": 115,
-      "overview": "An elderly miser embarks on a supernatural journey after visits from the ghost of his former business partner and the Spirits of Christmas Past, Present, and Yet to Come force him to confront his past and fight for a second chance at happiness.",
-      "tagline": "Before he was Scrooge, he was…",
-      "genres": [
-        "Comedy",
-        "Fantasy"
       ]
     },
     {
@@ -849,38 +660,6 @@
         "Animation",
         "Comedy",
         "Family",
-        "Fantasy"
-      ]
-    },
-    {
-      "id": 19898,
-      "kind": "movie",
-      "title": "Pandorum",
-      "posterPath": "/mNMfa6r3pl0EzFIKEkVcxyr6Rc7.jpg",
-      "releaseDate": "2009-09-08",
-      "runtime": 108,
-      "overview": "Two crew members wake up on an abandoned spacecraft with no idea who they are, how long they've been asleep, or what their mission is. The two soon discover they're actually not alone – and the reality of their situation is more horrifying than they could have imagined.",
-      "tagline": "Don't fear the end of the world. Fear what happens next.",
-      "genres": [
-        "Action",
-        "Horror",
-        "Mystery",
-        "Science Fiction",
-        "Thriller"
-      ]
-    },
-    {
-      "id": 9610,
-      "kind": "movie",
-      "title": "Conan the Destroyer",
-      "posterPath": "/m5i7S46DT1ESy7URkh2l92awGRr.jpg",
-      "releaseDate": "1984-06-29",
-      "runtime": 103,
-      "overview": "Conan is commissioned by the evil queen Taramis to safely escort a teen princess and her powerful bodyguard to a far away castle to retrieve the magic Horn of Dagoth. Unknown to Conan, the queen plans to sacrifice the princess when she returns and inherit her kingdom after the bodyguard kills Conan. The queen's plans fail to take into consideration Conan's strength and cunning and the abilities of his sidekicks: the eccentric wizard Akiro, the warrior woman Zula, and the inept Malak. Together the hero and his allies must defeat both mortal and supernatural foes in this voyage to sword-and-sorcery land.",
-      "tagline": "The most powerful legend of all is back in a new adventure.",
-      "genres": [
-        "Action",
-        "Adventure",
         "Fantasy"
       ]
     },
@@ -930,20 +709,6 @@
       ]
     },
     {
-      "id": 1483,
-      "kind": "movie",
-      "title": "Begotten",
-      "posterPath": "/rvgYcVToOHe0gKWtF3mz6SvM4Aw.jpg",
-      "releaseDate": "1991-06-05",
-      "runtime": 72,
-      "overview": "Begotten is the creation myth brought to life, the story of no less than the violent death of God and the (re)birth of nature on a barren earth.",
-      "tagline": "",
-      "genres": [
-        "Fantasy",
-        "Horror"
-      ]
-    },
-    {
       "id": 687163,
       "kind": "movie",
       "title": "Project Hail Mary",
@@ -955,21 +720,6 @@
       "genres": [
         "Adventure",
         "Science Fiction"
-      ]
-    },
-    {
-      "id": 1621552,
-      "kind": "movie",
-      "title": "Facing El Chapo",
-      "posterPath": "/alpf5v4UqSFawPmG9RX03Or4BDk.jpg",
-      "releaseDate": "2026-08-21",
-      "runtime": 91,
-      "overview": "Two Mexican officers must survive the final hours of their shift after crossing a ruthless cartel boss.",
-      "tagline": "",
-      "genres": [
-        "Action",
-        "Crime",
-        "Thriller"
       ]
     },
     {
@@ -1004,36 +754,6 @@
       ]
     },
     {
-      "id": 9102,
-      "kind": "movie",
-      "title": "Screamers",
-      "posterPath": "/eqgBf791rMZG7ywHfObpXeMpiRf.jpg",
-      "releaseDate": "1995-09-08",
-      "runtime": 108,
-      "overview": "SIRIUS 6B, Year 2078. On a distant mining planet ravaged by a decade of war, scientists have created the perfect weapon: a blade-wielding, self-replicating race of killing devices known as Screamers designed for one purpose only -- to hunt down and destroy all enemy life forms.",
-      "tagline": "The last scream you hear will be your own.",
-      "genres": [
-        "Horror",
-        "Science Fiction",
-        "War"
-      ]
-    },
-    {
-      "id": 71282,
-      "kind": "movie",
-      "title": "China Seas",
-      "posterPath": "/aCYCbwSJHEd6SJpxLJfE8fnY25m.jpg",
-      "releaseDate": "1935-08-09",
-      "runtime": 87,
-      "overview": "Captain Alan Gaskell sails the perilous waters between Hong Kong and Singapore with a secret cargo: a fortune in British gold. That's not the only risky cargo he carries; both his fiery mistress and his refined fiancee are aboard!",
-      "tagline": "",
-      "genres": [
-        "Action",
-        "Adventure",
-        "Drama"
-      ]
-    },
-    {
       "id": 141052,
       "kind": "movie",
       "title": "Justice League",
@@ -1061,20 +781,6 @@
         "Action",
         "Adventure",
         "Science Fiction"
-      ]
-    },
-    {
-      "id": 3061,
-      "kind": "movie",
-      "title": "The Crowd",
-      "posterPath": "/jftzHLCZLE2DOLQWY0mENOIPjxc.jpg",
-      "releaseDate": "1928-03-03",
-      "runtime": 98,
-      "overview": "John, an ambitious but undisciplined New York City office worker, meets and marries Mary. They start a family, struggle to cope with marital stress, financial setbacks, and tragedy, all while lost amid the anonymous, pitiless throngs of the big city.",
-      "tagline": "A Motion Picture with a stirring message on Marriage! A Powerful Film, full of truths of life and love!",
-      "genres": [
-        "Drama",
-        "Romance"
       ]
     },
     {
@@ -1165,21 +871,6 @@
       ]
     },
     {
-      "id": 322484,
-      "kind": "movie",
-      "title": "Game of Thrones The IMAX Experience",
-      "posterPath": "/f2FAIM29opSocIEvNvT7Muinga0.jpg",
-      "releaseDate": "2015-01-29",
-      "runtime": 128,
-      "overview": "The first episode of this IMAX screening takes place entirely at The Wall with the Night’s Watch (S4 EP9) hopelessly outnumbered as they attempt to defend Castle Black from the Wildings and features one the fiercest and most intense battle scenes ever filmed for television. The second episode (S4 EP10), features Dany coming to grips with the realities of ruling a kingdom, Bran learning the startling reality of his destiny and Tyrion facing the truth of his unfortunate situation.",
-      "tagline": "The First Television Series to Come to the Biggest Screen of All",
-      "genres": [
-        "Action",
-        "Drama",
-        "Fantasy"
-      ]
-    },
-    {
       "id": 298618,
       "kind": "movie",
       "title": "The Flash",
@@ -1192,35 +883,6 @@
         "Action",
         "Adventure",
         "Science Fiction"
-      ]
-    },
-    {
-      "id": 14337,
-      "kind": "movie",
-      "title": "Primer",
-      "posterPath": "/xEoq2WmDzpzxhkHEsmOYOg6BPg6.jpg",
-      "releaseDate": "2004-10-08",
-      "runtime": 77,
-      "overview": "A group of fledgling inventors discover a complex method to manipulate reality. At first, they successfully game the stock market with it, but the consequences of the invention start to catch up with them.",
-      "tagline": "What happens if it actually works?",
-      "genres": [
-        "Drama",
-        "Science Fiction",
-        "Thriller"
-      ]
-    },
-    {
-      "id": 239571,
-      "kind": "movie",
-      "title": "The Best of Me",
-      "posterPath": "/8QBWh2Iwf1iUfsu2NfCue2V1hpV.jpg",
-      "releaseDate": "2014-10-15",
-      "runtime": 117,
-      "overview": "A pair of former high school sweethearts reunite after many years when they return to visit their small hometown.",
-      "tagline": "You never forget your first love.",
-      "genres": [
-        "Drama",
-        "Romance"
       ]
     },
     {
@@ -1310,22 +972,6 @@
         "Action",
         "Horror",
         "Science Fiction"
-      ]
-    },
-    {
-      "id": 31510,
-      "kind": "movie",
-      "title": "Ben-Hur: A Tale of the Christ",
-      "posterPath": "/aCohFCJNxPner7VzjzyNN7H8BgV.jpg",
-      "releaseDate": "1925-12-25",
-      "runtime": 143,
-      "overview": "Judah Ben-Hur, a wealthy Jewish prince in Jerusalem, is betrayed by his childhood friend, Roman tribune Messala, and wrongfully sent to the galley slaves.",
-      "tagline": "Amazing! Thrilling! Colossal! Mighty!",
-      "genres": [
-        "Action",
-        "Adventure",
-        "Drama",
-        "Romance"
       ]
     },
     {
@@ -1475,36 +1121,6 @@
       ]
     },
     {
-      "id": 15289,
-      "kind": "movie",
-      "title": "Babylon 5: The Lost Tales - Voices in the Dark",
-      "posterPath": "/vJfaGrtbugADGYdlmtI6xfWxfpB.jpg",
-      "releaseDate": "2007-09-03",
-      "runtime": 75,
-      "overview": "This instalment of Babylon 5 is in two parts: the first is about an entity that has possessed a worker.  Colonel Lochley prevents a priest from performing an exorcism. The host is returned to Earth. The second has Galen trying to dupe President Sheridan into assassinating the future Centauri emperor to stop him from attacking Earth in around 30 years time.",
-      "tagline": "",
-      "genres": [
-        "Action",
-        "Adventure",
-        "Science Fiction"
-      ]
-    },
-    {
-      "id": 10056,
-      "kind": "movie",
-      "title": "Killer's Kiss",
-      "posterPath": "/rNnhrytP9nVOJZwprO4KuKS0LT9.jpg",
-      "releaseDate": "1955-10-01",
-      "runtime": 68,
-      "overview": "Davey Gordon, a New York City boxer at the end of his career, falls for dancer Gloria Price. However, their budding relationship is interrupted by Gloria's violent boss, Vincent Rapallo, who has eyes for Gloria. The two decide to skip town, but before they can, Vincent and his thugs abduct Gloria, and Davey is forced to search for her among the most squalid corners of the city, with his enemy hiding in the shadows.",
-      "tagline": "Her Soft Mouth Was The Road To Sin-Smeared Violence!",
-      "genres": [
-        "Crime",
-        "Drama",
-        "Thriller"
-      ]
-    },
-    {
       "id": 1160003,
       "kind": "movie",
       "title": "Night of the Hunted",
@@ -1520,21 +1136,6 @@
       ]
     },
     {
-      "id": 1616687,
-      "kind": "movie",
-      "title": "Never Surrender",
-      "posterPath": "/hKROmLddpzpjkxKKVFYFRAOXX1b.jpg",
-      "releaseDate": "2026-11-12",
-      "runtime": 137,
-      "overview": "An ex-soldier and his grandchildren battle against ruthless criminals in a remote village. To survive, they must also confront their fears and regrets.",
-      "tagline": "",
-      "genres": [
-        "Action",
-        "Crime",
-        "Thriller"
-      ]
-    },
-    {
       "id": 1232449,
       "kind": "movie",
       "title": "Young Hearts",
@@ -1546,22 +1147,6 @@
       "genres": [
         "Drama",
         "Romance"
-      ]
-    },
-    {
-      "id": 1234139,
-      "kind": "movie",
-      "title": "Jailer 2",
-      "posterPath": "/upwdEyhhYZ7pT2hD535fr2MGfpx.jpg",
-      "releaseDate": "2026-10-14",
-      "runtime": 163,
-      "overview": "When a dangerous syndicate expands its reach to threaten his family's peace, retired jailer Tiger Muthuvel Pandian goes undercover as a driver. Operating from the shadows, he takes on ruthless new enemies to protect his home.",
-      "tagline": "",
-      "genres": [
-        "Action",
-        "Comedy",
-        "Crime",
-        "Drama"
       ]
     },
     {
@@ -3123,6 +2708,35 @@
         "Comedy",
         "Family",
         "Fantasy"
+      ]
+    },
+    {
+      "id": 841,
+      "kind": "movie",
+      "title": "Dune",
+      "posterPath": "/4U8SybbIccwhTEZMs4KT7qefN7N.jpg",
+      "releaseDate": "1984-12-14",
+      "runtime": 137,
+      "overview": "In the year 10,191, the most precious substance in the universe is the spice Melange. The spice extends life. The spice expands consciousness. The spice is vital to space travel.  The spice exists on only one planet in the entire universe, the vast desert planet Arrakis, also known as Dune.  Its native inhabitants, the Fremen, have long held a prophecy that a man would come, a messiah who would lead them to true freedom.",
+      "tagline": "A world beyond your experience, beyond your imagination.",
+      "genres": [
+        "Action",
+        "Adventure",
+        "Science Fiction"
+      ]
+    },
+    {
+      "id": 1170608,
+      "kind": "movie",
+      "title": "Dune: Part Three",
+      "posterPath": "/d43fvHQsIMa4kpyhKXw0haEJIvI.jpg",
+      "releaseDate": "2026-12-16",
+      "runtime": null,
+      "overview": "Emperor Paul Atreides faces the fallout from his ascent to power as political plots and a galaxy-wide holy war endanger the future only he can see.",
+      "tagline": "The epic conclusion.",
+      "genres": [
+        "Adventure",
+        "Science Fiction"
       ]
     },
     {

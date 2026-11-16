@@ -56,17 +56,21 @@ export async function fetchTitles(references:TitleReference[], load:(row:TitleRe
   return output;
 }
 
-export function selectMovieReferences(previous:TitleReference[],required:TitleReference[],feeds:TitleReference[][],limit:number):TitleReference[] {
+export function selectMovieReferences(previous:TitleReference[],required:TitleReference[],feeds:TitleReference[][],limit:number,excludedIds:readonly number[]=[]):TitleReference[] {
   if(!Number.isSafeInteger(limit)||limit<1||[...previous,...required,...feeds.flat()].some(t=>t.kind!=='movie'))
     throw Error('Movie-only expansion requires a positive limit and cannot add TV pages.');
-  const protectedRows=titleCandidates(previous,[required]);
+  if(excludedIds.some(id=>!Number.isSafeInteger(id)||id<1||id>2147483647))throw Error('Invalid excluded movie ID');
+  const excluded=new Set(excludedIds);
+  const eligible=(rows:TitleReference[])=>rows.filter(t=>!excluded.has(t.id));
+  // Explicit user removals override retention, priorities and discovery alike.
+  const protectedRows=titleCandidates(eligible(previous),[eligible(required)]);
   if(protectedRows.length>limit)
     throw Error(`Movie coverage needs ${protectedRows.length} pages; budget is ${limit}. Keep published URLs and required movies; review capacity before expanding.`);
-  return titleCandidates(protectedRows,feeds).slice(0,limit);
+  return titleCandidates(protectedRows,feeds.map(eligible)).slice(0,limit);
 }
 
-export async function expandMovies(previous:CatalogTitle[],feeds:TitleReference[][],limit:number,load:(row:TitleReference)=>Promise<unknown>,required:TitleReference[]=[]):Promise<CatalogTitle[]> {
+export async function expandMovies(previous:CatalogTitle[],feeds:TitleReference[][],limit:number,load:(row:TitleReference)=>Promise<unknown>,required:TitleReference[]=[],excludedIds:readonly number[]=[]):Promise<CatalogTitle[]> {
   const movies=previous.filter(t=>t.kind==='movie');
-  const selected=selectMovieReferences(movies,required,feeds,limit);
+  const selected=selectMovieReferences(movies,required,feeds,limit,excludedIds);
   return [...await fetchTitles(selected,load),...previous.filter(t=>t.kind==='show')];
 }

@@ -112,6 +112,17 @@ try {
     assert.match(body, /play.google.com/);
   }
   const config=JSON.parse(await readFile('dist/staticwebapp.config.json','utf8'));
+  const excludedMovies=JSON.parse(await readFile('scripts/catalog-excluded-movies.json','utf8'));
+  for(const {id} of excludedMovies){
+    const path='/movies/'+id;
+    assert(!Object.values(pages).some(page=>page.path===path),'Excluded movies must not have an indexable static page');
+    const response=await fetch(base+path);
+    assert.equal(response.status,200,'Normal movie links must remain usable after SEO removal');
+    assert.equal(response.headers.get('x-robots-tag'),'noindex');
+    const body=await response.text();
+    assert.match(body,/name="robots" content="noindex"/);
+    assert.doesNotMatch(body,/rel="canonical"/);
+  }
   const oldAlias=await fetch(base+'/movies/348.html?source=legacy',{redirect:'manual'});
   assert.equal(oldAlias.status,301);
   assert.equal(oldAlias.headers.get('location'),'/movies/348?source=legacy');
