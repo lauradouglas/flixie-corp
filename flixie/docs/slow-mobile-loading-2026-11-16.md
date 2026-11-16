@@ -51,7 +51,7 @@ are kept with the task evidence.
 
 Four behavioural regressions cover the deferred country/feed handover, immediate
 film/person snapshots during navigation and failure, matching first/hydrated
-title rows, and saved-sign-in restoration. All 167 website tests, TypeScript,
+title rows, and saved-sign-in restoration. All 169 website tests, TypeScript,
 analytics, build and SEO/HTTP/deep-link checks pass. Output preserves the 206
 pages, 200 sitemap URLs and 15,629 routing bytes, with 291 files / 17.38 MB,
 within the unchanged Azure Free guards.
@@ -66,3 +66,21 @@ shared footer (TTF with swap), which did not reproduce in the local recording.
 It is now consolidated into one initial shared WOFF2/optional registration;
 a regression prevents lazy view or footer CSS from reintroducing another face.
 A final live recording is required for the release result below.
+
+## Live trace diagnosis
+
+The live trace exported as Trace-20261116T151427.json.gz still reports raw CLS
+0.8534866. Its only LayoutShift is at 5.904 seconds: the initial stylesheet has
+just finished, and the unstyled header layout changes from 194px to 74px.
+First paint and first contentful paint both occur 514.854ms **after** that event.
+The immediately preceding captured frame is blank; the first visible frame is
+fully styled. There are no LayoutShift events after first paint. This is not
+reported as a raw CLS improvement or a perfect Web Vitals score.
+
+The filmstrip did expose a different visual change: a matching-country feed
+could reorder the first films after hydration without creating a CLS event.
+The six initially visible movies and four shows now retain their positions;
+matching live facts update in place, and new selections remain available after
+them through the existing Explore control. Other countries retain their own
+fresh result ordering and stale-country isolation. A focused regression covers
+a reversed feed, updated facts, preserved nodes and access to new results.

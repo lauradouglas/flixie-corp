@@ -30,3 +30,12 @@ export function validDiscoveryCountry(value:unknown):string|null {
   return discoveryCountries.some(([id])=>id===normalized)?normalized:null;
 }
 export function discoveryCountry(value:unknown):string {return validDiscoveryCountry(value)??'GB';}
+
+/** Keep the first visible public cards in place while matching-country data
+ * refreshes. Refresh their facts and add new selections after the visible row. */
+export function stableDiscoverySelection(snapshot:Film[],refreshed:Film[]|undefined,visibleCount:number):Film[] {
+  if(!refreshed?.length)return snapshot;
+  const current=new Map(refreshed.map(item=>[item.id,item]));
+  const visible=snapshot.slice(0,visibleCount),ids=new Set(visible.map(item=>item.id));
+  return [...visible.map(item=>current.get(item.id)??item),...refreshed.filter(item=>!ids.has(item.id))].slice(0,12);
+}

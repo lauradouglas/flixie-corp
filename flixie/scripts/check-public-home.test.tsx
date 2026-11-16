@@ -1,3 +1,5 @@
+import {stableDiscoverySelection} from '../src/web/publicDiscovery';
+import {film} from '../src/web/models';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {JSDOM} from 'jsdom';
@@ -76,8 +78,9 @@ test('changing cinema country clears old results, ignores a late earlier country
     await act(async()=>{pending.get('IE')!(new Response(JSON.stringify([row(3,'Irish film')]),{status:200}));});
     assert.equal(dom.window.document.querySelector('.fx-discovery-cinema-card')?.getAttribute('href'),'/movies/3');
     assert.equal(dom.window.localStorage.getItem('flixie-cinema-country'),'IE');
+    const visibleId=Number(dom.window.document.querySelector('.fx-discovery-film a')!.getAttribute('href')!.split('/').pop());
     await act(async()=>{dom.window.document.querySelector<HTMLButtonElement>('.fx-discovery-save')!.click();});
-    assert.deepEqual(saves,[1]);
+    assert.deepEqual(saves,[visibleId]);
   }finally{await act(async()=>root.unmount());dom.window.close();}
 });
 
@@ -112,7 +115,7 @@ test('guest detection supplies the same country to popular movies and cinemas, t
   });
 });
 
-test('slow country detection and GB refresh keep the preloaded film cards until the real response arrives',async()=>{
+test('slow country detection and GB refresh retain visible selections and place new films after them',async()=>{
   let detect!:(response:Response)=>void, finish!:(response:Response)=>void;
   await countryPage(url=>{
     if(url.endsWith('/guest/country'))return new Promise(resolve=>{detect=resolve;});
@@ -129,7 +132,10 @@ test('slow country detection and GB refresh keep the preloaded film cards until 
     await act(async()=>detect(countryResponse('GB')));
     assert.equal(section().querySelector('.fx-discovery-film'),first,'pending refresh preserves the existing artwork node');
     await act(async()=>finish(new Response(JSON.stringify([row(348,'Fresh GB Alien')]))));
-    assert(section().textContent?.includes('Fresh GB Alien'));
+    assert.equal(section().querySelector('.fx-discovery-film'),first,'resolved refresh must not swap the first visible film');
+    assert(!section().textContent?.includes('Fresh GB Alien'),'a new selection must not displace the visible row');
+    await act(async()=>section().querySelector<HTMLButtonElement>('.fx-discovery-heading button')!.click());
+    assert(section().textContent?.includes('Fresh GB Alien'),'new selections remain accessible through Explore films');
     assert.equal(section().querySelector('.fx-loading-discovery'),null);
   });
 });
@@ -180,7 +186,18 @@ test('failed guest detection falls back visibly to GB and manual country selecti
     await render({});
     assert.equal(dom.window.document.querySelector<HTMLSelectElement>('select')?.value,'GB');
     assert(dom.window.document.body.textContent?.includes('Country detection is unavailable'));
+    await act(async()=>dom.window.document.querySelector<HTMLButtonElement>('#public-films .fx-discovery-heading button')!.click());
     assert(dom.window.document.querySelector('#public-films')?.textContent?.includes('GB Alien'));
     assert(dom.window.document.querySelector('#public-cinema')?.textContent?.includes('GB Alien'));
   });
+});
+
+
+test('matching-country refresh updates the same films without following a reversed feed order',()=>{
+  const initial=[row(1,'Alien'),row(2,'The Odyssey'),row(3,'Obsession')].map(value=>film(value,'movie'));
+  const fresh=[row(2,'The Odyssey updated'),row(1,'Alien updated'),row(4,'Spider-Man')].map(value=>film(value,'movie'));
+  const result=stableDiscoverySelection(initial,fresh,2);
+  assert.deepEqual(result.map(item=>item.id),[1,2,4]);
+  assert.deepEqual(result.map(item=>item.title),['Alien updated','The Odyssey updated','Spider-Man']);
+  assert.equal(stableDiscoverySelection(initial,undefined,2),initial);
 });

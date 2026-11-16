@@ -6,7 +6,7 @@ import {useSession} from './auth';
 import {Link,Poster,Loading} from './components';
 import {useLoad} from './hooks';
 import {useBrowseCountry} from './browseCountry';
-import {discoveryCountries,discoveryCountry,discoverySnapshot,discoveryYear} from './publicDiscovery';
+import {discoveryCountries,discoveryCountry,discoverySnapshot,discoveryYear,stableDiscoverySelection} from './publicDiscovery';
 import PublicBrowseHeader from './PublicBrowseHeader';
 import type {Film} from './models';
 import type {PageActions} from './pages';
@@ -66,7 +66,7 @@ export default function PublicHomePage({actions}:{actions:PageActions}) {
   const cinema=useLoad(`public-cinema:${region}:${ready}`,signal=>ready?api.cinemaDiscovery(region,signal):Promise.resolve(undefined));
   // Keep the same public GB cards through hydration/detection. Once a different
   // country is chosen, only that country's response may replace its placeholders.
-  const movies=movieFeed.data??(region===discoverySnapshot.region?discoverySnapshot.movies:[]);
+  const movies=region===discoverySnapshot.region?stableDiscoverySelection(discoverySnapshot.movies,movieFeed.data,6):movieFeed.data??[];
   const hint=source==='loading'?'Choosing your country…':source==='account'?'Using your saved country.':source==='account-fallback'?'Your saved country is unavailable. Choose your country above.':source==='detected'?'Country estimated from your connection. You can change it.':source==='fallback'?'Country detection is unavailable. Choose your country above.':'';
-  return <PublicHomeContent movies={movies} shows={showFeed.data??discoverySnapshot.shows} movieFeed={{...movieFeed,loading:!ready||movieFeed.loading}} showFeed={showFeed} cinema={{...cinema,loading:!ready||cinema.loading}} region={region} countryHint={hint} member={Boolean(user)} onRegion={chooseCountry} onSave={f=>void actions.save(f,true)}/>;
+  return <PublicHomeContent movies={movies} shows={stableDiscoverySelection(discoverySnapshot.shows,showFeed.data,4)} movieFeed={{...movieFeed,loading:!ready||movieFeed.loading}} showFeed={showFeed} cinema={{...cinema,loading:!ready||cinema.loading}} region={region} countryHint={hint} member={Boolean(user)} onRegion={chooseCountry} onSave={f=>void actions.save(f,true)}/>;
 }
