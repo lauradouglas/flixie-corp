@@ -11,11 +11,11 @@ export default function Navbar({ currentPage }: { currentPage: PageId }) {
       <a href="/" aria-label="Flixie home" className="shrink-0">
         <BrandLogo className="block h-8 w-24" />
       </a>
-      <nav className="hidden md:flex items-center gap-1" aria-label="Main navigation">
+      <nav className="corporate-full-navigation items-center gap-1" aria-label="Main navigation">
         {links.map(key => <a key={key} href={pages[key].path} aria-current={activePage === key ? 'page' : undefined} className={`px-3 py-3 rounded-lg text-sm hover:bg-bg-elevated ${activePage === key ? 'text-flixie-light' : 'text-text-secondary'}`}>{pages[key].label}</a>)}
       </nav>
-      <a href="#download" className="hidden md:inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-flixie-brand text-white hover:bg-flixie-brand-hover font-bold text-sm"><Download className="h-4 w-4" aria-hidden="true" />Get Flixie</a>
-      <details className="md:hidden relative">
+      <a href="#download" className="corporate-download items-center gap-2 px-5 py-3 rounded-xl bg-flixie-brand text-white hover:bg-flixie-brand-hover font-bold text-sm"><Download className="h-4 w-4" aria-hidden="true" />Get Flixie</a>
+      <details className="corporate-menu relative">
         <summary className="cursor-pointer list-none min-h-11 px-3 flex items-center gap-2 text-text-primary"><Menu className="h-5 w-5" aria-hidden="true" />Menu</summary>
         <nav className="absolute right-0 top-full w-60 max-w-[85vw] bg-bg-nav border border-border-custom rounded-xl p-3 shadow-lg" aria-label="Mobile navigation">
           {links.map(key => <a key={key} href={pages[key].path} aria-current={activePage === key ? 'page' : undefined} className="block px-4 py-3 rounded-lg text-text-secondary hover:bg-bg-elevated">{pages[key].label}</a>)}

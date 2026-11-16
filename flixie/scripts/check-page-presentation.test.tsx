@@ -23,6 +23,18 @@ async function setup(path='/movies/348'){
 function session(api:Record<string,unknown>){return {user:null,identity:null,loading:false,error:'',local:false,api,signIn:async()=>{},join:async()=>{},provider:async()=>{},signOut:async()=>{},reset:async()=>{},reloadProfile:async()=>{}};}
 const apiDefaults={terms:async()=>({accepted:true}),credits:async()=>({cast:[],directors:[]}),publicReviews:async()=>[],options:async()=>({stream:[],rent:[],buy:[]}),detectedCountry:async()=>'GB',cinemaStatus:async()=>({}),seasons:async()=>[],images:async()=>[]};
 
+test('app navigation gives each screen a readable tab label without copying private searches into metadata',async()=>{
+ const t=await setup('/app/sign-in');
+ try{
+  await t.render(createElement(runtime.SessionContext.Provider,{value:session({...apiDefaults,search:async()=>[]})},createElement(runtime.ConnectedApp)));
+  for(const [path,title] of [['/app/sign-in','Sign In | Flixie'],['/app/watchlist','Your Watchlist | Flixie'],['/app/diary','Your Film Diary | Flixie'],['/app/plans','Your Watch Plans | Flixie'],['/app/notifications','Notifications | Flixie'],['/app/search?q=private-fixture-query','Search Films & TV | Flixie']]){
+   await act(async()=>{t.dom.window.history.pushState(null,'',path);t.dom.window.dispatchEvent(new t.dom.window.PopStateEvent('popstate'));});
+   assert.equal(t.doc.title,title);assert.equal(t.doc.querySelector('meta[property="og:title"]')?.getAttribute('content'),title);
+   assert.match(t.doc.querySelector('meta[name="robots"]')?.getAttribute('content')??'',/noindex/);
+  }
+ }finally{await t.close();}
+});
+
 test('the actual route shell retains a resolved film title and replaces it with a show title on navigation',async()=>{
  const t=await setup();let finish!:(value:unknown)=>void;
  const movie=film({id:348,title:'Alien',posterPath:'',overview:'A public synopsis.'},'movie');

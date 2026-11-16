@@ -53,6 +53,27 @@ async function setup(api: FlixieApi) {
 }
 const noNetwork = () => new FlixieApi("http://127.0.0.1:3000", () => identity, async () => { throw Error("No network expected"); });
 
+test('dialog padding preserves a draft, backdrop dismisses it, and stacked tasks have unique accessible labels',async()=>{
+  const t=await setup(noNetwork());let closes=0;
+  const content=(dismissible=true)=>createElement('div',{},
+    createElement(runtime.Sheet,{title:'First task',description:'First description',dismissible,onClose(){closes++;}},'Draft'),
+    createElement(runtime.Sheet,{title:'Second task',description:'Second description',onClose(){}},'Other draft'));
+  try{
+    await t.render(content());
+    const dialogs=[...t.dom.window.document.querySelectorAll('dialog')];
+    assert.notEqual(dialogs[0].getAttribute('aria-labelledby'),dialogs[1].getAttribute('aria-labelledby'));
+    for(const dialog of dialogs){
+      assert(dialog.contains(t.dom.window.document.getElementById(dialog.getAttribute('aria-labelledby')!)));
+      assert(dialog.contains(t.dom.window.document.getElementById(dialog.getAttribute('aria-describedby')!)));
+    }
+    const dialog=dialogs[0];dialog.getBoundingClientRect=()=>({left:20,right:300,top:40,bottom:500,width:280,height:460,x:20,y:40,toJSON(){}});
+    const click=async(x:number,y:number)=>act(async()=>dialog.dispatchEvent(new t.dom.window.MouseEvent('click',{bubbles:true,clientX:x,clientY:y})));
+    await click(25,45);assert.equal(closes,0);
+    await click(10,45);assert.equal(closes,1);
+    await t.render(content(false));await click(10,45);assert.equal(closes,1,'busy tasks cannot be dismissed');
+  }finally{await t.close();}
+});
+
 test("mobile task follows keyboard area, clears sizing for desktop/zoom and removes listeners on close", async () => {
   const t = await setup(noNetwork());
   let closed = false;

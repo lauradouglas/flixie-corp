@@ -10,6 +10,8 @@
 }
 .flixie-web .fx-diary-view {
   display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
   padding: 4px;
   gap: 4px;
   border: 1px solid var(--fx-line);
@@ -28,6 +30,8 @@
   background: transparent;
   font-size: var(--fx-type-control);
   font-weight: 750;
+  flex: 1 1 auto;
+  justify-content: center;
 }
 .flixie-web .fx-diary-view [aria-pressed="true"] {
   color: var(--fx-purple);

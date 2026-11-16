@@ -1,3 +1,5 @@
+/** Keep acronyms intact when a feature label appears inside a sentence. */
+export const featureSentenceLabel = (label: string) => label.toLowerCase().replace(/\btv\b/g, 'TV');
 export const featureContent = {
   "diary": {
     "path": "/film-diary",

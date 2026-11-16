@@ -2,6 +2,7 @@ import WordmarkArtwork from '../components/WordmarkArtwork';
 import { followMobileTaskViewport } from './mobileTaskViewport';
 import {
   useEffect,
+  useId,
   useRef,
   useState,
   type ReactNode,
@@ -259,6 +260,7 @@ export function Empty({
     </div>
   );
 }
+const modalScrollLocks = new WeakMap<Document, { count: number; previous: string }>();
 export function Sheet({
   title,
   children,
@@ -283,15 +285,22 @@ export function Sheet({
   mobileFullScreen?: boolean;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
+  const labelId = useId(), descriptionId = useId();
   useEffect(() => {
     const dialog = ref.current;
     const focus = document.activeElement as HTMLElement | null;
     dialog?.showModal();
-    const previous = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    const owner = dialog?.ownerDocument ?? document;
+    const lock = modalScrollLocks.get(owner) ?? { count: 0, previous: owner.body.style.overflow };
+    lock.count++;
+    modalScrollLocks.set(owner, lock);
+    owner.body.style.overflow = "hidden";
     return () => {
       dialog?.close();
-      document.body.style.overflow = previous;
+      if (--lock.count === 0) {
+        owner.body.style.overflow = lock.previous;
+        modalScrollLocks.delete(owner);
+      }
       focus?.focus();
     };
   }, []);
@@ -308,16 +317,21 @@ export function Sheet({
         if (dismissible) onClose();
       }}
       onClick={(event) => {
-        if (dismissible && event.target === event.currentTarget) onClose();
+        if (!dismissible || event.target !== event.currentTarget) return;
+        const bounds = event.currentTarget.getBoundingClientRect();
+        // Native dialogs send backdrop clicks to the dialog too. Its own
+        // padding is part of the task, so only dismiss outside its bounds.
+        if (event.clientX < bounds.left || event.clientX > bounds.right ||
+            event.clientY < bounds.top || event.clientY > bounds.bottom) onClose();
       }}
-      aria-labelledby="fx-sheet-title"
-      aria-describedby={description ? "fx-sheet-description" : undefined}
+      aria-labelledby={labelId}
+      aria-describedby={description ? descriptionId : undefined}
     >
       <div className={presentation === "lightbox" ? "fx-lightbox-heading" : presentation === "modal" ? "fx-watch-heading" : "fx-sheet-top"}>
         {presentation === "modal" && <img className="fx-watch-brand" src="/web/flixie-f.png" alt="" width={36} height={36} />}
         <div>
-          <h2 id="fx-sheet-title">{title}</h2>
-          {description && <div id="fx-sheet-description">{description}</div>}
+          <h2 id={labelId}>{title}</h2>
+          {description && <div id={descriptionId}>{description}</div>}
         </div>
         <button className="fx-icon-button" aria-label="Close" onClick={onClose} disabled={!dismissible}>
           <X />

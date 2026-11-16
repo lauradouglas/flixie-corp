@@ -228,6 +228,20 @@
 .flixie-web .fx-sheet::backdrop {
   background: #090914b8;
 }
+.flixie-web .fx-sheet-top {
+  position: sticky;
+  top: -24px;
+  z-index: 5;
+  margin: -24px -24px 13px;
+  padding: 20px 24px 13px;
+  background: var(--fx-surface);
+  border-bottom: 1px solid var(--fx-line);
+}
+.flixie-web .fx-sheet-top > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.flixie-web .fx-sheet-top > button { flex-shrink: 0; }
 @media (min-width:641px) {
   .flixie-web .fx-sheet {
     inset: 0;

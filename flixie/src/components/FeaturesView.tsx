@@ -1,9 +1,9 @@
 import { ArrowRight } from 'lucide-react';
-import { featureContent, featurePageIds } from '../featureContent';
+import { featureSentenceLabel, featureContent, featurePageIds } from '../featureContent';
 export default function FeaturesView() {
   return <div className="feature-landing"><div className="feature-shell">
     <header className="feature-hero"><div><h1>Your movie &amp; TV companion.</h1><p className="feature-intro">Find tonight’s film with picks for your taste, time and viewing options. Keep up with shows, remember what you’ve watched and bring friends into your next film night.</p><a className="feature-primary" href="#download">Get Flixie<ArrowRight size={18} aria-hidden="true"/></a></div></header>
-    <div className="feature-directory">{featurePageIds.map(key => <section key={key}><h2><a href={featureContent[key].path}>{featureContent[key].label}<ArrowRight size={22} aria-hidden="true"/></a></h2><p>{featureContent[key].intro}</p><a className="feature-text-link" href={featureContent[key].path}>Explore {featureContent[key].label.toLowerCase()}</a></section>)}</div>
+    <div className="feature-directory">{featurePageIds.map(key => <section key={key}><h2><a href={featureContent[key].path}>{featureContent[key].label}<ArrowRight size={22} aria-hidden="true"/></a></h2><p>{featureContent[key].intro}</p><a className="feature-text-link" href={featureContent[key].path}>Explore {featureSentenceLabel(featureContent[key].label)}</a></section>)}</div>
     <section className="feature-section"><h2>Useful before your friends join.</h2><p>Keep a personal movie diary, save films and shows, and track TV progress on your own. Friends and genre communities add new opinions and conversations when you want them.</p></section>
     <p className="feature-platforms">Flixie does not stream films or TV episodes. Watch through your chosen service or at the cinema.</p>
   </div></div>;

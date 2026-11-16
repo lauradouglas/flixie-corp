@@ -212,30 +212,21 @@ export function HomePage({
   revision: number;
 }) {
   const { api } = useSession();
-  const home = useLoad(`home:${user.id}:${revision}`, async () => {
-    const result = await Promise.allSettled([
-      api.watchSoon(),
-      api.diary(user.id, true),
-      api.continued(user.id),
-      api.friends(user.id),
-      api.plans(),
-    ]);
-    return {
-      soon: result[0].status === "fulfilled" ? result[0].value : undefined,
-      diary: result[1].status === "fulfilled" ? result[1].value : undefined,
-      shows: result[2].status === "fulfilled" ? result[2].value : undefined,
-      friends: result[3].status === "fulfilled" ? result[3].value : undefined,
-      plans: result[4].status === "fulfilled" ? result[4].value : undefined,
-    };
-  });
-  const data = home.data,
-    savedPreview = homeSavedFilms(data?.soon, library.data),
+  // Each section can settle and recover without waiting for unrelated feeds.
+  // Owner-scoped keys still discard responses from a previous account.
+  const key = `${user.id}:${revision}`;
+  const soon = useLoad(`home-soon:${key}`, () => api.watchSoon());
+  const diary = useLoad(`home-diary:${key}`, () => api.diary(user.id, true));
+  const shows = useLoad(`home-shows:${key}`, () => api.continued(user.id));
+  const friends = useLoad(`home-friends:${key}`, () => api.friends(user.id));
+  const planFeed = useLoad(`home-plans:${key}`, () => api.plans());
+  const savedPreview = homeSavedFilms(soon.data, library.data),
     selected = savedPreview[0]?.film;
   const shelf = (library.data ?? []).filter(
     (f) => f.id !== selected?.id || f.kind !== selected?.kind,
   );
   const shown = (shelf.length >= 4 ? shelf : (library.data ?? [])).slice(0, 4);
-  const plans = (data?.plans ?? []).filter((p) => p.status !== "cancelled");
+  const plans = (planFeed.data ?? []).filter((p) => p.status !== "cancelled");
   return (
     <>
       <div className="fx-welcome">
@@ -254,7 +245,7 @@ export function HomePage({
       </div>
       <div className="fx-home-columns">
         <div className="fx-primary-column">
-          {(home.loading || library.loading) && !selected ? (
+          {(soon.loading || library.loading) && !selected ? (
             <Loading layout="saved" label="Loading your saved films…" />
           ) : selected ? (
             <section>
@@ -290,12 +281,12 @@ export function HomePage({
             </section>
           )}
           <div className="fx-home-evening">
-          {data?.diary?.[0] && (
+          {(diary.loading || diary.error || diary.data?.[0]) && (
             <section>
               <SectionHeading to="/app/diary" label="Open diary">
                 A recent film night
               </SectionHeading>
-              <DiaryRow entry={data.diary[0]} />
+              {diary.loading ? <Loading layout="diary" count={1} label="Loading your recent film night…"/> : diary.error ? <ErrorState message="Your recent film night could not be loaded." retry={diary.retry}/> : diary.data?.[0] ? <DiaryRow entry={diary.data[0]} /> : null}
             </section>
           )}
           <section className="fx-picker">
@@ -317,18 +308,18 @@ export function HomePage({
         <aside className="fx-rail">
           <section className="fx-rail-section">
             <h2>Continue watching</h2>
-            {data?.shows?.[0] ? (
+            {shows.data?.[0] ? (
               <ContinueCard
-                show={data.shows[0]}
+                show={shows.data[0]}
                 actions={actions}
                 owner={user.id}
               />
-            ) : data?.shows === undefined && !home.loading ? (
+            ) : shows.error ? (
               <ErrorState
                 message="TV progress could not be loaded."
-                retry={home.retry}
+                retry={shows.retry}
               />
-            ) : home.loading ? (
+            ) : shows.loading ? (
               <Loading layout="posterRows" count={1} label="Loading your shows…"/>
             ) : (
               <p className="fx-muted fx-rail-copy">
@@ -340,14 +331,14 @@ export function HomePage({
             <SectionHeading to="/app/friends" label="View all">
               Your people
             </SectionHeading>
-            {data?.friends?.length ? (
-              <ActivityRows items={data.friends.slice(0, 3)} />
-            ) : data?.friends === undefined && !home.loading ? (
+            {friends.data?.length ? (
+              <ActivityRows items={friends.data.slice(0, 3)} />
+            ) : friends.error ? (
               <ErrorState
                 message="Friends’ activity could not be loaded."
-                retry={home.retry}
+                retry={friends.retry}
               />
-            ) : home.loading ? <Loading layout="activity" label="Loading friends’ activity…"/> : (
+            ) : friends.loading ? <Loading layout="activity" label="Loading friends’ activity…"/> : (
               <p className="fx-muted fx-rail-copy">
                 Your friends’ recent films will appear here.
               </p>
@@ -367,12 +358,12 @@ export function HomePage({
                   })
                 }
               />
-            ) : data?.plans === undefined && !home.loading ? (
+            ) : planFeed.error ? (
               <ErrorState
                 message="Watch Plans could not be loaded."
-                retry={home.retry}
+                retry={planFeed.retry}
               />
-            ) : home.loading ? <Loading layout="posterRows" count={1} label="Loading your next Watch Plan…"/> : (
+            ) : planFeed.loading ? <Loading layout="posterRows" count={1} label="Loading your next Watch Plan…"/> : (
               <p className="fx-muted fx-rail-copy">
                 No film nights planned yet.
               </p>

@@ -8,11 +8,11 @@ import {JSDOM} from 'jsdom';
 import {act,createElement} from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
 import {Loading,type LoadingLayout} from '../src/web/Loading';
-import {film} from '../src/web/models';
+import {account,film} from '../src/web/models';
 
 const output=resolve(`.impeccable/review/loading-states/test-${process.pid}.mjs`);
 await mkdir(resolve('.impeccable/review/loading-states'),{recursive:true});
-const compiled=await build({stdin:{contents:`export {SearchPage,TitlePage} from './src/web/pages';export {Poster} from './src/web/components';export {PublicHomeContent} from './src/web/PublicHome';export {InitialTitle} from './src/web/PublicTitleShell';export {SessionContext} from './src/web/auth';`,resolveDir:process.cwd(),loader:'tsx'},bundle:true,write:false,format:'esm',platform:'node',packages:'external',jsx:'automatic',loader:{'.css':'empty'},define:{'import.meta.env':'{}'}});
+const compiled=await build({stdin:{contents:`export {HomePage,SearchPage,TitlePage} from './src/web/pages';export {Poster} from './src/web/components';export {PublicHomeContent} from './src/web/PublicHome';export {InitialTitle} from './src/web/PublicTitleShell';export {SessionContext} from './src/web/auth';`,resolveDir:process.cwd(),loader:'tsx'},bundle:true,write:false,format:'esm',platform:'node',packages:'external',jsx:'automatic',loader:{'.css':'empty'},define:{'import.meta.env':'{}'}});
 await writeFile(output,compiled.outputFiles[0].contents);
 const runtime=await import(pathToFileURL(output).href);
 after(()=>unlink(output));
@@ -24,6 +24,35 @@ async function setup(){
   return {dom,doc:dom.window.document,render:async(node:React.ReactNode)=>act(async()=>root.render(node)),close:async()=>{await act(async()=>root.unmount());dom.window.close();}};
 }
 const actions={open(){},save:async()=>{},saved:()=>false,busyIds:new Set<string>(),refresh(){},toast(){}};
+
+test('Home reveals independent sections, retries only a failed feed, and discards the previous owner’s replies',async()=>{
+  const t=await setup();
+  const pending=new Map<string,{resolve:(value:unknown)=>void;reject:(error:Error)=>void}>();
+  const calls:Record<string,number>={};
+  const request=(key:string)=>{calls[key]=(calls[key]??0)+1;return new Promise((resolve,reject)=>pending.set(key,{resolve,reject}));};
+  const api={watchSoon:()=>request('soon'),diary:(id:string)=>request('diary:'+id),continued:(id:string)=>request('shows:'+id),friends:(id:string)=>request('friends:'+id),plans:()=>request('plans')};
+  const library={data:[film({id:348,title:'Alien'})],loading:false,error:'',retry(){}};
+  const render=(id:string)=>t.render(createElement(runtime.SessionContext.Provider,{value:{api}},createElement(runtime.HomePage,{user:account({id,externalId:id,username:id},id),library,actions,revision:0})));
+  try{
+    await render('alex');
+    assert(t.doc.querySelector('a[href="/movies/348"]'),'saved films are usable before optional feeds settle');
+    await act(async()=>pending.get('plans')!.resolve([]));
+    assert(t.doc.body.textContent!.includes('No film nights planned yet.'));
+    assert(t.doc.querySelector('.fx-loading-activity'),'unresolved friends retain their own placeholder');
+    await act(async()=>pending.get('friends:alex')!.reject(Error('Unavailable')));
+    const error=[...t.doc.querySelectorAll('[role=alert]')].find(e=>e.textContent?.includes('Friends’ activity'))!;
+    assert(error);await act(async()=>(error.querySelector('button') as HTMLButtonElement).click());
+    assert.equal(calls['friends:alex'],2);assert.equal(calls.plans,1);assert.equal(calls['shows:alex'],1);
+    await act(async()=>pending.get('friends:alex')!.resolve([]));
+    assert(!t.doc.body.textContent!.includes('Friends’ activity could not be loaded.'));
+    await act(async()=>pending.get('diary:alex')!.reject(Error('Unavailable')));
+    assert(t.doc.body.textContent!.includes('Your recent film night could not be loaded.'));
+    const stale=pending.get('shows:alex')!;await render('jamie');
+    await act(async()=>stale.resolve([{id:1,title:'Previous account show',watched:1,total:2}]));
+    assert(!t.doc.body.textContent!.includes('Previous account show'));
+    assert(t.doc.querySelector('.fx-loading-posterRows'));
+  }finally{await t.close();}
+});
 
 test('loading layouts announce one status, hide decorative shapes and never offer pretend controls',()=>{
   const layouts:LoadingLayout[]=['collection','discovery','shows','cinema','saved','rows','posterRows','episodes','activity','diary','plans','title','person','profile','cast','photos','providers','avatars','form','status'];

@@ -38,7 +38,8 @@ import {
 import { useLoad, errorMessage } from "./hooks";
 import { text, type Film } from "./models";
 import { WatchPlanPreview } from './WatchPlans';
-import { navigate, safeNext, titlePath, useRoute } from "./routing";
+import { appRouteTitle, navigate, safeNext, titlePath, useRoute } from "./routing";
+import { setPageTitle } from './publicPageMetadata';
 import { InitialTitle, PublicTitleShell } from "./PublicTitleShell";
 import PersonPage, { PublicPersonShell } from "./PersonPage";
 import UserProfilePage from './UserProfilePage';
@@ -135,6 +136,8 @@ export function ConnectedApp() {
       )
       .forEach((node) => node.remove());
     document.head.append(template.content);
+    const appTitle = appRouteTitle(route);
+    if (appTitle && window.location.pathname.startsWith('/app')) setPageTitle(appTitle);
   }, [JSON.stringify(route)]);
   useEffect(() => { setMobileSearchOpen(false); }, [JSON.stringify(route), identity?.uid]);
   useEffect(() => { if (mobileSearchOpen) searchField.current?.focus(); }, [mobileSearchOpen]);

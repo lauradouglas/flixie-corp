@@ -20,6 +20,25 @@ export type WebRoute =
   | { page: "title"; id: number; kind: MediaKind }
   | { page: "person"; id: number }
   | { page: "user-profile"; id: string };
+
+/** Tab labels describe the screen without exposing private names or searches. */
+export function appRouteTitle(route: WebRoute): string | undefined {
+  switch (route.page) {
+    case 'home': return 'Home | Flixie';
+    case 'explore': return 'Explore Films & TV | Flixie';
+    case 'watchlist': return 'Your Watchlist | Flixie';
+    case 'diary': return 'Your Film Diary | Flixie';
+    case 'friends': return 'Your People | Flixie';
+    case 'profile': return 'Your Profile | Flixie';
+    case 'user-profile': return 'Member Profile | Flixie';
+    case 'plans': return 'Your Watch Plans | Flixie';
+    case 'notifications': return 'Notifications | Flixie';
+    case 'sign-in': return 'Sign In | Flixie';
+    case 'join': return 'Join Flixie';
+    case 'search': return 'Search Films & TV | Flixie';
+    default: return undefined;
+  }
+}
 export function parseRoute(path: string, search = ""): WebRoute {
   const profile=/^\/app\/profiles\/([A-Za-z0-9_-]{1,100})\/?$/.exec(path);
   if(profile) return {page:'user-profile',id:profile[1]};

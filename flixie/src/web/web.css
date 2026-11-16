@@ -763,9 +763,19 @@
 }
 .flixie-web .fx-review-head {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 10px;
   margin: 17px 0 12px;
+}
+.flixie-web .fx-review-head > div {
+  min-width: 0;
+  flex: 1 1 8rem;
+  overflow-wrap: anywhere;
+}
+.flixie-web .fx-review {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 .flixie-web .fx-review-head strong {
   font-size: var(--fx-type-label, .875rem);
