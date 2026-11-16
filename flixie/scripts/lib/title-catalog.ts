@@ -56,11 +56,17 @@ export async function fetchTitles(references:TitleReference[], load:(row:TitleRe
   return output;
 }
 
-export async function expandMovies(previous:CatalogTitle[],feeds:TitleReference[][],target:number,load:(row:TitleReference)=>Promise<unknown>):Promise<CatalogTitle[]> {
+export function selectMovieReferences(previous:TitleReference[],required:TitleReference[],feeds:TitleReference[][],limit:number):TitleReference[] {
+  if(!Number.isSafeInteger(limit)||limit<1||[...previous,...required,...feeds.flat()].some(t=>t.kind!=='movie'))
+    throw Error('Movie-only expansion requires a positive limit and cannot add TV pages.');
+  const protectedRows=titleCandidates(previous,[required]);
+  if(protectedRows.length>limit)
+    throw Error(`Movie coverage needs ${protectedRows.length} pages; budget is ${limit}. Keep published URLs and required movies; review capacity before expanding.`);
+  return titleCandidates(protectedRows,feeds).slice(0,limit);
+}
+
+export async function expandMovies(previous:CatalogTitle[],feeds:TitleReference[][],limit:number,load:(row:TitleReference)=>Promise<unknown>,required:TitleReference[]=[]):Promise<CatalogTitle[]> {
   const movies=previous.filter(t=>t.kind==='movie');
-  if(movies.length>target||feeds.some(feed=>feed.some(t=>t.kind!=='movie')))
-    throw Error('Movie-only expansion must retain published films and cannot add TV pages.');
-  const selected=titleCandidates(movies,feeds).slice(0,target);
-  if(selected.length<target)throw Error(`Only ${selected.length} distinct films; previous snapshot retained.`);
+  const selected=selectMovieReferences(movies,required,feeds,limit);
   return [...await fetchTitles(selected,load),...previous.filter(t=>t.kind==='show')];
 }
