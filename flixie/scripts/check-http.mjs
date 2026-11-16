@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { readFile, readdir } from 'node:fs/promises';
 import { pages, isIndexable } from '../.ssr/entry-server.js';
 import { createPreviewServer } from './preview.mjs';
 const server = await createPreviewServer();
@@ -110,6 +111,20 @@ try {
     assert.match(body, /apps.apple.com/);
     assert.match(body, /play.google.com/);
   }
+  const config=JSON.parse(await readFile('dist/staticwebapp.config.json','utf8'));
+  const oldAlias=await fetch(base+'/movies/348.html?source=legacy',{redirect:'manual'});
+  assert.equal(oldAlias.status,301);
+  assert.equal(oldAlias.headers.get('location'),'/movies/348?source=legacy');
+  const newTitle=Object.values(pages).find(page=>page.path.startsWith('/movies/')&&!config.routes.some(rule=>rule.route===page.path+'.html'));
+  assert.ok(newTitle,'The expanded catalogue should avoid one alias rule per new film');
+  const fileAlias=await fetch(base+newTitle.path+'.html');
+  assert.equal(fileAlias.status,200);
+  assert.equal(fileAlias.headers.get('x-robots-tag'),'noindex');
+  assert.equal(config.routes.find(rule=>rule.route==='/assets/*')?.headers?.['Cache-Control'],'public, max-age=31536000, immutable');
+  const assetName=(await readdir('dist/assets')).find(name=>name.endsWith('.js'));
+  const cachedAsset=await fetch(base+'/assets/'+assetName);
+  assert.equal(cachedAsset.status,200);
+  assert.equal(cachedAsset.headers.get('cache-control'),'public, max-age=31536000, immutable');
   for (const [path, indexed] of [['/people/525', true], ['/people/999999', false]]) {
     const response = await fetch(base + path);
     assert.equal(response.status, 200);

@@ -70,6 +70,10 @@ for (const [key, page] of Object.entries(pages)) {
   const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(match => match[1]);
   assert.equal(new Set(ids).size, ids.length, `${key}: duplicate element IDs`);
 }
+// Every indexed title is reachable from real server-rendered browse links.
+const catalogHtml=documents.get('/films');
+for(const [key,page] of Object.entries(pages).filter(([key])=>key.startsWith('title-')))
+  assert.ok(catalogHtml.includes(`href="${page.path}"`),`${key}: missing crawlable catalogue link`);
 for (const [path, html] of documents) {
   for (const [, href] of html.matchAll(/<a\b[^>]*href="([^"?]+)"/g)) {
     if (!href.startsWith('/') && !href.startsWith('#')) continue;
