@@ -17,6 +17,8 @@ This pass builds on the previously published loading and biography fixes.
   Review names and bodies wrap long unbroken content. Mobile navigation reflows
   into additional rows when enlarged labels need space; its existing measured
   clearance continues to keep page content, prompts and toasts above it.
+- Extremely long unbroken title breadcrumbs wrap within tablet and desktop
+  layouts, including the 820px and 844px fixture cases.
 - Corporate navigation uses the available width and root text size to choose its
   full links or compact menu. The compact menu stays within the viewport and
   scrolls on short screens. Phone product screenshots no longer move outside
