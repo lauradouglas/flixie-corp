@@ -3,6 +3,7 @@ import { createRoot, hydrateRoot } from 'react-dom/client';
 import App from './App';
 import { pageFromPath } from './site';
 import './index.css';
+import './web/styles.css';
 import { loadView } from './views';
 
 const root = document.getElementById('root')!;

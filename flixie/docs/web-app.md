@@ -763,3 +763,29 @@ Status: local implementation verified. The user authorised website publication o
 16 November 2026. Release preparation preserves the newer weekly sitemap update;
 the exact deployment receipt will be recorded after the workflow and live checks.
 No native release or backend change is part of this work.
+
+## Page reload correction —16 November 2026
+
+The user's 3.95-second recording of `/shows/1413` exposed a defect missed by the
+previous horizontal-overflow checks: the title layout wrapper also carried the
+`fx-skeleton-title` text-bar class, so its entire height became2.5rem and its
+poster/copy painted over the footer. Title/person wrapper classes are now distinct
+from decorative block classes. A focused regression enforces that separation.
+Public page bodies reserve the viewport and contain the pending content, keeping
+the footer below the page. Skeletons wait160ms, then fade briefly; quickly completed
+requests can render their content before placeholders appear. Reduced motion keeps
+the delay and removes the fade/pulse.
+
+Shared scoped browser-layout CSS now enters through the initial stylesheet in its
+existing order, rather than depending on the later connected-app JavaScript chunk.
+Generated-page checks require title, public-main and placeholder layout styles to
+be linked before hydration. Metadata, public/private data, auth drafts, poster
+proportions, API contracts and the current sitemap remain unchanged.
+
+156 regressions, TypeScript, analytics,206-page build and SEO/HTTP checks pass.
+Actual browser checks cover20 loader layouts at320/390/820/1440,844×390 landscape
+and320/200%text (120 cases), asserting vertical main/footer containment as well as
+horizontal overflow. The recorded title pending→loaded→reload path is exercised
+with fictional in-memory data; real production login and physical-device behavior
+are not claimed. Diagnostic recording frames remain local. Evidence:
+`/private/tmp/flixie-page-load-review/geometry.json` and `fixed-phone.jpg`.

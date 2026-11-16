@@ -34,6 +34,18 @@ test('loading layouts announce one status, hide decorative shapes and never offe
     for(const shape of document.querySelectorAll('.fx-skeleton'))assert(shape.closest('[aria-hidden=true]'),layout);
   }
 });
+test('title and person loading wrappers cannot inherit decorative text-bar dimensions',()=>{
+  for(const layout of ['title','person'] as const){
+    const {document}=new JSDOM(renderToStaticMarkup(<Loading layout={layout}/>)).window;
+    const container=document.querySelector('.fx-skeleton-detail')!;
+    assert(container.classList.contains(`fx-skeleton-detail-${layout}`));
+    const blocks=[...container.querySelectorAll('.fx-skeleton')];
+    assert(blocks.length>0);
+    const shapeClasses=new Set(blocks.flatMap(block=>[...block.classList].filter(name=>name!=='fx-skeleton')));
+    for(const name of container.classList)assert(!shapeClasses.has(name),`${layout} container must not become a fixed-height ${name} block`);
+    assert.equal(document.querySelector('.fx-loading-shapes > .fx-skeleton-detail > .fx-skeleton-poster')?.getAttribute('class'),'fx-skeleton fx-skeleton-poster');
+  }
+});
 test('search replaces pending poster placeholders with the requested result, then exposes retry on failure',async()=>{
   const t=await setup();let finish!:(films:unknown[])=>void;
   const session={user:null,identity:null,api:{search:()=>new Promise(resolve=>{finish=resolve;})}};

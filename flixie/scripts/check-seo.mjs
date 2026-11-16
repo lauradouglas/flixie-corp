@@ -21,6 +21,13 @@ for (const [key, page] of Object.entries(pages)) {
   const file = key === 'home' ? 'index.html' : `${page.path.slice(1)}.html`;
   const html = await readFile(`dist/${file}`, 'utf8');
   documents.set(page.path, html);
+  if (['home','webApp','mediaShare','personShare'].includes(key) || key.startsWith('title-') || key.startsWith('person-')) {
+    const links = html.match(/<link\b[^>]*rel="stylesheet"[^>]*>/g) || [];
+    const cssPaths = links.map(link => /href="([^"]+)"/.exec(link)?.[1]).filter(path => path?.startsWith('/assets/'));
+    const css = (await Promise.all(cssPaths.map(path => readFile(`dist${path}`, 'utf8')))).join('\n');
+    for (const selector of ['.fx-film-detail', '.fx-skeleton-detail', '.fx-public-main'])
+      assert.ok(css.includes(selector), `${key}: ${selector} must be styled before JavaScript hydration`);
+  }
   assert.match(html, /<meta name="darkreader-lock"\s*\/?\s*>/, `${key}: own-theme colours must survive browser recolouring`);
   assert.equal([...html.matchAll(/<h1\b/g)].length, 1, `${key}: one visible page heading`);
   assert.equal([...html.matchAll(/<title>/g)].length, 1, `${key}: one title`);

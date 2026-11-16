@@ -32,9 +32,13 @@
   max-width: 1920px;
   margin: 0 auto;
 }
-.flixie-web .fx-main {
-  min-height: 65dvh;
+/* Public loading/error pages reserve the viewport too; their footer must never
+   jump up into the title's pending artwork or briefly replace the page. */
+.flixie-web .fx-guest-layout { display: flow-root; min-height: calc(100svh - 84px); }
+.flixie-web :is(.fx-main,.fx-public-main) {
+  min-height: 65svh;
 }
+.flixie-web .fx-public-main { display: flow-root; min-height: calc(100svh - 84px); }
 .flixie-web .fx-guest-layout .fx-main {
   max-width: 1200px;
   margin: auto;

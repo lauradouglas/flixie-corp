@@ -1,3 +1,4 @@
+import './styles.css';
 import { StartupLoading } from "./Loading";
 import { useContext, useEffect, useRef, useState, type FormEvent } from "react";
 import {
@@ -9,7 +10,6 @@ import { AuthProvider, useSession } from "./auth";
 import AuthForm from "./AuthForm";
 import ShowRating from './ShowRating';
 import AccountGate from "./AccountGate";
-import "./mobile-task.css";
 import Footer from "../components/Footer";
 import {
   Avatar,
@@ -46,20 +46,9 @@ import { InitialPerson } from "./personContext";
 import MobileAppPrompt from "./MobileAppPrompt";
 import { renderHead } from "../seo";
 import { pageFromPath } from "../site";
-import "./web.css";
-import "./production.css";
-import "./loading.css";
-import "./home-layout.css";
-import "./diary.css";
-import "./title-sections.css";
 import NotificationsPage, { NotificationBell } from './Notifications';
 import MobileNavigation, { appNavigation, activeNavigation } from "./MobileNavigation";
-import "./mobile-navigation.css";
 import PublicBrowseHeader from './PublicBrowseHeader';
-import './public-browse-header.css';
-import './app-footer.css';
-import './public-home.css';
-import './mobile-title.css';
 import PublicHomePage,{PublicHomeShell} from './PublicHome';
 import WebsiteAnalyticsChoice from '../components/WebsiteAnalyticsChoice';
 

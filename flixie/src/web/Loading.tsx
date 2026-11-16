@@ -24,7 +24,7 @@ export function Loading({ label = 'Loading your films…', layout = 'collection'
   } else if (layout === 'saved' || layout === 'plans') {
     content = <div className={layout === 'saved' ? 'fx-saved-preview' : 'fx-skeleton-plans'}>{Array.from({length:layout === 'saved' ? 3 : total}, (_,i) => <div className={layout === 'saved' ? 'fx-soon' : 'fx-plan-card'} key={i}><Block shape="poster"/><div className="fx-skeleton-copy"><Copy/><Block shape="control"/></div></div>)}</div>;
   } else if (layout === 'title' || layout === 'person') {
-    content = <div className={`fx-skeleton-detail fx-skeleton-${layout}`}><Block shape="poster"/><div className="fx-skeleton-copy"><Block shape="title"/><Copy/></div><div className="fx-skeleton-detail-lower"><Block shape="control"/><Copy/><Copy/></div></div>;
+    content = <div className={`fx-skeleton-detail fx-skeleton-detail-${layout}`}><Block shape="poster"/><div className="fx-skeleton-copy"><Block shape="title"/><Copy/></div><div className="fx-skeleton-detail-lower"><Block shape="control"/><Copy/><Copy/></div></div>;
   } else if (layout === 'episodes') {
     content = <div className="fx-episode-list">{Array.from({length:total}, (_,i) => <div className="fx-skeleton-episode" key={i}><Block shape="photo"/><Copy/></div>)}</div>;
   } else if (layout === 'profile') {
