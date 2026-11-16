@@ -1,0 +1,73 @@
+/* Layouts share the real grids and breakpoints, rather than viewport-sized blocks. */
+.flixie-web .fx-loading { display: grid; grid-template-columns: minmax(0,1fr); gap: 16px; width: 100%; min-width: 0; max-width: none; padding: 0; }
+.flixie-web .fx-loading-label { display: flex; align-items: center; gap: 9px; color: var(--fx-muted); font-size: var(--fx-type-label,.875rem); font-weight: 500; letter-spacing: normal; line-height: 1.5; overflow-wrap: anywhere; }
+.flixie-web .fx-loading-dot { display: block; width: 7px; height: 7px; flex: none; border-radius: 50%; background: var(--fx-purple); }
+.flixie-web .fx-loading-shapes { min-width: 0; pointer-events: none; user-select: none; }
+.flixie-web .fx-loading .fx-skeleton,
+.flixie-web img[data-loading=true] { background: color-mix(in srgb,var(--fx-muted) 15%,var(--fx-bg)); animation: fx-loading-breathe 1.8s ease-in-out infinite; }
+.flixie-web .fx-loading .fx-skeleton { display: block; width: 100%; min-width: 0; aspect-ratio: auto; height: .75rem; border-radius: 5px; }
+.flixie-web .fx-loading .fx-skeleton-poster { height: auto; aspect-ratio: 2 / 3; border-radius: 8px; }
+.flixie-web .fx-loading .fx-skeleton-heading { width: 78%; height: 1rem; }
+.flixie-web .fx-loading .fx-skeleton-short { width: 44%; }
+.flixie-web .fx-loading .fx-skeleton-title { width: 80%; height: 2.5rem; }
+.flixie-web .fx-loading .fx-skeleton-control { width: min(100%,16rem); height: 44px; border-radius: 9px; }
+.flixie-web .fx-loading .fx-skeleton-avatar { width: 40px; height: 40px; border-radius: 50%; flex: none; }
+.flixie-web .fx-loading .fx-skeleton-logo { width: 34px; height: 34px; border-radius: 7px; }
+.flixie-web .fx-loading .fx-skeleton-photo { height: auto; aspect-ratio: 16 / 9; border-radius: 9px; }
+.flixie-web .fx-loading .fx-skeleton-date { width: 2.75rem; height: 3rem; }
+.flixie-web .fx-skeleton-copy { display: grid; align-content: start; gap: 12px; min-width: 0; width: 100%; }
+.flixie-web .fx-skeleton-card { display: grid; align-content: start; gap: 12px; min-width: 0; }
+.flixie-web .fx-loading .fx-collection { margin-top: 0; }
+.flixie-web .fx-loading .fx-cast-rail { overflow: hidden; }
+.flixie-web .fx-skeleton-rows { max-width: 1080px; }
+.flixie-web .fx-skeleton-row { display: flex; align-items: start; gap: 16px; padding-block: 18px; }
+.flixie-web .fx-skeleton-row + .fx-skeleton-row { border-top: 1px solid var(--fx-line); }
+.flixie-web .fx-skeleton-row > .fx-skeleton-poster { width: 50px; flex: none; }
+.flixie-web .fx-skeleton-row .fx-skeleton-copy { padding-block: 4px; }
+.flixie-web .fx-skeleton-plans { display: grid; gap: 24px; }
+.flixie-web .fx-loading .fx-plan-card { width: 100%; }
+.flixie-web .fx-loading .fx-skeleton-cinema-card > .fx-skeleton-poster { width: 64px; }
+.flixie-web .fx-skeleton-detail { display: grid; grid-template-columns: 210px minmax(0,1fr); gap: 34px; padding-block: 24px; }
+.flixie-web .fx-skeleton-detail > .fx-skeleton-copy { gap: 28px; }
+.flixie-web .fx-skeleton-detail > .fx-skeleton-poster { grid-row: span 2; }
+.flixie-web .fx-skeleton-detail-lower { display: grid; gap: 24px; min-width: 0; }
+.flixie-web .fx-skeleton-profile { display: grid; grid-template-columns: minmax(0,1fr); gap: 28px; width: 100%; min-width: 0; max-width: 1100px; margin: auto; }
+.flixie-web .fx-skeleton-identity { display: flex; align-items: center; gap: 24px; }
+.flixie-web .fx-skeleton-identity > .fx-skeleton-avatar { width: 96px; height: 96px; }
+.flixie-web .fx-skeleton-identity > .fx-skeleton-copy { max-width: 22rem; }
+.flixie-web .fx-skeleton-photos { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,12rem),1fr)); gap: 12px; }
+.flixie-web .fx-skeleton-providers { display: flex; flex-wrap: wrap; gap: 12px; }
+.flixie-web .fx-skeleton-providers > div { display: grid; grid-template-columns: 34px minmax(0,1fr); align-items: center; gap: 10px; width: min(100%,12rem); padding-block: 8px; }
+.flixie-web .fx-skeleton-providers .fx-skeleton-short { width: 80%; }
+.flixie-web .fx-skeleton-avatars { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,6rem),1fr)); gap: 12px; }
+.flixie-web .fx-skeleton-avatars > div { display: grid; justify-items: center; gap: 12px; padding: 12px 8px; }
+.flixie-web .fx-skeleton-avatars .fx-skeleton-avatar { width: 72px; height: 72px; }
+.flixie-web .fx-skeleton-form { display: grid; gap: 18px; max-width: 36rem; }
+.flixie-web .fx-skeleton-form .fx-skeleton-control { width: 100%; }
+.flixie-web .fx-startup { display: grid; justify-items: center; align-content: center; gap: 20px; min-height: 60svh; padding: 32px 20px; }
+.flixie-web .fx-startup > img { object-fit: contain; }
+.flixie-web .fx-startup .fx-loading { width: auto; }
+.flixie-web img[data-loading=true] { color: transparent; }
+@keyframes fx-loading-breathe { 50% { background-color: color-mix(in srgb,var(--fx-muted) 24%,var(--fx-bg)); } }
+@media(max-width:680px) {
+  .flixie-web .fx-loading .fx-skeleton-cinema-card > .fx-skeleton-poster { width: 56px; }
+  .flixie-web .fx-skeleton-detail { grid-template-columns: clamp(120px,37vw,144px) minmax(0,1fr); gap: 16px; padding-top: 58px; }
+  .flixie-web .fx-skeleton-detail > .fx-skeleton-copy { gap: 18px; }
+  .flixie-web .fx-skeleton-detail .fx-skeleton-title { height: 2.75rem; }
+  .flixie-web .fx-skeleton-person { grid-template-columns: 110px minmax(0,1fr); padding-top: 24px; }
+  .flixie-web .fx-skeleton-detail > .fx-skeleton-poster { grid-row: auto; }
+  .flixie-web .fx-skeleton-detail-lower { grid-column: 1/-1; }
+}
+@container(max-width:22rem) {
+  .flixie-web .fx-skeleton-detail { grid-template-columns: minmax(0,1fr); }
+  .flixie-web .fx-skeleton-detail > .fx-skeleton-poster { width: 120px; }
+  .flixie-web .fx-skeleton-row { gap: 10px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .flixie-web .fx-loading .fx-skeleton,.flixie-web img[data-loading=true] { animation: none; }
+}
+
+.flixie-web .fx-skeleton-episode { display: grid; grid-template-columns:160px minmax(0,1fr); align-items: start; gap:20px; padding-block:22px; }
+.flixie-web .fx-skeleton-episode + .fx-skeleton-episode { border-top:1px solid var(--fx-line); }
+@container(max-width:760px) { .flixie-web .fx-skeleton-episode { grid-template-columns:110px minmax(0,1fr); gap:12px; } }
+@container(max-width:420px) { .flixie-web .fx-skeleton-episode { grid-template-columns:minmax(0,1fr); } .flixie-web .fx-skeleton-episode > .fx-skeleton-photo { max-width:240px; } }

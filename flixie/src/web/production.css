@@ -404,24 +404,6 @@
   background: #151522;
   color: #f5f7fa;
 }
-.flixie-web .fx-loading {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  max-width: 620px;
-  padding: 20px 0;
-}
-.flixie-web .fx-skeleton {
-  display: block;
-  aspect-ratio: 2/3;
-  background: var(--fx-lift);
-  border-radius: 8px;
-}
-.flixie-web .fx-loading p {
-  grid-column: 1/-1;
-  color: var(--fx-muted);
-  font-size: var(--fx-type-control, 1rem);
-}
 .flixie-web .fx-toast {
   position: fixed;
   bottom: 20px;

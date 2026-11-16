@@ -1,3 +1,4 @@
+import { StartupLoading } from "./Loading";
 import { useContext, useEffect, useRef, useState, type FormEvent } from "react";
 import {
   Clapperboard,
@@ -14,7 +15,6 @@ import {
   Avatar,
   ErrorState,
   Link,
-  Loading,
   Sheet,
   Wordmark,
 } from "./components";
@@ -43,12 +43,12 @@ import { InitialTitle, PublicTitleShell } from "./PublicTitleShell";
 import PersonPage, { PublicPersonShell } from "./PersonPage";
 import UserProfilePage from './UserProfilePage';
 import { InitialPerson } from "./personContext";
-import DownloadPrompt from "./DownloadPrompt";
 import MobileAppPrompt from "./MobileAppPrompt";
 import { renderHead } from "../seo";
 import { pageFromPath } from "../site";
 import "./web.css";
 import "./production.css";
+import "./loading.css";
 import "./home-layout.css";
 import "./diary.css";
 import "./title-sections.css";
@@ -79,14 +79,7 @@ export default function WebApp({publicHome=false}:{publicHome?:boolean}) {
       ) : initialTitle ? (
         <PublicTitleShell title={initialTitle} />
       ) : (
-        <><PublicBrowseHeader/><div className="fx-start">
-          <h1>Your movie &amp; TV companion</h1>
-          <p>Loading Flixie…</p>
-          <p>
-            <a href="/download">Get Flixie for iPhone or Android</a>
-          </p>
-          <DownloadPrompt />
-        </div><Footer year={new Date().getFullYear()} compact /></>
+        <><PublicBrowseHeader/><main id="web-main"><StartupLoading/></main><Footer year={new Date().getFullYear()} compact /></>
       )}
     </div>
   );

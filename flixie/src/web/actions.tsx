@@ -1,3 +1,4 @@
+import { Loading } from "./Loading";
 import {useBrowseCountry} from './browseCountry';
 import {discoveryCountries} from './publicDiscovery';
 import { useState, type FormEvent } from "react";
@@ -55,7 +56,7 @@ export function WatchOptions({
         ))}
       </select>
       {!countryReady||result.loading ? (
-        <p role="status">Checking viewing options…</p>
+        <Loading layout="providers" label="Checking viewing options…"/>
       ) : result.error ? (
         <ErrorState message={result.error} retry={result.retry} />
       ) : (

@@ -1,3 +1,4 @@
+import { InitialTitle } from "./PublicTitleShell";
 import { CastSection, FriendsSection, PhotosSection } from "./TitleSections";
 import { ProviderOverview } from "./ProviderOverview";
 import { DiaryRow, DiaryViews } from "./Diary";
@@ -7,7 +8,7 @@ import CommunityRating from './CommunityRating';
 import { TitleArtwork, TitleMetadata } from './TitlePresentation';
 import './community-rating.css';
 import ShowSeasons from './ShowEpisodesSection';
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   BookmarkCheck,
@@ -253,7 +254,7 @@ export function HomePage({
       <div className="fx-home-columns">
         <div className="fx-primary-column">
           {(home.loading || library.loading) && !selected ? (
-            <Loading />
+            <Loading layout="saved" label="Loading your saved films…" />
           ) : selected ? (
             <section>
               <SectionHeading to="/app/watchlist" label="Your watchlist">Saved for another night</SectionHeading>
@@ -327,7 +328,7 @@ export function HomePage({
                 retry={home.retry}
               />
             ) : home.loading ? (
-              <p className="fx-muted">Loading your shows…</p>
+              <Loading layout="posterRows" count={1} label="Loading your shows…"/>
             ) : (
               <p className="fx-muted fx-rail-copy">
                 Your shows will appear here when you start tracking episodes.
@@ -345,7 +346,7 @@ export function HomePage({
                 message="Friends’ activity could not be loaded."
                 retry={home.retry}
               />
-            ) : (
+            ) : home.loading ? <Loading layout="activity" label="Loading friends’ activity…"/> : (
               <p className="fx-muted fx-rail-copy">
                 Your friends’ recent films will appear here.
               </p>
@@ -370,7 +371,7 @@ export function HomePage({
                 message="Watch Plans could not be loaded."
                 retry={home.retry}
               />
-            ) : (
+            ) : home.loading ? <Loading layout="posterRows" count={1} label="Loading your next Watch Plan…"/> : (
               <p className="fx-muted fx-rail-copy">
                 No film nights planned yet.
               </p>
@@ -404,7 +405,7 @@ export function WatchlistPage({
         </button>
       </div>
       {library.loading ? (
-        <Loading />
+        <Loading layout="collection" label="Loading your watchlist…" />
       ) : library.error ? (
         <ErrorState message={library.error} retry={library.retry} />
       ) : library.data?.length ? (
@@ -447,7 +448,7 @@ export function DiaryPage({
         </div>
       </div>
       {result.loading ? (
-        <Loading label="Loading your diary…" />
+        <Loading layout="diary" label="Loading your diary…" />
       ) : result.error ? (
         <ErrorState message={result.error} retry={result.retry} />
       ) : result.data?.length ? (
@@ -484,7 +485,7 @@ export function FriendsPage({
       <FriendManager key={user.id} revision={revision} onChanged={onChanged}/>
       <h2>Friends’ recent activity</h2>
       {result.loading ? (
-        <Loading label="Loading friends’ activity…" />
+        <Loading layout="activity" label="Loading friends’ activity…" />
       ) : result.error ? (
         <ErrorState message={result.error} retry={result.retry} />
       ) : result.data?.length ? (
@@ -525,10 +526,10 @@ export function PlansPage({
           <p>Make room for your next film night.</p>
         </div>
       </div>
-      {planId && linked.loading && <Loading label="Opening your Watch Plan…" />}
+      {planId && linked.loading && <Loading layout="plans" count={1} label="Opening your Watch Plan…" />}
       {linked.error && <ErrorState message={linked.error} retry={linked.retry} />}
       {result.loading ? (
-        <Loading label="Loading your plans…" />
+        <Loading layout="plans" label="Loading your plans…" />
       ) : result.error ? (
         <ErrorState message={result.error} retry={result.retry} />
       ) : result.data?.length ? (
@@ -578,7 +579,7 @@ export function SearchPage({
         </div>
       </div>
       {result.loading ? (
-        <Loading label="Searching…" />
+        <Loading layout="collection" label="Searching…" />
       ) : result.error ? (
         <ErrorState message={result.error} retry={result.retry} />
       ) : result.data?.length ? (
@@ -672,19 +673,23 @@ export function TitlePage({
       ),
     [id, kind],
   );
-  if (result.loading) return <Loading label="Loading the film…" />;
-  if (result.error || !result.data)
+  const initial = useContext(InitialTitle);
+  const initialMatches = initial?.id === id && initial.kind === kind;
+  const title = result.data ?? (initialMatches ? film(initial, kind) : undefined);
+  if (result.loading && !title) return <Loading layout="title" label={kind === "show" ? "Loading the show…" : "Loading the film…"} />;
+  if (!title)
     return (
       <ErrorState
         message={result.error || "This title is unavailable."}
         retry={result.retry}
       />
     );
-  const f = result.data,
+  const f = title,
     directors = credits.data?.directors ?? [],
     cast = (credits.data?.cast ?? []).slice(0, 3);
   return (
     <>
+      {result.error && <ErrorState message="The latest title details could not be loaded. Showing saved public details." retry={result.retry}/>}
       <div className="fx-title-view">
       <div className="fx-breadcrumb">
         <Link to={user ? "/app" : "/"} className="fx-title-home" aria-label="Home"><ChevronLeft size={22} aria-hidden="true"/><span>Home</span></Link>
@@ -802,7 +807,7 @@ export function TitlePage({
         <section>
           <h2>Around Flixie</h2>
           {reviews.loading ? (
-            <p className="fx-muted">Loading public reviews…</p>
+            <Loading layout="activity" label="Loading public reviews…"/>
           ) : reviews.error ? (
             <ErrorState message={reviews.error} retry={reviews.retry} />
           ) : reviews.data?.length ? (

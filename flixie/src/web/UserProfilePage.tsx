@@ -54,7 +54,7 @@ function ProfileFeed({id,reviews}:{id:string;reviews:boolean}) {
     if(page.nextCursor===cursor)throw new Error('More entries could not be loaded. Try again.');
     setExtra(items=>[...items,...page.items]);setNext(page.nextCursor);
   }catch(e){if(active.current)setError(errorMessage(e));}finally{if(active.current)setBusy(false);}}
-  if(first.loading)return <Loading label={reviews?'Loading reviews…':'Loading activity…'}/>;
+  if(first.loading)return <Loading layout="posterRows" label={reviews?'Loading reviews…':'Loading activity…'}/>;
   if(first.error)return <ErrorState message={first.error} retry={first.retry}/>;
   const items=[...new Map([...(first.data?.items??[]),...extra].map(post=>[`${post.type}:${post.id}`,post])).values()];
   return <section className="fx-profile-section" aria-label={reviews?'Reviews':'Activity'}>{items.length?items.map(post=><ProfilePostRow key={`${post.type}:${post.id}`} post={post} reviews={reviews}/>):<Empty title={reviews?'No reviews yet':'No activity yet'}>{reviews?'Written film and TV reviews will appear here.':'Films and TV added, watched and rated will appear here.'}</Empty>}{error&&<p role="alert" className="fx-form-error">{error}</p>}{cursor&&<button className="fx-button" disabled={busy} onClick={()=>void more()}>{busy?'Loading…':error?'Try loading more again':reviews?'More reviews':'More activity'}<ArrowRight size={16}/></button>}</section>;
@@ -73,7 +73,7 @@ export default function UserProfilePage({id='me',revision}:{id?:string;revision:
     catch(e){setFavouriteError(errorMessage(e));}
     finally{removingLock.current=false;setRemoving(null);}
   }
-  if(result.loading)return <Loading label="Loading profile…"/>;
+  if(result.loading)return <Loading layout="profile" label="Loading profile…"/>;
   if(result.error||!result.data)return <><Link className="fx-text-button" to="/app/friends"><ArrowLeft size={16}/>Your friends</Link><ErrorState message={result.error||'This profile is unavailable.'} retry={result.retry}/></>;
   const profile=result.data, self=profile.relationship==='self';
   function closeEditor(){setEditor(null);result.retry();}

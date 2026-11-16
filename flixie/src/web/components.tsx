@@ -120,16 +120,29 @@ export function Poster({
   film: Pick<Film, "title" | "posterPath">;
   className?: string;
 }) {
-  const [failed, setFailed] = useState(false);
-  useEffect(() => setFailed(false), [film.posterPath]);
   const src = imageUrl(film.posterPath);
-  return src && !failed ? (
+  const [loaded, setLoaded] = useState(""), [failed, setFailed] = useState("");
+  const image = useRef<HTMLImageElement>(null);
+  useEffect(() => {
+    // Cached prerendered artwork can finish before hydration attaches onLoad.
+    if (src && image.current?.complete) {
+      if (image.current.naturalWidth) setLoaded(src);
+      else setFailed(src);
+    }
+  }, [src]);
+  return src && failed !== src ? (
     <img
       className={`fx-poster ${className}`}
+      ref={image}
       src={src}
       alt={`${film.title} poster`}
+      width={300}
+      height={450}
+      decoding="async"
+      data-loading={loaded !== src}
       loading="lazy"
-      onError={() => setFailed(true)}
+      onLoad={() => setLoaded(src)}
+      onError={() => setFailed(src)}
     />
   ) : (
     <div
@@ -213,16 +226,7 @@ export function SectionHeading({
     </div>
   );
 }
-export function Loading({ label = "Loading your films…" }: { label?: string }) {
-  return (
-    <div className="fx-loading" role="status">
-      <span className="fx-skeleton" />
-      <span className="fx-skeleton" />
-      <span className="fx-skeleton" />
-      <p>{label}</p>
-    </div>
-  );
-}
+export { Loading } from './Loading';
 export function ErrorState({
   message,
   retry,

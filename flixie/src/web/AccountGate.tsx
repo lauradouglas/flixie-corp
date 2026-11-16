@@ -20,7 +20,7 @@ export default function AccountGate({
     return authDialogOpen ? null : (
       <AuthForm initialJoin={initialJoin} onComplete={onComplete} />
     );
-  if (session.loading) return <Loading label="Opening your Flixie account…" />;
+  if (session.loading) return <Loading layout="profile" label="Opening your Flixie account…" />;
   if (session.error)
     return (
       <ErrorState

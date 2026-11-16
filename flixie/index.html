@@ -12,10 +12,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" />
+    <style>
+      html,body{margin:0;min-height:100%;color-scheme:light dark;background:light-dark(#f3edfc,#151522)}
+      #flixie-boot{color-scheme:light dark;min-height:100svh;margin:0;display:grid;place-content:center;justify-items:center;gap:20px;padding:24px;background:light-dark(#f3edfc,#151522);color:light-dark(#261735,#F5F7FA);font:500 14px/1.5 system-ui,sans-serif;text-align:center;box-sizing:border-box}
+      #root:not(:empty)+#flixie-boot{display:none}#flixie-boot img{object-fit:contain}#flixie-boot p{margin:0}#flixie-boot a{color:light-dark(#6633CC,#B9A0FF);text-underline-offset:4px}#flixie-boot .boot-dot{display:inline-block;width:7px;height:7px;margin-right:8px;border-radius:50%;background:#7C4DFF;animation:flixie-boot-pulse 1.8s ease-in-out infinite}@keyframes flixie-boot-pulse{50%{opacity:.4}}@media(prefers-reduced-motion:reduce){#flixie-boot .boot-dot{animation:none}}
+    </style>
     <!--page-head-->
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"></div><div id="flixie-boot"><img src="/web/flixie-f.png" width="56" height="56" alt="Flixie"/><p role="status"><span class="boot-dot" aria-hidden="true"></span>Opening Flixie…</p><noscript><p>Enable JavaScript to use Flixie. You can also <a href="/download">get the app</a>.</p></noscript></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

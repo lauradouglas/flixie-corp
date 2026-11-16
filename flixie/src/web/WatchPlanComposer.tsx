@@ -1,3 +1,4 @@
+import { Loading } from "./Loading";
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { ArrowLeft, CalendarPlus, Send } from 'lucide-react';
 import { useSession } from './auth';
@@ -46,7 +47,7 @@ export default function WatchPlanComposer({ film, context, onBack, onClose, onSa
             {!friends.loading&&!friends.error&&!friends.data?.length&&<p>No friends to invite yet. You can save a plan just for you.</p>}
           </>}
           {audience==='group'&&<><label className="fx-plan-input">Choose your group<select value={groupId} onChange={e=>{setGroupId(e.target.value);setHostId(owner.current.id);}}><option value="">Choose a group</option>{groups.data?.map(g=><option key={g.id} value={g.id}>{g.name} · {g.members.length} people</option>)}</select></label>{!groups.loading&&!groups.error&&!groups.data?.length&&<p>No eligible groups yet. Invite individual friends instead.</p>}</>}
-          {directoryLoading&&<p role="status">Loading your people…</p>}
+          {directoryLoading&&<Loading layout="rows" count={2} label="Loading your people…"/>}
           {directoryError&&<ErrorState message={directoryError} retry={audience==='friends'?friends.retry:groups.retry}/>}
           {unavailable&&!directoryLoading&&!directoryError&&<p role="alert">Your earlier selection is unavailable. Choose who to invite again.</p>}
           {(audience==='solo'||audience==='group')&&<div className="fx-pick-viewers">{participants.map(person=><span key={person.id}><Avatar person={person}/><span>{person.id===owner.current.id?'You':person.firstName||person.username}</span></span>)}</div>}

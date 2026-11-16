@@ -57,7 +57,7 @@ export default function FavouriteRankingEditor({ kind, onClose, onSaved }: {
   return <Sheet title={`Rank favourite ${label}`} presentation="modal" className="fx-ranking-modal" onClose={onClose} dismissible={!busy}>
     <div className="fx-ranking-content">
       <p className="fx-ranking-intro">Your favourites, in your order. Use the arrows to move a title.</p>
-      {loading ? <Loading label="Loading your favourites…" /> : error && !items.length ? <ErrorState message={error} retry={() => void load()} /> : !items.length ? <Empty title={`No favourite ${label} yet`}>Add favourites in Flixie and they’ll appear here.</Empty> : <>
+      {loading ? <Loading layout="posterRows" label="Loading your favourites…" /> : error && !items.length ? <ErrorState message={error} retry={() => void load()} /> : !items.length ? <Empty title={`No favourite ${label} yet`}>Add favourites in Flixie and they’ll appear here.</Empty> : <>
         {items.length === 1 && <p className="fx-ranking-help">Add another favourite to change their order.</p>}
         <ol className="fx-ranking-list" aria-label={`Favourite ${label} ranking`}>
           {items.map((item, index) => <li key={item.id} ref={element => { if (element) rows.current.set(item.id, element); else rows.current.delete(item.id); }}>

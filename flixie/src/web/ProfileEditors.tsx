@@ -54,7 +54,7 @@ export function AvatarEditor({ profile, borders=false, onClose }: {profile:UserP
         <Avatar large person={{...profile,profileBadges:[...profile.profileBadges.filter(b=>!b.startsWith('FRAME:')),`FRAME:${key}`]}} />
         <span>{key==='NONE'?'No border':badgeLabels[key]}</span>{border===key&&<Check size={16} aria-hidden="true" />}
       </button>)}
-    </div>:result.loading?<Loading label="Loading avatars…"/>:result.error?<ErrorState message={result.error} retry={result.retry}/>:<div className="fx-avatar-options" aria-label="Profile avatars">
+    </div>:result.loading?<Loading layout="avatars" label="Loading avatars…"/>:result.error?<ErrorState message={result.error} retry={result.retry}/>:<div className="fx-avatar-options" aria-label="Profile avatars">
       <button type="button" aria-pressed={selected===null} onClick={()=>setSelected(null)} disabled={busy}><Avatar large person={{...profile,avatar:{}}}/><span>Use initials</span>{selected===null&&<Check size={16} aria-hidden="true"/>}</button>
       {result.data?.map(avatar=><button type="button" key={Number(avatar.id)} aria-pressed={selected===avatar.id} disabled={busy} onClick={()=>setSelected(Number(avatar.id))}>
         <Avatar large person={{...profile,avatar}}/><span>{String(avatar.displayName||'Flixie avatar')}</span>{selected===avatar.id&&<Check size={16} aria-hidden="true"/>}

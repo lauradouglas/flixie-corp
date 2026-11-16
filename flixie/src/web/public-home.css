@@ -22,11 +22,11 @@
 .flixie-web .fx-discovery-country{display:flex;align-items:center;gap:10px;color:var(--fx-muted);max-width:100%;min-width:0}
 .flixie-web .fx-discovery-country select{margin:0;min-height:44px;max-width:100%;min-width:0;flex:1;width:auto;font-size:var(--fx-type-control);padding:8px 12px}
 .flixie-web .fx-discovery-cinema-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.flixie-web .fx-discovery-cinema-card{display:grid;grid-template-columns:64px minmax(0,1fr);align-items:center;gap:14px;padding:12px;border:1px solid var(--fx-line);border-radius:12px;background:var(--fx-surface);min-width:0;min-height:122px}
-.flixie-web .fx-discovery-cinema-card .fx-poster{width:64px;height:96px;aspect-ratio:2/3;object-fit:contain;border-radius:6px;background:var(--fx-lift)}
-.flixie-web .fx-discovery-cinema-card .fx-missing-poster{font-size:.75rem;min-height:96px;padding:4px;overflow:hidden;justify-content:center}
-.flixie-web .fx-discovery-cinema-card .fx-missing-poster svg{width:18px;height:18px;flex-shrink:0}
-.flixie-web .fx-discovery-cinema-card .fx-missing-poster span{overflow-wrap:anywhere;max-width:100%;font-size:.6875rem}
+.flixie-web :is(.fx-discovery-cinema-card,.fx-skeleton-cinema-card){display:grid;grid-template-columns:64px minmax(0,1fr);align-items:center;gap:14px;padding:12px;border:1px solid var(--fx-line);border-radius:12px;background:var(--fx-surface);min-width:0;min-height:122px}
+.flixie-web :is(.fx-discovery-cinema-card,.fx-skeleton-cinema-card) .fx-poster{width:64px;height:96px;aspect-ratio:2/3;object-fit:contain;border-radius:6px;background:var(--fx-lift)}
+.flixie-web :is(.fx-discovery-cinema-card,.fx-skeleton-cinema-card) .fx-missing-poster{font-size:.75rem;min-height:96px;padding:4px;overflow:hidden;justify-content:center}
+.flixie-web :is(.fx-discovery-cinema-card,.fx-skeleton-cinema-card) .fx-missing-poster svg{width:18px;height:18px;flex-shrink:0}
+.flixie-web :is(.fx-discovery-cinema-card,.fx-skeleton-cinema-card) .fx-missing-poster span{overflow-wrap:anywhere;max-width:100%;font-size:.6875rem}
 .flixie-web .fx-discovery-cinema-copy{display:flex;flex-direction:column;gap:7px;min-width:0}
 .flixie-web .fx-discovery-cinema-copy strong{font-size:var(--fx-type-control);line-height:1.4;overflow-wrap:anywhere}
 .flixie-web .fx-discovery-cinema-copy>span{font-size:var(--fx-type-label);color:var(--fx-muted)}
@@ -54,7 +54,7 @@
 .flixie-web .fx-analytics-panel p{color:var(--fx-muted)}
 .flixie-web .fx-analytics-panel a{color:var(--fx-purple)}
 @media(max-width:1100px){.flixie-web .fx-discovery-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.flixie-web .fx-discovery-tv-layout{grid-template-columns:1fr}.flixie-web .fx-discovery-pick{padding-right:110px}.flixie-web .fx-discovery-cinema-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:680px){.flixie-web .fx-discovery-nav{display:none}.flixie-web .fx-discovery-intro{display:block;padding-top:26px}.flixie-web .fx-discovery-intro h1{font-size:2rem}.flixie-web .fx-discovery-intro p{font-size:var(--fx-type-body)}.flixie-web .fx-discovery-join{margin-top:20px;flex-direction:row;align-items:center;gap:18px;flex-wrap:wrap}.flixie-web .fx-discovery-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,9rem),1fr));gap:20px 14px}.flixie-web .fx-discovery-heading h2{max-width:20ch}.flixie-web .fx-discovery-cinema-list{grid-template-columns:1fr}.flixie-web .fx-discovery-cinema-card{grid-template-columns:56px minmax(0,1fr);min-height:110px}.flixie-web .fx-discovery-cinema-card .fx-poster{width:56px;height:84px}.flixie-web .fx-discovery-pick{padding:24px}.flixie-web .fx-discovery-country select{font-size:1rem}.flixie-web .fx-analytics-panel{margin-inline:20px}}
+@media(max-width:680px){.flixie-web .fx-discovery-nav{display:none}.flixie-web .fx-discovery-intro{display:block;padding-top:26px}.flixie-web .fx-discovery-intro h1{font-size:2rem}.flixie-web .fx-discovery-intro p{font-size:var(--fx-type-body)}.flixie-web .fx-discovery-join{margin-top:20px;flex-direction:row;align-items:center;gap:18px;flex-wrap:wrap}.flixie-web .fx-discovery-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,9rem),1fr));gap:20px 14px}.flixie-web .fx-discovery-heading h2{max-width:20ch}.flixie-web .fx-discovery-cinema-list{grid-template-columns:1fr}.flixie-web :is(.fx-discovery-cinema-card,.fx-skeleton-cinema-card){grid-template-columns:56px minmax(0,1fr);min-height:110px}.flixie-web :is(.fx-discovery-cinema-card,.fx-skeleton-cinema-card) .fx-poster{width:56px;height:84px}.flixie-web .fx-discovery-pick{padding:24px}.flixie-web .fx-discovery-country select{font-size:1rem}.flixie-web .fx-analytics-panel{margin-inline:20px}}
 @media(max-width:380px){.flixie-web .fx-discovery-heading{align-items:flex-start}.flixie-web .fx-discovery-heading h2{flex-basis:100%}}
 
 @media(max-width:560px){.flixie-web .site-footer-main{display:flex;flex-wrap:wrap}.flixie-web .site-footer-brand,.flixie-web .site-footer-download{flex-basis:100%}.flixie-web .site-footer-nav{flex:1 1 8.5rem;min-width:min(100%,8.5rem)}}

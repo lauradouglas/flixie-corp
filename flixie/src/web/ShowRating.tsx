@@ -14,7 +14,7 @@ export default function ShowRating({ film, onClose, onSaved }: { film: Film; onC
   const [busy, setBusy] = useState(false);
   if (!user) return null;
   return <Sheet title={`Rate ${film.title}`} description={<FilmMeta film={film}/>} presentation="modal" mobileFullScreen dismissible={!busy} onClose={onClose}>
-    {result.loading ? <Loading label="Loading your rating…"/> : result.error ? <ErrorState message={result.error} retry={result.retry}/> :
+    {result.loading ? <Loading layout="form" label="Loading your rating…"/> : result.error ? <ErrorState message={result.error} retry={result.retry}/> :
       <RatingForm film={film} initial={result.data ?? { rating: null, recommendation: 'neutral' }} onBusy={setBusy} onClose={onClose} onSaved={onSaved}/>}
   </Sheet>;
 }

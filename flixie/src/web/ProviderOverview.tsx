@@ -1,4 +1,5 @@
 import {useBrowseCountry} from './browseCountry';
+import { Loading } from "./Loading";
 import CinemaStatus from "./CinemaStatus";
 import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
@@ -39,7 +40,7 @@ export function ProviderOverview({ film, onOptions, onSignIn }: {
     </div>
     {ready && film.kind === "movie" && <CinemaStatus id={film.id} region={country} countryName={countryName}/>}
     {availability.error ? <div className="fx-provider-overview-message" role="alert"><p>{availability.error}</p><button className="fx-text-button" onClick={availability.retry}>Try again</button></div> :
-      loading ? <p className="fx-provider-overview-note" role="status">Checking your viewing options…</p> : <>
+      loading ? <Loading layout="providers" label="Checking your viewing options…"/> : <>
         {offers.length > 0 && user && services.error && <div className="fx-provider-overview-message" role="alert"><p>Your services couldn’t be checked. These are the listed viewing options.</p><button className="fx-text-button" onClick={services.retry}>Retry your services</button></div>}
         {offers.length > 0 && user && services.data && !services.error && !matches.length && <p className="fx-provider-overview-note">{services.data.length ? "No matches for your saved services." : "Add your services in the Flixie app to highlight your matches."}</p>}
         {visible.length ? <ul className="fx-overview-provider-list">

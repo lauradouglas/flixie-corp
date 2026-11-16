@@ -724,3 +724,42 @@ but no complete browser build/compatibility audit was performed. Storage/push an
 other mobile integrations need review before reuse. The user accepted matching
 the app within the existing website for now. Public searchable HTML content stays;
 no Flutter framework migration, native change or backend/schema/fixture write.
+
+## Loading and placeholder audit — 16 November 2026
+
+The user requested a whole-website pass, including the first load and correct
+placeholders for each device size. Shared loading primitives now select the actual
+content shape: film/TV grids, cinema rows, saved-film previews, diary/poster rows,
+people/activity, Watch Plans, title/person details, profiles, episodes, cast,
+photos, provider choices, avatars and forms. They reuse the destination grids and
+breakpoints; episode stills remain landscape and film artwork remains full 2:3.
+The decorative shapes are hidden from assistive technology, with a single readable
+status and reduced-motion support. Pending Home friends/plans no longer briefly
+claim that their data is empty.
+
+A small official-F startup treatment renders before JavaScript on dynamic routes.
+Prerendered public pages keep their actual content. If a view chunk fails, the
+startup state provides an explicit retry; existing public HTML is retained.
+Known title metadata and person filmography stay visible during their live refresh.
+Posters reserve portrait dimensions, show a neutral loading surface, and recover
+when their artwork source changes. Cached poster completion is checked after
+hydration. Existing error/empty/retry, privacy, auth-draft, country and badge rules
+remain in their original owners. No database seed or API change is needed: pending
+state QA uses explicitly fictional local fixtures and holds requests in memory.
+
+Verification: TypeScript; the website's 147 regression checks (including six new
+loading regressions); production build with 206 prerendered pages; SEO and route
+checks. Browser QA covered all 20 loading layouts at CSS widths 320, 390, 430,
+820 and 1440, plus 844×390 landscape and 320px with 200% text. A further 36 pending
+page checks exercised Home, Watchlist, diary, friends, plans, search, title, person,
+profile, notifications, public discovery and startup at 390/820/1440. No horizontal
+page overflow remained. These are browser viewport checks and fictional pending
+fixtures, not physical-device or production-account tests. Reduced-motion behavior
+is implemented in CSS, not a claim of an OS preference test.
+
+Source/test preview artifacts are in `.impeccable/review/loading-states/`, including
+`geometry.json`, `phone.jpg`, `startup.jpg`, and the development-only fixture.
+Status: local implementation verified. The user authorised website publication on
+16 November 2026. Release preparation preserves the newer weekly sitemap update;
+the exact deployment receipt will be recorded after the workflow and live checks.
+No native release or backend change is part of this work.

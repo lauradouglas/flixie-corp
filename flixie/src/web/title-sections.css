@@ -27,23 +27,6 @@
   margin-top: 12px;
   min-height: 44px;
 }
-.flixie-web .fx-detail-skeleton {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-  padding: 6px 0;
-  max-width: 650px;
-}
-.flixie-web .fx-detail-skeleton > span {
-  display: block;
-  height: 95px;
-  background: var(--fx-lift);
-  border-radius: 8px;
-}
-.flixie-web .fx-detail-skeleton p {
-  grid-column: 1/-1;
-  color: var(--fx-muted);
-}
 .flixie-web .fx-title-friends {
   max-width: 52rem;
   container-type: inline-size;

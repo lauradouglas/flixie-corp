@@ -18,7 +18,7 @@ export function PersonImage({ path, alt, large = false }: { path: string; alt: s
   const src = imageUrl(path, large ? "original" : "w500");
   return src && !failed ? <>
     {large && !loaded && <p className="fx-photo-loading" role="status">Loading image…</p>}
-    <img src={src} alt={alt} loading={large ? "eager" : "lazy"} onLoad={() => setLoaded(true)} onError={() => setFailed(true)} />
+    <img src={src} alt={alt} data-loading={!loaded} decoding="async" loading={large ? "eager" : "lazy"} onLoad={() => setLoaded(true)} onError={() => setFailed(true)} />
   </> : <div className="fx-person-no-photo" role="img" aria-label={`Photo unavailable for ${alt}`}><Users aria-hidden="true" /><span>Photo unavailable</span></div>;
 }
 function Biography({ person }: { person: Talent }) {
@@ -99,7 +99,7 @@ export function PersonContent({ person, credits, creditState }: { person: Talent
       <Biography person={person} />
     </section>
     <nav className="fx-title-section-links" aria-label="On this person"><a href="#person-credits">Filmography</a>{person.photos.length > 0 && <a href="#person-photos">Photos</a>}</nav>
-    {creditState?.loading ? <div id="person-credits"><Loading label="Loading credits…" /></div> : creditState?.error ? <div id="person-credits"><ErrorState message={creditState.error} retry={creditState.retry} /></div> : credits ? <Filmography credits={credits} /> : null}
+    {creditState?.loading ? <div id="person-credits"><Loading layout="collection" label="Loading credits…" /></div> : creditState?.error ? <div id="person-credits"><ErrorState message={creditState.error} retry={creditState.retry} /></div> : credits ? <Filmography credits={credits} /> : null}
     <Photos person={person} />
     <DownloadPrompt />
     <p className="fx-small fx-muted">Person information, photos and credits supplied by TMDB.</p>
@@ -123,6 +123,6 @@ export default function PersonPage({ id }: { id: number }) {
     // Unknown people retain the noindex route policy until their public snapshot is reviewed.
   }, [detail.data]);
   const person = detail.data ?? (initial?.person.id === id && detail.loading ? initial.person : undefined);
-  if (!person) return detail.error ? <ErrorState message={detail.error} retry={detail.retry} /> : <Loading label="Loading person…" />;
-  return <div className="fx-person-page"><PersonContent key={id} person={person} credits={credits.data} creditState={credits} /></div>;
+  if (!person) return detail.error ? <ErrorState message={detail.error} retry={detail.retry} /> : <Loading layout="person" label="Loading person…" />;
+  return <div className="fx-person-page"><PersonContent key={id} person={person} credits={credits.data ?? (initial?.person.id === id ? initial.credits : undefined)} creditState={{...credits,loading:credits.loading && !(initial?.person.id === id && initial.credits)}} /></div>;
 }

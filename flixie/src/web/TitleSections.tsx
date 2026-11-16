@@ -10,29 +10,22 @@ import {
   Users,
 } from "lucide-react";
 import { useSession } from "./auth";
-import { AvatarLink, Empty, ErrorState, Link, Sheet } from "./components";
+import { AvatarLink, Empty, ErrorState, Link, Sheet, Loading } from "./components";
 import { personPath, profilePath } from "./routing";
 import { useLoad } from "./hooks";
 import { imageUrl, type Film } from "./models";
 import type { CastMember, TitlePhoto } from "./titleDetails";
 
-function DetailSkeleton({ label }: { label: string }) {
-  return (
-    <div className="fx-detail-skeleton" role="status">
-      <span />
-      <span />
-      <span />
-      <p>{label}</p>
-    </div>
-  );
-}
 function Portrait({ member }: { member: CastMember }) {
-  const [failed, setFailed] = useState(false);
+  const [failed, setFailed] = useState(false), [loaded, setLoaded] = useState(false);
   const source = imageUrl(member.portrait, "w185");
   return source && !failed ? (
     <img
       src={source}
       alt={`${member.name} portrait`}
+      data-loading={!loaded}
+      onLoad={() => setLoaded(true)}
+      decoding="async"
       loading="lazy"
       onError={() => setFailed(true)}
     />
@@ -73,7 +66,7 @@ export function CastSection({
         )}
       </div>
       {loading ? (
-        <DetailSkeleton label="Loading the cast…" />
+        <Loading layout="cast" count={6} label="Loading the cast…" />
       ) : error ? (
         <ErrorState message={error} retry={retry} />
       ) : members.length ? (
@@ -154,7 +147,7 @@ export function FriendsSection({
           </div>
         </div>
       ) : result.loading ? (
-        <DetailSkeleton label="Loading your friends’ opinions…" />
+        <Loading layout="rows" label="Loading your friends’ opinions…" />
       ) : result.error ? (
         <ErrorState message={result.error} retry={result.retry} />
       ) : opinions?.friends.length ? (
@@ -252,8 +245,9 @@ function Photo({
       <img
         src={source}
         alt={`${title} ${photo.kind === "poster" ? "poster artwork" : "still"}`}
-        loading={large ? "eager" : "lazy"}
+        data-loading={!loaded}
         decoding="async"
+        loading={large ? "eager" : "lazy"}
         onLoad={() => setLoaded(true)}
         onError={() => setFailed(true)}
       />
@@ -325,7 +319,7 @@ export function PhotosSection({ film }: { film: Film }) {
         )}
       </div>
       {result.loading ? (
-        <DetailSkeleton label="Loading photos…" />
+        <Loading layout="photos" label="Loading photos…" />
       ) : result.error ? (
         <ErrorState message={result.error} retry={result.retry} />
       ) : photos.length ? (
