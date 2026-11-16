@@ -26,6 +26,11 @@
 .flixie-web .fx-cinema-status > svg { flex:none; margin-top:3px; }
 .flixie-web .fx-cinema-status strong { display:block; font-size:var(--fx-type-control); font-weight:750; }
 .flixie-web .fx-cinema-status span { display:block; font-size:var(--fx-type-label); color:var(--fx-muted); margin-top:3px; }
+.flixie-web .fx-provider-overview .fx-loading{gap:0}
+.flixie-web .fx-provider-overview .fx-loading-label{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.flixie-web .fx-provider-overview .fx-skeleton-providers{display:flex;flex-wrap:wrap;gap:6px}
+.flixie-web .fx-provider-overview .fx-skeleton-providers>div{display:flex;flex:0 1 180px;align-items:center;gap:10px;width:auto;min-height:62px;padding:10px 12px;border:1px solid var(--fx-line);border-radius:10px;background:var(--fx-surface)}
+@media(max-width:680px){.flixie-web .fx-title-view .fx-skeleton-providers>div{flex:1 1 140px;min-height:52px;padding:8px;gap:8px}}
 .flixie-web .fx-cinema-status details { font-size:var(--fx-type-label); color:var(--fx-muted); max-width:65ch; }
 .flixie-web .fx-cinema-status summary { cursor:pointer; padding-block:10px; min-height:44px; font-weight:650; }
 .flixie-web .fx-cinema-status details p { line-height:1.5; }

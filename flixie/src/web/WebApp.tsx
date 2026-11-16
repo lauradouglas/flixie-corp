@@ -185,6 +185,7 @@ export function ConnectedApp() {
     toast: setToast,
   };
   const authPage = !user && (route.page === 'join' || route.page === 'sign-in');
+  const publicDiscovery = route.page==='explore'||route.page==='home'&&!user&&!identity&&(!session.loading||window.location.pathname==='/');
   const guestTitle = !user && (route.page === 'title' || route.page === 'person');
   const continuation = authPage ? safeNext(new URLSearchParams(window.location.search).get('next')) : window.location.pathname + window.location.search;
   function search(event: FormEvent) {
@@ -193,6 +194,9 @@ export function ConnectedApp() {
       navigate("/app/search?q=" + encodeURIComponent(query.trim()));
   }
   function content() {
+    // /app must not flash the public guest Home while a saved sign-in is
+    // being restored. Keep the same neutral startup state until we know.
+    if(route.page==='home'&&window.location.pathname!=='/'&&session.loading&&!user)return <StartupLoading/>;
     if(route.page==='explore'&&(!identity||user)||route.page==='home'&&!user&&!identity)return <PublicHomePage actions={actions}/>;
     if (route.page === "person") return <PersonPage key={route.id} id={route.id} />;
     if (route.page === "title")
@@ -353,7 +357,7 @@ export function ConnectedApp() {
         <main
           id="web-main"
           tabIndex={-1}
-          className={guestTitle ? "fx-public-main" : `fx-main${route.page==='explore'||route.page==='home'&&!user&&!identity?' fx-discovery-main':''}`}
+          className={guestTitle ? "fx-public-main" : `fx-main${publicDiscovery?' fx-discovery-main':''}`}
         >
           {user && terms.data?.accepted === false && (
             <div className="fx-terms-notice">
@@ -378,7 +382,7 @@ export function ConnectedApp() {
         </main>
       </div>
       <Footer year={new Date().getFullYear()} compact />
-      {!user&&!identity&&route.page==='home'&&<WebsiteAnalyticsChoice page="home" inline/>}
+      {!user&&!identity&&route.page==='home'&&publicDiscovery&&<WebsiteAnalyticsChoice page="home" inline/>}
       {action?.type === "terms" && user && (
         <TermsSheet
           version={action.version}

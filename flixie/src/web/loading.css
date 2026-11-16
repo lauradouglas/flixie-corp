@@ -56,6 +56,7 @@
   .flixie-web .fx-skeleton-detail > .fx-skeleton-copy { gap: 18px; }
   .flixie-web .fx-skeleton-detail .fx-skeleton-title { height: 2.75rem; }
   .flixie-web .fx-skeleton-detail-person { grid-template-columns: 110px minmax(0,1fr); padding-top: 24px; }
+  .flixie-web .fx-skeleton-detail-title { padding-top: clamp(125px,38vw,190px); }
   .flixie-web .fx-skeleton-detail > .fx-skeleton-poster { grid-row: auto; }
   .flixie-web .fx-skeleton-detail-lower { grid-column: 1/-1; }
 }

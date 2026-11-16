@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./theme.css";
+@import "./corporate-fonts.css";
 
 @theme {
   --color-flixie-purple: var(--fx-purple);

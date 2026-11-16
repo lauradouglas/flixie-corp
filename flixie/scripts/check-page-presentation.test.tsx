@@ -16,7 +16,7 @@ await writeFile(output,compiled.outputFiles[0].contents);const runtime=await imp
 async function setup(path='/movies/348'){
  const dom=new JSDOM('<!doctype html><head></head><body><div id="root"></div></body>',{url:'https://www.flixie.co.uk'+path});
  dom.window.scrollTo=()=>{};dom.window.HTMLElement.prototype.scrollTo=()=>{};
- Object.assign(globalThis,{window:dom.window,document:dom.window.document,HTMLElement:dom.window.HTMLElement,history:dom.window.history,PopStateEvent:dom.window.PopStateEvent,IS_REACT_ACT_ENVIRONMENT:true});
+ Object.assign(globalThis,{window:dom.window,document:dom.window.document,HTMLElement:dom.window.HTMLElement,history:dom.window.history,PopStateEvent:dom.window.PopStateEvent,ResizeObserver:class{observe(){}disconnect(){}},IS_REACT_ACT_ENVIRONMENT:true});
  const {createRoot}=await import('react-dom/client');const root=createRoot(document.getElementById('root')!);
  return {dom,doc:dom.window.document,render:async(node:React.ReactNode)=>act(async()=>root.render(node)),close:async()=>{await act(async()=>root.unmount());dom.window.close();}};
 }
@@ -32,6 +32,19 @@ test('app navigation gives each screen a readable tab label without copying priv
    assert.equal(t.doc.title,title);assert.equal(t.doc.querySelector('meta[property="og:title"]')?.getAttribute('content'),title);
    assert.match(t.doc.querySelector('meta[name="robots"]')?.getAttribute('content')??'',/noindex/);
   }
+ }finally{await t.close();}
+});
+
+test('restoring a saved sign-in never flashes guest Home before the member Home',async()=>{
+ const t=await setup('/app');
+ const api={...apiDefaults,watchlist:async()=>[],watchSoon:async()=>[],diary:async()=>[],continued:async()=>[],friends:async()=>[],plans:async()=>[],inbox:async()=>({items:[],unreadCount:0,nextCursor:null})};
+ const base=session(api);
+ const render=(extra:Record<string,unknown>)=>t.render(createElement(runtime.SessionContext.Provider,{value:{...base,...extra}},createElement(runtime.ConnectedApp)));
+ try{
+  await render({loading:true});assert(t.doc.querySelector('.fx-startup'));assert.notEqual(t.doc.querySelector('h1')?.textContent,'Your next good watch.');assert(!t.doc.querySelector('.fx-discovery-main'));
+  await render({loading:true,identity:{uid:'fictional-slow-owner'}});assert(t.doc.querySelector('.fx-startup'));assert(!t.doc.querySelector('.fx-discovery-main'));
+  await render({loading:false,identity:{uid:'fictional-slow-owner'},user:{id:'fixture-member',externalId:'fictional-slow-owner',username:'fixture_alex',firstName:'Alex',country:'GB',avatar:{},profileBadges:[],completedSetup:true}});
+  assert.equal(t.doc.querySelector('h1')?.textContent,'Hello, Alex.');assert.equal(t.doc.querySelector('.fx-startup'),null);assert(!t.doc.querySelector('.fx-discovery-main'));
  }finally{await t.close();}
 });
 
@@ -59,6 +72,23 @@ test('late replies from an earlier title cannot rename the current browser tab',
   await act(async()=>pending.get(348)!(film({id:348,title:'Alien',posterPath:''},'movie')));
   await act(async()=>pending.get(1413)!(film({id:1413,title:'American Horror Story',posterPath:''},'show')));
   assert.equal(t.doc.title,'Alien | Flixie');assert.equal(t.doc.querySelector('h1')?.textContent,'Alien');
+ }finally{await t.close();}
+});
+
+test('page switches show saved film and person details immediately while slow live requests remain pending',async()=>{
+ const t=await setup('/app/search?q=Alien');let failPerson!:(reason:Error)=>void;
+ const api={...apiDefaults,search:async()=>[],title:()=>new Promise(()=>{}),person:()=>new Promise((_resolve,reject)=>{failPerson=reject;}),personCredits:()=>new Promise(()=>{})};
+ const move=async(path:string)=>act(async()=>{t.dom.window.history.pushState(null,'',path);t.dom.window.dispatchEvent(new t.dom.window.PopStateEvent('popstate'));});
+ try{
+  await t.render(createElement(runtime.SessionContext.Provider,{value:session(api)},createElement(runtime.ConnectedApp)));
+  await move('/movies/348');
+  assert.equal(t.doc.querySelector('h1')?.textContent,'Alien');assert.equal(t.doc.querySelector('.fx-loading-title'),null);
+  assert(t.doc.querySelector('.fx-rating-pending'));assert(t.doc.querySelector('.fx-open-app'),'the app-link row is present on the first render');
+  await move('/people/525');
+  assert.equal(t.doc.querySelector('h1')?.textContent,'Christopher Nolan');assert.equal(t.doc.querySelector('.fx-loading-person'),null);
+  assert(t.doc.querySelector('#person-credits a'),'saved filmography remains usable during its refresh');
+  await act(async()=>failPerson(Error('Temporarily unavailable')));
+  assert.equal(t.doc.querySelector('h1')?.textContent,'Christopher Nolan');assert.match(t.doc.querySelector('[role=alert]')?.textContent??'',/saved public details/);
  }finally{await t.close();}
 });
 test('expanding and collapsing a biography keeps one complete flowing passage and the control after it',async()=>{

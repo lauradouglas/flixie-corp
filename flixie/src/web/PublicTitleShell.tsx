@@ -3,7 +3,9 @@ import { ChevronLeft } from 'lucide-react';
 import { catalogTitles, catalogPath, type CatalogTitle } from "../catalog";
 import { film } from "./models";
 import { Poster } from "./components";
-import { TitleArtwork, TitleMetadata } from './TitlePresentation';
+import { GuestTitleActions, TitleAppLink, TitleArtwork, TitleMetadata } from './TitlePresentation';
+import CommunityRating from './CommunityRating';
+import {ProviderOverviewLoading} from './ProviderOverviewLoading';
 import PublicBrowseHeader from './PublicBrowseHeader';
 import DownloadPrompt from "./DownloadPrompt";
 import Footer from "../components/Footer";
@@ -33,23 +35,10 @@ export function PublicTitleShell({ title }: { title: CatalogTitle }) {
             </div>
             <div className="fx-detail-lower">
             <section className="fx-title-about"><h2>About {title.kind === 'movie' ? 'the film' : 'the show'}</h2><p className="fx-synopsis">{title.overview}</p></section>
-            <p className="fx-public-explainer">
-              Save {title.title} to your watchlist, keep a personal viewing
-              diary and check viewing options for your country with Flixie.
-            </p>
-            <div className="fx-button-row">
-              <a
-                href={
-                  "/app/sign-in?next=" + encodeURIComponent(catalogPath(title))
-                }
-                className="fx-button fx-primary"
-              >
-                Save to your watchlist
-              </a>
-              <a href="/where-to-watch" className="fx-button">
-                About viewing options
-              </a>
-            </div>
+            <CommunityRating film={value} compactOnMobile pending/>
+            <ProviderOverviewLoading/>
+            <GuestTitleActions film={value}/>
+            <TitleAppLink/>
             </div>
           </div>
         </div>

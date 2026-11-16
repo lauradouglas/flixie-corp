@@ -6,7 +6,7 @@ import { DiaryRow, DiaryViews } from "./Diary";
 import { homeSavedFilms } from "./homeSelection";
 import TitleFavourite from './TitleFavourite';
 import CommunityRating from './CommunityRating';
-import { TitleArtwork, TitleMetadata } from './TitlePresentation';
+import { GuestTitleActions, TitleAppLink, TitleArtwork, TitleMetadata } from './TitlePresentation';
 import './community-rating.css';
 import ShowSeasons from './ShowEpisodesSection';
 import { useContext, useEffect, useRef, useState } from "react";
@@ -650,24 +650,10 @@ export function TitlePage({
   const credits = useLoad(`credits:${kind}:${id}`, (signal) =>
     api.credits(id, kind, signal),
   );
-  const [appLink, setAppLink] = useState<string | null>(null);
-  useEffect(
-    () =>
-      setAppLink(
-        sharedMediaOpenLink(
-          titlePath(id, kind),
-          sharedMediaStore(
-            navigator.userAgent,
-            navigator.platform,
-            navigator.maxTouchPoints,
-          ),
-        ),
-      ),
-    [id, kind],
-  );
+  const appLink = sharedMediaOpenLink(titlePath(id,kind), sharedMediaStore(navigator.userAgent,navigator.platform,navigator.maxTouchPoints));
   const initial = useContext(InitialTitle);
-  const initialMatches = initial?.id === id && initial.kind === kind;
-  const title = result.data ?? (initialMatches ? film(initial, kind) : undefined);
+  const snapshot = initial?.id === id && initial.kind === kind ? initial : catalogTitles.find(title=>title.id===id&&title.kind===kind);
+  const title = result.data ?? (snapshot ? film(snapshot, kind) : undefined);
   usePublicPageMetadata(titlePath(id, kind), title ? `${title.title} | Flixie` : undefined);
   if (result.loading && !title) return <Loading layout="title" label={kind === "show" ? "Loading the show…" : "Loading the film…"} />;
   if (!title)
@@ -680,6 +666,11 @@ export function TitlePage({
   const f = title,
     directors = credits.data?.directors ?? [],
     cast = (credits.data?.cast ?? []).slice(0, 3);
+  function shareTitle() {
+    const url = 'https://www.flixie.co.uk' + titlePath(id,kind);
+    if (navigator.share) void navigator.share({title:f.title,url}).catch(()=>{});
+    else void navigator.clipboard.writeText(url).then(()=>actions.toast('Link copied')).catch(()=>actions.toast('Use the page address to share this film.'));
+  }
   return (
     <>
       {result.error && <ErrorState message="The latest title details could not be loaded. Showing saved public details." retry={result.retry}/>}
@@ -715,9 +706,9 @@ export function TitlePage({
                 )}
               </div>
             )}
-            <CommunityRating film={f} compactOnMobile/>
+            <CommunityRating film={f} compactOnMobile pending={!result.data&&result.loading}/>
             <ProviderOverview film={f} onOptions={() => actions.open({ type: "options", film: f })} onSignIn={() => actions.open({ type: "login" })} />
-            <div className={`fx-detail-actions ${user && kind === "movie" ? "fx-has-review" : ""}`}>
+            {!user ? <GuestTitleActions film={f} onLogin={()=>actions.open({type:'login'})} onSave={()=>void actions.save(f,true)} onShare={shareTitle}/> : <div className={`fx-detail-actions ${kind === "movie" ? "fx-has-review" : ""}`}>
                 <button
                   className="fx-button fx-primary fx-title-primary fx-title-rate"
                   onClick={() => actions.open(!user ? { type: "login" } : kind === 'movie' ? { type: 'log', film: f } : { type: 'rate-show', film: f, onSaved: result.retry })}
@@ -742,34 +733,14 @@ export function TitlePage({
               <button
                 className="fx-button fx-title-secondary fx-title-share"
                 aria-label={`Share ${f.title}`}
-                onClick={() => {
-                  const url = "https://www.flixie.co.uk" + titlePath(id, kind);
-                  if (navigator.share)
-                    void navigator
-                      .share({ title: f.title, url })
-                      .catch(() => {});
-                  else
-                    void navigator.clipboard
-                      .writeText(url)
-                      .then(() => actions.toast("Link copied"))
-                      .catch(() =>
-                        actions.toast(
-                          "Use the page address to share this film.",
-                        ),
-                      );
-                }}
+                onClick={shareTitle}
               >
                 <Share2 size={18} />
                 Share
               </button>
               </div>
-            </div>
-            {appLink && (
-              <a className="fx-text-button fx-open-app" href={appLink}>
-                Open in the Flixie app
-                <ArrowRight size={15} />
-              </a>
-            )}
+            </div>}
+            <TitleAppLink href={appLink}/>
           </div>
         </div>
       </div>

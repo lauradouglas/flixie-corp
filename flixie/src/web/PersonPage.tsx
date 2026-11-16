@@ -9,6 +9,7 @@ import { useLoad } from "./hooks";
 import { imageUrl, type MediaKind } from "./models";
 import { titlePath } from "./routing";
 import { InitialPerson } from "./personContext";
+import {catalogPerson} from '../peopleCatalog';
 import { creditHasRole, displayPersonDate, selectTalentCredits, type CreditRole, type CreditSort, type Talent, type TalentCredit, type TalentCredits } from "./personDetails";
 import type { PersonSnapshot } from "../peopleCatalog";
 import DownloadPrompt from "./DownloadPrompt";
@@ -115,10 +116,11 @@ export default function PersonPage({ id }: { id: number }) {
   const { api } = useSession();
   const detail = useLoad(`person:${id}`, signal => api.person(id, signal));
   const credits = useLoad(`person-credits:${id}`, signal => api.personCredits(id, signal));
-  const initial = useContext(InitialPerson);
-  const person = detail.data ?? (initial?.person.id === id && detail.loading ? initial.person : undefined);
+  const supplied = useContext(InitialPerson);
+  const initial = supplied?.person.id===id ? supplied : catalogPerson(id);
+  const person = detail.data ?? initial?.person;
   usePublicPageMetadata(`/people/${id}`, person ? `${person.name} | Flixie` : undefined,
     person ? `Explore ${person.name}'s biography, photos and film and TV credits on Flixie. ${person.biography}`.slice(0,157).trim() : undefined);
   if (!person) return detail.error ? <ErrorState message={detail.error} retry={detail.retry} /> : <Loading layout="person" label="Loading person…" />;
-  return <div className="fx-person-page"><PersonContent key={id} person={person} credits={credits.data ?? (initial?.person.id === id ? initial.credits : undefined)} creditState={{...credits,loading:credits.loading && !(initial?.person.id === id && initial.credits)}} /></div>;
+  return <div className="fx-person-page"><PersonContent key={id} person={person} credits={credits.data ?? initial?.credits} creditState={{...credits,loading:credits.loading && !initial?.credits}} />{detail.error&&<ErrorState message="The latest person details could not be loaded. Showing saved public details." retry={detail.retry}/>}</div>;
 }

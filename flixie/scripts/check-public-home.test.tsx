@@ -111,6 +111,28 @@ test('guest detection supplies the same country to popular movies and cinemas, t
     assert.equal(dom.window.localStorage.getItem('flixie-cinema-country'),'AU');
   });
 });
+
+test('slow country detection and GB refresh keep the preloaded film cards until the real response arrives',async()=>{
+  let detect!:(response:Response)=>void, finish!:(response:Response)=>void;
+  await countryPage(url=>{
+    if(url.endsWith('/guest/country'))return new Promise(resolve=>{detect=resolve;});
+    if(url.endsWith('/movies/popular?region=GB'))return new Promise(resolve=>{finish=resolve;});
+    return Promise.resolve(new Response('[]'));
+  },async({dom,render})=>{
+    await render({});
+    const section=()=>dom.window.document.querySelector('#public-films')!;
+    const first=section().querySelector('.fx-discovery-film')!;
+    assert(first,'country lookup must not erase prerendered public cards');
+    assert.equal(section().querySelectorAll('.fx-discovery-film').length,6);
+    assert.equal(section().querySelector('.fx-loading-discovery'),null);
+    assert(dom.window.document.querySelector('.fx-discovery-country-status'));
+    await act(async()=>detect(countryResponse('GB')));
+    assert.equal(section().querySelector('.fx-discovery-film'),first,'pending refresh preserves the existing artwork node');
+    await act(async()=>finish(new Response(JSON.stringify([row(348,'Fresh GB Alien')]))));
+    assert(section().textContent?.includes('Fresh GB Alien'));
+    assert.equal(section().querySelector('.fx-loading-discovery'),null);
+  });
+});
 test('saved account country wins over guest preference, profile changes and account switches replace it, and sign-out restores the guest choice',async()=>{
   let detections=0;
   const member=(id:string,country:string)=>({id,country,username:'fictional_member',firstName:'Alex',externalId:id,avatar:{},profileBadges:[],completedSetup:true});

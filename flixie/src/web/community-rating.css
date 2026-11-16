@@ -5,3 +5,6 @@
 .flixie-web .fx-rating-info summary::-webkit-details-marker { display: none; }
 .flixie-web .fx-rating-info summary svg { flex: none; }
 .flixie-web .fx-rating-info p { max-width: 65ch; color: var(--fx-muted); font-size: var(--fx-type-label); line-height: 1.6; padding-bottom: 10px; }
+.flixie-web .fx-rating-pending{display:flex;align-items:center;min-height:44px}
+.flixie-web .fx-rating-pending>span{display:block;width:88px;height:30px;border-radius:8px;background:var(--fx-lift)}
+.flixie-web .fx-title-rating{min-height:44px}

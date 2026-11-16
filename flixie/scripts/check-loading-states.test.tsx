@@ -12,7 +12,7 @@ import {account,film} from '../src/web/models';
 
 const output=resolve(`.impeccable/review/loading-states/test-${process.pid}.mjs`);
 await mkdir(resolve('.impeccable/review/loading-states'),{recursive:true});
-const compiled=await build({stdin:{contents:`export {HomePage,SearchPage,TitlePage} from './src/web/pages';export {Poster} from './src/web/components';export {PublicHomeContent} from './src/web/PublicHome';export {InitialTitle} from './src/web/PublicTitleShell';export {SessionContext} from './src/web/auth';`,resolveDir:process.cwd(),loader:'tsx'},bundle:true,write:false,format:'esm',platform:'node',packages:'external',jsx:'automatic',loader:{'.css':'empty'},define:{'import.meta.env':'{}'}});
+const compiled=await build({stdin:{contents:`export {HomePage,SearchPage,TitlePage} from './src/web/pages';export {Poster} from './src/web/components';export {PublicHomeContent} from './src/web/PublicHome';export {InitialTitle,PublicTitleShell} from './src/web/PublicTitleShell';export {SessionContext} from './src/web/auth';`,resolveDir:process.cwd(),loader:'tsx'},bundle:true,write:false,format:'esm',platform:'node',packages:'external',jsx:'automatic',loader:{'.css':'empty'},define:{'import.meta.env':'{}'}});
 await writeFile(output,compiled.outputFiles[0].contents);
 const runtime=await import(pathToFileURL(output).href);
 after(()=>unlink(output));
@@ -96,6 +96,23 @@ test('public title metadata stays visible while its live request is pending and 
     await act(async()=>fail(Error('Temporarily unavailable')));
     assert.equal(t.doc.querySelector('h1')?.textContent,'Alien');assert.match(t.doc.querySelector('[role=alert]')!.textContent!,/saved public details/);
   }finally{await t.close();}
+});
+
+test('first title HTML and the pending hydrated view keep the same hero rows and guest actions',async()=>{
+ const t=await setup();const snapshot={id:348,kind:'movie',title:'Alien',overview:'A public synopsis.',posterPath:'',releaseDate:'1979-05-25',tagline:'',genres:[],runtime:117};
+ const html=renderToStaticMarkup(createElement(runtime.PublicTitleShell,{title:snapshot}));
+ const initial=new JSDOM(html).window.document;
+ const session={user:null,identity:null,api:new Proxy({},{get:()=>()=>new Promise(()=>{})})};
+ try{
+  await t.render(createElement(runtime.SessionContext.Provider,{value:session},createElement(runtime.InitialTitle.Provider,{value:snapshot},createElement(runtime.TitlePage,{id:348,kind:'movie',revision:0,actions}))));
+  for(const selector of ['.fx-title-about','.fx-title-rating','.fx-provider-overview','.fx-detail-actions','.fx-open-app']){
+   assert(initial.querySelector(selector),`initial HTML reserves ${selector}`);assert(t.doc.querySelector(selector),`hydration retains ${selector}`);
+  }
+  const labels=(doc:Document)=>[...doc.querySelectorAll('.fx-detail-actions :is(a,button)')].map(e=>e.textContent?.replace(/\s+/g,' ').trim());
+  assert.deepEqual(labels(initial),labels(t.doc));
+  assert(initial.querySelector('.fx-title-watchlist')?.getAttribute('href')?.includes('/app/sign-in?next='));
+  assert.equal(initial.querySelector('.fx-rating-number'),null,'the snapshot must not invent a community score');
+ }finally{await t.close();}
 });
 test('switching discovery country displays the new regional placeholders instead of an empty result or stale title',async()=>{
   const t=await setup();const pending={loading:true,error:'',retry(){}};

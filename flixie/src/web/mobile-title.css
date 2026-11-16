@@ -23,7 +23,8 @@
   .flixie-web .fx-title-view .fx-title-home > svg { display: block; }
   .flixie-web .fx-title-view .fx-title-home > span { display: none; }
   .flixie-web .fx-title-view .fx-film-detail { position: relative; isolation: isolate; display: grid; grid-template-columns: clamp(120px, 37vw, 144px) minmax(0, 1fr); grid-template-rows: minmax(min-content,1fr) repeat(3,auto); grid-template-areas: 'poster title' 'poster rating' 'poster metadata' 'poster tagline' 'genres genres' 'actions actions' 'app app' 'providers providers' 'about about' 'people people'; gap: 0 12px; padding-top: 58px; align-items: start; }
-  .flixie-web .fx-title-view:has(.fx-title-artwork) .fx-film-detail { padding-top: clamp(125px, 38vw, 190px); }
+  /* A late backdrop is decorative; it must not move the poster and title. */
+  .flixie-web .fx-title-view .fx-film-detail { padding-top: clamp(125px, 38vw, 190px); }
   .flixie-web .fx-title-artwork { position: absolute; display: block; inset: 0 0 auto; z-index: -1; height: 390px; max-height: 100%; overflow: hidden; pointer-events: none; }
   .flixie-web .fx-title-artwork img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
   .flixie-web .fx-title-artwork::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, color-mix(in srgb, var(--fx-bg) 65%, transparent), color-mix(in srgb, var(--fx-bg) 88%, transparent) 65%, var(--fx-bg)); }
