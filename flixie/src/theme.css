@@ -1,3 +1,13 @@
+/* One shared face prevents a lazy footer or view chunk from changing fonts
+   after the first paint on a slow connection. */
+@font-face {
+  font-family: FlixieManrope;
+  src: url("/web/Manrope.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: optional;
+}
+
 /* Shared native Flixie palette for discovery, member and corporate pages.
    Keep these values aligned with AppTheme/FlixiePalette. */
 :root {

@@ -1,6 +1,6 @@
 import {after, test} from 'node:test';
 import assert from 'node:assert/strict';
-import {mkdir,writeFile,unlink,readFile} from 'node:fs/promises';
+import {mkdir,writeFile,unlink,readFile,readdir} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {build} from 'esbuild';
@@ -135,4 +135,17 @@ test('cold startup is available before JavaScript, preserves prerender insertion
   assert.equal(doc.querySelector('#flixie-boot [role=status]')?.textContent,'Opening Flixie…');
   assert.equal(doc.querySelector('#flixie-boot img')?.getAttribute('src'),'/web/flixie-f.png');
   assert(html.includes('prefers-reduced-motion:reduce'));assert(main.includes("retry.textContent = 'Try again'"));
+});
+
+
+test('first-paint typography has one shared Manrope face with no late replacement',async()=>{
+  async function styles(dir:string):Promise<string[]>{
+    const entries=await readdir(dir,{withFileTypes:true});
+    return (await Promise.all(entries.map(entry=>entry.isDirectory()?styles(resolve(dir,entry.name)):entry.name.endsWith('.css')?readFile(resolve(dir,entry.name),'utf8').then(text=>[text]):[]))).flat();
+  }
+  const faces=(await styles(resolve('src'))).flatMap(css=>css.match(/@font-face\s*\{[^}]+\}/g)??[]).filter(face=>/font-family:\s*["']?FlixieManrope["']?\s*;/.test(face));
+  assert.equal(faces.length,1,'lazy view/footer styles must not register a conflicting face');
+  assert.match(faces[0],/src:[^;]+Manrope\.woff2/);
+  assert.match(faces[0],/font-display:\s*optional/);
+  assert((await readFile(resolve('src/index.css'),'utf8')).includes('@import "./theme.css"'),'the shared face must be in the initial stylesheet');
 });

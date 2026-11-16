@@ -60,3 +60,9 @@ These are desktop Chrome mobile/network emulation checks, not a physical iPhone
 Safari test. Live release identity and a final throttled recording are verified
 after deployment. Deliberate new-page content, newly selected regional results
 and expanded disclosures still change what is displayed.
+
+The first live follow-up caught a conflicting legacy Manrope registration in the
+shared footer (TTF with swap), which did not reproduce in the local recording.
+It is now consolidated into one initial shared WOFF2/optional registration;
+a regression prevents lazy view or footer CSS from reintroducing another face.
+A final live recording is required for the release result below.
