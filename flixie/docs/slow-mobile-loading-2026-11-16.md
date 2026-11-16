@@ -84,3 +84,10 @@ matching live facts update in place, and new selections remain available after
 them through the existing Explore control. Other countries retain their own
 fresh result ordering and stale-country isolation. A focused regression covers
 a reversed feed, updated facts, preserved nodes and access to new results.
+
+A live Home → Heart of the Beast → Home recording then caught a small genuine
+0.007316 film shift: an empty availability response collapsed the provider
+skeleton, pulling About the film upward. The shared provider region now reserves
+12rem through loading, empty and successful responses, while allowing longer
+content and larger type to grow. The same recording also measured the previously
+identified Home card reorder (0.066943), covered by the stable-selection fix.

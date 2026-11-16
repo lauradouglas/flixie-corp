@@ -1,4 +1,4 @@
-.flixie-web .fx-provider-overview { margin-top: 6px; padding: 8px 0 14px; border-bottom: 1px solid var(--fx-line); }
+.flixie-web .fx-provider-overview { min-block-size: 12rem; margin-top: 6px; padding: 8px 0 14px; border-bottom: 1px solid var(--fx-line); }
 .flixie-web .fx-provider-overview-heading { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px 16px; }
 .flixie-web .fx-provider-overview-heading > div { display: flex; align-items: baseline; flex-wrap: wrap; gap: 7px 12px; }
 .flixie-web .fx-provider-overview-heading h3 { font-size: var(--fx-type-control, 1rem); font-weight: 750; }
