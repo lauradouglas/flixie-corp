@@ -25,7 +25,7 @@ for (const [key, page] of Object.entries(pages)) {
     const links = html.match(/<link\b[^>]*rel="stylesheet"[^>]*>/g) || [];
     const cssPaths = links.map(link => /href="([^"]+)"/.exec(link)?.[1]).filter(path => path?.startsWith('/assets/'));
     const css = (await Promise.all(cssPaths.map(path => readFile(`dist${path}`, 'utf8')))).join('\n');
-    for (const selector of ['.fx-film-detail', '.fx-skeleton-detail', '.fx-public-main'])
+    for (const selector of ['.fx-film-detail', '.fx-skeleton-detail', '.fx-public-main', '.fx-person-hero'])
       assert.ok(css.includes(selector), `${key}: ${selector} must be styled before JavaScript hydration`);
   }
   assert.match(html, /<meta name="darkreader-lock"\s*\/?\s*>/, `${key}: own-theme colours must survive browser recolouring`);

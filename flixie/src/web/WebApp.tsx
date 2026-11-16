@@ -1,6 +1,6 @@
 import './styles.css';
 import { StartupLoading } from "./Loading";
-import { useContext, useEffect, useRef, useState, type FormEvent } from "react";
+import { useContext, useEffect, useLayoutEffect, useRef, useState, type FormEvent } from "react";
 import {
   Clapperboard,
   LogOut,
@@ -73,7 +73,7 @@ export default function WebApp({publicHome=false}:{publicHome?:boolean}) {
     </div>
   );
 }
-function ConnectedApp() {
+export function ConnectedApp() {
   const session = useSession(),
     { user, identity, api } = session,
     route = useRoute();
@@ -125,7 +125,8 @@ function ConnectedApp() {
       navigate('/app',true);
     }
   },[user?.id,route.page,terms.data?.accepted]);
-  useEffect(() => {
+  useLayoutEffect(() => {
+    // Apply route defaults before child pages publish their resolved public title.
     const template = document.createElement("template");
     template.innerHTML = renderHead(pageFromPath(window.location.pathname));
     document.head

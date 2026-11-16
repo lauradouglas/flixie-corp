@@ -1,3 +1,4 @@
+import { usePublicPageMetadata } from './publicPageMetadata';
 import Footer from "../components/Footer";
 import { useContext, useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, ExternalLink, Users } from "lucide-react";
@@ -22,12 +23,14 @@ export function PersonImage({ path, alt, large = false }: { path: string; alt: s
   </> : <div className="fx-person-no-photo" role="img" aria-label={`Photo unavailable for ${alt}`}><Users aria-hidden="true" /><span>Photo unavailable</span></div>;
 }
 function Biography({ person }: { person: Talent }) {
-  const boundary = person.biography.length > 600 ? person.biography.lastIndexOf(" ", 500) : -1;
+  const [expanded, setExpanded] = useState(false);
+  const canExpand = person.biography.length > 600;
+  const bodyId = `fx-person-biography-${person.id}`;
   return <div className="fx-person-biography">
     <h2>Biography</h2>
     {person.biography ? <>
-      <p>{boundary > 0 ? person.biography.slice(0, boundary) : person.biography}</p>
-      {boundary > 0 && <details><summary>Read full biography</summary><p>{person.biography.slice(boundary).trim()}</p></details>}
+      <p id={bodyId} className={canExpand && !expanded ? 'fx-person-bio-preview' : undefined}>{person.biography}</p>
+      {canExpand && <button type="button" className="fx-text-button fx-person-bio-toggle" aria-expanded={expanded} aria-controls={bodyId} onClick={() => setExpanded(value => !value)}>{expanded ? 'Read less' : 'Read full biography'}</button>}
     </> : <p className="fx-muted">A biography is not available yet.</p>}
   </div>;
 }
@@ -113,16 +116,9 @@ export default function PersonPage({ id }: { id: number }) {
   const detail = useLoad(`person:${id}`, signal => api.person(id, signal));
   const credits = useLoad(`person-credits:${id}`, signal => api.personCredits(id, signal));
   const initial = useContext(InitialPerson);
-  useEffect(() => {
-    if (!detail.data) return;
-    const title = `${detail.data.name}: Biography, Films & TV Credits | Flixie`;
-    const description = `Explore ${detail.data.name}'s biography, photos and film and TV credits on Flixie. ${detail.data.biography}`.slice(0,157).trim();
-    document.title = title;
-    for (const selector of ['meta[property="og:title"]', 'meta[name="twitter:title"]']) document.querySelector(selector)?.setAttribute("content", title);
-    for (const selector of ['meta[name="description"]', 'meta[property="og:description"]', 'meta[name="twitter:description"]']) document.querySelector(selector)?.setAttribute("content", description);
-    // Unknown people retain the noindex route policy until their public snapshot is reviewed.
-  }, [detail.data]);
   const person = detail.data ?? (initial?.person.id === id && detail.loading ? initial.person : undefined);
+  usePublicPageMetadata(`/people/${id}`, person ? `${person.name} | Flixie` : undefined,
+    person ? `Explore ${person.name}'s biography, photos and film and TV credits on Flixie. ${person.biography}`.slice(0,157).trim() : undefined);
   if (!person) return detail.error ? <ErrorState message={detail.error} retry={detail.retry} /> : <Loading layout="person" label="Loading person…" />;
   return <div className="fx-person-page"><PersonContent key={id} person={person} credits={credits.data ?? (initial?.person.id === id ? initial.credits : undefined)} creditState={{...credits,loading:credits.loading && !(initial?.person.id === id && initial.credits)}} /></div>;
 }

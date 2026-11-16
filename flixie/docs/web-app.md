@@ -789,3 +789,24 @@ horizontal overflow. The recorded title pending→loaded→reload path is exerci
 with fictional in-memory data; real production login and physical-device behavior
 are not claimed. Diagnostic recording frames remain local. Evidence:
 `/private/tmp/flixie-page-load-review/geometry.json` and `fixed-phone.jpg`.
+
+## Browser titles and flowing biographies —16 November 2026
+
+User screenshots identify a generic “Open a Shared Title” browser tab and the
+expanded biography disclosure interrupting Nolan's text mid-sentence. Film/show
+pages now apply concise actual public titles such as `American Horror Story |
+Flixie`, and person pages use `Christopher Nolan | Flixie`. The shell applies route
+metadata before child detail metadata, preventing it from overwriting a resolved
+title. An exact-path guard prevents late earlier-page responses from renaming the
+current tab. The unresolved fallback is `Films & TV | Flixie`; indexing/canonicals
+and the reviewed static catalogue remain unchanged.
+
+Biography is one complete text passage, preserving its paragraph breaks and full
+text in server HTML. Long biographies have a seven-line preview; expansion reveals
+the entire passage and places Read less after it. Collapse and keyboard focus use
+the same accessible button. Person layout CSS is included in the initial styles.
+160 regressions, types, analytics,206-page build and SEO/route checks pass. Four new
+user-action regressions cover tab ownership/navigation/late results and biography
+expansion/collapse/short text. Browser checks at1440/820/390 and320px with200%text
+confirm one flowing passage, disclosure after the full text and no page overflow.
+No biography facts, account data, API behavior or native UI changes are included.

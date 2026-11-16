@@ -13,7 +13,9 @@
 .flixie-web .fx-person-biography { min-width: 0; max-width: 65ch; font-size: var(--fx-type-body); line-height: 1.6; }
 .flixie-web .fx-person-biography h2 { font-size: var(--fx-type-section); margin-bottom: 10px; }
 .flixie-web .fx-person-biography p { white-space: pre-line; }
-.flixie-web .fx-person-biography summary { display: list-item; padding-block: 12px; color: var(--fx-purple); font-weight: 750; cursor: pointer; min-height: 44px; }
+/* One continuous paragraph becomes fully visible on expansion; the control stays after it. */
+.flixie-web .fx-person-bio-preview { display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; overflow: hidden; }
+.flixie-web .fx-person-bio-toggle { margin-top: 8px; min-height: 44px; }
 .flixie-web .fx-person-section { margin-top: 32px; scroll-margin-top: 18px; }
 .flixie-web .fx-person-section h2 { margin-bottom: 18px; }
 .flixie-web .fx-person-section .fx-section-head h2 { margin-bottom: 0; }

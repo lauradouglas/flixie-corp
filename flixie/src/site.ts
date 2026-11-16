@@ -159,7 +159,7 @@ const basePages = {
   },
   mediaShare: {
     path: "/media-share",
-    title: "Open a Shared Title in Flixie",
+    title: "Films & TV | Flixie",
     description:
       "Open the shared movie or show in Flixie, or download the app for iPhone or Android.",
     label: "Shared title",

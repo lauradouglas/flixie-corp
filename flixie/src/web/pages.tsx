@@ -1,3 +1,4 @@
+import { usePublicPageMetadata } from './publicPageMetadata';
 import { InitialTitle } from "./PublicTitleShell";
 import { CastSection, FriendsSection, PhotosSection } from "./TitleSections";
 import { ProviderOverview } from "./ProviderOverview";
@@ -676,6 +677,7 @@ export function TitlePage({
   const initial = useContext(InitialTitle);
   const initialMatches = initial?.id === id && initial.kind === kind;
   const title = result.data ?? (initialMatches ? film(initial, kind) : undefined);
+  usePublicPageMetadata(titlePath(id, kind), title ? `${title.title} | Flixie` : undefined);
   if (result.loading && !title) return <Loading layout="title" label={kind === "show" ? "Loading the show…" : "Loading the film…"} />;
   if (!title)
     return (
