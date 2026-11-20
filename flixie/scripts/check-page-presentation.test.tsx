@@ -54,12 +54,12 @@ test('the actual route shell retains a resolved film title and replaces it with 
  const api={...apiDefaults,title:(id:number)=>id===348?Promise.resolve(movie):new Promise(resolve=>{finish=resolve;})};
  try{
   await t.render(createElement(runtime.SessionContext.Provider,{value:session(api)},createElement(runtime.InitialTitle.Provider,{value:{id:348,kind:'movie',title:'Alien',posterPath:'',overview:'A public synopsis.',genres:[]}},createElement(runtime.ConnectedApp))));
-  assert.equal(t.doc.title,'Alien | Flixie');
-  assert.equal(t.doc.querySelector('meta[property="og:title"]')?.getAttribute('content'),'Alien | Flixie');
+  assert.equal(t.doc.title,'Alien: Watchlist & Where to Watch | Flixie');
+  assert.equal(t.doc.querySelector('meta[property="og:title"]')?.getAttribute('content'),'Alien: Watchlist & Where to Watch | Flixie');
   await act(async()=>{t.dom.window.history.pushState(null,'','/shows/1413');t.dom.window.dispatchEvent(new t.dom.window.PopStateEvent('popstate'));});
   assert.equal(t.doc.title,'Films & TV | Flixie');
   await act(async()=>finish(film({id:1413,title:'American Horror Story',posterPath:''},'show')));
-  assert.equal(t.doc.title,'American Horror Story | Flixie');
+  assert.equal(t.doc.title,'American Horror Story: Watchlist & Where to Watch | Flixie');
   assert.equal(t.doc.querySelector('meta[name="twitter:title"]')?.getAttribute('content'),t.doc.title);
   assert.match(t.doc.querySelector('meta[name="robots"]')?.getAttribute('content')??'',/noindex/);
  }finally{await t.close();}
@@ -71,7 +71,7 @@ test('late replies from an earlier title cannot rename the current browser tab',
   await act(async()=>{t.dom.window.history.pushState(null,'','/movies/348');t.dom.window.dispatchEvent(new t.dom.window.PopStateEvent('popstate'));});
   await act(async()=>pending.get(348)!(film({id:348,title:'Alien',posterPath:''},'movie')));
   await act(async()=>pending.get(1413)!(film({id:1413,title:'American Horror Story',posterPath:''},'show')));
-  assert.equal(t.doc.title,'Alien | Flixie');assert.equal(t.doc.querySelector('h1')?.textContent,'Alien');
+  assert.equal(t.doc.title,'Alien: Watchlist & Where to Watch | Flixie');assert.equal(t.doc.querySelector('h1')?.textContent,'Alien');
  }finally{await t.close();}
 });
 
