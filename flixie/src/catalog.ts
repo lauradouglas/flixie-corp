@@ -1,4 +1,5 @@
 import snapshot from "./catalog/titles.json";
+import { titleMetadata } from "./titleMetadata";
 import type { MediaKind } from "./web/models";
 export interface CatalogTitle {
   id: number;
@@ -26,10 +27,7 @@ export const catalogPages = Object.fromEntries(
     catalogKey(title),
     {
       path: catalogPath(title),
-      title: `${title.title}${title.releaseDate ? ` (${title.releaseDate.slice(0, 4)})` : ""}: Watchlist & Where to Watch | Flixie`,
-      description: `Explore ${title.title} on Flixie. ${title.overview}`
-        .slice(0, 157)
-        .trim(),
+      ...titleMetadata(title),
       label: title.title,
     },
   ]),
